@@ -14,6 +14,7 @@ import java.util.Map;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,6 +23,8 @@ import javax.servlet.http.Part;
 import com.articlePic.model.ArticlePicService;
 import com.articlePic.model.ArticlePicVO;
 
+
+@WebServlet("/articlePic/articlePic.do")
 @MultipartConfig(fileSizeThreshold = 0 * 1024 * 1024, maxFileSize = 10 * 1024 * 1024, maxRequestSize = 10 * 10 * 1024
 		* 1024)
 public class ArticlePicServlet extends HttpServlet {
@@ -69,6 +72,7 @@ public class ArticlePicServlet extends HttpServlet {
 				if(item.getArticlePicBlob()!=null) {
 					picList = articlePicMap.get(articlePicId);
 					String articlePicBase64 = Base64.getEncoder().encodeToString(item.getArticlePicBlob());
+					System.out.println(articlePicBase64.substring(0, 10));
 					picList.add(articlePicBase64);
 					articlePicMap.put(articlePicId,picList);
 				}
@@ -309,7 +313,7 @@ public class ArticlePicServlet extends HttpServlet {
 			articlePicVO.setArticlePicTime(articlePicTime);
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
-				req.setAttribute("ArticlePicVO", articlePicVO); // 嚙緣嚙踝蕭嚙踝蕭J嚙賣式嚙踝蕭嚙羯嚙踝蕭ArticlePicVO嚙踝蕭嚙踝蕭,嚙稽嚙編嚙皚req
+				req.setAttribute("ArticlePicVO", articlePicVO); //
 				RequestDispatcher failureView = req.getRequestDispatcher("/articlePic/addArticlePic.jsp");
 				failureView.forward(req, res);
 
@@ -318,17 +322,14 @@ public class ArticlePicServlet extends HttpServlet {
 			}
 
 			/***************************
-			 * 2.嚙罷嚙締嚙編嚙磕嚙踝蕭嚙�
 			 ***************************************/
 			ArticlePicService articlePicSvc = new ArticlePicService();
 			articlePicVO = articlePicSvc.addArticlePic(articleId, articlePicBlob, articlePicTime);
 			/***************************
-			 * 嚙緩嚙畿嚙緲嚙踝蕭嚙�
 			 *****************************************/
 			String articlePicBase64 = Base64.getEncoder().encodeToString(articlePicVO.getArticlePicBlob());
 			req.setAttribute("articlePic64str", articlePicBase64);
 			/***************************
-			 * 3.嚙編嚙磕嚙踝蕭嚙踝蕭,嚙褒喉蕭嚙踝蕭嚙�(Send the Success view)
 			 ***********/
 			String url = "/articlePic/listAllArticlePic.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 嚙編嚙磕嚙踝蕭嚙穀嚙踝蕭嚙踝蕭嚙締istAllEmp.jsp

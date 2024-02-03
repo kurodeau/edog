@@ -37,7 +37,7 @@ public class ArticlePicReader  extends HttpServlet{
 			"SELECT articlePicBlob FROM edog.articlePic WHERE articlePicId ="+id
 			);
 			
-
+			
 			
 			if (rs.next()) {
 				BufferedInputStream in = new BufferedInputStream(rs.getBinaryStream("articlePicBlob"));
@@ -47,6 +47,7 @@ public class ArticlePicReader  extends HttpServlet{
 				while((len = in.read(buf))!=-1) {
 					out.write(buf, 0 ,len);
 				}
+				
 				
 				in.close();
 			}else {
@@ -86,7 +87,7 @@ public class ArticlePicReader  extends HttpServlet{
 	public void init() throws ServletException {
 		try {
 			Context ctx = new javax.naming.InitialContext();
-			DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/EDogDB");
+			DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB2");
 			con = ds.getConnection();
 		} catch (NamingException e) {
 			e.printStackTrace();
