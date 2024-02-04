@@ -1,0 +1,106 @@
+/*--------------------------------------------------------------
+# Header-Search
+--------------------------------------------------------------*/
+
+.search-input-custom {
+  border: none;
+}
+
+.search-row-custom {
+  background-color: white;
+}
+
+/*--------------------------------------------------------------
+# Header-KeyWord
+--------------------------------------------------------------*/
+.keyword-container-custom .keyword-item-custom {
+  cursor: pointer;
+  border: var(--user-yellow_yellow_dark) 1px solid;
+  background-color: var(--user-yellow_tint);
+  color: var(--text-main);
+}
+
+.keyword-container-custom .keyword-item-custom:hover {
+  background-color: var(--user-yellow_yellow_dark);
+  color: var(--text-light);
+}
+
+.main {
+  background-color: var(--sec-section-light);
+}
+
+
+/*--------------------------------------------------------------
+# RWD
+--------------------------------------------------------------*/
+
+/* Small screens and up (576px and above) */
+@media (min-width: 576px) {
+  .img-md-main {
+    max-width: 100%;
+    /* Adjust as needed */
+  }
+
+  .img-md-sub {
+    max-width: 100%;
+    /* Adjust as needed */
+  }
+}
+
+/* Medium screens and up (768px and above) */
+@media (min-width: 768px) {
+  .img-md-main {
+    max-width: 100%;
+    /* Adjust as needed */
+  }
+
+  .img-md-sub {
+    max-width: 100%;
+    /* Adjust as needed */
+  }
+}
+
+/* Large screens and up (992px and above) */
+@media (min-width: 992px) {
+  .img-md-main {
+    max-width: 100%;
+    /* Adjust as needed */
+  }
+
+  .img-md-sub {
+    max-width: 100%;
+    /* Adjust as needed */
+  }
+}
+
+/* Large screens and up (1199px and above) */
+@media (max-width: 1199px) {
+  .sidebar {
+    left: -300px;
+  }
+
+  .toggle-sidebar.sidebar {
+    left: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  .main,
+  .footer {
+    margin-left: 300px;
+  }
+
+  .sidebar {
+    left: 0px;
+  }
+
+  .toggle-sidebar.main,
+  .toggle-sidebar.footer {
+    margin-left: 0;
+  }
+
+  .toggle-sidebar.sidebar {
+    left: -300px;
+  }
+}
