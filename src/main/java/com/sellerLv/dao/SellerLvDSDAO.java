@@ -1,16 +1,23 @@
-package com.seller.model;
+package com.seller.dao;
 
-
-
-import java.util.*;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-public class SellerLvDAO implements SellerDAO_interface {
-	public SellerLvDAO() {
+
+import com.seller.dao.SellerDAO;
+import com.seller.entity.SellerVO;
+
+import util.Util;
+public class SellerDSDAO implements SellerDAO {
+	public SellerDSDAO() {
 		super();
 	}
 	// 一個應用程式中,針對一個資料庫 ,共用一個DataSource即可
@@ -18,7 +25,7 @@ public class SellerLvDAO implements SellerDAO_interface {
 	static {
 		try {
 			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB2");
+			ds = (DataSource) ctx.lookup(Util.DS_NAME);
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
@@ -29,8 +36,12 @@ public class SellerLvDAO implements SellerDAO_interface {
 	private static final String GET_ONE_STMT = "SELECT * FROM edog.seller where sellerId = ?";
 	private static final String DELETE = "DELETE FROM edog.seller where sellerId = ?";
 	private static final String UPDATE = "UPDATE edog.seller SET sellerLvId=?, sellerEmail=?, sellerCompany=?, sellerTaxId=?, sellerCapital=?, sellerContact=?, "
-			+ "sellerCompanyPhone=?, sellerCompanyExtension=?, sellerMobile=?, sellerAddress=?, sellerPassword=?, sellerBankAccount=?, "
-			+ "sellerBankCode=?, sellerBankAccountNumber=?, sellerCreateTime=?, isConfirm=? WHERE sellerId = ?";
+	        + "sellerCompanyPhone=?, sellerCompanyExtension=?, sellerMobile=?, sellerAddress=?, sellerPassword=?, sellerBankAccount=?, "
+	        + "sellerBankCode=?, sellerBankAccountNumber=?, sellerCreateTime=?, isConfirm=? WHERE sellerLvId = ?";
+	
+	private static final String UPDATE_SELLER = "UPDATE edog.seller SET sellerLvId=?, sellerEmail=?, sellerCompany=?, sellerTaxId=?, sellerCapital=?, sellerContact=?, "
+	        + "sellerCompanyPhone=?, sellerCompanyExtension=?, sellerMobile=?, sellerAddress=?, sellerPassword=?, sellerBankAccount=?, "
+	        + "sellerBankCode=?, sellerBankAccountNumber=?, sellerCreateTime=?, isConfirm=? WHERE sellerLvId = ?";
 
 	@Override
 	public void insert(SellerVO sellerVO) {
@@ -95,7 +106,7 @@ public class SellerLvDAO implements SellerDAO_interface {
 
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(UPDATE);
-
+			System.out.println(sellerVO);
 
 			pstmt.setInt(1, sellerVO.getSellerLvId());
 			pstmt.setString(2, sellerVO.getSellerEmail());
@@ -113,6 +124,7 @@ public class SellerLvDAO implements SellerDAO_interface {
 			pstmt.setString(14, sellerVO.getSellerBankAccountNumber());
 			pstmt.setDate(15, sellerVO.getSellerCreateTime());
 			pstmt.setBoolean(16, sellerVO.getIsConfirm());
+			
 			pstmt.setInt(17, sellerVO.getSellerId());
 
 			int success = pstmt.executeUpdate();

@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="com.seller.model.*"%>
+<%@ page import="com.seller.entity.*"%>
 
 <html>
 <head>
@@ -61,7 +61,7 @@
     </FORM>
   </li>
 
-  <jsp:useBean id="sellerSvc" scope="page" class="com.seller.model.SellerService" />
+  <jsp:useBean id="sellerSvc" scope="page" class="com.seller.service.SellerService" />
    
   <li>
      <FORM METHOD="post" ACTION="seller.do" >

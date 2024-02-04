@@ -1,11 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
-<%@ page import="com.seller.model.*"%>
+<%@ page import="com.seller.entity.*"%>
+<%@ page import="com.seller.service.*"%>
+
 <%-- 此頁練習採用 EL 的寫法取值 --%>
 
 <%
-    SellerService sellerSvc = new SellerService();
+SellerService sellerSvc = new SellerService();
     List<SellerVO> list = sellerSvc.getAll();
     pageContext.setAttribute("list",list);
 %>

@@ -1,9 +1,7 @@
 package util;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -16,8 +14,8 @@ public class InputArticlePicture {
     private static final String BLOB_COLUMN_NAME = "articlePicBlob";
 
     public static void main(String[] args) {
-        String imagePath = "C:\\Users\\EX14\\Pictures\\Acer\\A.jpg";
-
+        String imagePath = "/images/ArticlePicture/01_cat.jpg";
+        
         try {
             byte[] imageData = readImage(imagePath);
             int rowCount = getRowCount(TABLE_NAME);
@@ -28,8 +26,13 @@ public class InputArticlePicture {
     }
 
     private static byte[] readImage(String imagePath) throws IOException {
-        Path path = Paths.get(imagePath);
-        return Files.readAllBytes(path);
+    	try (InputStream inputStream = InputArticlePicture.class.getResourceAsStream(imagePath)) {
+            if (inputStream != null) {
+                return inputStream.readAllBytes();
+            } else {
+                throw new IOException("Image not found in resources: " + imagePath);
+            }
+        }
     }
 
     private static int getRowCount(String tableName) throws SQLException {

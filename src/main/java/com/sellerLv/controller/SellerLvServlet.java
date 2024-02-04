@@ -1,4 +1,4 @@
-package com.seller.controller;
+package com.sellerLv.controller;
 
 import java.io.IOException;
 import java.time.format.DateTimeParseException;
@@ -16,7 +16,7 @@ import com.seller.service.SellerService;
 
 import util.Util;
 
-public class SellerServlet extends HttpServlet {
+public class SellerLvServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// 如果useBodyEncoding=true，GET跟著POST編碼走

@@ -1,8 +1,8 @@
-package com.seller.model;
+package com.seller.entity;
 import java.sql.Date;
 
-public class SellerLvVO implements java.io.Serializable{
-	public SellerLvVO() {
+public class SellerVO implements java.io.Serializable{
+	public SellerVO() {
 		super();
 	}
 	
@@ -29,11 +29,21 @@ public class SellerLvVO implements java.io.Serializable{
 			return sellerId;
 		}
 		public void setSellerId(Integer sellerId) {
-			System.out.println("1");
 			this.sellerId = sellerId;
 		}
 		public Integer getSellerLvId() {
 			return sellerLvId;
+		}
+		@Override
+		public String toString() {
+			return "SellerVO [sellerId=" + sellerId + ", sellerLvId=" + sellerLvId + ", sellerEmail=" + sellerEmail
+					+ ", sellerCompany=" + sellerCompany + ", sellerTaxId=" + sellerTaxId + ", sellerCapital="
+					+ sellerCapital + ", sellerContact=" + sellerContact + ", sellerCompanyPhone=" + sellerCompanyPhone
+					+ ", sellerCompanyExtension=" + sellerCompanyExtension + ", sellerMobile=" + sellerMobile
+					+ ", sellerAddress=" + sellerAddress + ", sellerPassword=" + sellerPassword + ", sellerBankAccount="
+					+ sellerBankAccount + ", sellerBankCode=" + sellerBankCode + ", sellerBankAccountNumber="
+					+ sellerBankAccountNumber + ", sellerCreateTime=" + sellerCreateTime + ", isConfirm=" + isConfirm
+					+ "]";
 		}
 		public void setSellerLvId(Integer sellerLvId) {
 			this.sellerLvId = sellerLvId;

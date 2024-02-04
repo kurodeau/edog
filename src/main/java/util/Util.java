@@ -7,18 +7,20 @@ public class Util {
 	// MySQL 8.0.13�H��u�ݫO�dserverTimezone�]�w�Y�i
 	public static final String URL = 
 			"jdbc:mysql://localhost:3306/edog?"
-//			+ "useSSL=false&"                   // ���ϥΥ[�K�s�u (�ݦ����Ҥ~��)
-//			+ "rewriteBatchedStatements=true&"  // �妸��s�ݭn����T
-			+ "serverTimezone=Asia/Taipei";     // �]�w�ɰϸ�T
-//			+ "allowPublicKeyRetrieval=true&"   // �t�XMySQL 8�H�᪩����K�X�x�s����]�w
-//			+ "useUnicode=true&"                // �ϥ�Unicode�s�X (����~���|�ýX)
-//			+ "characterEncoding=utf-8";        // �r���ĥ�UTF-8�]�w
+//			+ "useSSL=false&"                   
+//			+ "rewriteBatchedStatements=true"
+			+ "serverTimezone=Asia/Taipei";     
+//			+ "allowPublicKeyRetrieval=true&"   
+//			+ "useUnicode=true&"                
+//			+ "characterEncoding=utf-8";      
 	
 	public static final String USER = "root";
 	
 	public static final String PASSWORD = "123456";
 	
-	
+	 // DATASOURCE
+	public static final String  DS_NAME= "java:comp/env/jdbc/TestDB2";
+
 	
 	 // SELLER CONSTANTS
 	

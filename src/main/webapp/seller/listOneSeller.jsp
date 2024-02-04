@@ -1,11 +1,13 @@
 
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%@ page import="java.util.*"%>
-<%@ page import="com.seller.model.*"%>
+<%@ page import="com.seller.entity.*"%>
+<%@ page import="com.seller.service.*"%>
+
 <%-- 此頁暫練習採用 Script 的寫法取值 --%>
 
 <%
-  SellerVO sellerVO = (SellerVO) request.getAttribute("sellerVO"); //SellerServlet.java(Concroller), 存入req的sellerVO物件
+SellerVO sellerVO = (SellerVO) request.getAttribute("sellerVO"); //SellerServlet.java(Concroller), 存入req的sellerVO物件
 %>
 
 <html>

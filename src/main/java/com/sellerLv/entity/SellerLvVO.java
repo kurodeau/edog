@@ -1,4 +1,4 @@
-package com.seller.model;
+package com.seller.entity;
 import java.sql.Date;
 
 public class SellerVO implements java.io.Serializable{

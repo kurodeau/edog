@@ -16,6 +16,11 @@
         <property name="hibernate.hbm2ddl.auto">validate</property>
         <property name="hibernate.current_session_context_class">thread</property>
         
-        <mapping class="com.Tibame.hellohibernate.Dept"/>  <!-- 這個Mapping不知道目的是甚麼 -->
+        <mapping class="com.article.seller.SellerHBVO"/> 
+        
+        
+        
+        
+        
     </session-factory>
 </hibernate-configuration>

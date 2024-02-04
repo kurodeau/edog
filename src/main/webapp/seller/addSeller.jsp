@@ -1,8 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="com.seller.model.*"%>
+<%@ page import="com.seller.entity.*"%>
 
-<% //見com.seller.controller.EmpServlet.java第238行存入req的sellerVO物件 (此為輸入格式有錯誤時的sellerVO物件)
+<%
+//見com.seller.controller.EmpServlet.java第238行存入req的sellerVO物件 (此為輸入格式有錯誤時的sellerVO物件)
    SellerVO sellerVO = (SellerVO) request.getAttribute("sellerVO");
 %>
 <br>

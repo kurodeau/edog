@@ -1,15 +1,19 @@
-package com.seller.model;
+package com.seller.service;
 
 import java.sql.Date;
 import java.util.List;
 
+import com.seller.dao.*;
+import com.seller.entity.*;
+
 public class SellerService {
 
-	private SellerDAO_interface dao;
+
+	private SellerDAO dao;
 
 	public SellerService() {
 		
-		dao = new SellerDAO();
+		dao = new SellerDSDAO();
 	}
 
 	public SellerVO addSeller(String sellerEmail, String sellerCompany, String sellerTaxId,
@@ -87,3 +91,5 @@ public class SellerService {
 		return dao.getAll();
 	}
 }
+
+

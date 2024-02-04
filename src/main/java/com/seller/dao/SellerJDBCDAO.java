@@ -1,9 +1,16 @@
-package com.seller.model;
+package com.seller.dao;
 
-import java.util.*;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class SellerJDBCDAO implements SellerDAO_interface {
+import com.seller.entity.SellerVO;
+
+public class SellerJDBCDAO implements SellerDAO {
 	String driver = "com.mysql.cj.jdbc.Driver";
 	String url = "jdbc:mysql://localhost:3306/edog?serverTimezone=Asia/Taipei";
 	String userid = "root";

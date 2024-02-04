@@ -1,16 +1,23 @@
-package com.seller.model;
+package com.seller.dao;
 
-
-
-import java.util.*;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-public class SellerDAO implements SellerDAO_interface {
-	public SellerDAO() {
+
+import com.seller.dao.SellerDAO;
+import com.seller.entity.SellerVO;
+
+import util.Util;
+public class SellerDSDAO implements SellerDAO {
+	public SellerDSDAO() {
 		super();
 	}
 	// 一個應用程式中,針對一個資料庫 ,共用一個DataSource即可
@@ -18,7 +25,7 @@ public class SellerDAO implements SellerDAO_interface {
 	static {
 		try {
 			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/EDogDB");
+			ds = (DataSource) ctx.lookup(Util.DS_NAME);
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
