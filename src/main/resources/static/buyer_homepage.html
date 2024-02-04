@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zn-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>buyer_sidebar(for include)</title>
+
+    <!-- Favicons -->
+    <link href="/src/main/resources/static/images/Medium.png" rel="icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet" />
+
+    <!-- ICONS -->
+    <link rel="stylesheet" href="/src/main/resources/static/icons/remixicon/remixicon.css" />
+    <link rel="stylesheet" href="/src/main/resources/static/icons/bootstrap-icons/bootstrap-icons.css" />
+
+    <!-- Vendor CSS Files -->
+    <link rel="stylesheet" href="/src/main/resources/s/src/main/resources/static/vendorsatic/bootstrap/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="/src/main/resources/s/src/main/resources/static/vendorsatic/quill/quill.bubble.css" />
+    <link rel="stylesheet" href="/src/main/resources/s/src/main/resources/static/vendorsatic/quill/quill.snow.css" />
+    <link rel="stylesheet" href="/src/main/resources/s/src/main/resources/static/vendorsatic/simple-datatables/style.css" />
+
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" href="/src/main/resources/static/css/general.css" />
+    <link rel="stylesheet" href="/src/main/resources/static/css/buyer_homepage.css" />
+</head>
+
+
+<body>
+    <!-- ======= Main ======= -->
+    <main class="main main-layout">
+        <!--ImageStyle_Unstable  -->
+        <!-- 非常重要!!!!! 一個頁面只能用一個輪播  否則bootStrapJS會錯-->
+        <div class="container mt-5">
+            <div class="row flex-column flex-md-row">
+                <div class="col-12 col-md-8 rounded flex-grow-1 d-flex justify-content-end">
+                    <!-- mainimage -->
+                    <div id="carouselExampleControls" class="carousel slide w-100" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="https://fakeimg.pl/800x230" class="d-block w-100 img-md-main"
+                                    alt="Main Picture" />
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://fakeimg.pl/800x230" class="d-block w-100 img-md-main"
+                                    alt="Main Picture" />
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://fakeimg.pl/800x230" class="d-block w-100 img-md-main"
+                                    alt="Main Picture" />
+                            </div>
+                            <!-- Additional carousel items can be added here if needed -->
+                        </div>
+
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- subimage Section-->
+                <div class="col-12 col-md-4 d-flex flex-column flex-grow-1 justify-content-between">
+                    <!-- subimage Section 1-->
+                    <div class="subimage-custom w-100">
+                        <img class="img-fluid max-width-md img-md-sub" src="https://fakeimg.pl/800x230" alt="" />
+                    </div>
+
+                    <!-- subimage Section 2-->
+                    <div class="subimage-custom w-100">
+                        <img class="img-fluid max-width-md img-md-sub" src="https://fakeimg.pl/800x230" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ## ListItems -->
+        <div class="container mt-4">
+            <h2 class="mb-4">Product List</h2>
+
+            <div class="row">
+                <!-- Product 1 -->
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-4">
+                    <div class="card">
+                        <div class="badge card-badge-custom -on">廣告</div>
+                        <div class="card-status-custom -on">已售完</div>
+
+                        <img src="https://fakeimg.pl/260x260" class="card-img-top" alt="Product 1" />
+                        <div class="card-body">
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Velit
+                            </p>
+                            <h5 class="price-tag">$ <span>69</span></h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-4">
+                    <div class="card">
+                        <div class="badge card-badge-custom -on">廣告</div>
+                        <div class="card-status-custom -on">已售完</div>
+
+                        <img src="https://fakeimg.pl/260x260" class="card-img-top" alt="Product 1" />
+                        <div class="card-body">
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Velit
+                            </p>
+                            <h5 class="price-tag">$ <span>69</span></h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-4">
+                    <div class="card">
+                        <div class="badge card-badge-custom -on">廣告</div>
+                        <div class="card-status-custom -on">已售完</div>
+
+                        <img src="https://fakeimg.pl/260x260" class="card-img-top" alt="Product 1" />
+                        <div class="card-body">
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Velit
+                            </p>
+                            <h5 class="price-tag">$ <span>69</span></h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-4">
+                    <div class="card">
+                        <div class="badge card-badge-custom -on">廣告</div>
+                        <div class="card-status-custom -on">已售完</div>
+
+                        <img src="https://fakeimg.pl/260x260" class="card-img-top" alt="Product 1" />
+                        <div class="card-body">
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Velit
+                            </p>
+                            <h5 class="price-tag">$ <span>69</span></h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-4">
+                    <div class="card">
+                        <div class="badge card-badge-custom -on">廣告</div>
+                        <div class="card-status-custom -on">已售完</div>
+
+                        <img src="https://fakeimg.pl/260x260" class="card-img-top" alt="Product 1" />
+                        <div class="card-body">
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Velit
+                            </p>
+                            <h5 class="price-tag">$ <span>69</span></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- End Main -->
+
+    <!-- Vendor JS Files -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <script src="/src/main/resources/s/src/main/resources/static/vendorsatic/bootstrap/bootstrap.min.js"></script>
+    <script src="/src/main/resources/s/src/main/resources/static/vendorsatic/chart.js/chart.umd.js"></script>
+    <script src="/src/main/resources/s/src/main/resources/static/vendorsatic/quill/quill.min.js"></script>
+    <script src="/src/main/resources/s/src/main/resources/static/vendorsatic/simple-datatables/simple-datatables.js"></script>
+    <script src="/src/main/resources/s/src/main/resources/static/vendorsatic/tinymce/tinymce.js"></script>
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

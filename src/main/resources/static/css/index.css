@@ -1,0 +1,53 @@
+/*--------------------------------------------------------------
+# typesetting of included
+--------------------------------------------------------------*/
+/* set variable start------------------------------------------------*/
+:root{
+    --header-hight: 193px;
+    --sider-width: 300px;
+    --footer-hight: 180px;
+    padding: 0;
+    border: 0;
+    margin: 0;
+    font-size: 0px;
+}
+/* set variable end------------------------------------------------*/
+
+
+/* inc_header start------------------------------------------------*/
+iframe.inc_header{
+    border: 1px solid red;
+    width: 100%;
+    height: var(--header-hight);
+    font-size: 16px;
+}
+/* inc_header end------------------------------------------------*/
+
+
+/* inc_siderbar start------------------------------------------------*/
+iframe.inc_sidebar{
+    border: 1px solid blue;
+    height: 1000px;
+    width: var(--sider-width);
+    font-size: 16px;
+}
+/* inc_siderbar end------------------------------------------------*/
+
+
+/* inc_main start------------------------------------------------*/
+iframe.inc_main{
+    border: 1px solid green;
+    /* display: inline-block; */
+    width: calc( 100% - var(--sider-width) - 4px );
+    height: 1000px;
+    font-size: 16px;
+}
+/* inc_main end------------------------------------------------*/
+
+
+/* inc_footer start------------------------------------------------*/
+iframe.inc_footer{
+    border: 1px solid orange;
+    width: calc( 100% - var(--sider-width) - 4px );
+}
+/* inc_footer end------------------------------------------------*/
