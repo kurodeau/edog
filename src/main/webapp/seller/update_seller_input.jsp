@@ -5,6 +5,7 @@
 
 
 <%
+
 //見com.emp.controller.EmpServlet.java第163行存入req的empVO物件 (此為從資料庫取出的empVO, 也可以是輸入格式有錯誤時的empVO物件)
 SellerVO sellerVO = (SellerVO) request.getAttribute("sellerVO");
 %>

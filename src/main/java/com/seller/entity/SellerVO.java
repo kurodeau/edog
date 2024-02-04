@@ -1,29 +1,89 @@
 package com.seller.entity;
-import java.sql.Date;
+import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.sellerLv.entity.SellerLvVO;
+
+
+@Entity
+@Table(name="seller")
 public class SellerVO implements java.io.Serializable{
 	public SellerVO() {
 		super();
 	}
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "sellerId", updatable = false)
 	  private Integer sellerId;
-	    private Integer sellerLvId;
-	    private String sellerEmail;
-	    private String sellerCompany;
-	    private String sellerTaxId;
-	    private Integer sellerCapital;
-	    private String sellerContact;
-	    private String sellerCompanyPhone;
-	    private String sellerCompanyExtension;
-	    private String sellerMobile;
-	    private String sellerAddress;
-	    private String sellerPassword;
-	    private String sellerBankAccount;
-		private String sellerBankCode;
-	    private String sellerBankAccountNumber;
-	    private Date sellerCreateTime;
-	    private Boolean  isConfirm;
-	    
+	
+	@ManyToOne
+	@JoinColumn(name = "sellerLvId", referencedColumnName = "sellerLvId")
+	private SellerLvVO sellerLvId;
+	
+	public SellerLvVO getSellerLvId() {
+		return sellerLvId;
+	}
+	public void setSellerLvId(SellerLvVO sellerLvId) {
+		this.sellerLvId = sellerLvId;
+	}
+
+	@Column(name = "sellerEmail")
+    private String sellerEmail;
+
+    @Column(name = "sellerCompany")
+    private String sellerCompany;
+
+    @Column(name = "sellerTaxId",  columnDefinition = "char(8)")
+    private String sellerTaxId;
+
+    @Column(name = "sellerCapital")
+    private Integer sellerCapital;
+
+    @Column(name = "sellerContact")
+    private String sellerContact;
+
+    @Column(name = "sellerCompanyPhone")
+    private String sellerCompanyPhone;
+
+    @Column(name = "sellerCompanyExtension")
+    private String sellerCompanyExtension;
+
+    @Column(name = "sellerMobile")
+    private String sellerMobile;
+
+    @Column(name = "sellerAddress")
+    private String sellerAddress;
+
+    @Column(name = "sellerPassword")
+    private String sellerPassword;
+
+    @Column(name = "sellerBankAccount")
+    private String sellerBankAccount;
+
+    @Column(name = "sellerBankCode")
+    private String sellerBankCode;
+
+    @Column(name = "sellerBankAccountNumber")
+    private String sellerBankAccountNumber;
+
+    @Column(name = "sellerCreateTime")
+    @Temporal(TemporalType.TIMESTAMP) // 指定存储类型为 TIMESTAMP
+    private Date sellerCreateTime;
+
+    @Column(name = "isConfirm")
+    private Boolean isConfirm;
+    
 	    
 	    public Integer getSellerId() {
 			return sellerId;
@@ -31,23 +91,7 @@ public class SellerVO implements java.io.Serializable{
 		public void setSellerId(Integer sellerId) {
 			this.sellerId = sellerId;
 		}
-		public Integer getSellerLvId() {
-			return sellerLvId;
-		}
-		@Override
-		public String toString() {
-			return "SellerVO [sellerId=" + sellerId + ", sellerLvId=" + sellerLvId + ", sellerEmail=" + sellerEmail
-					+ ", sellerCompany=" + sellerCompany + ", sellerTaxId=" + sellerTaxId + ", sellerCapital="
-					+ sellerCapital + ", sellerContact=" + sellerContact + ", sellerCompanyPhone=" + sellerCompanyPhone
-					+ ", sellerCompanyExtension=" + sellerCompanyExtension + ", sellerMobile=" + sellerMobile
-					+ ", sellerAddress=" + sellerAddress + ", sellerPassword=" + sellerPassword + ", sellerBankAccount="
-					+ sellerBankAccount + ", sellerBankCode=" + sellerBankCode + ", sellerBankAccountNumber="
-					+ sellerBankAccountNumber + ", sellerCreateTime=" + sellerCreateTime + ", isConfirm=" + isConfirm
-					+ "]";
-		}
-		public void setSellerLvId(Integer sellerLvId) {
-			this.sellerLvId = sellerLvId;
-		}
+
 		public String getSellerEmail() {
 			return sellerEmail;
 		}
@@ -63,6 +107,7 @@ public class SellerVO implements java.io.Serializable{
 		public String getSellerTaxId() {
 			return sellerTaxId;
 		}
+		
 		public void setSellerTaxId(String sellerTaxId) {
 			this.sellerTaxId = sellerTaxId;
 		}
@@ -139,5 +184,17 @@ public class SellerVO implements java.io.Serializable{
 			this.isConfirm = isConfirm;
 		}
 
+		
+		@Override
+		public String toString() {
+			return "SellerVO [sellerId=" + sellerId + ", sellerLvId=" + sellerLvId + ", sellerEmail=" + sellerEmail
+					+ ", sellerCompany=" + sellerCompany + ", sellerTaxId=" + sellerTaxId + ", sellerCapital="
+					+ sellerCapital + ", sellerContact=" + sellerContact + ", sellerCompanyPhone=" + sellerCompanyPhone
+					+ ", sellerCompanyExtension=" + sellerCompanyExtension + ", sellerMobile=" + sellerMobile
+					+ ", sellerAddress=" + sellerAddress + ", sellerPassword=" + sellerPassword + ", sellerBankAccount="
+					+ sellerBankAccount + ", sellerBankCode=" + sellerBankCode + ", sellerBankAccountNumber="
+					+ sellerBankAccountNumber + ", sellerCreateTime=" + sellerCreateTime + ", isConfirm=" + isConfirm
+					+ "]";
+		}
 	
 }

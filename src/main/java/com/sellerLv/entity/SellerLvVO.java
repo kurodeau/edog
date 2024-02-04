@@ -1,143 +1,142 @@
-package com.seller.entity;
-import java.sql.Date;
+package com.sellerLv.entity;
 
-public class SellerVO implements java.io.Serializable{
-	public SellerVO() {
+import java.math.BigDecimal;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
+import javax.persistence.Table;
+
+import com.seller.entity.SellerVO;
+//com.sellerLv.entity.SellerLv
+@Entity
+@Table(name = "sellerlv")
+public class SellerLvVO implements java.io.Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "sellerLvId", updatable = false)
+    private Integer sellerLvId;
+    
+	@OneToMany(mappedBy = "sellerLvId", cascade = CascadeType.ALL)
+	@OrderBy("sellerId asc")
+	private Set<SellerVO> sellers;
+
+    public Set<SellerVO> getSellers() {
+		return sellers;
+	}
+
+	public void setSellers(Set<SellerVO> sellers) {
+		this.sellers = sellers;
+	}
+
+	@Column(name = "lvName", length = 10)
+    private String lvName;
+
+    @Column(name = "platformCommission", precision = 3, scale = 2)
+    private BigDecimal platformCommission;
+    
+
+	@Column(name = "adAllowType")
+    private Integer adAllowType;
+
+    @Column(name = "isExportGoldflow")
+    private Boolean isExportGoldflow;
+
+    @Column(name = "freightSub")
+    private Integer freightSub;
+
+    @Column(name = "returnSubPerMonth")
+    private Integer returnSubPerMonth;
+
+    @Column(name = "isShowPriority")
+    private Boolean isShowPriority;
+
+    @Column(name = "shelvesNumber")
+    private Integer shelvesNumber;
+
+    public Integer getSellerLvId() {
+		return sellerLvId;
+	}
+
+	public void setSellerLvId(Integer sellerLvId) {
+		this.sellerLvId = sellerLvId;
+	}
+
+	public String getLvName() {
+		return lvName;
+	}
+
+	public void setLvName(String lvName) {
+		this.lvName = lvName;
+	}
+
+	public BigDecimal getPlatformCommission() {
+		return platformCommission;
+	}
+
+	public void setPlatformCommission(BigDecimal platformCommission) {
+		this.platformCommission = platformCommission;
+	}
+
+	public Integer getAdAllowType() {
+		return adAllowType;
+	}
+
+	public void setAdAllowType(Integer adAllowType) {
+		this.adAllowType = adAllowType;
+	}
+
+	public Boolean getIsExportGoldflow() {
+		return isExportGoldflow;
+	}
+
+	public void setIsExportGoldflow(Boolean isExportGoldflow) {
+		this.isExportGoldflow = isExportGoldflow;
+	}
+
+	public Integer getFreightSub() {
+		return freightSub;
+	}
+
+	public void setFreightSub(Integer freightSub) {
+		this.freightSub = freightSub;
+	}
+
+	public Integer getReturnSubPerMonth() {
+		return returnSubPerMonth;
+	}
+
+	public void setReturnSubPerMonth(Integer returnSubPerMonth) {
+		this.returnSubPerMonth = returnSubPerMonth;
+	}
+
+	public Boolean getIsShowPriority() {
+		return isShowPriority;
+	}
+
+	public void setIsShowPriority(Boolean isShowPriority) {
+		this.isShowPriority = isShowPriority;
+	}
+
+	public Integer getShelvesNumber() {
+		return shelvesNumber;
+	}
+
+	public void setShelvesNumber(Integer shelvesNumber) {
+		this.shelvesNumber = shelvesNumber;
+	}
+
+
+	public SellerLvVO() {
 		super();
 	}
-	
-	  private Integer sellerId;
-	    private Integer sellerLvId;
-	    private String sellerEmail;
-	    private String sellerCompany;
-	    private String sellerTaxId;
-	    private Integer sellerCapital;
-	    private String sellerContact;
-	    private String sellerCompanyPhone;
-	    private String sellerCompanyExtension;
-	    private String sellerMobile;
-	    private String sellerAddress;
-	    private String sellerPassword;
-	    private String sellerBankAccount;
-		private String sellerBankCode;
-	    private String sellerBankAccountNumber;
-	    private Date sellerCreateTime;
-	    private Boolean  isConfirm;
-	    
-	    
-	    public Integer getSellerId() {
-			return sellerId;
-		}
-		public void setSellerId(Integer sellerId) {
-			this.sellerId = sellerId;
-		}
-		public Integer getSellerLvId() {
-			return sellerLvId;
-		}
-		@Override
-		public String toString() {
-			return "SellerVO [sellerId=" + sellerId + ", sellerLvId=" + sellerLvId + ", sellerEmail=" + sellerEmail
-					+ ", sellerCompany=" + sellerCompany + ", sellerTaxId=" + sellerTaxId + ", sellerCapital="
-					+ sellerCapital + ", sellerContact=" + sellerContact + ", sellerCompanyPhone=" + sellerCompanyPhone
-					+ ", sellerCompanyExtension=" + sellerCompanyExtension + ", sellerMobile=" + sellerMobile
-					+ ", sellerAddress=" + sellerAddress + ", sellerPassword=" + sellerPassword + ", sellerBankAccount="
-					+ sellerBankAccount + ", sellerBankCode=" + sellerBankCode + ", sellerBankAccountNumber="
-					+ sellerBankAccountNumber + ", sellerCreateTime=" + sellerCreateTime + ", isConfirm=" + isConfirm
-					+ "]";
-		}
-		public void setSellerLvId(Integer sellerLvId) {
-			this.sellerLvId = sellerLvId;
-		}
-		public String getSellerEmail() {
-			return sellerEmail;
-		}
-		public void setSellerEmail(String sellerEmail) {
-			this.sellerEmail = sellerEmail;
-		}
-		public String getSellerCompany() {
-			return sellerCompany;
-		}
-		public void setSellerCompany(String sellerCompany) {
-			this.sellerCompany = sellerCompany;
-		}
-		public String getSellerTaxId() {
-			return sellerTaxId;
-		}
-		public void setSellerTaxId(String sellerTaxId) {
-			this.sellerTaxId = sellerTaxId;
-		}
-		public Integer getSellerCapital() {
-			return sellerCapital;
-		}
-		public void setSellerCapital(Integer sellerCapital) {
-			this.sellerCapital = sellerCapital;
-		}
-		public String getSellerContact() {
-			return sellerContact;
-		}
-		public void setSellerContact(String sellerContact) {
-			this.sellerContact = sellerContact;
-		}
-		public String getSellerCompanyPhone() {
-			return sellerCompanyPhone;
-		}
-		public void setSellerCompanyPhone(String sellerCompanyPhone) {
-			this.sellerCompanyPhone = sellerCompanyPhone;
-		}
-		public String getSellerCompanyExtension() {
-			return sellerCompanyExtension;
-		}
-		public void setSellerCompanyExtension(String sellerCompanyExtension) {
-			this.sellerCompanyExtension = sellerCompanyExtension;
-		}
-		public String getSellerMobile() {
-			return sellerMobile;
-		}
-		public void setSellerMobile(String sellerMobile) {
-			this.sellerMobile = sellerMobile;
-		}
-		public String getSellerAddress() {
-			return sellerAddress;
-		}
-		public void setSellerAddress(String sellerAddress) {
-			this.sellerAddress = sellerAddress;
-		}
-		public String getSellerPassword() {
-			return sellerPassword;
-		}
-		public void setSellerPassword(String sellerPassword) {
-			this.sellerPassword = sellerPassword;
-		}
-		public String getSellerBankAccount() {
-			return sellerBankAccount;
-		}
-		public void setSellerBankAccount(String sellerBankAccount) {
-			this.sellerBankAccount = sellerBankAccount;
-		}
-		public String getSellerBankCode() {
-			return sellerBankCode;
-		}
-		public void setSellerBankCode(String sellerBankCode) {
-			this.sellerBankCode = sellerBankCode;
-		}
-		public String getSellerBankAccountNumber() {
-			return sellerBankAccountNumber;
-		}
-		public void setSellerBankAccountNumber(String sellerBankAccountNumber) {
-			this.sellerBankAccountNumber = sellerBankAccountNumber;
-		}
-		public Date getSellerCreateTime() {
-			return sellerCreateTime;
-		}
-		public void setSellerCreateTime(Date sellerCreateTime) {
-			this.sellerCreateTime = sellerCreateTime;
-		}
-		public Boolean getIsConfirm() {
-			return isConfirm;
-		}
-		public void setIsConfirm(Boolean isConfirm) {
-			this.isConfirm = isConfirm;
-		}
 
-	
+
 }

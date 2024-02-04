@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.seller.entity.SellerVO;
+import com.seller.entity.__SellerVO;
 import com.seller.service.SellerService;
 
 import util.Util;
@@ -63,7 +63,7 @@ public class SellerLvServlet extends HttpServlet {
 
 			/*************************** 2.開始查詢資料 *****************************************/
 			SellerService sellerSvc = new SellerService();
-			SellerVO sellerVO = sellerSvc.getOneSeller(sellerId);
+			__SellerVO sellerVO = sellerSvc.getOneSeller(sellerId);
 			if (sellerVO == null) {
 				errorMsgs.add("查無資料");
 			}
@@ -93,7 +93,7 @@ public class SellerLvServlet extends HttpServlet {
 
 			/*************************** 2.開始查詢資料 ****************************************/
 			SellerService sellerSvc = new SellerService();
-			SellerVO sellerVO = sellerSvc.getOneSeller(sellerId);
+			__SellerVO sellerVO = sellerSvc.getOneSeller(sellerId);
 
 			/*************************** 3.查詢完成,準備轉交(Send the Success view) ************/
 			req.setAttribute("sellerVO", sellerVO); // 資料庫取出的empVO物件,存入req
@@ -241,7 +241,7 @@ public class SellerLvServlet extends HttpServlet {
 
 			
 			// In case of error , user do not have to update again
-			SellerVO sellerVO = new SellerVO();
+			__SellerVO sellerVO = new __SellerVO();
 			sellerVO.setSellerId(sellerId);
 			sellerVO.setSellerLvId(sellerLvId);
 			sellerVO.setSellerEmail(sellerEmail);
@@ -379,7 +379,7 @@ public class SellerLvServlet extends HttpServlet {
 				errorMsgs.add("銀行帳號應為數字");
 			}
 
-			SellerVO sellerVO = new SellerVO();
+			__SellerVO sellerVO = new __SellerVO();
 			sellerVO.setSellerEmail(sellerEmail);
 			sellerVO.setSellerCompany(sellerCompany);
 			sellerVO.setSellerTaxId(sellerTaxId);

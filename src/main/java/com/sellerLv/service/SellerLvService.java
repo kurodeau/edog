@@ -16,13 +16,13 @@ public class SellerService {
 		dao = new SellerDSDAO();
 	}
 
-	public SellerVO addSeller(String sellerEmail, String sellerCompany, String sellerTaxId,
+	public __SellerVO addSeller(String sellerEmail, String sellerCompany, String sellerTaxId,
 	        Integer sellerCapital, String sellerContact, String sellerCompanyPhone,
 	        String sellerCompanyExtension, String sellerMobile, String sellerAddress,
 	        String sellerPassword, String sellerBankAccount, String sellerBankCode,
 	        String sellerBankAccountNumber) {
 
-	    SellerVO sellerVO = new SellerVO();
+	    __SellerVO sellerVO = new __SellerVO();
 
 	    sellerVO.setSellerEmail(sellerEmail);
 	    sellerVO.setSellerCompany(sellerCompany);
@@ -46,14 +46,14 @@ public class SellerService {
 	}
 
 
-	public SellerVO updateSeller(Integer sellerId, Integer sellerLvId, String sellerEmail, String sellerCompany,
+	public __SellerVO updateSeller(Integer sellerId, Integer sellerLvId, String sellerEmail, String sellerCompany,
 	        String sellerTaxId, Integer sellerCapital, String sellerContact,
 	        String sellerCompanyPhone, String sellerCompanyExtension, String sellerMobile,
 	        String sellerAddress, String sellerPassword, String sellerBankAccount,
 	        String sellerBankCode, String sellerBankAccountNumber, Date sellerCreateTime,
 	        Boolean isConfirm) {
 
-	    SellerVO sellerVO = new SellerVO();
+	    __SellerVO sellerVO = new __SellerVO();
 	
 	    sellerVO.setSellerId(sellerId);
 	    sellerVO.setSellerLvId(sellerLvId);
@@ -83,11 +83,11 @@ public class SellerService {
 		dao.delete(empno);
 	}
 
-	public SellerVO getOneSeller(Integer empno) {
+	public __SellerVO getOneSeller(Integer empno) {
 		return dao.findByPrimaryKey(empno);
 	}
 
-	public List<SellerVO> getAll() {
+	public List<__SellerVO> getAll() {
 		return dao.getAll();
 	}
 }

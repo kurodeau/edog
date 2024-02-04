@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.seller.entity.SellerVO;
 import com.seller.service.SellerService;
+import com.sellerLv.dao.SellerLvDAO;
+import com.sellerLv.dao.SellerLvHBDAO;
+import com.sellerLv.entity.SellerLvVO;
 
 import util.Util;
 
@@ -112,6 +115,10 @@ public class SellerServlet extends HttpServlet {
 			/*************************** 1.接收請求參數 - 輸入格式的錯誤處理 **********************/
 			Integer sellerId = Integer.valueOf(req.getParameter("sellerId"));
 			
+			SellerLvDAO sellerDAOlv1 = new SellerLvHBDAO();
+			SellerLvVO sellerlv1 = new SellerLvVO();
+
+			
 			Integer sellerLvId =null ;
 			try {
 				String sellerLvIdstr = req.getParameter("sellerLvId");
@@ -121,7 +128,11 @@ public class SellerServlet extends HttpServlet {
 				sellerLvId = Integer.valueOf(sellerLvIdstr);
 				if (sellerLvId>Util.SELLERLV_LIMIT) {
 					errorMsgs.add("等級最大只到"+ Util.SELLERLV_LIMIT);
+					sellerlv1=sellerDAOlv1.findByPrimaryKey(1);
+				}else {
+					sellerlv1=sellerDAOlv1.findByPrimaryKey(sellerLvId);
 				}
+				
 			}
 			catch(NumberFormatException e) {
 				errorMsgs.add("等級請填寫數字");
@@ -243,7 +254,11 @@ public class SellerServlet extends HttpServlet {
 			// In case of error , user do not have to update again
 			SellerVO sellerVO = new SellerVO();
 			sellerVO.setSellerId(sellerId);
-			sellerVO.setSellerLvId(sellerLvId);
+			
+
+			
+		
+			sellerVO.setSellerLvId(sellerlv1);
 			sellerVO.setSellerEmail(sellerEmail);
 			sellerVO.setSellerCompany(sellerCompany);
 			sellerVO.setSellerTaxId(sellerTaxId);

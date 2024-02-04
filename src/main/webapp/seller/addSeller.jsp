@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="com.seller.entity.*"%>
+<%@ page import="com.seller.entity.SellerVO"%>
 
 <%
 //見com.seller.controller.EmpServlet.java第238行存入req的sellerVO物件 (此為輸入格式有錯誤時的sellerVO物件)
@@ -166,9 +166,9 @@
 <!-- =========================================以下為 datetimepicker 之相關設定========================================== -->
 
 <% 
-  java.sql.Date sellerCreateTime = null;
+  java.util.Date sellerCreateTime = null;
   try {
-	  sellerCreateTime = sellerVO.getSellerCreateTime();
+	    sellerCreateTime = sellerVO.getSellerCreateTime();
    } catch (Exception e) {
 	   sellerCreateTime = new java.sql.Date(System.currentTimeMillis());
 	 /* 2147483647-24*24*60*60*1000 < 0 ，如果時間超過25天，用Int會出現問題 */

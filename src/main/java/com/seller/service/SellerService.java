@@ -3,8 +3,12 @@ package com.seller.service;
 import java.sql.Date;
 import java.util.List;
 
-import com.seller.dao.*;
-import com.seller.entity.*;
+import com.seller.dao.SellerDAO;
+import com.seller.dao.SellerHBDAO;
+import com.seller.entity.SellerVO;
+import com.sellerLv.dao.SellerLvDAO;
+import com.sellerLv.dao.SellerLvHBDAO;
+import com.sellerLv.entity.SellerLvVO;
 
 
 
@@ -12,10 +16,13 @@ public class SellerService {
 
 
 	private SellerDAO dao;
+	private SellerLvDAO sellerLvdao;
 
 	public SellerService() {
 		
-		dao = new SellerDSDAO();
+		dao = new SellerHBDAO();
+		sellerLvdao = new SellerLvHBDAO();
+
 	}
 
 	public SellerVO addSeller(String sellerEmail, String sellerCompany, String sellerTaxId,
@@ -58,7 +65,11 @@ public class SellerService {
 	    SellerVO sellerVO = new SellerVO();
 	
 	    sellerVO.setSellerId(sellerId);
-	    sellerVO.setSellerLvId(sellerLvId);
+	    
+
+	    SellerLvVO sellerLvVO = sellerLvdao.findByPrimaryKey(sellerLvId);
+	    sellerVO.setSellerLvId(sellerLvVO);
+	    
 	    sellerVO.setSellerEmail(sellerEmail);
 	    sellerVO.setSellerCompany(sellerCompany);
 	    sellerVO.setSellerTaxId(sellerTaxId);
