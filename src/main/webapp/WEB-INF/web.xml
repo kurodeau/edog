@@ -26,4 +26,12 @@
     <url-pattern>/manager/manager.do</url-pattern>
   </servlet-mapping>
   
+  <!-- 定義初始參數, Filter會用到 -->
+  <context-param>
+    <param-name>encoding</param-name>
+    <param-value>UTF-8</param-value>
+  </context-param>
+  
+  
+  
 </web-app>

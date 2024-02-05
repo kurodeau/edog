@@ -1,24 +1,51 @@
 package com.buyer.model;
 import java.sql.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="buyer")
 public class BuyerVO implements java.io.Serializable{
+
+	@Id
+	@Column(name="memberId")
 	private Integer memberId;
+	@Column(name="memberEmail")
 	private String memberEmail;
+	@Column(name="thirdFrom")
 	private String thirdFrom;
+	@Column(name="memberName")
 	private String memberName;
+	@Column(name="memberPhone")
 	private String memberPhone;
+	@Column(name="mobile")
 	private String mobile;
+	@Column(name="memberBirthday")
 	private Date memberBirthday;
+	@Column(name="memberPassword")
 	private String memberPassword;
+	@Column(name="memberAddress")
 	private String memberAddress;
+	@Column(name="isMemberEmail")
 	private Boolean isMemberEmail;
+	@Column(name="memberRegistrationTime")
 	private Date memberRegistrationTime;
+	@Column(name="petName")
 	private String petName;
+	@Column(name="petVaccName1")
 	private String petVaccName1;
+	@Column(name="petVaccTime1")
 	private Date petVaccTime1;
+	@Column(name="petVaccName2")
 	private String petVaccName2;
+	@Column(name="petVaccTime2")
 	private Date petVaccTime2;
+	@Column(name="petImg")
 	private byte[] petImg;
+	@Column(name="petImgUploadTime")
 	private Date petImgUploadTime;
 	
 	public Integer getMemberId() {
@@ -129,7 +156,5 @@ public class BuyerVO implements java.io.Serializable{
 	public void setPetImgUploadTime(Date petImgUploadTime) {
 		this.petImgUploadTime = petImgUploadTime;
 	}
-	
-	
 
 }
