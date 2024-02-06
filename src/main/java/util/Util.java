@@ -4,17 +4,25 @@ public class Util {
 	
 	public static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 	
-	// MySQL 8.0.13以後只需保留serverTimezone設定即可
+	// MySQL 8.0.13嚙瘡嚙踝蕭u嚙豎保嚙範serverTimezone嚙稽嚙緩嚙磐嚙箠
 	public static final String URL = 
 			"jdbc:mysql://localhost:3306/edog?"
-//			+ "useSSL=false&"                   // 不使用加密連線 (需有憑證才行)
-//			+ "rewriteBatchedStatements=true&"  // 批次更新需要此資訊
-			+ "serverTimezone=Asia/Taipei";     // 設定時區資訊
-//			+ "allowPublicKeyRetrieval=true&"   // 配合MySQL 8以後版本對密碼儲存機制的設定
-//			+ "useUnicode=true&"                // 使用Unicode編碼 (中文才不會亂碼)
-//			+ "characterEncoding=utf-8";        // 字元採用UTF-8設定
+//			+ "useSSL=false&"                   
+//			+ "rewriteBatchedStatements=true"
+			+ "serverTimezone=Asia/Taipei";     
+//			+ "allowPublicKeyRetrieval=true&"   
+//			+ "useUnicode=true&"                
+//			+ "characterEncoding=utf-8";      
 	
 	public static final String USER = "root";
 	
 	public static final String PASSWORD = "123456";
+	
+	 // DATASOURCE
+	public static final String  DS_NAME= "java:comp/env/jdbc/TestDB2";
+
+	
+	 // SELLER CONSTANTS
+	
+	public static final Integer SELLERLV_LIMIT = 5;
 }

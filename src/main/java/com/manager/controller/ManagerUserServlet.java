@@ -15,6 +15,7 @@ public class ManagerUserServlet extends HttpServlet {
 		// 如果useBodyEncoding=true，GET跟著POST編碼走
 		// 如果useBodyEncoding=false，則跟請求轉發
 		doPost(req, res);
+		System.out.println("meowmeow");
 	}
 
 	public void doPost(HttpServletRequest req, HttpServletResponse res)
