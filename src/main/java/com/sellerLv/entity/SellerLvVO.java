@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import com.seller.entity.SellerVO;
 //com.sellerLv.entity.SellerLv
 @Entity
-@Table(name = "sellerlv")
+@Table(name = "sellerLv")
 public class SellerLvVO implements java.io.Serializable {
 
     @Id

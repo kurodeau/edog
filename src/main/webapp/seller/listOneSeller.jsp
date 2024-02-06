@@ -54,7 +54,7 @@ SellerVO sellerVO = (SellerVO) request.getAttribute("sellerVO"); //SellerServlet
 <table id="table-1">
 	<tr><td>
 		 <h3>員工資料 - listOneSeller.jsp</h3>
-		 <h4><a href="select_page.jsp"><img src="images/back1.gif" width="100" height="32" border="0">回首頁</a></h4>
+		 <h4><a href="index.jsp"><img src="images/back1.gif" width="100" height="32" border="0">回首頁</a></h4>
 	</td></tr>
 </table>
 
@@ -81,7 +81,10 @@ SellerVO sellerVO = (SellerVO) request.getAttribute("sellerVO"); //SellerServlet
 	</tr>
 	<tr>
 	<td>${sellerVO.sellerId}</td>
-			<td>${sellerVO.sellerLvId}</td>
+	
+<!-- 	第一個先得到sellerLv對象，再得到sellerLvId的值 -->
+<%-- value="<%=sellerVO.getSellerLvId().getSellerLvId()%> --%>
+			<td>${sellerVO.sellerLvId.sellerLvId}</td>
 			<td>${sellerVO.sellerEmail}</td>
 			<td>${sellerVO.sellerCompany}</td>
 			<td>${sellerVO.sellerTaxId}</td>

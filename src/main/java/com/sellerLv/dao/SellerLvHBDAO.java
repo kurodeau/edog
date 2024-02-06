@@ -62,7 +62,7 @@ public class SellerLvHBDAO implements SellerLvDAO {
 	private SessionFactory factory;
 
 	public SellerLvHBDAO() {
-		SessionFactory factory = HibernateUtil.getSessionFactory();
+		 factory = HibernateUtil.getSessionFactory();
 	}
 
 	private Session getSession() {

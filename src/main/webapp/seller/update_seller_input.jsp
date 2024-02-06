@@ -5,7 +5,6 @@
 
 
 <%
-
 //見com.emp.controller.EmpServlet.java第163行存入req的empVO物件 (此為從資料庫取出的empVO, 也可以是輸入格式有錯誤時的empVO物件)
 SellerVO sellerVO = (SellerVO) request.getAttribute("sellerVO");
 %>
@@ -89,7 +88,7 @@ th, td {
 			<tr>
 				<td>賣家Lv<font color="red"><b>*</b></font></td>
 				<td><input type="text" name="sellerLvId"
-					value="<%=sellerVO.getSellerLvId()%>" size="45" required></td>
+					value="<%=sellerVO.getSellerLvId().getSellerLvId()%>" size="45" required></td>
 			</tr>
 			<tr>
 				<td>賣家Email<font color="red"><b>*</b></font></td>
@@ -160,7 +159,7 @@ th, td {
 			</tr>
 			<tr>
 				<td>賣家創建時間</td>
-				<td><input type="date" name="sellerCreateTime"
+				<td><input type="datetime-local" name="sellerCreateTime"
 					value="<%=sellerVO.getSellerCreateTime()%>" size="45"></td>
 			</tr>
 			<tr>

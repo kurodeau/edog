@@ -14,7 +14,7 @@ import org.hibernate.SessionFactory;
 
 import util.HibernateUtil;
 
-@WebFilter(urlPatterns = { "/*" })
+@WebFilter(urlPatterns = { "/seller/*" })
 public class OpenSessionInViewFilter implements Filter {
 
 	@Override

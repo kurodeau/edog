@@ -5,14 +5,6 @@
 <%@ page import="com.seller.service.*"%>
 
 <%-- 此頁練習採用 EL 的寫法取值 --%>
-
-<%
-SellerService sellerSvc = new SellerService();
-    List<SellerVO> list = sellerSvc.getAll();
-    pageContext.setAttribute("list",list);
-%>
-
-
 <html>
 <head>
 <title>所有員工資料 - listAllSeller.jsp</title>
@@ -57,7 +49,7 @@ SellerService sellerSvc = new SellerService();
 <table id="table-1">
 	<tr><td>
 		 <h3>所有員工資料 - listAllSeller.jsp</h3>
-		 <h4><a href="select_page.jsp"><img src="images/back1.gif" width="100" height="32" border="0">回首頁</a></h4>
+		 <h4><a href="${pageContext.request.contextPath}/index.jsp"><img src="images/back1.gif" width="100" height="32" border="0">回首頁</a></h4>
 	</td></tr>
 </table>
 
@@ -81,8 +73,7 @@ SellerService sellerSvc = new SellerService();
 		<th>創建時間</th>
 		<th>確認狀態</th>
 	</tr>
-	<%@ include file="page1.file" %> 
-	<c:forEach var="sellerVO" items="${list}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
+	<c:forEach var="sellerVO" items="${list}">
 		<tr>
 		<td>${sellerVO.sellerId}</td>
 			<td>${sellerVO.sellerLvId}</td>
@@ -118,7 +109,6 @@ SellerService sellerSvc = new SellerService();
 		</tr>
 	</c:forEach>
 </table>
-<%@ include file="page2.file" %>
 
 </body>
 </html>
