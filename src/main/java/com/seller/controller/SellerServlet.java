@@ -28,11 +28,11 @@ import util.Util;
 public class SellerServlet extends HttpServlet {
 
 	private List<String> errorMsgs = null;
-	private SellerService sellersvc;
+	private SellerService sellerSvc;
 
 	@Override
 	public void init() throws ServletException {
-		sellersvc = new SellerService();
+		sellerSvc = new SellerService();
 	}
 
 	@Override
@@ -71,6 +71,10 @@ public class SellerServlet extends HttpServlet {
 			forwardPath = insert(req, res);
 			break;
 
+		case "getOne_For_Display":
+			forwardPath = getOne_For_Display(req, res);
+			break;
+
 		default:
 			forwardPath = "/index.jsp";
 		}
@@ -82,11 +86,18 @@ public class SellerServlet extends HttpServlet {
 	// ***************************
 	// Method Area
 	// ***************************
+	private String getOne_For_Display(HttpServletRequest req, HttpServletResponse res) {
+		Integer sellerId =Integer.parseInt(req.getParameter("sellerId")) ;
+		SellerVO sellerVO= sellerSvc.getOneSeller(sellerId);
+		req.setAttribute("sellerVO", sellerVO);
+
+		return "/seller/listOneSeller.jsp";
+		
+	}
 
 	private String getCompositeSellersQuery(HttpServletRequest req, HttpServletResponse res) {
 		Map<String, String[]> map = req.getParameterMap();
 
-		
 //		System.out.println("=====================");
 //		for(String key : map.keySet()) {
 //			for(String value: map.get(key)) {
@@ -97,7 +108,7 @@ public class SellerServlet extends HttpServlet {
 //		System.out.println("=====================");
 
 		if (map != null) {
-			List<SellerVO> list= sellersvc.getSellersByCompositeQuery(map);
+			List<SellerVO> list = sellerSvc.getSellersByCompositeQuery(map);
 			req.setAttribute("list", list);
 		} else {
 			return "/index.jsp";
@@ -109,10 +120,10 @@ public class SellerServlet extends HttpServlet {
 		String page = req.getParameter("page");
 		int currentPage = (page == null) ? 1 : Integer.parseInt(page);
 
-		List<SellerVO> list = sellersvc.getAll();
+		List<SellerVO> list = sellerSvc.getAll();
 
 		if (req.getSession().getAttribute("sellerPageQty") == null) {
-			int sellerPageQty = sellersvc.getTotal();
+			int sellerPageQty = sellerSvc.getTotal();
 			req.getSession().setAttribute("sellerPageQty", sellerPageQty);
 		}
 
@@ -122,11 +133,9 @@ public class SellerServlet extends HttpServlet {
 		return "/seller/listAllSeller.jsp";
 	}
 
-
-
 	private String getOne_For_Update(HttpServletRequest req, HttpServletResponse res) {
 		Integer sellerId = Integer.valueOf(req.getParameter("sellerId"));
-		SellerVO sellerVO = sellersvc.getOneSeller(sellerId);
+		SellerVO sellerVO = sellerSvc.getOneSeller(sellerId);
 
 		req.setAttribute("sellerVO", sellerVO);
 		return "/seller/update_seller_input.jsp";
@@ -269,7 +278,7 @@ public class SellerServlet extends HttpServlet {
 		Boolean isConfirm = null;
 		try {
 
-			isConfirm = req.getParameter("isConfirm")==null ? false : true;
+			isConfirm = req.getParameter("isConfirm") == null ? false : true;
 
 		} catch (IllegalArgumentException e) {
 			System.out.println("賣家帳號授權有誤");
@@ -303,7 +312,7 @@ public class SellerServlet extends HttpServlet {
 		}
 
 		// Update 使用值做更新(因為Service內部轉換)
-		sellerVO = sellersvc.updateSeller(sellerId, sellerLvId, sellerEmail, sellerCompany, sellerTaxId, sellerCapital,
+		sellerVO = sellerSvc.updateSeller(sellerId, sellerLvId, sellerEmail, sellerCompany, sellerTaxId, sellerCapital,
 				sellerContact, sellerCompanyPhone, sellerCompanyExtension, sellerMobile, sellerAddress, sellerPassword,
 				sellerBankAccount, sellerBankCode, sellerBankAccountNumber, sellerCreateTime, isConfirm);
 
@@ -416,7 +425,7 @@ public class SellerServlet extends HttpServlet {
 			return ("/seller/addSeller.jsp");
 		}
 
-		sellerVO = sellersvc.addSeller(sellerEmail, sellerCompany, sellerTaxId, sellerCapital, sellerContact,
+		sellerVO = sellerSvc.addSeller(sellerEmail, sellerCompany, sellerTaxId, sellerCapital, sellerContact,
 				sellerCompanyPhone, sellerCompanyExtension, sellerMobile, sellerAddress, sellerPassword,
 				sellerBankAccount, sellerBankCode, sellerBankAccountNumber);
 

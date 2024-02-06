@@ -1,14 +1,10 @@
 package com.sellerLv.dao;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.List;
-import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import com.seller.entity.SellerVO;
 import com.sellerLv.entity.SellerLvVO;
 
 import util.HibernateUtil;
@@ -65,6 +61,12 @@ public class SellerLvHBDAO implements SellerLvDAO {
 	public List<SellerLvVO> getAll() {
 		return getSession().createQuery("from SellerLvVO", SellerLvVO.class).list();
 	}
+
+	@Override
+	public Integer getTotal() {
+		Long total = getSession().createQuery("select count(*) from SellerLvVO",Long.class).uniqueResult();
+		return total.intValue();
+	}
 	
 //	public static void main(String[] args) {
 //		// 創建 Hibernate 配置和測試 DAO 實例
@@ -72,10 +74,10 @@ public class SellerLvHBDAO implements SellerLvDAO {
 //
 //		Session session = factory.getCurrentSession();
 //		session.beginTransaction();
-//
-//		// ================Insert==============
+
+		// ================Insert==============
 //		SellerLvVO sellerLv = new SellerLvVO();
-//		sellerLv.setLvName("Gold");
+//		sellerLv.setLvName("TEST");
 //		sellerLv.setPlatformCommission(BigDecimal.valueOf(0.1));
 //		sellerLv.setAdAllowType(1);
 //		sellerLv.setIsExportGoldflow(true);
@@ -85,7 +87,7 @@ public class SellerLvHBDAO implements SellerLvDAO {
 //		sellerLv.setShelvesNumber(10);
 //
 //		Serializable sellerLvId = session.save(sellerLv);
-//
+
 //		// ================Update==============
 //		SellerLvVO sellerLvUpdate = session.get(SellerLvVO.class, (Integer) sellerLvId);
 //		sellerLvUpdate.setLvName("DELETE");
@@ -103,6 +105,8 @@ public class SellerLvHBDAO implements SellerLvDAO {
 //		// ================Delete==============
 //		SellerLvVO sellerLvDel = session.get(SellerLvVO.class, (Integer) sellerLvId);
 //		session.delete(sellerLvDel);
+		
+		
 //		session.getTransaction().commit();
 //
 //

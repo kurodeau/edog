@@ -11,15 +11,15 @@
 <body>
 	<h1>這是一位後端人員作的網頁 QQ</h1>
 	<h2>員工系統</h2>
-	<a href="${pageContext.request.contextPath}/seller/seller.do?action=getAll">查詢所有員工</a>
+	<a href="${pageContext.request.contextPath}/sellerLv/sellerLv.do?action=getAll">查詢所有員工</a>
 	<br><br>
- <jsp:useBean id="sellerSvc" scope="page" class="com.seller.service.SellerService" />
+ <jsp:useBean id="sellerLvSvc" scope="page" class="com.sellerLv.service.SellerLvService" />
    
-     <FORM METHOD="post" ACTION="seller.do" >
+     <FORM METHOD="post" ACTION="sellerLv.do" >
        <b>選擇編號</b>
-       <select size="1" name="sellerId">
-         <c:forEach var="sellerVO" items="${sellerSvc.getAll()}" > 
-          <option value="${sellerVO.sellerId}">${sellerVO.sellerId}
+       <select size="1" name="sellerLvId">
+         <c:forEach var="sellerLvVO" items="${sellerLvSvc.getAll()}" > 
+          <option value="${sellerLvVO.sellerLvId}">${sellerLvVO.sellerLvId}:${sellerLvVO.lvName}
          </c:forEach>   
        </select>
        <input type="hidden" name="action" value="getOne_For_Display">

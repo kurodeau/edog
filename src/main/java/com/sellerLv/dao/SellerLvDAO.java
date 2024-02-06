@@ -12,6 +12,8 @@ public interface SellerLvDAO {
           public Integer delete(Integer sellerLvId);
           public SellerLvVO findByPrimaryKey(Integer sellerLvId);
           public List<SellerLvVO> getAll();
+          public Integer getTotal();
+          
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
 //        public List<EmpVO> getAll(Map<String, String[]> map); 
 

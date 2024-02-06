@@ -1,12 +1,16 @@
 package com.sellerLv.service;
 
 
+import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-import com.seller.entity.__SellerVO;
+import com.seller.entity.SellerVO;
 import com.sellerLv.dao.SellerLvDAO;
 import com.sellerLv.dao.SellerLvHBDAO;
+import com.sellerLv.entity.SellerLvVO;
 
 public class SellerLvService {
 
@@ -18,80 +22,71 @@ public class SellerLvService {
 		dao = new SellerLvHBDAO();
 	}
 
-	public SellerLvVO addSeller(String sellerEmail, String sellerCompany, String sellerTaxId,
-	        Integer sellerCapital, String sellerContact, String sellerCompanyPhone,
-	        String sellerCompanyExtension, String sellerMobile, String sellerAddress,
-	        String sellerPassword, String sellerBankAccount, String sellerBankCode,
-	        String sellerBankAccountNumber) {
+	public SellerLvVO addSellerLv(String lvName, BigDecimal platformCommission, Integer adAllowType,
+	        Boolean isExportGoldflow, Integer freightSub, Integer returnSubPerMonth,
+	        Boolean isShowPriority, Integer shelvesNumber) {
 
-	    SellerLvVO sellerVO = new SellerLvVO();
+	    SellerLvVO sellerLvVO = new SellerLvVO();
 
-	    sellerVO.setSellerEmail(sellerEmail);
-	    sellerVO.setSellerCompany(sellerCompany);
-	    sellerVO.setSellerTaxId(sellerTaxId);
-	    sellerVO.setSellerCapital(sellerCapital);
-	    sellerVO.setSellerContact(sellerContact);
-	    sellerVO.setSellerCompanyPhone(sellerCompanyPhone);
-	    sellerVO.setSellerCompanyExtension(sellerCompanyExtension);
-	    sellerVO.setSellerMobile(sellerMobile);
-	    sellerVO.setSellerAddress(sellerAddress);
-	    sellerVO.setSellerPassword(sellerPassword);
-	    sellerVO.setSellerBankAccount(sellerBankAccount);
-	    sellerVO.setSellerBankCode(sellerBankCode);
-	    sellerVO.setSellerBankAccountNumber(sellerBankAccountNumber);
-	    // sellerCreateTime 使用預設值，不需要在此設定
-	    // 預設 isConfirm 為 FALSE，不需在此設定
+	    sellerLvVO.setLvName(lvName);
+	    sellerLvVO.setPlatformCommission(platformCommission);
+	    sellerLvVO.setAdAllowType(adAllowType);
+	    sellerLvVO.setIsExportGoldflow(isExportGoldflow);
+	    sellerLvVO.setFreightSub(freightSub);
+	    sellerLvVO.setReturnSubPerMonth(returnSubPerMonth);
+	    sellerLvVO.setIsShowPriority(isShowPriority);
+	    sellerLvVO.setShelvesNumber(shelvesNumber);
 
-	    dao.insert(sellerVO);
+	    // 不需要以下內容 (除非你需要初始值)
+//	    Set<SellerVO> sellers = new HashSet<>();
+//	    sellerLvVO.setSellers(sellers);
+	   
 
-	    return sellerVO;
+	    dao.insert(sellerLvVO);
+
+	    return sellerLvVO;
 	}
 
 
-	public SellerLvVO updateSeller(Integer sellerId, Integer sellerLvId, String sellerEmail, String sellerCompany,
-	        String sellerTaxId, Integer sellerCapital, String sellerContact,
-	        String sellerCompanyPhone, String sellerCompanyExtension, String sellerMobile,
-	        String sellerAddress, String sellerPassword, String sellerBankAccount,
-	        String sellerBankCode, String sellerBankAccountNumber, Date sellerCreateTime,
-	        Boolean isConfirm) {
 
-	    SellerLvVO sellerVO = new __SellerVO();
-	
-	    sellerVO.setSellerId(sellerId);
-	    sellerVO.setSellerLvId(sellerLvId);
-	    sellerVO.setSellerEmail(sellerEmail);
-	    sellerVO.setSellerCompany(sellerCompany);
-	    sellerVO.setSellerTaxId(sellerTaxId);
-	    sellerVO.setSellerCapital(sellerCapital);
-	    sellerVO.setSellerContact(sellerContact);
-	    sellerVO.setSellerCompanyPhone(sellerCompanyPhone);
-	    sellerVO.setSellerCompanyExtension(sellerCompanyExtension);
-	    sellerVO.setSellerMobile(sellerMobile);
-	    sellerVO.setSellerAddress(sellerAddress);
-	    sellerVO.setSellerPassword(sellerPassword);
-	    sellerVO.setSellerBankAccount(sellerBankAccount);
-	    sellerVO.setSellerBankCode(sellerBankCode);
-	    sellerVO.setSellerBankAccountNumber(sellerBankAccountNumber);
-	    sellerVO.setSellerCreateTime(sellerCreateTime);
-	    sellerVO.setIsConfirm(isConfirm);
+	public SellerLvVO updateSellerLv(Integer sellerLvId, String lvName, BigDecimal platformCommission, Integer adAllowType,
+	        Boolean isExportGoldflow, Integer freightSub, Integer returnSubPerMonth,
+	        Boolean isShowPriority, Integer shelvesNumber) {
 
-	    dao.update(sellerVO);
+	    SellerLvVO sellerLvVO = new SellerLvVO();
+	    sellerLvVO.setSellerLvId(sellerLvId);
+	    sellerLvVO.setLvName(lvName);
+	    sellerLvVO.setPlatformCommission(platformCommission);
+	    sellerLvVO.setAdAllowType(adAllowType);
+	    sellerLvVO.setIsExportGoldflow(isExportGoldflow);
+	    sellerLvVO.setFreightSub(freightSub);
+	    sellerLvVO.setReturnSubPerMonth(returnSubPerMonth);
+	    sellerLvVO.setIsShowPriority(isShowPriority);
+	    sellerLvVO.setShelvesNumber(shelvesNumber);
 
-	    return sellerVO;
+	    dao.update(sellerLvVO);
+
+	    return sellerLvVO;
 	}
 
 
-	public void deleteSeller(Integer empno) {
-		dao.delete(empno);
+	public void deleteSellerLv(Integer id) {
+		dao.delete(id);
 	}
 
-	public __SellerVO getOneSeller(Integer empno) {
-		return dao.findByPrimaryKey(empno);
+	public SellerLvVO getOneSellerLv(Integer id) {
+		return dao.findByPrimaryKey(id);
 	}
 
-	public List<__SellerVO> getAll() {
+	public List<SellerLvVO> getAll() {
 		return dao.getAll();
 	}
+	
+	public Integer getTotal() {
+		return dao.getTotal();
+	}
+	
+
 }
 
 
