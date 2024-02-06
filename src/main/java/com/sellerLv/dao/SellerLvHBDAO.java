@@ -15,50 +15,6 @@ import util.HibernateUtil;
 
 public class SellerLvHBDAO implements SellerLvDAO {
 
-	public static void main(String[] args) {
-		// 創建 Hibernate 配置和測試 DAO 實例
-		SessionFactory factory = HibernateUtil.getSessionFactory();
-
-		Session session = factory.getCurrentSession();
-		session.beginTransaction();
-
-		// ================Insert==============
-		SellerLvVO sellerLv = new SellerLvVO();
-		sellerLv.setLvName("Gold");
-		sellerLv.setPlatformCommission(BigDecimal.valueOf(0.1));
-		sellerLv.setAdAllowType(1);
-		sellerLv.setIsExportGoldflow(true);
-		sellerLv.setFreightSub(2);
-		sellerLv.setReturnSubPerMonth(1);
-		sellerLv.setIsShowPriority(true);
-		sellerLv.setShelvesNumber(10);
-
-		Serializable sellerLvId = session.save(sellerLv);
-
-		// ================Update==============
-		SellerLvVO sellerLvUpdate = session.get(SellerLvVO.class, (Integer) sellerLvId);
-		sellerLvUpdate.setLvName("DELETE");
-		session.update(sellerLvUpdate);
-
-		// ================Query==============
-		SellerLvVO sellerLvQuery = session.get(SellerLvVO.class, 1);
-
-		Set<SellerVO> sellers = sellerLvQuery.getSellers();
-
-		for (SellerVO seller : sellers) {
-			System.out.println(seller.getSellerCompany());
-		}
-
-		// ================Delete==============
-//		SellerLvVO sellerLvDel = session.get(SellerLvVO.class, (Integer) sellerLvId);
-//		session.delete(sellerLvDel);
-		session.getTransaction().commit();
-
-
-	
-		HibernateUtil.shutdown();
-	}
-
 	private SessionFactory factory;
 
 	public SellerLvHBDAO() {
@@ -109,5 +65,49 @@ public class SellerLvHBDAO implements SellerLvDAO {
 	public List<SellerLvVO> getAll() {
 		return getSession().createQuery("from SellerLvVO", SellerLvVO.class).list();
 	}
+	
+//	public static void main(String[] args) {
+//		// 創建 Hibernate 配置和測試 DAO 實例
+//		SessionFactory factory = HibernateUtil.getSessionFactory();
+//
+//		Session session = factory.getCurrentSession();
+//		session.beginTransaction();
+//
+//		// ================Insert==============
+//		SellerLvVO sellerLv = new SellerLvVO();
+//		sellerLv.setLvName("Gold");
+//		sellerLv.setPlatformCommission(BigDecimal.valueOf(0.1));
+//		sellerLv.setAdAllowType(1);
+//		sellerLv.setIsExportGoldflow(true);
+//		sellerLv.setFreightSub(2);
+//		sellerLv.setReturnSubPerMonth(1);
+//		sellerLv.setIsShowPriority(true);
+//		sellerLv.setShelvesNumber(10);
+//
+//		Serializable sellerLvId = session.save(sellerLv);
+//
+//		// ================Update==============
+//		SellerLvVO sellerLvUpdate = session.get(SellerLvVO.class, (Integer) sellerLvId);
+//		sellerLvUpdate.setLvName("DELETE");
+//		session.update(sellerLvUpdate);
+//
+//		// ================Query==============
+//		SellerLvVO sellerLvQuery = session.get(SellerLvVO.class, 1);
+//
+//		Set<SellerVO> sellers = sellerLvQuery.getSellers();
+//
+//		for (SellerVO seller : sellers) {
+//			System.out.println(seller.getSellerCompany());
+//		}
+//
+//		// ================Delete==============
+//		SellerLvVO sellerLvDel = session.get(SellerLvVO.class, (Integer) sellerLvId);
+//		session.delete(sellerLvDel);
+//		session.getTransaction().commit();
+//
+//
+//	
+//		HibernateUtil.shutdown();
+//	}
 
 }

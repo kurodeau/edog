@@ -1,28 +1,30 @@
-package com.seller.service;
+package com.sellerLv.service;
+
 
 import java.sql.Date;
 import java.util.List;
 
-import com.seller.dao.*;
-import com.seller.entity.*;
+import com.seller.entity.__SellerVO;
+import com.sellerLv.dao.SellerLvDAO;
+import com.sellerLv.dao.SellerLvHBDAO;
 
-public class SellerService {
+public class SellerLvService {
 
 
-	private SellerDAO dao;
-
-	public SellerService() {
+	private SellerLvDAO dao;
+	
+	public SellerLvService() {
 		
-		dao = new SellerDSDAO();
+		dao = new SellerLvHBDAO();
 	}
 
-	public __SellerVO addSeller(String sellerEmail, String sellerCompany, String sellerTaxId,
+	public SellerLvVO addSeller(String sellerEmail, String sellerCompany, String sellerTaxId,
 	        Integer sellerCapital, String sellerContact, String sellerCompanyPhone,
 	        String sellerCompanyExtension, String sellerMobile, String sellerAddress,
 	        String sellerPassword, String sellerBankAccount, String sellerBankCode,
 	        String sellerBankAccountNumber) {
 
-	    __SellerVO sellerVO = new __SellerVO();
+	    SellerLvVO sellerVO = new SellerLvVO();
 
 	    sellerVO.setSellerEmail(sellerEmail);
 	    sellerVO.setSellerCompany(sellerCompany);
@@ -46,14 +48,14 @@ public class SellerService {
 	}
 
 
-	public __SellerVO updateSeller(Integer sellerId, Integer sellerLvId, String sellerEmail, String sellerCompany,
+	public SellerLvVO updateSeller(Integer sellerId, Integer sellerLvId, String sellerEmail, String sellerCompany,
 	        String sellerTaxId, Integer sellerCapital, String sellerContact,
 	        String sellerCompanyPhone, String sellerCompanyExtension, String sellerMobile,
 	        String sellerAddress, String sellerPassword, String sellerBankAccount,
 	        String sellerBankCode, String sellerBankAccountNumber, Date sellerCreateTime,
 	        Boolean isConfirm) {
 
-	    __SellerVO sellerVO = new __SellerVO();
+	    SellerLvVO sellerVO = new __SellerVO();
 	
 	    sellerVO.setSellerId(sellerId);
 	    sellerVO.setSellerLvId(sellerLvId);
