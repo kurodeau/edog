@@ -1,15 +1,15 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="com.manager.model.*"%>
 
-<% //¨£com.manager.controller.ManagerUserServlet.java²Ä238¦æ¦s¤JreqªºmanagerVOª«¥ó (¦¹¬°¿é¤J®æ¦¡¦³¿ù»~®ÉªºempVOª«¥ó)
+<% //è¦‹com.manager.controller.ManagerUserServlet.javaç¬¬238è¡Œå­˜å…¥reqçš„managerVOç‰©ä»¶ (æ­¤ç‚ºè¼¸å…¥æ ¼å¼æœ‰éŒ¯èª¤æ™‚çš„empVOç‰©ä»¶)
     ManagerUserVO managerUserVO = (ManagerUserVO) request.getAttribute("managerUserVO");
 %>
 --<%= managerUserVO==null %>--${managerUserVO.managerId}-- <!-- line 100 -->
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-<title>«á»OºŞ²zªÌ¸ê®Æ·s¼W - addManagerUser.jsp</title>
+<title>å¾Œè‡ºç®¡ç†è€…è³‡æ–™æ–°å¢ - addManagerUser.jsp</title>
 
 <style>
   table#table-1 {
@@ -48,16 +48,16 @@
 
 <table id="table-1">
 	<tr><td>
-		 <h3>«á»OºŞ²zªÌ¸ê®Æ·s¼W - addManagerUser.jsp</h3></td><td>
-		 <h4><a href="select_page.jsp"><img src="images/tomcat.png" width="100" height="100" border="0">¦^­º­¶</a></h4>
+		 <h3>å¾Œè‡ºç®¡ç†è€…è³‡æ–™æ–°å¢ - addManagerUser.jsp</h3></td><td>
+		 <h4><a href="select_page.jsp"><img src="images/tomcat.png" width="100" height="100" border="0">å›é¦–é </a></h4>
 	</td></tr>
 </table>
 
-<h3>¸ê®Æ·s¼W:</h3>
+<h3>è³‡æ–™æ–°å¢:</h3>
 
-<%-- ¿ù»~ªí¦C --%>
+<%-- éŒ¯èª¤è¡¨åˆ— --%>
 <c:if test="${not empty errorMsgs}">
-	<font style="color:red">½Ğ­×¥¿¥H¤U¿ù»~:</font>
+	<font style="color:red">è«‹ä¿®æ­£ä»¥ä¸‹éŒ¯èª¤:</font>
 	<ul>
 		<c:forEach var="message" items="${errorMsgs}">
 			<li style="color:red">${message}</li>
@@ -69,15 +69,15 @@
 <table>
 	
 	<tr>
-		<td>«á»OºŞ²zªÌºÙ©I:</td>
-		<td><input type="TEXT" name="managername" value="<%= (managerUserVO==null)? "¹w³]ºÙ©I" : managerUserVO.getManagername()%>" size="45"/></td>
+		<td>å¾Œè‡ºç®¡ç†è€…ç¨±å‘¼:</td>
+		<td><input type="TEXT" name="managername" value="<%= (managerUserVO==null)? "é è¨­ç¨±å‘¼" : managerUserVO.getManagername()%>" size="45"/></td>
 	</tr>
 	<tr>
-		<td>«á»OºŞ²zªÌ±K½X:</td>
+		<td>å¾Œè‡ºç®¡ç†è€…å¯†ç¢¼:</td>
 		<td><input type="TEXT" name="managerPassword" value="<%= (managerUserVO==null)? "password" : managerUserVO.getManagerPassword()%>" size="45"/></td>
 	</tr>
 	<tr>
-		<td>«á»OºŞ²zªÌÅv­­:</td>
+		<td>å¾Œè‡ºç®¡ç†è€…æ¬Šé™:</td>
 		<td><input type="TEXT" name="managerPer" value="<%= (managerUserVO==null)? "10" : managerUserVO.getManagerPer()%>" size="45"/></td>
 	</tr>
 
@@ -86,7 +86,7 @@
 </table>
 <br>
 <input type="hidden" name="action" value="insert">
-<input type="submit" value="°e¥X·s¼W"></FORM>
+<input type="submit" value="é€å‡ºæ–°å¢"></FORM>
 
 </body>
 

@@ -1,0 +1,121 @@
+/* Shopping List */
+.card {
+    position: relative;
+    height: 420px;
+    cursor: pointer;
+    border: 2px var(--sec-section-outline) solid;
+}
+
+.card .card-badge-custom.-on {
+    font-size: 12px;
+    background-color: var(--text-main);
+    color: var(--text-light);
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5em;
+}
+
+.card .card-status-custom.-on {
+    font-size: 1.2rem;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: var(--text-main);
+    color: var(--text-light);
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card:hover {
+    border-color: var(--user-yellow_yellow_dark);
+}
+
+.card-body {
+    color: var(--text-shop);
+    text-decoration: bold;
+}
+
+.card-body .price-tag {
+    color: var(--user-yellow_yellow_dark);
+}
+
+/*--------------------------------------------------------------
+  # RWD
+  --------------------------------------------------------------*/
+
+/* Small screens and up (576px and above) */
+@media (min-width: 576px) {
+    .img-md-main {
+        max-width: 100%;
+        /* Adjust as needed */
+    }
+
+    .img-md-sub {
+        max-width: 100%;
+        /* Adjust as needed */
+    }
+}
+
+/* Medium screens and up (768px and above) */
+@media (min-width: 768px) {
+    .img-md-main {
+        max-width: 100%;
+        /* Adjust as needed */
+    }
+
+    .img-md-sub {
+        max-width: 100%;
+        /* Adjust as needed */
+    }
+}
+
+/* Large screens and up (992px and above) */
+@media (min-width: 992px) {
+    .img-md-main {
+        max-width: 100%;
+        /* Adjust as needed */
+    }
+
+    .img-md-sub {
+        max-width: 100%;
+        /* Adjust as needed */
+    }
+}
+
+/* Large screens and up (1199px and above) */
+@media (max-width: 1199px) {
+    .sidebar {
+        left: -300px;
+    }
+
+    .toggle-sidebar.sidebar {
+        left: 0;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .main,
+    .footer {
+        margin-left: 300px;
+    }
+
+    .sidebar {
+        left: 0px;
+    }
+
+    .toggle-sidebar.main,
+    .toggle-sidebar.footer {
+        margin-left: 0;
+    }
+
+    .toggle-sidebar.sidebar {
+        left: -300px;
+    }
+}

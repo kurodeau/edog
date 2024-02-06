@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>buyer_header(for include)</title>
+
+    <!-- Favicons -->
+    <link href="/src/main/resources/static/images/Medium.png" rel="icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet" />
+
+    <!-- ICONS -->
+    <link rel="stylesheet" href="/src/main/resources/static/icons/remixicon/remixicon.css" />
+    <link rel="stylesheet" href="/src/main/resources/static/icons/bootstrap-icons/bootstrap-icons.css" />
+
+    <!-- Vendor CSS Files -->
+    <link rel="stylesheet" href="/src/main/resources/static/vendors/bootstrap/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="/src/main/resources/static/vendors/quill/quill.bubble.css" />
+    <link rel="stylesheet" href="/src/main/resources/static/vendors/quill/quill.snow.css" />
+    <link rel="stylesheet" href="/src/main/resources/static/vendors/simple-datatables/style.css" />
+
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" href="/src/main/resources/static/css/general.css" />
+    <link rel="stylesheet" href="/src/main/resources/static/css/buyer_footer.css" />
+</head>
+
+<body>
+    <!-- ======= Header ======= -->
+    <header class="fixed-top">
+        <nav class="navbar navbar-expand navbar-expand-sm navbar-light bg-user">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+                    <!-- Start NavBar  -->
+                    <!-- NavBar--LeftSide  -->
+                    <ul class="navbar-nav me-auto mb-2">
+                        <li class="nav-item d-block d-flex align-items-center">
+                            <i class="ri-menu-line toggle-sidebar-btn"> 選單</i>
+                        </li>
+                        <li class="nav-item d-flex align-items-center">
+                            <a class="nav-link active" aria-current="page" href="#">電子商城</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">賣家中心</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">論壇</a>
+                        </li>
+                    </ul>
+
+                    <!-- NavBar--RightSide  -->
+                    <ul class="navbar-nav ms-auto mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">註冊</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">登入</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- End NavBar  -->
+
+        <!-- Start SearchBar  -->
+        <div class="container-fluid bg-user search-container-custom">
+            <div class="row">
+                <!-- Start SearchBar-Logo  -->
+                <div class="col-auto d-none d-lg-block logo-container-height d-flex align-items-end">
+                    <img src="/src/main/resources/static/images/Medium.png" class="img-logo-custom" alt="" srcset="" />
+                </div>
+                <!-- End SearchBar-Logo  -->
+
+                <!-- Start SearchBar-Input  -->
+                <div class="col d-flex searchItem flex-column search-item-container-custom">
+                    <form class="form-inline w-100">
+                        <div class="row py-2 search-row-custom w-100 pe-2">
+                            <div class="col">
+                                <input class="form-control mr-sm-2 w-100 search-input-custom" type="search"
+                                    placeholder="請在此進行商品檢索" aria-label="Search" />
+                            </div>
+                            <div class="col-auto">
+                                <button class="btn btn-user search-button-custom d-flex" type="submit">
+                                    <i class="me-2 ri-search-line"></i>
+                                    <div class="col-auto d-none d-md-block">Search</div>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="my-2 keyword-container-custom">
+                        <span class="badge rounded-pill keyword-item-custom">寵物床</span>
+                        <span class="badge rounded-pill keyword-item-custom">玩具</span>
+                    </div>
+                </div>
+                <!-- End SearchBar-Input  -->
+
+                <!-- Start SearchBar-Function  -->
+                <div
+                    class="col-2 d-block col-sm-2 d-flex align-items-start justify-content-start cart-container-custom">
+                    <div class="baritem d-flex align-items-center justify-content-start cart-item-custom">
+                        <i class="ri-shopping-cart-2-line"></i>
+                        <div class="cart d-none d-lg-block ml-1">購物車</div>
+                    </div>
+                </div>
+                <!-- End SearchBar-Function  -->
+            </div>
+        </div>
+        <!-- Start Banner  -->
+        <div class="container-fluid justify-content-between align-items-center banner-container-custom">
+            <div class="row">
+                <div class="col banner-content text-center banner-content-custom">
+                    <p class="mb-1 mt-1 banner-para-custom">
+                        This is a sample horizontal full-width banner.
+                    </p>
+                </div>
+                <div class="col-auto buttona mb-0 d-flex justify-content-end banner-close-custom">
+                    <i class="mb-1 mt-1 ri-close-line banner-close"></i>
+                </div>
+            </div>
+        </div>
+        <!-- End Banner  -->
+    </header>
+    <!-- Vendor JS Files -->
+    <script src="/src/main/resources/static/vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="/src/main/resources/static/vendors/chart.js/chart.umd.js"></script>
+    <script src="/src/main/resources/static/vendors/quill/quill.min.js"></script>
+    <script src="/src/main/resources/static/vendors/simple-datatables/simple-datatables.js"></script>
+    <script src="/src/main/resources/static/vendors/tinymce/tinymce.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="/src/main/resources/static/js/main.js"></script>
+</body>
+
+</html>

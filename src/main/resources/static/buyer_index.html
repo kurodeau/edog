@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-YW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>buyer_index</title>
+
+
+    <!-- Favicons -->
+    <link href="/src/main/resources/static/images/Medium.png" rel="icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet" />
+
+    <!-- ICONS -->
+
+    <link rel="stylesheet" href="/src/main/resources/static/icons/remixicon/remixicon.css" />
+    <link rel="stylesheet" href="/src/main/resources/static/icons/bootstrap-icons/bootstrap-icons.css" />
+
+    <!-- Vendor CSS Files -->
+    <link rel="stylesheet" href="/src/main/resources/static/vendors/bootstrap/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="/src/main/resources/static/vendors/quill/quill.bubble.css" />
+    <link rel="stylesheet" href="/src/main/resources/static/vendors/quill/quill.snow.css" />
+    <link rel="stylesheet" href="/src/main/resources/static/vendors/simple-datatables/style.css" />
+
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" href="/src/main/resources/static/css/general.css" />
+<!--    <link rel="stylesheet" href="/src/main/resources/static/css/index.css" /> -->
+</head>
+
+<body>
+
+    <div id="content-container"></div>
+
+
+    <!-- Header --> 
+    <!--    <iframe class="inc_header" src="buyer_header.html" frameborder="0" width="100%" height="100%"></iframe> -->
+
+    <!-- Sidebar -->
+    <!--    <iframe class="inc_sidebar"  src="buyer_sidebar.html" frameborder="0" width="100%" height="100%"></iframe> -->
+
+    <!-- Main Content -->
+    <!--    <iframe class="inc_main" src="buyer_homepage.html" frameborder="0" width="100%" height="100%"></iframe> -->
+
+    <!-- Footer -->
+    <!--    <iframe class="inc_footer" src="buyer_footer.html" frameborder="0" width="100%" height="100%"></iframe> -->
+
+    <!-- Vendor JS Files -->
+    <script src="/src/main/resources/static/vendors/bootstrap/bootstrap-grid.min.css"></script>
+    <script src="/src/main/resources/static/vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="/src/main/resources/static/vendors/chart.js/chart.umd.js"></script>
+    <script src="/src/main/resources/static/vendors/quill/quill.min.js"></script>
+    <script src="/src/main/resources/static/vendors/simple-datatables/simple-datatables.js"></script>
+    <script src="/src/main/resources/static/vendors/tinymce/tinymce.js"></script>
+    
+    <!-- Template Main JS File -->
+    <script src="/src/main/resources/static/js/main.js"></script>
+
+    <!-- 嵌入個功能網頁 -->
+    <script>
+        // 加載 header 網頁的內容
+        fetch('buyer_header.html')
+            .then(response => response.text())
+            .then(data => {
+                // 將 header 網頁的內容插入到 content-container 容器中
+                document.getElementById('content-container').innerHTML += data;
+            });
+
+        // 加載 sidebar 網頁的內容
+        fetch('buyer_sidebar.html')
+            .then(response => response.text())
+            .then(data => {
+                // 將 sidebar 網頁的內容插入到 content-container 容器中
+                document.getElementById('content-container').innerHTML += data;
+            });
+
+        // 加載 "頁面功能" 網頁的內容
+        fetch('buyer_homepage.html')
+            .then(response => response.text())
+            .then(data => {
+                // 將 主要功能 網頁的內容插入到 content-container 容器中
+                document.getElementById('content-container').innerHTML += data;
+            });
+
+                    // 加載 footer 網頁的內容
+        fetch('buyer_footer.html')
+            .then(response => response.text())
+            .then(data => {
+                // 將 footer 網頁的內容插入到 content-container 容器中
+                document.getElementById('content-container').innerHTML += data;
+            });
+    </script>
+</body>
+
+</html>
