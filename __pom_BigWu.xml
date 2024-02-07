@@ -8,12 +8,12 @@
 		<version>2.7.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.tha105</groupId>
-	<artifactId>edog</artifactId>
+	<groupId>THA105_C_myMaven1</groupId>
+	<artifactId>THA105_C_myMaven1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>edog</name>
-	
+	<name>THA105_C_myMaven1</name>
+	<description>THA105_C_myMaven1</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
