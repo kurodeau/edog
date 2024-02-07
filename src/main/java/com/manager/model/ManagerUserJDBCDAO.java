@@ -1,6 +1,9 @@
 package com.manager.model;
 
 import java.util.*;
+
+import com.manager.entity.ManagerUserVO;
+
 import java.sql.*;
 
 public class ManagerUserJDBCDAO implements ManagerUserDAO_interface {
