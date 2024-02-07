@@ -1,4 +1,4 @@
-package com.manager.model;
+package com.manager.entity;
 import java.sql.Date;
 
 import javax.persistence.Column;

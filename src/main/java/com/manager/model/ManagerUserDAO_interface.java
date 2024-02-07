@@ -3,6 +3,8 @@ package com.manager.model;
 import java.sql.Date;
 import java.util.*;
 
+import com.manager.entity.ManagerUserVO;
+
 public interface ManagerUserDAO_interface {
           public void insert(ManagerUserVO managerUserVO);
           public void update(ManagerUserVO managerUserVO);
