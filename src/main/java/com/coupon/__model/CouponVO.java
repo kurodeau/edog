@@ -1,4 +1,5 @@
-package com.coupon.model;
+package com.coupon.__model;
+
 import java.sql.Date;
 import java.sql.Timestamp;
 

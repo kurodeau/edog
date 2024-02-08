@@ -429,7 +429,10 @@ public class SellerServlet extends HttpServlet {
 				sellerCompanyPhone, sellerCompanyExtension, sellerMobile, sellerAddress, sellerPassword,
 				sellerBankAccount, sellerBankCode, sellerBankAccountNumber);
 
-		return "/seller/listAllSeller.jsp";
+		
+		req.setAttribute("sellerVO", sellerVO);
+
+		return "/seller/listOneSeller.jsp";
 	}
 
 }

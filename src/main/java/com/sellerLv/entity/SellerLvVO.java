@@ -36,7 +36,7 @@ public class SellerLvVO implements java.io.Serializable {
 		this.sellers = sellers;
 	}
 
-	@Column(name = "lvName", length = 10)
+	@Column(name = "lvName", length = 255)
     private String lvName;
 
     @Column(name = "platformCommission", precision = 3, scale = 2)

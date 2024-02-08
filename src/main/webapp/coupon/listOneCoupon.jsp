@@ -1,13 +1,13 @@
 
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%@ page import="java.util.*"%>
-<%@ page import="com.sellerLv.entity.*"%>
-<%@ page import="com.sellerLv.service.*"%>
+<%@ page import="com.coupon.entity.*"%>
+<%@ page import="com.coupon.service.*"%>
 
 <%-- 此頁暫練習採用 Script 的寫法取值 --%>
 
 <%
-SellerLvVO sellerLvVO = (SellerLvVO) request.getAttribute("sellerLvVO"); //SellerServlet.java(Concroller), 存入req的sellerVO物件
+CouponVO couponVO = (CouponVO) request.getAttribute("couponVO"); //SellerServlet.java(Concroller), 存入req的couponVO物件
 %>
 
 <html>
@@ -69,29 +69,31 @@ th, td {
 
 	<table>
 		<tr>
-			<th>賣家等級ID</th>
-			<th>等級名稱</th>
-			<th>平台佣金</th>
-			<th>廣告允許類型</th>
-			<th>匯出金流</th>
-			<th>運費補助</th>
-			<th>每月退貨補助</th>
-			<th>顯示優先順序</th>
-			<th>上架數量</th>
+			<th>優惠券編號</th>
+			<th>優惠券名稱</th>
+			<th>優惠券代碼</th>
+			<th>開始時間</th>
+			<th>結束時間</th>
+			<th>最低消費金額</th>
+			<th>優惠券數量</th>
+			<th>會員可使用數量</th>
+			<th>優惠折扣</th>
+			<th>創建時間</th>
+
 		</tr>
 		<tr>
 
-			<!-- 	第一個先得到sellerLv對象，再得到sellerLvId的值 -->
-			<%-- value="<%=sellerLvVO.getSellerLvId().getSellerLvId()%> --%>
-			<td>${sellerLvVO.sellerLvId}</td>
-			<td>${sellerLvVO.lvName}</td>
-			<td>${sellerLvVO.platformCommission}</td>
-			<td>${sellerLvVO.adAllowType}</td>
-			<td>${sellerLvVO.isExportGoldflow ? 'Yes' : 'No'}</td>
-			<td>${sellerLvVO.freightSub}</td>
-			<td>${sellerLvVO.returnSubPerMonth}</td>
-			<td>${sellerLvVO.isShowPriority ? 'Yes' : 'No'}</td>
-			<td>${sellerLvVO.shelvesNumber}</td>
+			<td>${couponVO.couponId}</td>
+			<td>${couponVO.couponName}</td>
+			<td>${couponVO.couponCode}</td>
+			<td>${couponVO.startTime}</td>
+			<td>${couponVO.endTime}</td>
+			<td>${couponVO.minSpendingAmount}</td>
+			<td>${couponVO.couponQuantity}</td>
+			<td>${couponVO.memberAllowQuantity}</td>
+			<td>${couponVO.couponDiscount}</td>
+			<td>${couponVO.couponCreateTime}</td>
+
 		</tr>
 	</table>
 

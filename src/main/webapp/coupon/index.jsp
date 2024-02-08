@@ -12,18 +12,18 @@
 </head>
 <body>
 	<h1>這是一位後端人員作的網頁 QQ</h1>
-	<h2>系統</h2>
+	<h2>員工系統</h2>
 	<a
-		href="${pageContext.request.contextPath}/sellerLv/sellerLv.do?action=getAll">查詢所有員工</a>
+		href="${pageContext.request.contextPath}/coupon/coupon.do?action=getAll">查詢所有員工</a>
 	<br>
 	<br>
-	<jsp:useBean id="sellerLvSvc" scope="page"
-		class="com.sellerLv.service.SellerLvService" />
+	<jsp:useBean id="couponSvc" scope="page"
+		class="com.coupon.service.CouponService" />
 
-	<FORM METHOD="post" ACTION="sellerLv.do">
-		<b>選擇編號</b> <select size="1" name="sellerLvId">
-			<c:forEach var="sellerLvVO" items="${sellerLvSvc.getAll()}">
-				<option value="${sellerLvVO.sellerLvId}">${sellerLvVO.sellerLvId}:${sellerLvVO.lvName}
+	<FORM METHOD="post" ACTION="coupon.do">
+		<b>選擇編號</b> <select size="1" name="couponId">
+			<c:forEach var="couponVO" items="${couponSvc.getAll()}">
+				<option value="${couponVO.couponId}">${couponVO.couponId}
 			</c:forEach>
 		</select> <input type="hidden" name="action" value="getOne_For_Display">
 		<input type="submit" value="送出">
@@ -31,23 +31,22 @@
 
 	<br>
 	<br>
-	
+	<a href='addCoupon.jsp'>Add</a>
 
-	
-	<a href='addSellerLv.jsp'>Add</a>
 
-	<jsp:useBean id="sellerLv" scope="page"
-		class="com.sellerLv.entity.SellerLvVO" />
+
+	<jsp:useBean id="couponLv" scope="page"
+		class="com.coupon.entity.CouponVO" />
 
 	<h3>
 		<b>複合查詢 (使用 Criteria Query)：</b>
 	</h3>
-	<form action="${pageContext.request.contextPath}/seller/seller.do"
+	<form action="${pageContext.request.contextPath}/coupon/coupon.do"
 		method="post">
 		<p>
 			<label>名字模糊查詢：</label>
 		</p>
-		<input type="text" name="sellerCompany"><br>
+		<input type="text" name="couponCompany"><br>
 		<p>
 			<label>日期間範圍</label>
 		</p>

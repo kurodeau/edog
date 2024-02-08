@@ -28,6 +28,9 @@ public class SellerLvService {
 
 	    SellerLvVO sellerLvVO = new SellerLvVO();
 
+	    
+
+	    
 	    sellerLvVO.setLvName(lvName);
 	    sellerLvVO.setPlatformCommission(platformCommission);
 	    sellerLvVO.setAdAllowType(adAllowType);
@@ -37,10 +40,7 @@ public class SellerLvService {
 	    sellerLvVO.setIsShowPriority(isShowPriority);
 	    sellerLvVO.setShelvesNumber(shelvesNumber);
 
-	    // 不需要以下內容 (除非你需要初始值)
-//	    Set<SellerVO> sellers = new HashSet<>();
-//	    sellerLvVO.setSellers(sellers);
-	   
+
 
 	    dao.insert(sellerLvVO);
 

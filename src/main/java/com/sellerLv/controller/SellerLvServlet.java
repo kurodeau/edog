@@ -1,13 +1,9 @@
 package com.sellerLv.controller;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeParseException;
-import java.util.Date;
+import java.math.BigDecimal;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,12 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sellerLv.entity.SellerLvVO;
 import com.sellerLv.service.SellerLvService;
-import com.seller.entity.SellerVO;
-import com.sellerLv.dao.SellerLvDAO;
-import com.sellerLv.dao.SellerLvHBDAO;
-import com.sellerLv.entity.SellerLvVO;
-
-import util.Util;
 
 @WebServlet("/sellerLv/sellerLv.do")
 public class SellerLvServlet extends HttpServlet {
@@ -89,7 +79,7 @@ public class SellerLvServlet extends HttpServlet {
 		SellerLvVO sellerLvVO= sellerLvSvc.getOneSellerLv(sellerLvId);
 		req.setAttribute("sellerLvVO", sellerLvVO);
 
-		return "/seller/listOneSellerLv.jsp";
+		return "/sellerLv/listOneSellerLv.jsp";
 		
 	}
 
@@ -114,129 +104,248 @@ public class SellerLvServlet extends HttpServlet {
 
 	private String getOne_For_Update(HttpServletRequest req, HttpServletResponse res) {
 		Integer sellerLvId = Integer.valueOf(req.getParameter("sellerLvId"));
-		SellerLvVO sellerVO = sellerLvSvc.getOneSellerLv(sellerLvId);
+		SellerLvVO sellerLvVO = sellerLvSvc.getOneSellerLv(sellerLvId);
 
-		req.setAttribute("sellerVO", sellerVO);
-		return "/sellerLv/update_seller_input.jsp";
+		req.setAttribute("sellerLvVO", sellerLvVO);
+		return "/sellerLv/update_sellerLv_input.jsp";
 	}
 
 	private String update(HttpServletRequest req, HttpServletResponse res) {
+		
+		SellerLvVO sellerlvVO = new SellerLvVO();
 
+		Integer sellerLvId = null;
+		try {
+			String sellerLvIdstr = req.getParameter("sellerLvId");
+			if (sellerLvIdstr == null || sellerLvIdstr.trim().length() > 10) {
+				errorMsgs.add("請填寫等級(不超過10字)");
+			}
+			sellerLvId = Integer.valueOf(sellerLvIdstr);
+
+		} catch (NumberFormatException e) {
+			errorMsgs.add("等級請填寫數字");
+		}
+		
+		
+		String lvName = req.getParameter("lvName");
+		
+		System.out.println("lvNamelvNamelvName"+lvName);
+		if (lvName == null || lvName.trim().length() == 0) {
+			errorMsgs.add("等級名稱請勿空白");
+		}
+		
+		
+		 BigDecimal platformCommission = BigDecimal.ZERO; // Default value
+		    try {
+		        String platformCommissionStr = req.getParameter("platformCommission");
+		        if (platformCommissionStr != null && !platformCommissionStr.trim().isEmpty()) {
+		            platformCommission = new BigDecimal(platformCommissionStr);
+		        }
+		        
+		        if (platformCommission.scale() != 2) {
+		            errorMsgs.add("平台佣金請輸入兩位小數");
+		        }
+		    } catch (NumberFormatException e) {
+		        errorMsgs.add("平台佣金請輸入小數");
+		    }
+
+		    
+		    Integer adAllowType=null;
+			try {
+				String adAllowTypeStr = req.getParameter("adAllowType");
+				if (adAllowTypeStr != null && !adAllowTypeStr.trim().isEmpty()) {
+					adAllowType = Integer.valueOf(adAllowTypeStr);
+				}
+			} catch (NumberFormatException e) {
+				errorMsgs.add("廣告種類請填入數字");
+			}
+
+			// Boolean parsing
+			Boolean isExportGoldflow = null;
+			try {
+				isExportGoldflow = req.getParameter("isExportGoldflow") == null ? false : true;
+			} catch (IllegalArgumentException e) {
+				System.out.println("金流有誤");
+			}
+			
+			
+	
+			
+			
+			Integer freightSub = null;
+			try {
+			    String freightSubStr = req.getParameter("freightSub");
+			    if (freightSubStr != null && !freightSubStr.trim().isEmpty()) {
+			        freightSub = Integer.valueOf(freightSubStr);
+			    }
+			} catch (NumberFormatException e) {
+			    errorMsgs.add("運費減免次數請填入數字");
+			}
+
+			Integer returnSubPerMonth = null;
+			try {
+			    String returnSubPerMonthStr = req.getParameter("returnSubPerMonth");
+			    if (returnSubPerMonthStr != null && !returnSubPerMonthStr.trim().isEmpty()) {
+			        returnSubPerMonth = Integer.valueOf(returnSubPerMonthStr);
+			    }
+			} catch (NumberFormatException e) {
+			    errorMsgs.add("每月可退訂次數請填入數字");
+			}
+
+			// Boolean parsing
+			Boolean isShowPriority = null;
+			try {
+				isShowPriority = req.getParameter("isShowPriority") == null ? false : true;
+			} catch (IllegalArgumentException e) {
+				System.out.println("優先有誤");
+			}			
+			
+			Integer shelvesNumber = null;
+			try {
+			    String shelvesNumberStr = req.getParameter("shelvesNumber");
+			    if (shelvesNumberStr != null && !shelvesNumberStr.trim().isEmpty()) {
+			        shelvesNumber = Integer.valueOf(shelvesNumberStr);
+			    }
+			} catch (NumberFormatException e) {
+			    errorMsgs.add("上架商品數量請填入數字");
+			}
+			
+			SellerLvVO sellerLvVO = new SellerLvVO();
+			
+			sellerLvVO.setSellerLvId(sellerLvId);
+			sellerLvVO.setLvName(lvName);
+			sellerLvVO.setPlatformCommission(platformCommission);
+			sellerLvVO.setAdAllowType(adAllowType);
+			sellerLvVO.setIsExportGoldflow(isExportGoldflow);
+			sellerLvVO.setFreightSub(freightSub);
+			sellerLvVO.setReturnSubPerMonth(returnSubPerMonth);
+			sellerLvVO.setIsShowPriority(isShowPriority);
+			sellerLvVO.setShelvesNumber(shelvesNumber);
+
+			req.setAttribute("sellerLvVO", sellerLvVO);
+
+			if (!errorMsgs.isEmpty()) {
+				return ("/sellerLv/update_sellerLv_input.jsp");
+			}
+			sellerLvVO = sellerLvSvc.updateSellerLv(sellerLvId, lvName, platformCommission, adAllowType, isExportGoldflow, freightSub, returnSubPerMonth, isShowPriority, shelvesNumber);
 
 		return "/sellerLv/listOneSellerLv.jsp";
 	}
+	
 
 	private String insert(HttpServletRequest req, HttpServletResponse res) {
-		String sellerEmail = req.getParameter("sellerEmail");
-		String emailReg = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}";
-		// RFC 5322
-		if (sellerEmail == null || sellerEmail.trim().length() == 0) {
-			errorMsgs.add("信箱請勿留空白");
-		} else if (!sellerEmail.trim().matches(emailReg)) {
-			errorMsgs.add("信箱格式錯誤");
+		SellerLvVO sellerlvVO = new SellerLvVO();
+
+		
+		
+		String lvName = req.getParameter("lvName");
+		
+		System.out.println("lvNamelvNamelvName"+lvName);
+		if (lvName == null || lvName.trim().length() == 0) {
+			errorMsgs.add("等級名稱請勿空白");
 		}
+		
+		
+		 BigDecimal platformCommission = BigDecimal.ZERO; // Default value
+		    try {
+		        String platformCommissionStr = req.getParameter("platformCommission");
+		        if (platformCommissionStr != null && !platformCommissionStr.trim().isEmpty()) {
+		            platformCommission = new BigDecimal(platformCommissionStr);
+		        }
+		        
+		        if (platformCommission.scale() != 2) {
+		            errorMsgs.add("平台佣金請輸入兩位小數");
+		        }
+		    } catch (NumberFormatException e) {
+		        errorMsgs.add("平台佣金請輸入小數");
+		    }
 
-		String sellerCompany = req.getParameter("sellerCompany");
-		if (sellerCompany == null || sellerCompany.trim().length() == 0) {
-			errorMsgs.add("公司姓名請勿空白");
-		}
+		    
+		    Integer adAllowType=null;
+			try {
+				String adAllowTypeStr = req.getParameter("adAllowType");
+				if (adAllowTypeStr != null && !adAllowTypeStr.trim().isEmpty()) {
+					adAllowType = Integer.valueOf(adAllowTypeStr);
+				}
+			} catch (NumberFormatException e) {
+				errorMsgs.add("廣告種類請填入數字");
+			}
 
-		String sellerTaxId = req.getParameter("sellerTaxId");
-		if (sellerCompany == null || sellerCompany.trim().length() == 0) {
-			errorMsgs.add("公司統編請勿空白");
-		}
+			// Boolean parsing
+			Boolean isExportGoldflow = null;
+			try {
+				isExportGoldflow = req.getParameter("isExportGoldflow") == null ? false : true;
+			} catch (IllegalArgumentException e) {
+				System.out.println("金流有誤");
+			}
+			
+			
+	
+			
+			
+			Integer freightSub = null;
+			try {
+			    String freightSubStr = req.getParameter("freightSub");
+			    if (freightSubStr != null && !freightSubStr.trim().isEmpty()) {
+			        freightSub = Integer.valueOf(freightSubStr);
+			    }
+			} catch (NumberFormatException e) {
+			    errorMsgs.add("運費減免次數請填入數字");
+			}
 
-		Integer sellerCapital = Integer.valueOf(req.getParameter("sellerCapital"));
-		if (sellerCompany == null) {
-			sellerCompany = sellerCompany.trim();
-		}
+			Integer returnSubPerMonth = null;
+			try {
+			    String returnSubPerMonthStr = req.getParameter("returnSubPerMonth");
+			    if (returnSubPerMonthStr != null && !returnSubPerMonthStr.trim().isEmpty()) {
+			        returnSubPerMonth = Integer.valueOf(returnSubPerMonthStr);
+			    }
+			} catch (NumberFormatException e) {
+			    errorMsgs.add("每月可退訂次數請填入數字");
+			}
 
-		String sellerContact = req.getParameter("sellerContact");
-		if (sellerContact == null || sellerContact.trim().length() == 0) {
-			errorMsgs.add("公司負責人請勿空白");
-		}
+			// Boolean parsing
+			Boolean isShowPriority = null;
+			try {
+				isShowPriority = req.getParameter("isShowPriority") == null ? false : true;
+			} catch (IllegalArgumentException e) {
+				System.out.println("優先有誤");
+			}			
+			
+			Integer shelvesNumber = null;
+			try {
+			    String shelvesNumberStr = req.getParameter("shelvesNumber");
+			    if (shelvesNumberStr != null && !shelvesNumberStr.trim().isEmpty()) {
+			        shelvesNumber = Integer.valueOf(shelvesNumberStr);
+			    }
+			} catch (NumberFormatException e) {
+			    errorMsgs.add("上架商品數量請填入數字");
+			}
+			
+			
+		
+			
 
-		String sellerCompanyPhone = req.getParameter("sellerCompanyPhone");
-		if (sellerCompanyPhone == null || sellerCompanyPhone.trim().length() == 0) {
-			errorMsgs.add("公司電話請勿空白");
-		}
+			SellerLvVO sellerLvVO = new SellerLvVO();
+			
+			sellerLvVO.setLvName(lvName);
+			sellerLvVO.setPlatformCommission(platformCommission);
+			sellerLvVO.setAdAllowType(adAllowType);
+			sellerLvVO.setIsExportGoldflow(isExportGoldflow);
+			sellerLvVO.setFreightSub(freightSub);
+			sellerLvVO.setReturnSubPerMonth(returnSubPerMonth);
+			sellerLvVO.setIsShowPriority(isShowPriority);
+			sellerLvVO.setShelvesNumber(shelvesNumber);
 
-		String sellerCompanyExtension = req.getParameter("sellerCompanyExtension");
-		sellerCompanyExtension = sellerCompanyExtension.trim();
+			req.setAttribute("sellerLvVO", sellerLvVO);
 
-		String sellerMobile = req.getParameter("sellerMobile");
-		String mobileReg = "^09\\d\\d[0-9]{6}$";
-		if (sellerMobile == null || sellerMobile.trim().length() == 0) {
-			errorMsgs.add("手機請勿空白");
-		} else if (!sellerMobile.trim().matches(mobileReg)) {
-			errorMsgs.add("手機格式錯誤");
-		}
+			if (!errorMsgs.isEmpty()) {
+				return ("/sellerLv/addSellerLv.jsp");
+			}
 
-		String sellerAddress = req.getParameter("sellerAddress");
-		if (sellerAddress == null || sellerAddress.trim().length() == 0) {
-			errorMsgs.add("地址請勿空白");
-		}
+		sellerLvVO = sellerLvSvc.addSellerLv(lvName, platformCommission, adAllowType, isExportGoldflow, freightSub, returnSubPerMonth, isShowPriority, shelvesNumber);
+		req.setAttribute("sellerLvVO", sellerLvVO);
 
-		String sellerPassword = req.getParameter("sellerPassword");
-		if (sellerPassword == null || sellerPassword.trim().length() == 0) {
-			errorMsgs.add("密碼請勿留白");
-		} else if (!sellerPassword.matches(".*[A-Z].*")) {
-			errorMsgs.add("密碼需包含至少一個大寫字母");
-		} else if (!sellerPassword.matches(".*[a-z].*")) {
-			errorMsgs.add("密碼需包含至少一個小寫字母");
-		} else if (!sellerPassword.matches(".*\\d.*")) {
-			errorMsgs.add("密碼需包含至少一個數字");
-		} else if (sellerPassword.length() < 8) {
-			errorMsgs.add("密碼長度需至少為8位");
-		}
-
-		String sellerBankAccount = req.getParameter("sellerBankAccount");
-		if (sellerBankAccount == null || sellerBankAccount.trim().length() == 0) {
-			errorMsgs.add("銀行帳戶名稱請勿留白");
-		}
-
-		String sellerBankCode = req.getParameter("sellerBankCode");
-		if (sellerBankCode == null || sellerBankCode.trim().length() == 0) {
-			errorMsgs.add("密碼請勿留白");
-		} else if (!sellerBankCode.matches("^[0-9]{3}$")) {
-			errorMsgs.add("銀行代碼有誤");
-		}
-
-		String sellerBankAccountNumber = req.getParameter("sellerBankAccountNumber");
-		if (sellerBankAccountNumber == null || sellerBankAccountNumber.trim().length() == 0) {
-			errorMsgs.add("銀行帳號請勿留白");
-		} else if (!sellerBankAccountNumber.matches("\\d{5,14}")) {
-			errorMsgs.add("銀行帳號應為數字");
-		}
-
-		SellerLvVO sellerVO = new SellerLvVO();
-		sellerVO.setSellerEmail(sellerEmail);
-		sellerVO.setSellerCompany(sellerCompany);
-		sellerVO.setSellerTaxId(sellerTaxId);
-		sellerVO.setSellerCapital(sellerCapital);
-		sellerVO.setSellerContact(sellerContact);
-		sellerVO.setSellerCompanyPhone(sellerCompanyPhone);
-		sellerVO.setSellerCompanyExtension(sellerCompanyExtension);
-		sellerVO.setSellerMobile(sellerMobile);
-		sellerVO.setSellerAddress(sellerAddress);
-		sellerVO.setSellerPassword(sellerPassword);
-		sellerVO.setSellerBankAccount(sellerBankAccount);
-		sellerVO.setSellerBankCode(sellerBankCode);
-		sellerVO.setSellerBankAccountNumber(sellerBankAccountNumber);
-		// sellerCreateTime is automatically set to the current date in the database,
-		// isConfirm is automatically set to the current date in the database
-
-		// Send the use back to the form, if there were errors
-		if (!errorMsgs.isEmpty()) {
-			req.setAttribute("sellerVO", sellerVO); // 含有輸入格式錯誤的empVO物件,也存入req
-			return ("/sellerLv/addSellerLv.jsp");
-		}
-
-		sellerVO = sellerLvSvc.addSeller(sellerEmail, sellerCompany, sellerTaxId, sellerCapital, sellerContact,
-				sellerCompanyPhone, sellerCompanyExtension, sellerMobile, sellerAddress, sellerPassword,
-				sellerBankAccount, sellerBankCode, sellerBankAccountNumber);
-
-		return "/sellerLv/listAllSellerLv.jsp";
+		return "/sellerLv/listOneSellerLv.jsp";
 	}
 
 }

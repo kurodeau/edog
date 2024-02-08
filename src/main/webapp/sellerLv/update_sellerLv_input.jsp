@@ -1,20 +1,20 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="com.seller.entity.*"%>
-<%@ page import="com.seller.service.*"%>
+<%@ page import="com.sellerLv.entity.*"%>
+<%@ page import="com.sellerLv.service.*"%>
 
 
 <%
 //見com.emp.controller.EmpServlet.java第163行存入req的empVO物件 (此為從資料庫取出的empVO, 也可以是輸入格式有錯誤時的empVO物件)
-SellerVO sellerVO = (SellerVO) request.getAttribute("sellerVO");
+SellerLvVO sellerLvVO = (SellerLvVO) request.getAttribute("sellerLvVO");
 %>
---EL--<%=sellerVO == null ? "NULL" : sellerVO.getSellerId()%>
+--EL--<%=sellerLvVO == null ? "NULL" : sellerLvVO.getSellerLvId()%>
 
 
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<title>員工資料修改 - update_seller_input.jsp</title>
+<title>update_sellerLv_input.jsp</title>
 
 <style>
 table#table-1 {
@@ -58,7 +58,7 @@ th, td {
 	<table id="table-1">
 		<tr>
 			<td>
-				<h3>員工資料修改 - update_seller_input.jsp</h3>
+				<h3>update_sellerLv_input.jsp</h3>
 				<h4>
 					<a href="select_page.jsp"><img src="images/back1.gif"
 						width="100" height="32" border="0">回首頁</a>
@@ -69,7 +69,6 @@ th, td {
 
 	<h3>資料修改:</h3>
 
-	<%-- 錯誤表列 --%>
 	<c:if test="${not empty errorMsgs}">
 		<font style="color: red">請修正以下錯誤:</font>
 		<ul>
@@ -79,114 +78,70 @@ th, td {
 		</ul>
 	</c:if>
 
-	<FORM METHOD="post" ACTION="seller.do" name="form1">
+	<FORM METHOD="post" ACTION="sellerLv.do" name="form1">
 		<table>
 			<tr>
-				<td>賣家Id<font color=red><b>*</b></font></td>
-				<td><%=sellerVO.getSellerId()%></td>
+				<td>賣家等級ID<font color=red><b>*</b></font></td>
+				<td><%=sellerLvVO.getSellerLvId()%></td>
 			</tr>
 			<tr>
-				<td>賣家Lv<font color="red"><b>*</b></font></td>
-				<td><input type="text" name="sellerLvId"
-					value="<%=sellerVO.getSellerLvId().getSellerLvId()%>" size="45" required></td>
+				<td>等級名稱<font color="red"><b>*</b></font></td>
+				<td><input type="text" name="lvName"
+					value="<%=sellerLvVO.getLvName()%>" size="45"></td>
 			</tr>
 			<tr>
-				<td>賣家Email<font color="red"><b>*</b></font></td>
-				<td><input type="text" name="sellerEmail"
-					value="<%=sellerVO.getSellerEmail()%>" size="45" required></td>
+				<td>平台佣金<font color="red"><b>*</b></font></td>
+				<td><input type="text" name="platformCommission"
+					value="<%=sellerLvVO.getPlatformCommission()%>" size="45"></td>
 			</tr>
 			<tr>
-				<td>賣家公司名稱<font color="red"><b>*</b></font></td>
-				<td><input type="text" name="sellerCompany"
-					value="<%=sellerVO.getSellerCompany()%>" size="45" required></td>
+				<td>廣告允許類型<font color="red"><b>*</b></font></td>
+				<td><input type="text" name="adAllowType"
+					value="<%=sellerLvVO.getAdAllowType()%>" size="45"></td>
 			</tr>
 			<tr>
-				<td>賣家統一編號</td>
-				<td><input type="text" name="sellerTaxId"
-					value="<%=sellerVO.getSellerTaxId()%>" size="45"></td>
+				<td>匯出金流<font color="red"><b>*</b></font></td>
+				<td><input type="checkbox" name="isExportGoldflow"
+					<%=sellerLvVO.getIsExportGoldflow() ? "checked" : ""%> size="45"></td>
 			</tr>
 			<tr>
-				<td>賣家資本額</td>
-				<td><input type="text" name="sellerCapital"
-					value="<%=sellerVO.getSellerCapital()%>" size="45"></td>
+				<td>運費補助<font color="red"><b>*</b></font></td>
+				<td><input type="text" name="freightSub"
+					value="<%=sellerLvVO.getFreightSub()%>" size="45"></td>
 			</tr>
 			<tr>
-				<td>賣家聯絡人<font color="red"><b>*</b></font></td>
-				<td><input type="text" name="sellerContact"
-					value="<%=sellerVO.getSellerContact()%>" size="45" required></td>
+				<td>每月退貨補助<font color="red"><b>*</b></font></td>
+				<td><input type="text" name="returnSubPerMonth"
+					value="<%=sellerLvVO.getReturnSubPerMonth()%>" size="45"></td>
 			</tr>
 			<tr>
-				<td>賣家公司電話<font color="red"><b>*</b></font></td>
-				<td><input type="text" name="sellerCompanyPhone"
-					value="<%=sellerVO.getSellerCompanyPhone()%>" size="45" required></td>
+				<td>顯示優先順序<font color="red"><b>*</b></font></td>
+				<td><input type="checkbox" name="isShowPriority"
+					<%=sellerLvVO.getIsShowPriority() ? "checked":""%> size="45"></td>
 			</tr>
 			<tr>
-				<!-- Add input fields for the missing properties -->
-				<td>賣家公司分機</td>
-				<td><input type="text" name="sellerCompanyExtension"
-					value="<%=sellerVO.getSellerCompanyExtension()%>" size="45"></td>
-			</tr>
-			<tr>
-				<td>賣家手機</td>
-				<td><input type="text" name="sellerMobile"
-					value="<%=sellerVO.getSellerMobile()%>" size="45"></td>
-			</tr>
-			<tr>
-				<td>賣家地址</td>
-				<td><input type="text" name="sellerAddress"
-					value="<%=sellerVO.getSellerAddress()%>" size="45"></td>
-			</tr>
-			<tr>
-				<td>賣家密碼<font color="red"><b>*</b></font></td>
-				<td><input type="text" name="sellerPassword"
-					value="<%=sellerVO.getSellerPassword()%>" size="45" required></td>
-			</tr>
-			<tr>
-				<td>賣家銀行帳戶<font color="red"><b>*</b></font></td>
-				<td><input type="text" name="sellerBankAccount"
-					value="<%=sellerVO.getSellerBankAccount()%>" size="45" required></td>
-			</tr>
-			<tr>
-				<td>賣家銀行代碼<font color="red"><b>*</b></font></td>
-				<td><input type="text" name="sellerBankCode"
-					value="<%=sellerVO.getSellerBankCode()%>" size="45" required></td>
-			</tr>
-			<tr>
-				<td>賣家銀行帳號<font color="red"><b>*</b></font></td>
-				<td><input type="text" name="sellerBankAccountNumber"
-					value="<%=sellerVO.getSellerBankAccountNumber()%>" size="45"
-					required></td>
-			</tr>
-			<tr>
-				<td>賣家創建時間</td>
-				<td><input type="datetime-local" name="sellerCreateTime"
-					value="<%=sellerVO.getSellerCreateTime()%>" size="45"></td>
-			</tr>
-			<tr>
-				<td>帳號是否通過</td>
-				<td><input type="checkbox" name="isConfirm"
-					<%=(sellerVO.getIsConfirm() ? "checked" : "")%>></td>
+				<td>上架數量<font color="red"><b>*</b></font></td>
+				<td><input type="text" name="shelvesNumber"
+					value="<%=sellerLvVO.getShelvesNumber()%>" size="45"></td>
 			</tr>
 
-
-			<%-- 	<jsp:useBean id="deptSvc" scope="page" class="com.dept.model.DeptService" /> --%>
-			<!-- 	<tr> -->
-			<!-- 		<td>部門:<font color=red><b>*</b></font></td> -->
-			<!-- 		<td><select size="1" name="deptno"> -->
+			<%-- Add input fields for the missing properties --%>
+			<%-- 	<tr> --%>
+			<%-- 		<td>部門:<font color=red><b>*</b></font></td> --%>
+			<%-- 		<td><select size="1" name="deptno"> --%>
 			<%-- 			<c:forEach var="deptVO" items="${deptSvc.all}"> --%>
-			<%-- 				<option value="${deptVO.deptno}" ${(sellerVO.deptno==deptVO.deptno)?'selected':'' } >${deptVO.dname} --%>
+			<%-- 				<option value="${deptVO.deptno}" ${(sellerLvVO.deptno==deptVO.deptno)?'selected':'' } >${deptVO.dname} --%>
 			<%-- 			</c:forEach> --%>
-			<!-- 		</select></td> -->
-			<!-- 	</tr> -->
+			<%-- 		</select></td> --%>
+			<%-- 	</tr> --%>
 
 		</table>
 		<br> <input type="hidden" name="action" value="update"> <input
-			type="hidden" name="sellerId" value="<%=sellerVO.getSellerId()%>">
-		<input type="submit" value="送出修改">
+			type="hidden" name="sellerLvId"
+			value="<%=sellerLvVO.getSellerLvId()%>"> <input type="submit"
+			value="送出修改">
 	</FORM>
 </body>
-
-
 
 <!-- =========================================以下為 datetimepicker 之相關設定========================================== -->
 
@@ -207,19 +162,19 @@ th, td {
 </style>
 
 <script>
-        $.datetimepicker.setLocale('zh');
-        $('#f_date1').datetimepicker({
-           theme: '',              //theme: 'dark',
- 	       timepicker:false,       //timepicker:true,
- 	       step: 1,                //step: 60 (這是timepicker的預設間隔60分鐘)
- 	       format:'Y-m-d',         //format:'Y-m-d H:i:s',
- 		   value: '<%=sellerVO.getSellerCreateTime()%>
-	', // value:   new Date(),
+	//         $.datetimepicker.setLocale('zh');
+	//         $('#f_date1').datetimepicker({
+	//            theme: '',              //theme: 'dark',
+	//  	       timepicker:false,       //timepicker:true,
+	//  	       step: 1,                //step: 60 (這是timepicker的預設間隔60分鐘)
+	//  	       format:'Y-m-d',         //format:'Y-m-d H:i:s',
+<%--  		   value: '<%=sellerLvVO.getSellerLvId()%> --%>
+	// 	', // value:   new Date(),
 	//disabledDates:        ['2017/06/08','2017/06/09','2017/06/10'], // 去除特定不含
 	//startDate:	            '2017/07/10',  // 起始日
 	//minDate:               '-1970-01-01', // 去除今日(不含)之前
 	//maxDate:               '+1970-01-01'  // 去除今日(不含)之後
-	});
+// 	});
 
 	// ----------------------------------------------------------以下用來排定無法選擇的日期-----------------------------------------------------------
 
