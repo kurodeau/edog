@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .pagination {
+        display: flex;
+        list-style: none;
+        padding: 0;
+      }
+
+      .page-item {
+        margin: 0 5px;
+        cursor: pointer;
+      }
+
+      .page-link {
+        text-decoration: none;
+        padding: 5px 10px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+      }
+
+      .page-link.active {
+        background-color: #007bff;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="pagination" id="pagination-container"></ul>
+
+    <script>
+      const totalPages = 5; // Replace with your total number of pages
+      const currentPage = 1; // Replace with the current active page
+
+      const container = document.getElementById("pagination-container");
+
+      function generatePagination() {
+        container.innerHTML = "";
+
+        for (let i = 1; i <= totalPages; i++) {
+          const pageItem = document.createElement("li");
+          pageItem.classList.add("page-item");
+
+          const pageLink = document.createElement("a");
+          pageLink.classList.add("page-link");
+          pageLink.href = "#";
+          pageLink.textContent = i;
+
+          if (i === currentPage) {
+            pageLink.classList.add("active");
+          }
+
+          pageLink.addEventListener("click", () => {
+            // Handle page click event, you can add logic to fetch and display data for the clicked page
+            alert(`Clicked on page ${i}`);
+          });
+
+          pageItem.appendChild(pageLink);
+          container.appendChild(pageItem);
+        }
+
+        // Add "..." if there are more than 5 pages
+        if (totalPages > 5) {
+          const dotsItem = document.createElement("li");
+          dotsItem.classList.add("page-item", "disabled");
+          dotsItem.textContent = "...";
+          container.appendChild(dotsItem);
+        }
+      }
+
+      generatePagination();
+    </script>
+  </body>
+</html>

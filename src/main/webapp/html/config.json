@@ -1,0 +1,33 @@
+{
+  "baseURLVSCode": "../assets/",
+  "baseURLServlet": "/edog/assets/",
+  "resources": {
+    "favicon": "image/Medium.png",
+    "webfontspreconnect": ["https://fonts.gstatic.com"],
+    "webfonts": [
+      "https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    ],
+
+    "icons": [
+      "icons/remixicon/remixicon.css",
+      "icons/bootstrap-icons/bootstrap-icons.css"
+    ],
+    "vendors": {
+      "bootstrap": "vendors/bootstrap/bootstrap.min.css",
+      "quillBubble": "vendors/quill/quill.bubble.css",
+      "quillSnow": "vendors/quill/quill.snow.css",
+      "simpleDatatables": "vendors/simple-datatables/style.css",
+      "hamburger": "vendors/hamburger/hamburgers.css"
+    },
+    "mainStyle": "css/style.css",
+    "js": [
+      "vendors/bootstrap/bootstrap.min.js",
+      "vendors/chart.js/chart.umd.js",
+      "vendors/quill/quill.min.js",
+      "vendors/simple-datatables/simple-datatables.js",
+      "vendors/tinymce/tinymce.js",
+      "vendors/common/tw-city-selector.js"
+    ],
+    "mainjs": "mainjs/main.js"
+  }
+}
