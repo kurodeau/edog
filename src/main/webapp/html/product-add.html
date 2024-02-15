@@ -559,10 +559,10 @@
           var reader = new FileReader();
           reader.onload = function (e) {
             div.innerHTML = `
-          <div style='background-image: url(${e.target.result})' data-filename='${fileName}'  data-section='${section}' class='img-bg'>
-            <div class='upload__img--close'></div>
-          </div>
-        `;
+              <div style='background-image: url(${e.target.result})' data-filename='${fileName}'  data-section='${section}' class='img-bg'>
+                <div class='upload__img--close'></div>
+              </div>
+            `;
           };
           reader.readAsDataURL(file);
 
@@ -599,7 +599,27 @@
             var form = document.createElement("form");
             form.setAttribute("method", "POST");
             form.setAttribute("enctype", "multipart/form-data");
-            form.setAttribute("action", "/edog/test/TestPic");
+
+            let getActionPath;
+            // try {
+            //   getActionPath = await (async () => {
+            //     const response = await fetch("config.json");
+            //     const config = await response.json();
+            //     return config.actionPath["product-add"];
+            //   })();
+            // } catch (err) {
+            //   console.log(err);
+            // }
+            fetch("config.json")
+              .then((response) => response.json())
+              .then((config) => {
+                getActionPath = config.actionPath["product-add"];
+                // 在這裡繼續處理其他邏輯，例如動態生成表單元素等
+              })
+              .catch((err) => console.log(err));
+
+            console.log("getActionPath" + getActionPath);
+            form.setAttribute("action", getActionPath);
 
             // (1.1 針對第一個表單imageForm
             // 創建一個 DataTransfer 對象，模擬用戶上傳圖片行為

@@ -140,17 +140,9 @@
           form.classList.add("was-validated");
           let a;
           if ((a = await checkEmailValidity(email)) === false) {
-            console.log("=================");
-            console.log(a);
-            console.log("=================");
-
-            // console.error("form is invalid");
+            console.error("form is invalid");
           } else {
-            console.log("====XXXXXXXX=");
-            console.log(a);
-            console.log("====XXXXXXXX=");
-
-            // form.submit();
+            form.submit();
           }
         },
         false

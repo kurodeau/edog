@@ -29,5 +29,6 @@
       "vendors/common/tw-city-selector.js"
     ],
     "mainjs": "mainjs/main.js"
-  }
+  },
+  "actionPath": { "product-add": "/edog/test/TestPic2" }
 }

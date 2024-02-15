@@ -52,6 +52,7 @@ public class TestPic2 extends HttpServlet {
                     InputStream textContent = filePart.getInputStream();
                     byte[] textBytes = textContent.readAllBytes();
                     
+                    
                     // Handle the non-image data as needed
                     // For example, if partName is "name" or "mobile"
                     String textData = new String(textBytes, StandardCharsets.UTF_8);
