@@ -19,14 +19,23 @@ const fetchConfig = fetch("config.json")
 fetchConfig
   .then((config) => {
     const resources = config.resources;
-    const baseURL = config.baseURLServlet;
+    let path = window.location.pathname;
+    // Get the webapplcation context path === req.getContextPath()
+    var webctxPath = path.substring(1, path.indexOf("/", 1));
+    const baseURLServlet = resources.baseURLServlet.replace(
+      "CTXPATH",
+      webctxPath
+    );
+
+    console.log("baseURLServlet" + baseURLServlet);
 
     // Create an array of promises for dynamic script loading
     const scriptPromises = [];
 
     // Function to check if script exists and create <script> element
     const checkAndCreateScript = (scriptPath) => {
-      const fullPath = baseURL + scriptPath;
+      const fullPath = baseURLServlet + scriptPath;
+      console.log("fullPath" + fullPath);
 
       // Create a promise for each script
       const scriptPromise = new Promise((resolve, reject) => {
@@ -40,7 +49,7 @@ fetchConfig
             } else {
               console.log("VS Code development path for script:", fullPath);
 
-              const newScriptPath = config.baseURLVSCode + scriptPath;
+              const newScriptPath = resources.baseURLVSCode + scriptPath;
               createScript(newScriptPath).then(resolve).catch(reject);
             }
           })
@@ -54,9 +63,9 @@ fetchConfig
     };
 
     // Dynamically create <script> elements for each vendor
-    config.resources.js.forEach(checkAndCreateScript);
+    resources.js.forEach(checkAndCreateScript);
 
-    const mainScriptPath = baseURL + config.resources.mainjs;
+    const mainScriptPath = baseURLServlet + resources.mainjs;
 
     // Create a promise for the main script
     const mainScriptPromise = new Promise((resolve, reject) => {
@@ -71,7 +80,7 @@ fetchConfig
               mainScriptPath
             );
             const newMainScriptPath =
-              config.baseURLVSCode + config.resources.mainjs;
+              resources.baseURLVSCode + resources.mainjs;
             createScript(newMainScriptPath).then(resolve).catch(reject);
           }
         })

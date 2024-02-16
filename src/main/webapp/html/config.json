@@ -1,7 +1,7 @@
 {
-  "baseURLVSCode": "../assets/",
-  "baseURLServlet": "/edog/assets/",
   "resources": {
+    "baseURLVSCode": "../assets/",
+    "baseURLServlet": "/CTXPATH/assets/",
     "favicon": "image/Medium.png",
     "webfontspreconnect": ["https://fonts.gstatic.com"],
     "webfonts": [
@@ -30,5 +30,5 @@
     ],
     "mainjs": "mainjs/main.js"
   },
-  "actionPath": { "product-add": "/edog/test/TestPic2" }
+  "actionPath": { "product-add": { "form": "/CTXPATH/test/TestPic2" } }
 }

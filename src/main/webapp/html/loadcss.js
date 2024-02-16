@@ -16,8 +16,12 @@ fetch("config.json")
   .then((response) => response.json())
   .then((config) => {
     const resources = config.resources;
-    const baseURL = config.baseURLServlet;
 
+    let path = window.location.pathname;
+    // Get the webapplcation context path === req.getContextPath()
+    var webctxPath = path.substring(1, path.indexOf("/", 1));
+    const baseURL = resources.baseURLServlet.replace("CTXPATH", webctxPath);
+    console.log("baseURL" + baseURL);
     // 动态创建基于配置的<link>元素
     // createLink(baseURL + resources.favicon, "icon");
     for (const key in resources) {
@@ -37,7 +41,7 @@ fetch("config.json")
         } else {
           // 如果 favicon 不存在，使用替代的基礎URL重新構建路徑
           console.log("VS Code 開發路徑 for favicon:", faviconPath);
-          const newFaviconPath = config.baseURLVSCode + resources.favicon;
+          const newFaviconPath = resources.baseURLVSCode + resources.favicon;
 
           // 創建並附加<link>元素
           createLink(newFaviconPath, "icon");
@@ -56,7 +60,7 @@ fetch("config.json")
             createLink(iconPath, "stylesheet");
           } else {
             console.log("VS Code 開發路徑 for icon:", iconPath);
-            const newIconPath = config.baseURLVSCode + icon;
+            const newIconPath = resources.baseURLVSCode + icon;
             createLink(newIconPath, "stylesheet");
           }
         })
@@ -74,7 +78,7 @@ fetch("config.json")
             createLink(vendorPath, "stylesheet");
           } else {
             console.log("VS Code 開發路徑 for vendor:", vendorPath);
-            const newVendorPath = config.baseURLVSCode + path;
+            const newVendorPath = resources.baseURLVSCode + path;
             createLink(newVendorPath, "stylesheet");
           }
         })
@@ -91,7 +95,8 @@ fetch("config.json")
           createLink(mainStylePath, "stylesheet");
         } else {
           console.log("VS Code 開發路徑 for mainStyle:", mainStylePath);
-          const newMainStylePath = config.baseURLVSCode + resources.mainStyle;
+          const newMainStylePath =
+            resources.baseURLVSCode + resources.mainStyle;
           createLink(newMainStylePath, "stylesheet");
         }
       })

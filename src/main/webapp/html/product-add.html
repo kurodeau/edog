@@ -499,7 +499,7 @@
               let previousSuffix = -1;
               Array.from(files).forEach(function (file) {
                 if (!file.type.match("image.*")) {
-                  alert("你上傳的不是圖片");
+                  alert("上傳的不是圖片");
                   return;
                 }
                 // 取得亂數方便辨識
@@ -601,22 +601,20 @@
             form.setAttribute("enctype", "multipart/form-data");
 
             let getActionPath;
-            // try {
-            //   getActionPath = await (async () => {
-            //     const response = await fetch("config.json");
-            //     const config = await response.json();
-            //     return config.actionPath["product-add"];
-            //   })();
-            // } catch (err) {
-            //   console.log(err);
-            // }
-            fetch("config.json")
-              .then((response) => response.json())
-              .then((config) => {
-                getActionPath = config.actionPath["product-add"];
-                // 在這裡繼續處理其他邏輯，例如動態生成表單元素等
-              })
-              .catch((err) => console.log(err));
+            try {
+              let response = await fetch("config.json");
+              let config = await response.json();
+              getActionPath = await config.actionPath["product-add"].form;
+            } catch (err) {
+              console.log(err);
+            }
+            getActionPath = getActionPath.replace(
+              "CTXPATH",
+              window.location.pathname.substring(
+                1,
+                window.location.pathname.indexOf("/", 1)
+              )
+            );
 
             console.log("getActionPath" + getActionPath);
             form.setAttribute("action", getActionPath);

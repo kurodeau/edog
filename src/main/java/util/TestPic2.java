@@ -24,10 +24,14 @@ public class TestPic2 extends HttpServlet {
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	
+    	
+    	
+    	
         try {
             Collection<Part> fileParts = request.getParts();
             int imageCount = 0;
-            System.out.println("SSSSSSS");
+            
             for (Part filePart : fileParts) {
                 String partName = filePart.getName();
                 String contentType = filePart.getContentType();

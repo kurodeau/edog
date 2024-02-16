@@ -27,6 +27,8 @@ public class TestRecap extends HttpServlet {
 	private static final String PROJECT_ID = "edogproject-1707391807859";
 	private static final String SITE_KEY = "6LdmTWspAAAAAHYjkR2LmP56JSjUlirs0sBb8hqx";
 
+	
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		req.setCharacterEncoding("UTF-8");
@@ -48,6 +50,7 @@ public class TestRecap extends HttpServlet {
 			resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Internal Server Error");
 		}
 	}
+	
 
 	private String buildJsonRequestBody(String token, String userAction) {
 		// Build the JSON request body
