@@ -39,7 +39,7 @@ fetch("config.json")
           // 如果 favicon 存在，則創建並附加<link>元素
           createLink(faviconPath, "icon");
         } else {
-          // 如果 favicon 不存在，使用替代的基礎URL重新構建路徑
+          // 如果 favicon 不存在 使用替代的基礎URL重新構建路徑
           console.log("VS Code 開發路徑 for favicon:", faviconPath);
           const newFaviconPath = resources.baseURLVSCode + resources.favicon;
 
