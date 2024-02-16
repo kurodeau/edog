@@ -6,6 +6,8 @@ import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import com.manager.entity.*;
+import com.manager.service.*;
 import com.manager.model.*;
 
 public class ManagerUserServlet extends HttpServlet {

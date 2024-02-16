@@ -23,10 +23,11 @@
         <property name="hibernate.format_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">validate</property>
         <property name="hibernate.current_session_context_class">thread</property>
-         <mapping class="com.sellerLv.entity.SellerLvVO"/> 
-         <mapping class="com.seller.entity.SellerVO"/>
-          <mapping class="com.coupon.entity.CouponVO"/>
-          
+
+		<mapping class="com.seller.entity.SellerVO"/> 
+        <mapping class="com.sellerLv.entity.SellerLvVO"/>
+        <mapping class="com.buyer.entity.BuyerVO"/> 
+
          
 	</session-factory>
 </hibernate-configuration>

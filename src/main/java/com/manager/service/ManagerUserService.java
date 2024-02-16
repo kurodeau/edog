@@ -1,6 +1,10 @@
-package com.manager.model;
+package com.manager.service;
 
 import java.util.List;
+
+import com.manager.entity.ManagerUserVO;
+import com.manager.model.ManagerUserDAO_interface;
+import com.manager.model.ManagerUserJDBCDAO;
 
 public class ManagerUserService {
 
