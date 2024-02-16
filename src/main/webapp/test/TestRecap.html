@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>EDog</title>
+    <!-- Favicons -->
+    <link href="assets/image/Medium.png" rel="icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- ICONS -->
+
+    <link rel="stylesheet" href="assets/icons/remixicon/remixicon.css" />
+    <link
+      rel="stylesheet"
+      href="assets/icons/bootstrap-icons/bootstrap-icons.css"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link rel="stylesheet" href="assets/vendors/bootstrap/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="assets/vendors/quill/quill.bubble.css" />
+    <link rel="stylesheet" href="assets/vendors/quill/quill.snow.css" />
+    <link rel="stylesheet" href="assets/vendors/simple-datatables/style.css" />
+
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <!-- Google Recatcha -->
+  <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdmTWspAAAAAHYjkR2LmP56JSjUlirs0sBb8hqx"></script>
+  </head>
+  <body>
+    <!-- ======= Header ======= -->
+    <!-- ======= Sidebar ======= -->
+    <!-- ======= Main ======= -->
+
+    <main class="main main-layout-seller">
+      <div class="container-fluid seller-container">
+        <h1>編輯個人資料</h1>
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item active">賣家中心</li>
+            <li class="breadcrumb-item active">編輯個人資料</li>
+            <li class="breadcrumb-item">帳號設定</li>
+          </ol>
+        </nav>
+        <form class="row g-3" id="myForm" action="testrecap">
+    
+          <div class="text-center">
+            <button type="reset" class="btn btn-secondary">重設</button>
+
+            <button
+              type="submit"
+              class="g-recaptcha btn btn-primary"
+              data-sitekey="6LdmTWspAAAAAHYjkR2LmP56JSjUlirs0sBb8hqx"
+              data-callback="onSubmit"
+              data-action="submit"
+            >
+              提交
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+    <!-- End #main -->
+
+    <!-- End Main -->
+
+    <!-- ======= Footer ======= -->
+    <footer class="footer footer-layout on">
+      <div
+        class="row row-cols-1 row-cols-sm-2 row-cols-md-4 pt-5 border-top footer-container-custom text-white"
+      >
+        <div class="col d-none d-sm-block p-sm-2 px-5 px-sm-5 px-md-0"></div>
+
+        <div class="col p-sm-2 px-5 px-sm-5 px-md-0">
+          <h5 class="mb-3">關於我們</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2">
+              <a href="#" class="nav-link p-0 text-body-secondary">人才招募</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a href="#" class="nav-link p-0 text-body-secondary">E狗簡介</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col p-sm-2 px-5 px-sm-5 px-md-0">
+          <h5 class="mb-3">常見問題</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2">
+              <a href="#" class="nav-link p-0 text-body-secondary">聯絡E狗</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a href="#" class="nav-link p-0 text-body-secondary">Q&A</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row footer-container-custom">
+        <div class="col-3"></div>
+
+        <div class="col-auto">
+          <a
+            href="/"
+            class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none"
+          >
+            <svg class="bi" width="32" height="32" fill="currentColor">
+              <use xlink:href="bootstrap-icons.svg#heart-fill" />
+            </svg>
+          </a>
+          <p class="text-body-secondary">
+            新加坡商CatTom有限公司台灣分公司 統一編號：00000000 © 2023
+            CatTom.版權所有。
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="assets/vendors/chart.js/chart.umd.js"></script>
+    <script src="assets/vendors/quill/quill.min.js"></script>
+    <script src="assets/vendors/simple-datatables/simple-datatables.js"></script>
+    <script src="assets/vendors/tinymce/tinymce.js"></script>
+    <script src="assets/vendors/common/tw-city-selector.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- Local JS File -->
+    <script>
+      function onSubmit(token) {
+        document.getElementById("myForm").submit();
+      }
+
+      new TwCitySelector({
+        el: ".city-selector-set",
+        elCounty: ".county", // 在 el 裡查找 element
+        elDistrict: ".district", // 在 el 裡查找 element
+        elZipcode: ".zipcode", // 在 el 裡查找 element
+      });
+    </script>
+  </body>
+</html>

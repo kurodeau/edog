@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html * {
+        box-sizing: border-box;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .upload__box {
+        padding: 40px;
+      }
+
+      .upload__inputfile {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+      }
+
+      .upload__btn {
+        display: inline-block;
+        font-weight: 600;
+        color: #fff;
+        text-align: center;
+        min-width: 116px;
+        padding: 5px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: 2px solid;
+        background-color: #4045ba;
+        border-color: #4045ba;
+        border-radius: 10px;
+        line-height: 26px;
+        font-size: 14px;
+      }
+
+      .upload__btn:hover {
+        background-color: unset;
+        color: #4045ba;
+        transition: all 0.3s ease;
+      }
+
+      .upload__btn-box {
+        margin-bottom: 10px;
+      }
+
+      .upload__img-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -10px;
+      }
+
+      .upload__img-box {
+        width: 200px;
+        padding: 0 10px;
+        margin-bottom: 12px;
+      }
+
+      .upload__img-close {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background-color: darkred;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        text-align: center;
+        line-height: 24px;
+        z-index: 1;
+        cursor: pointer;
+      }
+
+      .upload__img-close:after {
+        content: "\2716";
+        font-size: 14px;
+        color: white;
+      }
+
+      .img-bg {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        position: relative;
+        padding-bottom: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 第一個表單，處理圖片 -->
+    <form id="imageForm" method="POST" enctype="multipart/form-data">
+      <div class="upload__box">
+        <div class="upload__btn-box">
+          <label class="upload__btn">
+            <p>Upload images</p>
+            <input
+              type="file"
+              multiple=""
+              data-max_length="20"
+              class="upload__inputfile"
+              name="empty"
+            />
+          </label>
+        </div>
+        <div class="upload__img-wrap"></div>
+      </div>
+    </form>
+
+    <!-- 第二個表單，處理其他資料 -->
+    <form id="dataForm" method="POST">
+      <input type="text" name="name" placeholder="Name" />
+      <input type="text" name="mobile" placeholder="Mobile" />
+      <!-- 其他欄位 -->
+    </form>
+
+    <button type="button" id="submitButton">Submit Both Forms</button>
+  </body>
+  <script>
+    function createImageUploader() {
+      let imgArray = [];
+
+      function imgUpload() {
+        var uploadInput = document.querySelector(".upload__inputfile");
+
+        uploadInput.addEventListener("change", function (event) {
+          var imgWrap = event.target
+            .closest(".upload__box")
+            .querySelector(".upload__img-wrap");
+          var maxLength = event.target.getAttribute("data-max_length");
+          var files = event.target.files;
+
+          var uploadedImagesCount = 0;
+
+          Array.from(files).forEach(function (file) {
+            if (
+              !file.type.match("image.*") ||
+              uploadedImagesCount >= maxLength
+            ) {
+              return;
+            }
+
+            let timestamp = new Date().getTime();
+            let randomSuffix = Math.floor(Math.random() * 1000);
+            let uniqueFileName = `image_${timestamp}_${randomSuffix}.jpg`;
+
+            imgArray.push({ name: uniqueFileName, file: file });
+            appendImageToWrap(imgWrap, file, uniqueFileName);
+            uploadedImagesCount++;
+          });
+
+          this.value = "";
+        });
+      }
+
+      function handleImageClose(event) {
+        var filename = event.target
+          .closest(".upload__img-box")
+          .querySelector(".img-bg").dataset.filename;
+        imgArray = imgArray.filter(function (item) {
+          console.log("===========");
+          console.log("item" + item);
+          console.log("filename" + filename);
+          console.log("item.name" + item.name);
+          console.log("===========");
+          return item.name !== filename;
+        });
+
+        event.target.closest(".upload__img-box").remove();
+        console.log(imgArray);
+      }
+
+      function appendImageToWrap(imgWrap, file, fileName) {
+        var div = document.createElement("div");
+        div.classList.add("upload__img-box");
+
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          div.innerHTML = `
+            <div style='background-image: url(${e.target.result})' data-filename='${fileName}' class='img-bg'>
+              <div class='upload__img-close'></div>
+            </div>
+          `;
+        };
+        reader.readAsDataURL(file);
+
+        imgWrap.appendChild(div);
+      }
+
+      return { imgUpload, handleImageClose, getImgArray: () => imgArray };
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+      const uploader = createImageUploader();
+      const { imgUpload, handleImageClose, getImgArray } = uploader;
+
+      imgUpload();
+
+      document.body.addEventListener("click", function (e) {
+        if (e.target.classList.contains("upload__img-close")) {
+          handleImageClose(e);
+        }
+      });
+
+      document
+        .getElementById("submitButton")
+        .addEventListener("click", function (event) {
+          // 防止表單預設的提交行為
+          event.preventDefault();
+
+          // 動態生成表單元素
+          var form = document.createElement("form");
+          form.setAttribute("method", "POST");
+          form.setAttribute("enctype", "multipart/form-data");
+          form.setAttribute("action", "TestPic");
+
+          // 創建一個 DataTransfer 對象
+          var dataTransfer = new DataTransfer();
+
+          // 將每個檔案添加到 DataTransfer 中
+          getImgArray().forEach(function (item, index) {
+            // 創建一個新的 File 對象
+            var file = new File([item.file], item.name, {
+              type: item.file.type,
+            });
+
+            // 將檔案添加到 DataTransfer 中
+            dataTransfer.items.add(file);
+          });
+
+          // 創建一個隱藏的 input 元素，將檔案添加到其中
+          var input = document.createElement("input");
+          input.setAttribute("type", "file");
+          input.setAttribute("name", "subimages");
+          input.files = dataTransfer.files;
+
+          form.appendChild(input);
+
+          // 將第二個表單的資料加入到 FormData 中
+          var dataForm = document.getElementById("dataForm");
+          var dataFormInputs = new FormData(dataForm);
+          for (var pair of dataFormInputs.entries()) {
+            form
+              .appendChild(document.createElement("input"))
+              .setAttribute("type", "hidden");
+            form.lastChild.setAttribute("name", pair[0]);
+            form.lastChild.setAttribute("value", pair[1]);
+          }
+
+          // 將表單添加到 body 中
+          document.body.appendChild(form);
+          console.log(form);
+          // 提交表單
+          form.submit();
+
+          // 刪除動態生成的表單元素
+          document.body.removeChild(form);
+        });
+    });
+  </script>
+</html>

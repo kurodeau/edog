@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>EDog</title>
+    <!-- Favicons -->
+    <link href="assets/image/Medium.png" rel="icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- ICONS -->
+
+    <link rel="stylesheet" href="assets/icons/remixicon/remixicon.css" />
+    <link
+      rel="stylesheet"
+      href="assets/icons/bootstrap-icons/bootstrap-icons.css"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link rel="stylesheet" href="assets/vendors/bootstrap/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="assets/vendors/quill/quill.bubble.css" />
+    <link rel="stylesheet" href="assets/vendors/quill/quill.snow.css" />
+    <link rel="stylesheet" href="assets/vendors/simple-datatables/style.css" />
+
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!-- ======= Header ======= -->
+    <header class="fixed-top">
+      <nav class="navbar navbar-expand navbar-expand-sm navbar-light bg-seller">
+        <div class="container-fluid">
+          <div
+            class="collapse navbar-collapse d-flex justify-content-between"
+            id="navbarSupportedContent"
+          >
+            <!-- Start NavBar  -->
+            <!-- NavBar--LeftSide  -->
+            <ul class="navbar-nav me-auto mb-2">
+              <li class="nav-item d-flex align-items-center toggle-sidebar-btn">
+                <i class="bi bi-list"></i>
+                <a
+                  class="nav-link cancel-default-behavior"
+                  aria-current="page"
+                  href="#"
+                  >選單</a
+                >
+              </li>
+              <li class="nav-item d-flex align-items-center">
+                <a class="nav-link active" aria-current="page" href="#"
+                  >電子商城</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="seller-login.html">賣家中心</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">論壇</a>
+              </li>
+            </ul>
+
+            <!-- NavBar--RightSide  -->
+            <ul class="navbar-nav ms-auto mb-2">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">註冊</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">登入</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End NavBar  -->
+    </header>
+    <!-- ======= Sidebar ======= -->
+    <aside class="sidebar sidebar-layout-seller">
+      <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-item">
+          <a class="nav-link nav-seller-entry" href="sellerMain.html">
+            <i class="bi bi-grid"></i>
+            <span>賣家中心</span>
+          </a>
+        </li>
+        <!-- End Dashboard Nav -->
+
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            data-bs-target="#seller-nav"
+            data-bs-toggle="collapse"
+            href="#"
+          >
+            <i class="bi bi-person"></i>
+            <span>賣家帳戶</span><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul
+            id="seller-nav"
+            class="nav-content collapse"
+            data-bs-parent="#sidebar-nav"
+          >
+            <li>
+              <a href="seller-level.html">
+                <i class="bi bi-circle"></i><span>賣家等級</span>
+              </a>
+            </li>
+            <li>
+              <a href="seller-edit.html">
+                <i class="bi bi-circle"></i><span>修改賣家資料</span>
+              </a>
+            </li>
+            <li>
+              <a href="seller-check-payment.html">
+                <i class="bi bi-circle"></i><span>查看金流</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- End Seller Nav -->
+
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            data-bs-target="#product-nav"
+            data-bs-toggle="collapse"
+            href="#"
+          >
+            <i class="bi bi-bag"></i>
+            <span>商品管理</span><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul
+            id="product-nav"
+            class="nav-content collapse"
+            data-bs-parent="#sidebar-nav"
+          >
+            <li>
+              <a href="product-add.html">
+                <i class="bi bi-circle"></i><span>新增商品</span>
+              </a>
+            </li>
+            <li>
+              <a href="product-all.html">
+                <i class="bi bi-circle"></i><span>商品列表</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- End product Nav -->
+
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            data-bs-target="#service-nav"
+            data-bs-toggle="collapse"
+            href="#"
+          >
+            <i class="bi bi-headset"></i><span>客戶服務</span
+            ><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul
+            id="service-nav"
+            class="nav-content collapse"
+            data-bs-parent="#sidebar-nav"
+          >
+            <li>
+              <a href="service-form.html">
+                <i class="bi bi-circle"></i><span>意見表單</span>
+              </a>
+            </li>
+            <li>
+              <a href="service-reply.html">
+                <i class="bi bi-circle"></i><span>查詢回覆</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- End Tables Nav -->
+
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            data-bs-target="#charts-nav"
+            data-bs-toggle="collapse"
+            href="#"
+          >
+            <i class="bi bi-bar-chart"></i><span>銷售報表</span
+            ><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul
+            id="charts-nav"
+            class="nav-content collapse"
+            data-bs-parent="#sidebar-nav"
+          >
+            <li>
+              <a href="charts-chartjs.html">
+                <i class="bi bi-circle"></i><span>銷售數據</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- End Charts Nav -->
+
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            data-bs-target="#order-nav"
+            data-bs-toggle="collapse"
+            href="#"
+          >
+            <i class="bi bi-stickies"></i><span>訂單管理</span
+            ><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul
+            id="order-nav"
+            class="nav-content collapse"
+            data-bs-parent="#sidebar-nav"
+          >
+            <li>
+              <a href="order-bootstrap.html">
+                <i class="bi bi-circle"></i><span>全部訂單</span>
+              </a>
+            </li>
+            <li>
+              <a href="order-remix.html">
+                <i class="bi bi-circle"></i><span>已完成訂單</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            data-bs-target="#ads-nav"
+            data-bs-toggle="collapse"
+            href="#"
+          >
+            <i class="bi bi-badge-ad"></i><span>廣告管理</span
+            ><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul
+            id="ads-nav"
+            class="nav-content collapse"
+            data-bs-parent="#sidebar-nav"
+          >
+            <li>
+              <a href="ads-add.html">
+                <i class="bi bi-circle"></i><span>新增廣告</span>
+              </a>
+            </li>
+            <li>
+              <a href="ads-all.html">
+                <i class="bi bi-circle"></i><span>查看廣告</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- End Icons Nav -->
+      </ul>
+    </aside>
+    <!-- ======= Main ======= -->
+
+    <main class="main main-layout-seller">
+      <div class="container-fluid seller-container">
+        <h1>賣家等級</h1>
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+              <div class="card-header py-3">
+                <h4 class="my-0 fw-normal table-text">Free</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title">
+                  $0<small class="text-muted fw-light">/mo</small>
+                </h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>10 users included</li>
+                  <li>2 GB of storage</li>
+                  <li>Email support</li>
+                  <li>Help center access</li>
+                </ul>
+                <button
+                  type="button"
+                  class="w-100 btn btn-lg btn-sellerdark"
+                  data-bs-toggle="modal"
+                  data-bs-target="#freeModal"
+                >
+                  免費方案
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+              <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">Pro</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title">
+                  $15<small class="text-muted fw-light">/mo</small>
+                </h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>20 users included</li>
+                  <li>10 GB of storage</li>
+                  <li>Priority email support</li>
+                  <li>Help center access</li>
+                </ul>
+                <button
+                  type="button"
+                  class="w-100 btn btn-lg btn-sellerdark btn-current"
+                  disabled
+                  data-bs-toggle="modal"
+                  data-bs-target="#proModal"
+                >
+                  現在方案
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm border-sellerdark">
+              <div
+                class="card-header py-3 text-white bg-sellerdark border-sellerdark"
+              >
+                <h4 class="my-0 fw-normal">Enterprise</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title">
+                  $29<small class="text-muted fw-light">/mo</small>
+                </h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>30 users included</li>
+                  <li>15 GB of storage</li>
+                  <li>Phone and email support</li>
+                  <li>Help center access</li>
+                </ul>
+                <button
+                  type="button"
+                  class="w-100 btn btn-lg btn-sellerdark"
+                  data-bs-toggle="modal"
+                  data-bs-target="#topModal"
+                >
+                  升級
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid seller-container">
+        <h1 class="display-6 mb-4">賣家方案</h1>
+
+        <div class="table-responsive">
+          <table class="table text-center">
+            <thead>
+              <tr>
+                <th class="pricing-table-text" style="width: 34%"></th>
+                <th class="pricing-table-text" style="width: 22%">Free</th>
+                <th class="pricing-table-text" style="width: 22%">Pro</th>
+                <th class="pricing-table-text" style="width: 22%">
+                  Enterprise
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" class="text-start table-text">Public</th>
+                <td>
+                  <svg class="bi" width="24" height="24">
+                    <use xlink:href="#check" />
+                  </svg>
+                </td>
+                <td>
+                  <svg class="bi" width="24" height="24">
+                    <use xlink:href="#check" />
+                  </svg>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-start table-text">Private</th>
+                <td></td>
+                <td>
+                  <svg class="bi" width="24" height="24">
+                    <use xlink:href="#check" />
+                  </svg>
+                </td>
+                <td>
+                  <svg class="bi" width="24" height="24">
+                    <use xlink:href="#check" />
+                  </svg>
+                </td>
+              </tr>
+            </tbody>
+
+            <tbody>
+              <tr>
+                <th scope="row" class="text-start table-text">Permissions</th>
+                <td>
+                  <svg class="bi" width="24" height="24">
+                    <use xlink:href="#check" />
+                  </svg>
+                </td>
+                <td>
+                  <svg class="bi" width="24" height="24">
+                    <use xlink:href="#check" />
+                  </svg>
+                </td>
+                <td>
+                  <svg class="bi" width="24" height="24">
+                    <use xlink:href="#check" />
+                  </svg>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-start table-text">Sharing</th>
+                <td></td>
+                <td>
+                  <svg class="bi" width="24" height="24">
+                    <use xlink:href="#check" />
+                  </svg>
+                </td>
+                <td>
+                  <svg class="bi" width="24" height="24">
+                    <use xlink:href="#check" />
+                  </svg>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-start table-text">
+                  Unlimited members
+                </th>
+                <td></td>
+                <td>
+                  <svg class="bi" width="24" height="24">
+                    <use xlink:href="#check" />
+                  </svg>
+                </td>
+                <td>
+                  <svg class="bi" width="24" height="24">
+                    <use xlink:href="#check" />
+                  </svg>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-start table-text">
+                  Extra security
+                </th>
+                <td></td>
+                <td></td>
+                <td>
+                  <i class="ri-check-line"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <!-- End Main -->
+    <!-- Modal 免費方案-->
+    <div
+      class="modal fade"
+      id="freeModal"
+      tabindex="-1"
+      aria-labelledby="FreeModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered vertical-align-center">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="FreeModalLabel">回去當免費仔😱</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">您的權益會有所更動，是否確認</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              關閉
+            </button>
+            <button type="button" class="btn btn-primary">
+              我就是要當免費仔😉
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Pro方案-->
+    <div
+      class="modal fade"
+      id="proModal"
+      tabindex="-1"
+      aria-labelledby="ProModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered vertical-align-center">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="ProModalLabel">回去當免費仔😱</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">您的權益會有所更動，是否確認</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              關閉
+            </button>
+            <button type="button" class="btn btn-primary">
+              我就是要當免費仔😉
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal TOP方案-->
+    <div
+      class="modal fade"
+      id="topModal"
+      tabindex="-1"
+      aria-labelledby="TopModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered vertical-align-center">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="TopModalLabel">謝謝金主爸爸🎉🎉</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">即將導向付款畫面</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              關閉
+            </button>
+            <button type="button" class="btn btn-primary">確認</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======= Footer ======= -->
+    <footer class="footer footer-layout on">
+      <div
+        class="row row-cols-1 row-cols-sm-2 row-cols-md-4 pt-5 border-top footer-container-custom text-white"
+      >
+        <div class="col d-none d-sm-block p-sm-2 px-5 px-sm-5 px-md-0"></div>
+
+        <div class="col p-sm-2 px-5 px-sm-5 px-md-0">
+          <h5 class="mb-3">關於我們</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2">
+              <a href="#" class="nav-link p-0 text-body-secondary">人才招募</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a href="#" class="nav-link p-0 text-body-secondary">E狗簡介</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col p-sm-2 px-5 px-sm-5 px-md-0">
+          <h5 class="mb-3">常見問題</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2">
+              <a href="#" class="nav-link p-0 text-body-secondary">聯絡E狗</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a href="#" class="nav-link p-0 text-body-secondary">Q&A</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row footer-container-custom">
+        <div class="col-3"></div>
+
+        <div class="col-auto">
+          <a
+            href="/"
+            class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none"
+          >
+            <svg class="bi" width="32" height="32" fill="currentColor">
+              <use xlink:href="bootstrap-icons.svg#heart-fill" />
+            </svg>
+          </a>
+          <p class="text-body-secondary">
+            新加坡商CatTom有限公司台灣分公司 統一編號：00000000 © 2023
+            CatTom.版權所有。
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="assets/vendors/chart.js/chart.umd.js"></script>
+    <script src="assets/vendors/quill/quill.min.js"></script>
+    <script src="assets/vendors/simple-datatables/simple-datatables.js"></script>
+    <script src="assets/vendors/tinymce/tinymce.js"></script>
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- Local JS File -->
+    <script></script>
+  </body>
+</html>
