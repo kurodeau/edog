@@ -6,6 +6,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Collection;
+import java.util.LinkedList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,14 +22,25 @@ import javax.servlet.http.Part;
 public class TestPic2 extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
+    @Override
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		doPost(req, res);
+	}
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	
-    	
-    	
-    	
+		
+    	request.setCharacterEncoding("utf-8");
         try {
+        	// 先
+        	
+        	String a = (String) request.getParameter("procductName");
+        	System.out.println("procductName : "+a);
+        	String b = (String) request.getParameter("mainImage");
+        	System.out.println("procductName : "+b);
+        	
+        	
+        	
             Collection<Part> fileParts = request.getParts();
             int imageCount = 0;
             
