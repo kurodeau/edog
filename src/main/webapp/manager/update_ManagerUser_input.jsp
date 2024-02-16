@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="com.manager.model.*"%>
+<%@ page import="com.manager.entity.*"%>
 
 <% //見com.manager.controller.ManagerUserServlet.java第163行存入req的managerUserVO物件 (此為從資料庫取出的managerUserVO, 也可以是輸入格式有錯誤時的managerUserVO物件)
    ManagerUserVO managerUserVO = (ManagerUserVO) request.getAttribute("managerUserVO");
