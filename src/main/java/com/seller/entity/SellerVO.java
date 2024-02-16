@@ -78,11 +78,11 @@ public class SellerVO implements java.io.Serializable{
     private String sellerBankAccountNumber;
 
     @Column(name = "sellerCreateTime")
-    @Temporal(TemporalType.TIMESTAMP) // 指定存储类型为 TIMESTAMP
-    private Date sellerCreateTime;
+    @Temporal(TemporalType.TIMESTAMP) 
+    private Date sellerCreateTime= new Date();
 
     @Column(name = "isConfirm")
-    private Boolean isConfirm;
+    private Boolean isConfirm =false;
     
 	    
 	    public Integer getSellerId() {

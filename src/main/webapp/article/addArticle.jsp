@@ -60,9 +60,9 @@ th, td {
     cursor: not-allowed;      /* 游標樣式 */
 }
 
-.readonly-input:focus {
+ .readonly-input:focus { 
     outline: none;  /* 移除點擊時的輪廓線 */
-}
+ }
 </style>
 </head>
 <body bgcolor='white'>

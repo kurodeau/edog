@@ -50,8 +50,11 @@ public class SellerService {
 	    sellerVO.setSellerBankAccount(sellerBankAccount);
 	    sellerVO.setSellerBankCode(sellerBankCode);
 	    sellerVO.setSellerBankAccountNumber(sellerBankAccountNumber);
-	    // sellerCreateTime 使用預設值，不需要在此設定
-	    // 預設 isConfirm 為 FALSE，不需在此設定
+	    
+	    // Hibernate要指定預設值
+	    sellerVO.setIsConfirm(false);
+	    sellerVO.setSellerCreateTime(new Date());
+	    sellerVO.setSellerLvId( sellerLvdao.findByPrimaryKey(1));
 
 	    dao.insert(sellerVO);
 
