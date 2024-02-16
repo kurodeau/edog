@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="com.manager.model.*"%>
 
-<% //見com.manager.controller.ManagerUserServlet.java第238行存入req的managerVO物件 (此為輸入格式有錯誤時的empVO物件)
+<% //見com.manager.controller.ManagerUserServlet.java第238行存入req的managerVO物件 (此為輸入格式有錯誤時的VO物件)
     ManagerUserVO managerUserVO = (ManagerUserVO) request.getAttribute("managerUserVO");
 %>
 --<%= managerUserVO==null %>--${managerUserVO.managerId}-- <!-- line 100 -->
@@ -81,7 +81,7 @@
 		<td><input type="TEXT" name="managerPer" value="<%= (managerUserVO==null)? "10" : managerUserVO.getManagerPer()%>" size="45"/></td>
 	</tr>
 
-	<jsp:useBean id="managerUserSvc" scope="page" class="com.manager.model.ManagerUserService" />
+	<jsp:useBean id="managerUserSvc" scope="page" class="com.manager.service.ManagerUserService" />
  
 </table>
 <br>
