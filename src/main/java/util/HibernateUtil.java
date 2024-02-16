@@ -16,7 +16,6 @@ public class HibernateUtil {
 	private static SessionFactory createSessionFactory() {
 		try {
 
-			System.out.println("SSSSSSSSSSSSSSSSSSss");
 			registry = new StandardServiceRegistryBuilder()
 					.configure()
 					.build();
