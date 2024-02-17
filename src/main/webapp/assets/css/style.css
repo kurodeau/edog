@@ -37,10 +37,6 @@
   --admin-red_tint: #f8d3c4;
 }
 
-.test {
-  border: solid 2px var(--seller-green-tint);
-}
-
 .seller-container {
   margin-bottom: 50px;
   padding: 50px 50px;
@@ -96,6 +92,11 @@
 }
 
 .col-1-8 {
+  flex: 0 0 18%;
+  max-width: 18%;
+}
+
+.col-2-2 {
   flex: 0 0 18%;
   max-width: 18%;
 }
@@ -338,9 +339,9 @@
 }
 
 /*--------------------------------------------------------------
-# product-list
+# Common 
 --------------------------------------------------------------*/
-.product-row-custom {
+.header-row-custom {
   margin: 0px;
   display: flex;
   padding: 20px;
@@ -351,11 +352,17 @@
 
 .item-row-custom {
   margin: 0px;
-
   display: flex;
   padding: 20px;
   align-items: center;
   border: 1px solid var(--sec-section-outline);
+}
+
+.item-showdetail-custom {
+  max-height: 120px; /* 設置最大高度，超過將出現滾動條 */
+  overflow-y: auto; /* 允許垂直滾動 */
+  white-space: wrap; /* 防止文字折行 */
+  overflow-x: hidden; /* 禁止水平滾動 */
 }
 
 .btn-func {
@@ -371,6 +378,31 @@
   border: 0px transparent;
   background-color: transparent;
 }
+
+/*--------------------------------------------------------------
+# product-list
+--------------------------------------------------------------*/
+.product-row-custom {
+  margin: 0px;
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  background-color: var(--sec-section-light);
+  border: 1px solid var(--sec-section-outline);
+}
+
+/*--------------------------------------------------------------
+# service-reply
+--------------------------------------------------------------*/
+.replyitem-row-custom {
+  height: 150px;
+  margin: 0px;
+  display: flex;
+  padding: 10px 20px;
+  align-items: center;
+  border: 1px solid var(--sec-section-outline);
+}
+
 /*--------------------------------------------------------------
 # Header-Banner
 --------------------------------------------------------------*/

@@ -269,7 +269,7 @@
               <input
                 type="file"
                 data-max_length="1"
-                class="form-control upload__inputfile is-valid"
+                class="form-control upload__inputfile"
                 id="mainImage"
                 name="mainImage"
               />
@@ -283,19 +283,19 @@
 
           <div class="upload__box">
             <div class="upload__btn-box">
-              <label for="subimages" class="btn btn-sellerdark">
+              <label for="subImages" class="btn btn-sellerdark">
                 請選擇其他圖片</label
               >
               <input
                 type="file"
                 multiple=""
                 data-max_length="5"
-                class="form-control upload__inputfile is-valid"
-                id="subimages"
-                name="subimages"
+                class="form-control upload__inputfile"
+                id="subImages"
+                name="subImages"
               />
               <div class="valid-feedback">Looks Good!</div>
-              <div id="subimagesFeedback" class="invalid-feedback">
+              <div id="subImagesFeedback" class="invalid-feedback">
                 Please provide a valid Picture.
               </div>
             </div>
@@ -306,70 +306,77 @@
         <!-- 假的表單dataForm，實際上是動態生成表單再送出去 -->
         <form id="dataForm" method="POST">
           <div class="col-md-12">
-            <label for="inputProcductName" class="form-label">商品名稱</label>
+            <label for="productName" class="form-label">商品名稱</label>
             <input
               type="text"
-              class="form-control is-invalid"
-              id="inputProcductName"
-              name="procductName"
+              class="form-control"
+              id="productName"
+              name="productName"
             />
-            <div id="inputProcductNameFeedback" class="invalid-feedback">
+            <div id="productNameFeedback" class="invalid-feedback">
               Please provide a valid city.
             </div>
             <div class="valid-feedback">Looks Good!</div>
           </div>
 
           <div class="col-md-12">
-            <label for="inputProductSort" class="form-label">商品分類</label>
-            <input
-              type="text"
-              class="form-control is-invalid"
-              id="inputProductSort"
-              name="productSort"
-            />
-            <div id="inputProductSortFeedback" class="invalid-feedback">
+            <label for="productSort" class="form-label">商品分類</label>
+            <select class="form-select" id="productSort" name="productSort">
+              <option value="-1" disabled selected>請選擇商品</option>
+              <option value="0">食品</option>
+              <option value="1">玩具</option>
+              <option value="2">寢具</option>
+              <option value="3">美容清潔</option>
+              <option value="4">攜帶袋</option>
+              <option value="5">服飾</option>
+              <option value="6">健康保健</option>
+              <option value="7">配件</option>
+            </select>
+            <div id="productSortFeedback" class="invalid-feedback">
               Please provide a valid city.
             </div>
             <div class="valid-feedback">Looks Good!</div>
           </div>
 
           <div class="col-md-12">
-            <label for="inputProductPrice" class="form-label">商品價格</label>
+            <label for="productPrice" class="form-label">商品價格</label>
             <input
               type="text"
-              class="form-control is-invalid"
-              id="inputProductPrice"
+              class="form-control"
+              id="productPrice"
               name="productPrice"
             />
-            <div id="inputinputProductPrice" class="invalid-feedback">
+            <div id="productPriceFeedback" class="invalid-feedback">
               Please provide a valid inputProductPrice.
             </div>
             <div class="valid-feedback">Looks Good!</div>
           </div>
 
           <div class="col-md-12">
-            <label for="inputStockQuantity" class="form-label">商品庫存</label>
+            <label for="productStockQuantity" class="form-label"
+              >商品庫存</label
+            >
             <input
               type="text"
-              class="form-control is-invalid"
-              id="inputStockQuantity"
+              class="form-control"
+              id="productStockQuantity"
               name="productStockQuantity"
             />
-            <div id="inputStockQuantity" class="invalid-feedback">
+            <div id="productStockQuantityFeedback" class="invalid-feedback">
               Please provide a valid inputStockQuantity.
             </div>
             <div class="valid-feedback">Looks Good!</div>
           </div>
 
           <div class="col-md-12">
-            <label for="inputProductDetails" class="form-label">商品描述</label>
+            <label for="productDetails" class="form-label">商品描述</label>
             <input
               type="text"
-              class="form-control is-invalid"
-              id="inputProductDetails"
+              class="form-control"
+              id="productDetails"
               name="productDetails"
             />
-            <div id="inputProductDetails" class="invalid-feedback">
+            <div id="productDetailsFeedback" class="invalid-feedback">
               Please provide a valid inputProductDetails.
             </div>
             <div class="valid-feedback">Looks Good!</div>
@@ -559,10 +566,10 @@
           var reader = new FileReader();
           reader.onload = function (e) {
             div.innerHTML = `
-              <div style='background-image: url(${e.target.result})' data-filename='${fileName}'  data-section='${section}' class='img-bg'>
-                <div class='upload__img--close'></div>
-              </div>
-            `;
+                    <div style='background-image: url(${e.target.result})' data-filename='${fileName}'  data-section='${section}' class='img-bg'>
+                      <div class='upload__img--close'></div>
+                    </div>
+                  `;
           };
           reader.readAsDataURL(file);
 
@@ -700,16 +707,47 @@
 
         async function checkValidity(form) {
           const submitButton = document.getElementById("submitButton");
-          const needValidations = document.querySelectorAll(".form-control");
 
           submitButton.setAttribute("disabled", true);
 
           try {
-            const isValid = await validateForm(form);
+            const result = await validateForm(form);
             submitButton.removeAttribute("disabled");
-            if (!isValid) {
-              throw new Error("Form is invalid");
-            }
+
+            let keyErrors = Object.keys(result.desp);
+
+            document
+              .querySelectorAll("input.form-control, select.form-select")
+              .forEach((element) => {
+                let id = element.id;
+                console.log("(element.name" + element.name);
+                if (keyErrors.includes(element.name)) {
+                  element.classList.add("is-invalid");
+                  element.classList.remove("is-valid");
+
+                  const feedbackElement = document.getElementById(
+                    `${id}Feedback`
+                  );
+                  feedbackElement.textContent = result.desp[element.name];
+
+                  // console.log("====feedbackElement=====");
+                  // console.log(`${id}Feedback`);
+                  // console.log(id);
+                  // console.log(element);
+                  // console.log(feedbackElement);
+                  // console.log("======feedbackElement===");
+                } else {
+                  element.classList.remove("is-invalid");
+                  element.classList.add("is-valid");
+
+                  // console.log("==is-valid==feedbackElement=====");
+                  // console.log(`${id}Feedback`);
+                  // console.log(element);
+                  // console.log("==is-valid====feedbackElement===");
+                }
+              });
+
+            return keyErrors.length > 0;
           } catch (error) {
             submitButton.removeAttribute("disabled");
             throw error;
@@ -726,6 +764,7 @@
             console.log(`Key: ${key}, Value: ${value}`);
           }
 
+          console.log("action" + formElement.getAttribute("action"));
           const response = await fetch(formElement.getAttribute("action"), {
             method: "POST",
             body: formData,
@@ -736,8 +775,11 @@
           }
 
           const result = await response.json();
+          if (!result) {
+            throw new Error("Empty response");
+          }
 
-          return result.valid;
+          return result;
         }
       });
     </script>

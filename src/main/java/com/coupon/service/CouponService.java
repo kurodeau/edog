@@ -171,6 +171,7 @@ public class CouponService {
 
 	public int getTotal() {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
 
 		try {
 			return dao.getTotal();
@@ -224,6 +225,7 @@ public class CouponService {
 	}
 	
 	
+	//
 //	public static void main(String[] args) {
 //        // 添加Coupon
 //        addCouponTest();

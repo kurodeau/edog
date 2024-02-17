@@ -1,101 +1,98 @@
-
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
-<%@ page import="java.util.*"%>
-<%@ page import="com.coupon.entity.*"%>
-<%@ page import="com.coupon.service.*"%>
-
-<%-- ¦¹­¶¼È½m²ß±Ä¥Î Script ªº¼gªk¨ú­È --%>
-
-<%
-CouponVO couponVO = (CouponVO) request.getAttribute("couponVO"); //SellerServlet.java(Concroller), ¦s¤JreqªºcouponVOª«¥ó
-%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ page
+import="java.util.*"%> <%@ page import="com.coupon.entity.*"%> <%@ page
+import="com.coupon.service.*"%> <%-- æ­¤é æš«ç·´ç¿’æ¡ç”¨ Script çš„å¯«æ³•å–å€¼ --%> <%
+CouponVO couponVO = (CouponVO) request.getAttribute("couponVO");
+//SellerServlet.java(Concroller), å­˜å…¥reqçš„couponVOç‰©ä»¶ %>
 
 <html>
-<head>
-<title>­û¤u¸ê®Æ - listOneSeller.jsp</title>
+  <head>
+    <title>å“¡å·¥è³‡æ–™ - listOneSeller.jsp</title>
 
-<style>
-table#table-1 {
-	background-color: #CCCCFF;
-	border: 2px solid black;
-	text-align: center;
-}
+    <style>
+      table#table-1 {
+        background-color: #ccccff;
+        border: 2px solid black;
+        text-align: center;
+      }
 
-table#table-1 h4 {
-	color: red;
-	display: block;
-	margin-bottom: 1px;
-}
+      table#table-1 h4 {
+        color: red;
+        display: block;
+        margin-bottom: 1px;
+      }
 
-h4 {
-	color: blue;
-	display: inline;
-}
-</style>
+      h4 {
+        color: blue;
+        display: inline;
+      }
+    </style>
 
-<style>
-table {
-	width: 600px;
-	background-color: white;
-	margin-top: 5px;
-	margin-bottom: 5px;
-}
+    <style>
+      table {
+        width: 600px;
+        background-color: white;
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
 
-table, th, td {
-	border: 1px solid #CCCCFF;
-}
+      table,
+      th,
+      td {
+        border: 1px solid #ccccff;
+      }
 
-th, td {
-	padding: 5px;
-	text-align: center;
-}
-</style>
+      th,
+      td {
+        padding: 5px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body bgcolor="white">
+    <h4>æ­¤é æš«ç·´ç¿’æ¡ç”¨ Script çš„å¯«æ³•å–å€¼:</h4>
+    <table id="table-1">
+      <tr>
+        <td>
+          <h3>å“¡å·¥è³‡æ–™ - listOneSeller.jsp</h3>
+          <h4>
+            <a href="index.jsp"
+              ><img
+                src="images/back1.gif"
+                width="100"
+                height="32"
+                border="0"
+              />å›é¦–é </a
+            >
+          </h4>
+        </td>
+      </tr>
+    </table>
 
-</head>
-<body bgcolor='white'>
-
-	<h4>¦¹­¶¼È½m²ß±Ä¥Î Script ªº¼gªk¨ú­È:</h4>
-	<table id="table-1">
-		<tr>
-			<td>
-				<h3>­û¤u¸ê®Æ - listOneSeller.jsp</h3>
-				<h4>
-					<a href="index.jsp"><img src="images/back1.gif" width="100"
-						height="32" border="0">¦^­º­¶</a>
-				</h4>
-			</td>
-		</tr>
-	</table>
-
-	<table>
-		<tr>
-			<th>Àu´f¨é½s¸¹</th>
-			<th>Àu´f¨é¦WºÙ</th>
-			<th>Àu´f¨é¥N½X</th>
-			<th>¶}©l®É¶¡</th>
-			<th>µ²§ô®É¶¡</th>
-			<th>³Ì§C®ø¶Oª÷ÃB</th>
-			<th>Àu´f¨é¼Æ¶q</th>
-			<th>·|­û¥i¨Ï¥Î¼Æ¶q</th>
-			<th>Àu´f§é¦©</th>
-			<th>³Ğ«Ø®É¶¡</th>
-
-		</tr>
-		<tr>
-
-			<td>${couponVO.couponId}</td>
-			<td>${couponVO.couponName}</td>
-			<td>${couponVO.couponCode}</td>
-			<td>${couponVO.startTime}</td>
-			<td>${couponVO.endTime}</td>
-			<td>${couponVO.minSpendingAmount}</td>
-			<td>${couponVO.couponQuantity}</td>
-			<td>${couponVO.memberAllowQuantity}</td>
-			<td>${couponVO.couponDiscount}</td>
-			<td>${couponVO.couponCreateTime}</td>
-
-		</tr>
-	</table>
-
-</body>
+    <table>
+      <tr>
+        <th>å„ªæƒ åˆ¸ç·¨è™Ÿ</th>
+        <th>å„ªæƒ åˆ¸åç¨±</th>
+        <th>å„ªæƒ åˆ¸ä»£ç¢¼</th>
+        <th>é–‹å§‹æ™‚é–“</th>
+        <th>çµæŸæ™‚é–“</th>
+        <th>æœ€ä½æ¶ˆè²»é‡‘é¡</th>
+        <th>å„ªæƒ åˆ¸æ•¸é‡</th>
+        <th>æœƒå“¡å¯ä½¿ç”¨æ•¸é‡</th>
+        <th>å„ªæƒ æŠ˜æ‰£</th>
+        <th>å‰µå»ºæ™‚é–“</th>
+      </tr>
+      <tr>
+        <td>${couponVO.couponId}</td>
+        <td>${couponVO.couponName}</td>
+        <td>${couponVO.couponCode}</td>
+        <td>${couponVO.startTime}</td>
+        <td>${couponVO.endTime}</td>
+        <td>${couponVO.minSpendingAmount}</td>
+        <td>${couponVO.couponQuantity}</td>
+        <td>${couponVO.memberAllowQuantity}</td>
+        <td>${couponVO.couponDiscount}</td>
+        <td>${couponVO.couponCreateTime}</td>
+      </tr>
+    </table>
+  </body>
 </html>

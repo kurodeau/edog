@@ -245,6 +245,63 @@
     </aside>
     <!-- ======= Main ======= -->
 
+    <main class="main main-layout-seller">
+      <div class="container-fluid seller-container">
+        <h1>意見表單</h1>
+        <form
+          class="row g-3"
+          id="myForm"
+          action="testrecap"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <div class="col-md-12">
+            <label for="userName" class="form-label">用戶名稱</label>
+            <input
+              type="text"
+              class="form-control"
+              id="userName"
+              name="userName"
+            />
+          </div>
+
+          <div class="col-md-12">
+            <label for="userEmail" class="form-label">用戶信箱</label>
+            <input
+              type="email"
+              class="form-control"
+              id="userEmail"
+              name="userEmail"
+            />
+          </div>
+
+          <div class="col-md-12">
+            <label for="feedbackType" class="form-label">反饋類別</label>
+            <input
+              type="text"
+              class="form-control"
+              id="feedbackType"
+              name="feedbackType"
+            />
+          </div>
+
+          <div class="col-md-12">
+            <label for="feedbackContent" class="form-label">反饋內容</label>
+            <input
+              type="text"
+              class="form-control"
+              id="feedbackContent"
+              name="feedbackContent"
+            />
+          </div>
+
+          <div class="text-center d-flex flex-row gap-5 justify-content-center">
+            <button type="reset" class="btn btn-secondary">重設</button>
+            <button type="submit" class="btn btn-primary">傳送</button>
+          </div>
+        </form>
+      </div>
+    </main>
     <!-- End Main -->
 
     <!-- ======= Footer ======= -->

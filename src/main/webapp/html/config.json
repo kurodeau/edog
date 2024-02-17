@@ -31,5 +31,5 @@
     ],
     "mainjs": "mainjs/main.js"
   },
-  "actionPath": { "product-add": { "form": "/CTXPATH/test/TestPic2" } }
+  "actionPath": { "product-add": { "form": "/CTXPATH/product/product.do" } }
 }

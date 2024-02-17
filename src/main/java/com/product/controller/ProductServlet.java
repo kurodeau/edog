@@ -7,6 +7,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import com.allenum.FieldErrorEnum;
+import com.allenum.ProductStatusEnum;
 import com.google.gson.Gson;
 import com.product.entity.ProductVO;
 import com.product.service.ProductService;
@@ -27,6 +29,7 @@ import com.product.service.ProductService;
 public class ProductServlet extends HttpServlet {
 
 	private HashMap<String, String> errorMsgs = null;
+
 	private ProductService productSvc;
 
 	@Override
@@ -41,35 +44,42 @@ public class ProductServlet extends HttpServlet {
 
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
 		errorMsgs = new HashMap<String, String>();
 
 		req.setCharacterEncoding("UTF-8");
 		req.setAttribute("errorMsgs", errorMsgs);
 
-
 		String action = part2String(req.getPart("action"));
-		
 		String forwardPath = "";
 
 		switch (action) {
 
-		
 		case "check":
+
 			Boolean isValid = checkFormFields(req, res);
+			System.out.println(isValid);
+
+			res.setContentType("application/json");
+			res.setCharacterEncoding("UTF-8");
+			Gson gson = new Gson();
+
 			if (!isValid) {
-				Gson gson = new Gson();
-				String errorJson = gson.toJson(errorMsgs);
+				FieldResponse errResp = new FieldResponse("fail", errorMsgs);
+				String errorJson = gson.toJson(errResp);
 
-				req.setAttribute("errorMsgsJson", errorMsgs);
-
-				res.setContentType("application/json");
-				res.setCharacterEncoding("UTF-8");
+				System.out.println(errorJson);
 				res.getWriter().write(errorJson);
-
-				// Return or redirect as needed
 				return;
+			} else {
+				FieldResponse sucResp = new FieldResponse("success", null);
+				String successJson = gson.toJson(sucResp);
+				System.out.println(successJson);
+
+				res.getWriter().write(successJson);
+				return;
+
 			}
-			break;
 		case "compositeQuery":
 			forwardPath = getCompositeProductsQuery(req, res);
 			break;
@@ -102,7 +112,32 @@ public class ProductServlet extends HttpServlet {
 	// Method Area
 	// ***************************
 
-	private Boolean checkFormFields(HttpServletRequest req, HttpServletResponse res) throws IOException,ServletException {
+	private Boolean checkFormFields(HttpServletRequest req, HttpServletResponse res)
+			throws IOException, ServletException {
+
+		Part mainImagePart = req.getPart("mainImage");
+		
+		if (mainImagePart == null || mainImagePart.getSize() == 0) {
+			errorMsgs.put("mainImage", FieldErrorEnum.IMAGE_MISSING.getMessage());
+		} else if (mainImagePart.getSize() > ProductVO.MAX_IMAGE_SIZE) {
+			errorMsgs.put("mainImage", FieldErrorEnum.IMAGE_SIZE_EXCEEDED.getMessage() + "10MB");
+		}
+
+		
+		List<Part> subImageParts = req.getParts().stream()
+		        .filter(part -> part.getName().startsWith("subImages"))
+		        .collect(Collectors.toList());
+
+		if (subImageParts.isEmpty()) {
+		    errorMsgs.put("subImages", FieldErrorEnum.IMAGE_MISSING.getMessage());
+		} else {
+		    for (Part subImagePart : subImageParts) {
+		        String subImageName = subImagePart.getSubmittedFileName();
+		        if (subImagePart.getSize() > ProductVO.MAX_IMAGE_SIZE) {
+		            errorMsgs.put("subimages", FieldErrorEnum.IMAGE_SIZE_EXCEEDED.getMessage() + "10MB");
+		        }
+		    }
+		}
 
 		String productName = part2String(req.getPart("productName"));
 		if (productName == null || productName.trim().isEmpty()) {
@@ -110,17 +145,16 @@ public class ProductServlet extends HttpServlet {
 		} else if (productName.length() > 100) {
 			errorMsgs.put("productName", FieldErrorEnum.OUT_OF_RANGE.getMessage());
 		}
-		
-		
 
 		String productSortStr = part2String(req.getPart("productSort"));
 		Integer productSort = null;
 		if (productSortStr == null || productSortStr.trim().isEmpty()) {
-			errorMsgs.put("productSortStr", FieldErrorEnum.MISSING_REQUIRED_FIELD.getMessage());
+			errorMsgs.put("productSort", FieldErrorEnum.MISSING_REQUIRED_FIELD.getMessage());
 		} else {
 			try {
+
 				productSort = Integer.parseInt(productSortStr);
-				if (productSort < 0 || productSort > 8) {
+				if (productSort < 0 || productSort > ProductVO.MAX_PRODUCT_SORT) {
 					errorMsgs.put("productSort", FieldErrorEnum.OUT_OF_RANGE.getMessage());
 				}
 			} catch (NumberFormatException e) {
@@ -163,7 +197,7 @@ public class ProductServlet extends HttpServlet {
 		}
 
 		String productDetails = part2String(req.getPart("productDetails"));
-		if (productDetails != null && productDetails.trim().isEmpty()) {
+		if (productDetails == null || productDetails.trim().isEmpty()) {
 			errorMsgs.put("productDetails", FieldErrorEnum.MISSING_REQUIRED_FIELD.getMessage());
 
 		} else if (productDetails.length() > 100) {
@@ -171,11 +205,11 @@ public class ProductServlet extends HttpServlet {
 
 		}
 
+		errorMsgs.forEach((field, error) -> System.out.println("Field: " + field + ", Error: " + error));
+
 		return errorMsgs.size() > 0 ? false : true;
 	}
-	
 
-	
 	private String getOne_For_Display(HttpServletRequest req, HttpServletResponse res) {
 		Integer productId = Integer.parseInt(req.getParameter("productId"));
 		ProductVO productVO = productSvc.getOneProduct(productId);
@@ -460,6 +494,7 @@ public class ProductServlet extends HttpServlet {
 //		} catch (NumberFormatException e) {
 //			errorMsgs.add("優惠券數量請輸入數字");
 //		}
+
 //
 //		Integer memberAllowQuantity = null;
 //		try {
@@ -522,27 +557,58 @@ public class ProductServlet extends HttpServlet {
 //
 //		return "/product/listOneProduct.jsp";
 //	}
-	
+
 	public static String part2String(Part actionPart) throws IOException {
-		if(actionPart==null) {return "";}
-	    InputStream in = null;
-	    try {
-	        in = actionPart.getInputStream();
-	        if(in.available()==0) {return "";}
-	        
-	        byte[] textBytes = in.readAllBytes();
-	        return new String(textBytes, StandardCharsets.UTF_8);
-	    } catch (IOException e) {
-	    	System.out.println(e);
-	        throw e;
-	    } finally {
-	        if (in != null) {
-	            in.close();
-	        }
-	    }
+
+		if (actionPart == null) {
+			System.out.println("isNull : MaybeYou Type in wrong name");
+			return "";
+		}
+
+		InputStream in = null;
+		try {
+
+			in = actionPart.getInputStream();
+			if (in.available() == 0) {
+				return "";
+			}
+
+			byte[] textBytes = in.readAllBytes();
+			return new String(textBytes, StandardCharsets.UTF_8);
+		} catch (IOException e) {
+			System.out.println(e);
+			throw e;
+		} finally {
+			if (in != null) {
+				in.close();
+			}
+		}
 	}
 
-	
-	
+	private ProductVO inputDefaultFields(ProductVO productVO) {
+		productVO.setIsEnabled(false);
+		productVO.setTotalStars(0);
+		productVO.setTotalReviews(0);
+		productVO.setProductStatus(ProductStatusEnum.ENABLED.getStatus());
+		return productVO;
+	}
+
+	class FieldResponse {
+		private String status;
+		private Map<String, String> desp;
+
+		public FieldResponse(String status, Map<String, String> desp) {
+			super();
+			this.status = status;
+			if (desp == null) {
+				Map<String, String> success = new HashMap<>();
+				success.put("noerror", "ok");
+				this.desp = success;
+			} else {
+				this.desp = desp;
+			}
+
+		}
+	}
 
 }

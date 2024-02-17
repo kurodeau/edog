@@ -32,7 +32,6 @@ public class TestPic2 extends HttpServlet {
 		
     	request.setCharacterEncoding("utf-8");
         try {
-        	// 先
         	
         	String a = (String) request.getParameter("procductName");
         	System.out.println("procductName : "+a);
@@ -41,9 +40,9 @@ public class TestPic2 extends HttpServlet {
         	
         	
         	
-            Collection<Part> fileParts = request.getParts();
             int imageCount = 0;
-            
+            Collection<Part> fileParts = request.getParts();
+
             for (Part filePart : fileParts) {
                 String partName = filePart.getName();
                 String contentType = filePart.getContentType();

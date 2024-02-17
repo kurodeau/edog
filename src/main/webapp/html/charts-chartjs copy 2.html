@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>EDog</title>
+    <script src="loadcss.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@^4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@^2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@^1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker@3.1.0/daterangepicker.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/daterangepicker@3.1.0/daterangepicker.css"
+    />
+  </head>
+  <body>
+    <!-- ======= Header ======= -->
+    <header class="fixed-top">
+      <nav class="navbar navbar-expand navbar-expand-sm navbar-light bg-seller">
+        <div class="container-fluid">
+          <div
+            class="collapse navbar-collapse d-flex justify-content-between"
+            id="navbarSupportedContent"
+          >
+            <!-- Start NavBar  -->
+            <!-- NavBar--LeftSide  -->
+            <ul class="navbar-nav me-auto mb-2">
+              <li class="nav-item d-flex align-items-center toggle-sidebar-btn">
+                <i class="bi bi-list"></i>
+                <a
+                  class="nav-link cancel-default-behavior"
+                  aria-current="page"
+                  href="#"
+                  >選單</a
+                >
+              </li>
+              <li class="nav-item d-flex align-items-center">
+                <a class="nav-link active" aria-current="page" href="#"
+                  >電子商城</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="seller-login.html">賣家中心</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">論壇</a>
+              </li>
+            </ul>
+
+            <!-- NavBar--RightSide  -->
+            <ul class="navbar-nav ms-auto mb-2">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">註冊</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">登入</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End NavBar  -->
+    </header>
+    <!-- ======= Sidebar ======= -->
+    <aside class="sidebar sidebar-layout-seller">
+      <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-item">
+          <a class="nav-link nav-seller-entry" href="sellerMain.html">
+            <i class="bi bi-grid"></i>
+            <span>賣家中心</span>
+          </a>
+        </li>
+        <!-- End Dashboard Nav -->
+
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            data-bs-target="#seller-nav"
+            data-bs-toggle="collapse"
+            href="#"
+          >
+            <i class="bi bi-person"></i>
+            <span>賣家帳戶</span><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul
+            id="seller-nav"
+            class="nav-content collapse"
+            data-bs-parent="#sidebar-nav"
+          >
+            <li>
+              <a href="seller-level.html">
+                <i class="bi bi-circle"></i><span>賣家等級</span>
+              </a>
+            </li>
+            <li>
+              <a href="seller-edit.html">
+                <i class="bi bi-circle"></i><span>修改賣家資料</span>
+              </a>
+            </li>
+            <li>
+              <a href="seller-check-payment.html">
+                <i class="bi bi-circle"></i><span>查看金流</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- End Seller Nav -->
+
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            data-bs-target="#product-nav"
+            data-bs-toggle="collapse"
+            href="#"
+          >
+            <i class="bi bi-bag"></i>
+            <span>商品管理</span><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul
+            id="product-nav"
+            class="nav-content collapse"
+            data-bs-parent="#sidebar-nav"
+          >
+            <li>
+              <a href="product-add.html">
+                <i class="bi bi-circle"></i><span>新增商品</span>
+              </a>
+            </li>
+            <li>
+              <a href="product-all.html">
+                <i class="bi bi-circle"></i><span>商品列表</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- End product Nav -->
+
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            data-bs-target="#service-nav"
+            data-bs-toggle="collapse"
+            href="#"
+          >
+            <i class="bi bi-headset"></i><span>客戶服務</span
+            ><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul
+            id="service-nav"
+            class="nav-content collapse"
+            data-bs-parent="#sidebar-nav"
+          >
+            <li>
+              <a href="service-form.html">
+                <i class="bi bi-circle"></i><span>意見表單</span>
+              </a>
+            </li>
+            <li>
+              <a href="service-reply.html">
+                <i class="bi bi-circle"></i><span>查詢回覆</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- End Tables Nav -->
+
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            data-bs-target="#charts-nav"
+            data-bs-toggle="collapse"
+            href="#"
+          >
+            <i class="bi bi-bar-chart"></i><span>銷售報表</span
+            ><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul
+            id="charts-nav"
+            class="nav-content collapse"
+            data-bs-parent="#sidebar-nav"
+          >
+            <li>
+              <a href="charts-chartjs.html">
+                <i class="bi bi-circle"></i><span>銷售數據</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- End Charts Nav -->
+
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            data-bs-target="#order-nav"
+            data-bs-toggle="collapse"
+            href="#"
+          >
+            <i class="bi bi-stickies"></i><span>訂單管理</span
+            ><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul
+            id="order-nav"
+            class="nav-content collapse"
+            data-bs-parent="#sidebar-nav"
+          >
+            <li>
+              <a href="order-bootstrap.html">
+                <i class="bi bi-circle"></i><span>全部訂單</span>
+              </a>
+            </li>
+            <li>
+              <a href="order-remix.html">
+                <i class="bi bi-circle"></i><span>已完成訂單</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            data-bs-target="#ads-nav"
+            data-bs-toggle="collapse"
+            href="#"
+          >
+            <i class="bi bi-badge-ad"></i><span>廣告管理</span
+            ><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul
+            id="ads-nav"
+            class="nav-content collapse"
+            data-bs-parent="#sidebar-nav"
+          >
+            <li>
+              <a href="ads-add.html">
+                <i class="bi bi-circle"></i><span>新增廣告</span>
+              </a>
+            </li>
+            <li>
+              <a href="ads-all.html">
+                <i class="bi bi-circle"></i><span>查看廣告</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- End Icons Nav -->
+      </ul>
+    </aside>
+    <!-- ======= Main ======= -->
+
+    <main class="main main-layout-seller">
+      <div class="container-fluid seller-container">
+        <h1>銷售報表</h1>
+        <div class="col-lg-12">
+          <div class="container mt-5">
+            <h1>Date Range Picker Example</h1>
+          </div>
+
+          <div class="row mb-5 d-flex align-items-center">
+            <div class="col-3">
+              起始時間&nbsp;&nbsp;<input
+                type="date"
+                class="startDate"
+                value="2022-05-03"
+              />
+            </div>
+            <div class="col-3 mr-3">
+              結束時間&nbsp;&nbsp;<input
+                type="date"
+                class="endDate"
+                value="2023-06-03"
+              />
+            </div>
+
+            <div class="col-3">
+              <button class="btn btn-seller" id="search">
+                <i class="bi bi-search"></i>&nbsp;搜尋
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">銷售分析</h5>
+
+              <!-- Line Chart -->
+              <canvas id="lineChart"></canvas>
+              <!-- End Line Chart -->
+            </div>
+          </div>
+
+          <div class="row mt-4">
+            <div class="col-3">
+              <button class="btn btn-seller" id="byYear">年區分</button>
+              <button class="btn btn-seller" id="byMonth">月區分</button>
+              <button class="btn btn-seller" id="byDay">日區分</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- End #main -->
+
+    <!-- End Main -->
+
+    <!-- ======= Footer ======= -->
+    <footer class="footer footer-layout on">
+      <div
+        class="row row-cols-1 row-cols-sm-2 row-cols-md-4 pt-5 border-top footer-container-custom text-white"
+      >
+        <div class="col d-none d-sm-block p-sm-2 px-5 px-sm-5 px-md-0"></div>
+
+        <div class="col p-sm-2 px-5 px-sm-5 px-md-0">
+          <h5 class="mb-3">關於我們</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2">
+              <a href="#" class="nav-link p-0 text-body-secondary">人才招募</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a href="#" class="nav-link p-0 text-body-secondary">E狗簡介</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col p-sm-2 px-5 px-sm-5 px-md-0">
+          <h5 class="mb-3">常見問題</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2">
+              <a href="#" class="nav-link p-0 text-body-secondary">聯絡E狗</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a href="#" class="nav-link p-0 text-body-secondary">Q&A</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row footer-container-custom">
+        <div class="col-3"></div>
+
+        <div class="col-auto">
+          <a
+            href="/"
+            class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none"
+          >
+            <svg class="bi" width="32" height="32" fill="currentColor">
+              <use xlink:href="bootstrap-icons.svg#heart-fill" />
+            </svg>
+          </a>
+          <p class="text-body-secondary">
+            新加坡商CatTom有限公司台灣分公司 統一編號：00000000 © 2023
+            CatTom.版權所有。
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- Vendor & Main JS Files -->
+    <script src="loadjs.js"></script>
+
+    <!-- Local JS File -->
+    <script>
+      document.addEventListener("DOMContentLoaded", async function () {
+        let formattedData;
+
+        const ctx = document.getElementById("lineChart").getContext("2d");
+        let myChart; // Declare myChart in the outer scope
+
+        try {
+          let datetimeResult = await fetch("fakedata.json");
+          if (datetimeResult.ok) {
+            const backendData = await datetimeResult.json();
+            formattedData = backendData.sort(
+              (a, b) => new Date(a.timestamp) - new Date(b.timestamp)
+            );
+
+            initializeChart(ctx, formattedData, (sortType = "day"));
+          } else {
+            throw new Error("Failed to fetch data");
+          }
+        } catch (error) {
+          console.error(error);
+        }
+
+        document
+          .querySelector("#byYear")
+          .addEventListener("click", function () {
+            console.log(this);
+            if (!formattedData) {
+              return;
+            }
+
+            const aggregatedData = aggregateDataByYear(formattedData);
+            updateChart(ctx, aggregatedData, "year");
+
+            console.log("Aggregated Data by Year:", aggregatedData);
+            // You can do further processing or display the aggregated data as needed
+          });
+
+        document
+          .querySelector("#search")
+          .addEventListener("click", function () {
+            let startDate = document.querySelector(".startDate").value;
+            let endDate = document.querySelector(".endDate").value;
+            if (startDate && endDate) {
+              let startTime = new Date(startDate);
+              let endTime = new Date(endDate);
+              if (endTime < startTime) {
+                alert("結束時間需大於起始時間");
+              } else {
+                const filteredData = filterDate(
+                  startTime,
+                  endTime,
+                  formattedData
+                );
+
+                formattedData = filteredData;
+                updateChart(ctx, formattedData, "day");
+              }
+            }
+          });
+      });
+
+      function initializeChart(ctx, data, sortType) {
+        myChart = new Chart(ctx, {
+          type: "line",
+          data: {
+            datasets: [
+              {
+                data: data.map((data) => ({
+                  x: data.timestamp,
+                  y: data.orderCount,
+                })),
+              },
+            ],
+          },
+          options: {
+            scales: {
+              x: {
+                type: "time",
+                time: {
+                  unit: "year",
+
+                  displayFormats: {
+                    year: "YYYY",
+                  },
+                },
+                ticks: {
+                  maxTicksLimit: 10,
+                },
+              },
+              y: {
+                title: {
+                  display: true,
+                  text: "Value",
+                },
+                ticks: {
+                  stepSize: 100 / 2,
+                },
+              },
+            },
+            hover: {
+              mode: "index",
+              intersect: false,
+            },
+          },
+        });
+      }
+
+      function filterDate(startTime, endTime, data) {
+        const start = startTime.setHours(0, 0, 0, 0);
+        const end = endTime.setHours(0, 0, 0, 0);
+
+        const filterDates = data.filter(
+          (item) =>
+            new Date(item.timestamp).setHours(0, 0, 0, 0) >= start &&
+            new Date(item.timestamp).setHours(0, 0, 0, 0) <= end
+        );
+        return filterDates;
+      }
+
+      function updateChart(ctx, data, type) {
+        if (myChart) {
+          myChart.data.datasets[0].data = data.map((item) => ({
+            x: item.timestamp,
+            y: item.orderCount,
+          }));
+          myChart.options.scales.x.time.displayFormats = { year: "YYYY" };
+          myChart.update(); // Manually update the chart
+        }
+      }
+
+      function aggregateDataByYear(data) {
+        const aggregatedData = {};
+        let firstYear = new Date(data[0].timestamp).getFullYear();
+        let lastYear = new Date(data[data.length - 1].timestamp).getFullYear();
+
+        for (let year = firstYear; year <= lastYear; year++) {
+          // Added 'let' to declare 'year' variable
+          aggregatedData[year] = {
+            timestamp: new Date(`${year}-01-01T00:00:00.000Z`),
+            orderCount: 0,
+          };
+        }
+
+        data.forEach((item) => {
+          const year = new Date(item.timestamp).getFullYear();
+          aggregatedData[year].orderCount += item.orderCount;
+        });
+
+        console.log(aggregatedData);
+        return Object.values(aggregatedData);
+      }
+    </script>
+  </body>
+</html>

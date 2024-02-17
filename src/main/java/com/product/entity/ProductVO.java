@@ -15,11 +15,14 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.allenum.ProductSortEnum;
 import com.seller.entity.SellerVO;
 
 @Entity
 @Table(name = "product")  // Replace "your_table_name" with the actual table name
 public class ProductVO {
+	public static final Integer MAX_IMAGE_SIZE =  10 * 1024 * 1024;
+	public static final Integer MAX_PRODUCT_SORT =  ProductSortEnum.values().length;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
