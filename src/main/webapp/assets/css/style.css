@@ -523,6 +523,14 @@
 }
 
 /*--------------------------------------------------------------
+# product-overall
+--------------------------------------------------------------*/
+.card-order-custom {
+  min-height: 600px;
+  height: auto;
+}
+
+/*--------------------------------------------------------------
 # seller-level
 --------------------------------------------------------------*/
 .seller-container h1 {
@@ -628,6 +636,15 @@
 .page-active-custom .page-link {
   color: #fff; /* 文字顏色變成白色 */
   background-color: var(--seller-green_active);
+}
+
+/*--------------------------------------------------------------
+# Special Text or Button
+--------------------------------------------------------------*/
+
+.orderdetail-head-custom {
+  background-color: var(--sec-section-light);
+  border: 1px solid var(--sec-section-outline);
 }
 
 /*--------------------------------------------------------------
