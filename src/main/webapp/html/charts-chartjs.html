@@ -266,22 +266,6 @@
                   <i class="bi bi-search"></i>搜尋
                 </button>
               </div>
-
-              <div class="col-4 d-flex justify-content-end gap-3">
-                <div class="col-auto">
-                  <select
-                    class="form-select"
-                    aria-label="Default select example"
-                  >
-                    <option value="no" selected disabled>請選擇檔案格式</option>
-                    <option value="xlsx">Excel(.xlsx)</option>
-                    <option value="ods">OpenOffice(.ods)</option>
-                  </select>
-                </div>
-                <div class="col-3">
-                  <button class="btn btn-seller" id="exportData">匯出</button>
-                </div>
-              </div>
             </div>
           </div>
           <div class="card">
@@ -299,6 +283,29 @@
               <button class="btn btn-seller" id="byYear">年區分</button>
               <button class="btn btn-seller" id="byMonth">月區分</button>
               <button class="btn btn-seller" id="byDay">日區分</button>
+            </div>
+          </div>
+
+          <div class="row mt-5">
+            <div class="col-12 d-flex gap-3">
+              <div class="col-3">
+                匯出起始時間&nbsp;&nbsp;
+                <input type="date" class="startExportDate" value="2022-05-03" />
+              </div>
+              <div class="col-3">
+                匯出結束時間&nbsp;&nbsp;
+                <input type="date" class="endExportDate" value="2023-06-03" />
+              </div>
+              <div class="col-3">
+                <select class="form-select" aria-label="Default select example">
+                  <option value="no" selected disabled>請選擇檔案格式</option>
+                  <option value="xlsx">Excel(.xlsx)</option>
+                  <option value="ods">OpenOffice(.ods)</option>
+                </select>
+              </div>
+              <div class="col-1">
+                <button class="btn btn-seller" id="exportData">匯出</button>
+              </div>
             </div>
           </div>
         </div>
@@ -382,7 +389,7 @@
             let aggregatedData;
             const storedData = localStorage.getItem("filteredData");
             if (storedData) {
-              console.log("storedData" + JSON.parse(storedData)[0].timestamp);
+              // console.log("storedData" + JSON.parse(storedData)[0].timestamp);
               aggregatedData = aggregateDataByYear(JSON.parse(storedData));
             } else {
               aggregatedData = aggregateDataByYear(rawISODateData);
@@ -450,6 +457,24 @@
       });
       function init() {
         localStorage.removeItem("filteredData");
+
+        let nowUTCTime = new Date();
+        const offset = nowUTCTime.getTimezoneOffset();
+        let offsetLocalTime = new Date(
+          nowUTCTime.getTime() - offset * 60 * 1000
+        );
+
+        let trueLocalTime = offsetLocalTime.toISOString();
+        let trueLocalDate = trueLocalTime.split("T")[0];
+
+        document.querySelector(".endExportDate").value = trueLocalDate;
+
+        let offsetStartLocalTime = new Date(offsetLocalTime);
+        offsetStartLocalTime.setDate(offsetLocalTime.getDate() - 30);
+        let trueStartLocalDate = offsetStartLocalTime
+          .toISOString()
+          .split("T")[0];
+        document.querySelector(".startExportDate").value = trueStartLocalDate;
       }
 
       function initializeChart(ctx, data, sortType) {
@@ -638,7 +663,6 @@
           date.setDate(date.getDate() + 1)
         ) {
           const dateKey = date.toISOString().substring(0, 10);
-          console.log(`${dateKey}T00:00:00.000Z`);
 
           dateMap.set(dateKey, {
             timestamp: new Date(`${dateKey}T00:00:00.000Z`).toISOString(),
@@ -649,13 +673,11 @@
         data.forEach((item) => {
           const itemDate = new Date(item.timestamp).toISOString();
           const dateKey = itemDate.substring(0, 10);
-          console.log("dateKey: " + dateKey);
           const monthData = dateMap.get(dateKey);
           monthData.orderCount += item.orderCount;
         });
 
         const aggregatedData = Array.from(dateMap.values());
-        console.log(aggregatedData);
         return aggregatedData;
       }
     </script>

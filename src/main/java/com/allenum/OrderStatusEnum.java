@@ -1,7 +1,7 @@
 package com.allenum;
 
 public enum OrderStatusEnum {
-	CANCELLED(0) , CREATED(2) , PROCESSING(3), CLOSED(4);
+	CANCELLED(0) , COMPLETED(1), CREATED(2) , PROCESSING(3), CLOSED(4);
 	private Integer status;
 
 	private OrderStatusEnum(Integer status) {
