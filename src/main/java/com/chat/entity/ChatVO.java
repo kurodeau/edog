@@ -1,4 +1,4 @@
-package com.chat.model;
+package com.chat.entity;
 import java.sql.Date;
 
 public class ChatVO implements java.io.Serializable{

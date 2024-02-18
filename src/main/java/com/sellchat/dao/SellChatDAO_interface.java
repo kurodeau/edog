@@ -1,7 +1,8 @@
-package com.sellchat.model;
+package com.sellchat.dao;
 
-import java.sql.Date;
-import java.util.*;
+import java.util.List;
+
+import com.sellchat.entity.*;
 
 public interface SellChatDAO_interface {
           public void insert(SellChatVO sellChatVO);
@@ -9,7 +10,7 @@ public interface SellChatDAO_interface {
           public void delete(Integer sellChatRoomId);
           public SellChatVO findByPrimaryKey(Integer sellChatRoomId);
           public List<SellChatVO> getAll();
-          //¸U¥Î½Æ¦X¬d¸ß(¶Ç¤J°Ñ¼Æ«¬ºAMap)(¦^¶Ç List)
+          //ï¿½Uï¿½Î½Æ¦Xï¿½dï¿½ï¿½(ï¿½Ç¤Jï¿½Ñ¼Æ«ï¿½ï¿½AMap)(ï¿½^ï¿½ï¿½ List)
 //        public List<SellChatChatVO> getAll(Map<String, String[]> map); 
 }
 

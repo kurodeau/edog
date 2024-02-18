@@ -1,4 +1,4 @@
-package com.sellchat.model;
+package com.sellchatroom.entity;
 import java.sql.Date;
 
 public class SellChatRoomVO implements java.io.Serializable{

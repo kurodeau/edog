@@ -1,7 +1,9 @@
-package com.chat.model;
+package com.chat.dao;
 
 import java.sql.Date;
 import java.util.*;
+
+import com.chat.entity.ChatVO;
 
 public interface ChatDAO_interface {
           public void insert(ChatVO chatVO);
@@ -9,7 +11,7 @@ public interface ChatDAO_interface {
           public void delete(Integer chatId);
           public ChatVO findByPrimaryKey(Integer chatId);
           public List<ChatVO> getAll();
-          //¸U¥Î½Æ¦X¬d¸ß(¶Ç¤J°Ñ¼Æ«¬ºAMap)(¦^¶Ç List)
+          //ï¿½Uï¿½Î½Æ¦Xï¿½dï¿½ï¿½(ï¿½Ç¤Jï¿½Ñ¼Æ«ï¿½ï¿½AMap)(ï¿½^ï¿½ï¿½ List)
 //        public List<ChatVO> getAll(Map<String, String[]> map); 
 }
 
