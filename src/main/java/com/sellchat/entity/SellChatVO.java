@@ -1,25 +1,25 @@
-package com.chat.model;
+package com.sellchat.entity;
 import java.sql.Date;
 
-public class ChatVO implements java.io.Serializable{
-	private Integer chatId;
-	private Integer chatRoomId;
+public class SellChatVO implements java.io.Serializable{
+	private Integer sellChatId;
+	private Integer sellChatRoomId;
 	private Integer sendPart;
 	private String message;
 	private byte[] image;
 	private Date createTime;
 	
-	public Integer getChatId() {
-		return chatId;
+	public Integer getSellChatId() {
+		return sellChatId;
 	}
-	public void setChatId(Integer chatId) {
-		this.chatId = chatId;
+	public void setSellChatId(Integer sellChatId) {
+		this.sellChatId = sellChatId;
 	}
-	public Integer getChatRoomId() {
-		return chatRoomId;
+	public Integer getSellChatRoomId() {
+		return sellChatRoomId;
 	}
-	public void setChatRoomId(Integer chatRoomId) {
-		this.chatRoomId = chatRoomId;
+	public void setSellChatRoomId(Integer sellChatRoomId) {
+		this.sellChatRoomId = sellChatRoomId;
 	}
 	public Integer getSendPart() {
 		return sendPart;
@@ -45,5 +45,5 @@ public class ChatVO implements java.io.Serializable{
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-	
+		
 }
