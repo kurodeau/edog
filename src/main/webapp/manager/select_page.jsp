@@ -60,7 +60,7 @@
     </FORM>
   </li>
 
-  <jsp:useBean id="managerUserSvc" scope="page" class="com.manager.model.ManagerUserService" />
+  <jsp:useBean id="managerUserSvc" scope="page" class="com.manager.service.ManagerUserService" />
    
   <li>
      <FORM METHOD="post" ACTION="manager.do" >
