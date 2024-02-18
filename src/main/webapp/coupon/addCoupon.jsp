@@ -1,299 +1,301 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="com.coupon.entity.CouponVO"%>
-
-<%
-//¨£com.coupon.controller.EmpServlet.java²Ä238¦æ¦s¤JreqªºcouponVOª«¥ó (¦¹¬°¿é¤J®æ¦¡¦³¿ù»~®ÉªºcouponVOª«¥ó)
-CouponVO couponVO = (CouponVO) request.getAttribute("couponVO");
-%>
-<br>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@
+taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> <%@ page
+import="com.coupon.entity.CouponVO"%> <%
+//è¦‹com.coupon.controller.EmpServlet.javaç¬¬238è¡Œå­˜å…¥reqçš„couponVOç‰©ä»¶(æ­¤ç‚ºè¼¸å…¥æ ¼å¼æœ‰éŒ¯èª¤æ™‚çš„couponVOç‰©ä»¶)
+CouponVO couponVO = (CouponVO)request.getAttribute("couponVO"); %>
+<br />
 <%=couponVO == null ? "" : couponVO.getCouponId()%>
 
-<br>
-<br>
+<br />
+<br />
 
 <html>
-<head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<title>¸ê®Æ·s¼W - addCoupon.jsp</title>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>è³‡æ–™æ–°å¢ - addCoupon.jsp</title>
 
-<style>
-table#table-1 {
-	background-color: #CCCCFF;
-	border: 2px solid black;
-	text-align: center;
-}
+    <style>
+      table#table-1 {
+        background-color: #ccccff;
+        border: 2px solid black;
+        text-align: center;
+      }
 
-table#table-1 h4 {
-	color: red;
-	display: block;
-	margin-bottom: 1px;
-}
+      table#table-1 h4 {
+        color: red;
+        display: block;
+        margin-bottom: 1px;
+      }
 
-h4 {
-	color: blue;
-	display: inline;
-}
-</style>
+      h4 {
+        color: blue;
+        display: inline;
+      }
+    </style>
 
-<style>
-table {
-	width: 450px;
-	background-color: white;
-	margin-top: 1px;
-	margin-bottom: 1px;
-}
+    <style>
+      table {
+        width: 450px;
+        background-color: white;
+        margin-top: 1px;
+        margin-bottom: 1px;
+      }
 
-table, th, td {
-	border: 0px solid #CCCCFF;
-}
+      table,
+      th,
+      td {
+        border: 0px solid #ccccff;
+      }
 
-th, td {
-	padding: 1px;
-}
-</style>
+      th,
+      td {
+        padding: 1px;
+      }
+    </style>
+  </head>
+  <body bgcolor="white">
+    <table id="table-1">
+      <tr>
+        <td>
+          <h3>è³‡æ–™æ–°å¢ - addCoupon.jsp</h3>
+        </td>
+        <td>
+          <h4>
+            <a href="index.jsp"
+              ><img
+                src="images/tomcat.png"
+                width="100"
+                height="100"
+                border="0"
+              />å›é¦–é </a
+            >
+          </h4>
+        </td>
+      </tr>
+    </table>
 
-</head>
-<body bgcolor='white'>
+    <h3>è³‡æ–™æ–°å¢:</h3>
 
-	<table id="table-1">
-		<tr>
-			<td>
-				<h3>¸ê®Æ·s¼W - addCoupon.jsp</h3>
-			</td>
-			<td>
-				<h4>
-					<a href="index.jsp"><img src="images/tomcat.png" width="100"
-						height="100" border="0">¦^­º­¶</a>
-				</h4>
-			</td>
-		</tr>
-	</table>
+    <%-- éŒ¯èª¤è¡¨åˆ— --%>
+    <c:if test="${not empty errorMsgs}">
+      <font style="color: red">è«‹ä¿®æ­£ä»¥ä¸‹éŒ¯èª¤:</font>
+      <ul>
+        <c:forEach var="message" items="${errorMsgs}">
+          <li style="color: red">${message}</li>
+        </c:forEach>
+      </ul>
+    </c:if>
 
-	<h3>¸ê®Æ·s¼W:</h3>
+    <FORM METHOD="post" ACTION="coupon.do" name="form1">
+      <table>
+        <tr>
+          <td>å„ªæƒ åˆ¸åç¨±:</td>
+          <td>
+            <input type="TEXT" name="couponName" value="<%=(couponVO == null) ?
+            "CouponName" : couponVO.getCouponName()%>" size="45" />
+          </td>
+        </tr>
+        <tr>
+          <td>å„ªæƒ ç¢¼:</td>
+          <td>
+            <input type="TEXT" name="couponCode" value="<%=(couponVO == null) ?
+            "TEST123" : couponVO.getCouponCode()%>" size="45" />
+          </td>
+        </tr>
+        <tr>
+          <td>é–‹å§‹æ™‚é–“:</td>
+          <td>
+            <input type="datetime-local" name="startTime" step="1" class =
+            "startTime" value="<%=(couponVO == null) ? "2024-12-12T23:59:12" :
+            couponVO.getStartTime()%>" size="45" />
+          </td>
+        </tr>
+        <tr>
+          <td>çµæŸæ™‚é–“:</td>
+          <td>
+            <input type="datetime-local" name="endTime" step="1" class =
+            "endTime" value="<%=(couponVO == null) ? "2024-12-12T23:59:12" :
+            couponVO.getEndTime()%>" size="45" />
+          </td>
+        </tr>
+        <tr>
+          <td>æœ€ä½æ¶ˆè²»é‡‘é¡:</td>
+          <td>
+            <input type="TEXT" name="minSpendingAmount" value="<%=(couponVO ==
+            null) ? "100" : couponVO.getMinSpendingAmount()%>" size="45" />
+          </td>
+        </tr>
+        <tr>
+          <td>å„ªæƒ åˆ¸æ•¸é‡:</td>
+          <td>
+            <input type="TEXT" name="couponQuantity" value="<%=(couponVO ==
+            null) ? "10" : couponVO.getCouponQuantity()%>" size="45" />
+          </td>
+        </tr>
+        <tr>
+          <td>æœƒå“¡å¯ä½¿ç”¨æ•¸é‡:</td>
+          <td>
+            <input type="TEXT" name="memberAllowQuantity" value="<%=(couponVO ==
+            null) ? "5" : couponVO.getMemberAllowQuantity()%>" size="45" />
+          </td>
+        </tr>
+        <tr>
+          <td>å„ªæƒ æŠ˜æ‰£:</td>
+          <td>
+            <input type="TEXT" name="couponDiscount" value="<%=(couponVO ==
+            null) ? "20" : couponVO.getCouponDiscount()%>" size="45" />
+          </td>
+        </tr>
+      </table>
 
-	<%-- ¿ù»~ªí¦C --%>
-	<c:if test="${not empty errorMsgs}">
-		<font style="color: red">½Ğ­×¥¿¥H¤U¿ù»~:</font>
-		<ul>
-			<c:forEach var="message" items="${errorMsgs}">
-				<li style="color: red">${message}</li>
-			</c:forEach>
-		</ul>
-	</c:if>
+      <br />
+      <input type="hidden" name="action" value="insert" />
+      <input type="submit" value="é€å‡ºæ–°å¢" />
+    </FORM>
+  </body>
 
-	<FORM METHOD="post" ACTION="coupon.do" name="form1">
-		<table>
-			<tr>
-				<td>Àu´f¨é¦WºÙ:</td>
-				<td><input type="TEXT" name="couponName"
-					value="<%=(couponVO == null) ? "CouponName" : couponVO.getCouponName()%>"
-					size="45" /></td>
-			</tr>
-			<tr>
-				<td>Àu´f½X:</td>
-				<td><input type="TEXT" name="couponCode"
-					value="<%=(couponVO == null) ? "TEST123" : couponVO.getCouponCode()%>"
-					size="45" /></td>
-			</tr>
-			<tr>
-				<td>¶}©l®É¶¡:</td>
-				<td><input type="datetime-local" name="startTime" step="1" class = "startTime"
-					value="<%=(couponVO == null) ? "2024-12-12T23:59:12" : couponVO.getStartTime()%>"
-					size="45" /></td>
-			</tr>
-			<tr>
-				<td>µ²§ô®É¶¡:</td>
-				<td><input type="datetime-local" name="endTime" step="1" class = "endTime"
-					value="<%=(couponVO == null) ? "2024-12-12T23:59:12" : couponVO.getEndTime()%>"
-					size="45" /></td>
-			</tr>
-			<tr>
-				<td>³Ì§C®ø¶Oª÷ÃB:</td>
-				<td><input type="TEXT" name="minSpendingAmount"
-					value="<%=(couponVO == null) ? "100" : couponVO.getMinSpendingAmount()%>"
-					size="45" /></td>
-			</tr>
-			<tr>
-				<td>Àu´f¨é¼Æ¶q:</td>
-				<td><input type="TEXT" name="couponQuantity"
-					value="<%=(couponVO == null) ? "10" : couponVO.getCouponQuantity()%>"
-					size="45" /></td>
-			</tr>
-			<tr>
-				<td>·|­û¥i¨Ï¥Î¼Æ¶q:</td>
-				<td><input type="TEXT" name="memberAllowQuantity"
-					value="<%=(couponVO == null) ? "5" : couponVO.getMemberAllowQuantity()%>"
-					size="45" /></td>
-			</tr>
-			<tr>
-				<td>Àu´f§é¦©:</td>
-				<td><input type="TEXT" name="couponDiscount"
-					value="<%=(couponVO == null) ? "20" : couponVO.getCouponDiscount()%>"
-					size="45" /></td>
-			</tr>
-		</table>
+  <!-- =========================================ä»¥ä¸‹ç‚º datetimepicker ä¹‹ç›¸é—œè¨­å®š========================================== -->
 
-		<br> <input type="hidden" name="action" value="insert"> <input
-			type="submit" value="°e¥X·s¼W">
-	</FORM>
+  <% java.util.Date couponCreateTime = null; try { couponCreateTime =
+  couponVO.getCouponCreateTime(); } catch (Exception e) { couponCreateTime = new
+  java.sql.Date(System.currentTimeMillis()); /* 2147483647-24*24*60*60*1000 < 0
+  ï¼Œå¦‚æœæ™‚é–“è¶…é25å¤©ï¼Œç”¨Intæœƒå‡ºç¾å•é¡Œ */ } %>
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="<%=request.getContextPath()%>/datetimepicker/jquery.datetimepicker.css"
+  />
+  <script src="<%=request.getContextPath()%>/datetimepicker/jquery.js"></script>
+  <script src="<%=request.getContextPath()%>/datetimepicker/jquery.datetimepicker.full.js"></script>
 
-</body>
+  <style>
+    .xdsoft_datetimepicker .xdsoft_datepicker {
+      width: 300px; /* width:  300px; */
+    }
 
+    .xdsoft_datetimepicker .xdsoft_timepicker .xdsoft_time_box {
+      height: 151px; /* height:  151px; */
+    }
+  </style>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      let startTime_input = document.querySelector(".startTime");
+      let endTime_input = document.querySelector(".endTime");
 
-<!-- =========================================¥H¤U¬° datetimepicker ¤§¬ÛÃö³]©w========================================== -->
+      // ***********************
+      // constants
+      // ***********************
 
-<%
-java.util.Date couponCreateTime = null;
-try {
-	couponCreateTime = couponVO.getCouponCreateTime();
-} catch (Exception e) {
-	couponCreateTime = new java.sql.Date(System.currentTimeMillis());
-	/* 2147483647-24*24*60*60*1000 < 0 ¡A¦pªG®É¶¡¶W¹L25¤Ñ¡A¥ÎInt·|¥X²{°İÃD */
-}
-%>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/datetimepicker/jquery.datetimepicker.css" />
-<script src="<%=request.getContextPath()%>/datetimepicker/jquery.js"></script>
-<script
-	src="<%=request.getContextPath()%>/datetimepicker/jquery.datetimepicker.full.js"></script>
+      function init() {
+        // ***********************
+        // get data from backend
+        // ***********************
+        let startTimeString = "${couponVO.startTime}";
+        let endTimeString = "${couponVO.endTime}";
 
-<style>
-.xdsoft_datetimepicker .xdsoft_datepicker {
-	width: 300px; /* width:  300px; */
-}
+        // ***********************
+        // Process data
+        // ***********************
+        try {
+          let formattedDateStr = splitDateFromJava(
+            startTimeString,
+            startTime_input
+          );
 
-.xdsoft_datetimepicker .xdsoft_timepicker .xdsoft_time_box {
-	height: 151px; /* height:  151px; */
-}
-</style>
+          let formattedDateStr2 = splitDateFromJava(
+            endTimeString,
+            endTime_input
+          );
+        } catch (error) {
+          console.error("FATAL: Parse Date String");
+        }
+      }
 
-<script>
-	
-	
-document.addEventListener("DOMContentLoaded", function () {
-	  let startTime_input = document.querySelector(".startTime");
-	  let endTime_input = document.querySelector(".endTime");
+      function splitDateFromJava(dateString, element) {
+        // prettier-ignore
+        const monthAbbreviations = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-	  // ***********************
-	  // constants
-	  // ***********************
+        // prettier-ignore
+        const javaDateRegex =/^([A-Za-z]+) ([A-Za-z]+) (\d{2}) (\d{2}:\d{2}:\d{2}) ([A-Za-z]+) (\d{4})$/;
 
-	  function init() {
-	    // ***********************
-	    // get data from backend
-	    // ***********************
-	    let startTimeString = "${couponVO.startTime}";
-	    let endTimeString = "${couponVO.endTime}";
+        // prettier-ignore
+        const isoDateRegex = /^(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d)$/;
 
-	    // ***********************
-	    // Process data
-	    // ***********************
-	    try {
-	      let formattedDateStr = splitDateFromJava(
-	        startTimeString,
-	        startTime_input
-	      );
-	      
-	      let formattedDateStr2 = splitDateFromJava(endTimeString, endTime_input);
-		
+        if (!dateString) {
+          return (
+            "dateStringNoMatch:" + "(" + typeof dateString + ")" + dateString
+          );
+        }
 
-	    } catch (error) {
-	      console.error("FATAL: Parse Date String");
-	    }
-	  }
+        if (dateString.match(javaDateRegex)) {
+          // javaDateRegex: Wed Nov 01 00:04:04 CST 2023
 
-	  function splitDateFromJava(dateString, element) {
-	    // prettier-ignore
-	    const monthAbbreviations = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+          let parts = dateString.split(" ");
 
-	    // prettier-ignore
-	    const javaDateRegex =/^([A-Za-z]+) ([A-Za-z]+) (\d{2}) (\d{2}:\d{2}:\d{2}) ([A-Za-z]+) (\d{4})$/;
+          let year = parseInt(parts[5]);
 
-	    // prettier-ignore
-	    const isoDateRegex = /^(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d)$/;
+          let monthNumeric = parts[1];
+          let month = monthAbbreviations.indexOf(monthNumeric);
 
-	    if (!dateString) {
-	      return "dateStringNoMatch:" + "(" + typeof dateString + ")" + dateString;
-	    }
+          let day = parseInt(parts[2]);
 
-	    if (dateString.match(javaDateRegex)) {
-	      // javaDateRegex: Wed Nov 01 00:04:04 CST 2023
+          const [hour, minute, second] = parts[3]
+            .split(":")
+            .map((part) => parseInt(part));
 
-	      let parts = dateString.split(" ");
-
-	      let year = parseInt(parts[5]);
-
-	      let monthNumeric = parts[1];
-	      let month = monthAbbreviations.indexOf(monthNumeric);
-
-	      let day = parseInt(parts[2]);
-
-	      const [hour, minute, second] = parts[3]
-	        .split(":")
-	        .map((part) => parseInt(part));
-
-
-	      // prettier-ignore
-	      let dt3 =
+          // prettier-ignore
+          let dt3 =
 	            year + '-' +
 	            (month + 1 < 10 ? '0' : '') + (month + 1) + '-' +
 	            (day < 10 ? '0' : '') + day + 'T' +
 	            (hour < 10 ? '0' : '') + hour + ':' +
 	            (minute < 10 ? '0' : '') + minute + ':' +
 	            (second < 10 ? '0' : '') + second;
-	
-	      element.value = dt3;
-	      
 
-	      return "dateString";
-	    }
+          element.value = dt3;
 
-	    if (dateString.match(isoDateRegex)) {
-	      const dateObject = new Date(dateString);
-	      // Extract components
-	      const year = dateObject.getFullYear();
-	      const month = dateObject.getMonth(); // Months are zero-based, so add 1
-	      const day = dateObject.getDate();
-	      const hour = dateObject.getHours();
-	      const minute = dateObject.getMinutes();
-	      const second = dateObject.getSeconds();
+          return "dateString";
+        }
 
-	      // (1) ·|Âà¦¨UTC®É¶¡(®æªL«Âªv)
-	      // let dt = new Date(year, month, day, hour, minute, second).toISOString();
-	      // console.log(dt);
-	      // console.log("dt" + dt);
+        if (dateString.match(isoDateRegex)) {
+          const dateObject = new Date(dateString);
+          // Extract components
+          const year = dateObject.getFullYear();
+          const month = dateObject.getMonth(); // Months are zero-based, so add 1
+          const day = dateObject.getDate();
+          const hour = dateObject.getHours();
+          const minute = dateObject.getMinutes();
+          const second = dateObject.getSeconds();
 
-	      // (2) «á­±¥[Z¡A¥Nªí¬OUTC®É¶¡(®æªL«Âªv)
-	      let dt2 =
-	        new Date(year, month, day, hour, minute, second)
-	          .toISOString()
-	          .split(".")[0] + "Z";
+          // (1) æœƒè½‰æˆUTCæ™‚é–“(æ ¼æ—å¨æ²»)
+          // let dt = new Date(year, month, day, hour, minute, second).toISOString();
+          // console.log(dt);
+          // console.log("dt" + dt);
 
-	      // (3) ¦Û¤v«÷±µISO
-	      // 2023-11-01T00:04:04
-	      // prettier-ignore
-	      let dt3 =year + "-" + (month + 1 < 10 ? "0" : "") + (month + 1) + "-" + (day < 10 ? "0" : "") 
+          // (2) å¾Œé¢åŠ Zï¼Œä»£è¡¨æ˜¯UTCæ™‚é–“(æ ¼æ—å¨æ²»)
+          let dt2 =
+            new Date(year, month, day, hour, minute, second)
+              .toISOString()
+              .split(".")[0] + "Z";
+
+          // (3) è‡ªå·±æ‹¼æ¥ISO
+          // 2023-11-01T00:04:04
+          // prettier-ignore
+          let dt3 =year + "-" + (month + 1 < 10 ? "0" : "") + (month + 1) + "-" + (day < 10 ? "0" : "") 
 	      + day + "T" + (hour < 10 ? "0" : "") + hour + ":" 
 	      + (minute < 10 ? "0" : "") + minute + ":" + (second < 10 ? "0" : "") + second;
 
-	      // prettier-ignore
+          // prettier-ignore
 
-	      element.value = new String(dt3);
-	      return "isoDateStringRegex";
-	    }
+          element.value = new String(dt3);
+          return "isoDateStringRegex";
+        }
 
-	    return "unexpected";
-	  }
+        return "unexpected";
+      }
 
-	
-
-	  init();
-	});
-
-
-
-
-</script>
+      init();
+    });
+  </script>
 </html>

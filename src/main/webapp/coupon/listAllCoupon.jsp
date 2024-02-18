@@ -1,13 +1,13 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
 <%@ page import="com.coupon.entity.*"%>
 <%@ page import="com.coupon.service.*"%>
 
-<%-- ¦¹­¶½m²ß±Ä¥Î EL ªº¼gªk¨ú­È --%>
+<%-- æ­¤é ç·´ç¿’æŽ¡ç”¨ EL çš„å¯«æ³•å–å€¼ --%>
 <html>
 <head>
-<title>©Ò¦³­û¤u¸ê®Æ - listAllCoupon.jsp</title>
+<title>æ‰€æœ‰å“¡å·¥è³‡æ–™ - listAllCoupon.jsp</title>
 
 <style>
   table#table-1 {
@@ -45,24 +45,24 @@
 </head>
 <body bgcolor='white'>
 
-<h4>¦¹­¶½m²ß±Ä¥Î EL ªº¼gªk¨ú­È:</h4>
+<h4>æ­¤é ç·´ç¿’æŽ¡ç”¨ EL çš„å¯«æ³•å–å€¼:</h4>
 <table id="table-1">
 	<tr><td>
-		 <h3>©Ò¦³­û¤u¸ê®Æ - listAllCoupon.jsp</h3>
-		 <h4><a href="${pageContext.request.contextPath}/coupon/index.jsp"><img src="images/back1.gif" width="100" height="32" border="0">¦^­º­¶</a></h4>
+		 <h3>æ‰€æœ‰å“¡å·¥è³‡æ–™ - listAllCoupon.jsp</h3>
+		 <h4><a href="${pageContext.request.contextPath}/coupon/index.jsp"><img src="images/back1.gif" width="100" height="32" border="0">å›žé¦–é </a></h4>
 	</td></tr>
 </table>
 <table>
     <tr>
-        <th>Àu´f¨é½s¸¹</th>
-        <th>Àu´f¨é¦WºÙ</th>
-        <th>Àu´f¨é¥N½X</th>
-        <th>¶}©l®É¶¡</th>
-        <th>µ²§ô®É¶¡</th>
-        <th>³Ì§C®ø¶Oª÷ÃB</th>
-        <th>Àu´f¨é¼Æ¶q</th>
-        <th>·|­û¥i¨Ï¥Î¼Æ¶q</th>
-        <th>Àu´f§é¦©</th>
+        <th>å„ªæƒ åˆ¸ç·¨è™Ÿ</th>
+        <th>å„ªæƒ åˆ¸åç¨±</th>
+        <th>å„ªæƒ åˆ¸ä»£ç¢¼</th>
+        <th>é–‹å§‹æ™‚é–“</th>
+        <th>çµæŸæ™‚é–“</th>
+        <th>æœ€ä½Žæ¶ˆè²»é‡‘é¡</th>
+        <th>å„ªæƒ åˆ¸æ•¸é‡</th>
+        <th>æœƒå“¡å¯ä½¿ç”¨æ•¸é‡</th>
+        <th>å„ªæƒ æŠ˜æ‰£</th>
     </tr>
     <c:forEach var="couponVO" items="${list}">
         <tr>
@@ -77,14 +77,14 @@
             <td>${couponVO.couponDiscount}</td>
             <td>
                 <form method="post" action="<%=request.getContextPath()%>/coupon/coupon.do" style="margin-bottom: 0px;">
-                    <input type="submit" value="­×§ï">
+                    <input type="submit" value="ä¿®æ”¹">
                     <input type="hidden" name="couponId" value="${couponVO.couponId}">
                     <input type="hidden" name="action" value="getOne_For_Update">
                 </form>
             </td>
             <td>
                 <form method="post" action="<%=request.getContextPath()%>/coupon/coupon.do" style="margin-bottom: 0px;">
-                    <input type="submit" value="§R°£">
+                    <input type="submit" value="åˆªé™¤">
                     <input type="hidden" name="couponId" value="${couponVO.couponId}">
                     <input type="hidden" name="action" value="delete">
                 </form>

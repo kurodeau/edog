@@ -57,8 +57,7 @@ public class ArticlePicReader  extends HttpServlet{
 				out.write(b);
 				in.close();
 			}
-			
-			
+
 			
 			rs.close();
 			stmt.close();
@@ -87,7 +86,7 @@ public class ArticlePicReader  extends HttpServlet{
 	public void init() throws ServletException {
 		try {
 			Context ctx = new javax.naming.InitialContext();
-			DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB2");
+			DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/EDogDB");
 			con = ds.getConnection();
 		} catch (NamingException e) {
 			e.printStackTrace();

@@ -247,151 +247,61 @@
 
     <main class="main main-layout-seller">
       <div class="container-fluid seller-container">
-        <h1>新增商品資料</h1>
-        <nav class="mt-5 mb-4">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">商品設定</li>
-          </ol>
-        </nav>
-
-        <!-- 假的表單imageForm，實際上是動態生成表單再送出去 -->
+        <h1>意見表單</h1>
         <form
           class="row g-3"
-          id="imageForm"
+          id="myForm"
+          action="testrecap"
           method="post"
           enctype="multipart/form-data"
         >
-          <div class="upload__box">
-            <div class="upload__btn-box">
-              <label for="mainImage" class="btn btn-sellerdark"
-                >請選擇主要圖片</label
-              >
-              <input
-                type="file"
-                data-max_length="1"
-                class="form-control upload__inputfile"
-                id="mainImage"
-                name="mainImage"
-              />
-              <div class="valid-feedback">Looks Good!</div>
-              <div id="mainImageFeedback" class="invalid-feedback">
-                Please provide a valid Picture.
-              </div>
-            </div>
-            <div class="upload__img--wrap"></div>
-          </div>
-
-          <div class="upload__box">
-            <div class="upload__btn-box">
-              <label for="subImages" class="btn btn-sellerdark">
-                請選擇其他圖片</label
-              >
-              <input
-                type="file"
-                multiple=""
-                data-max_length="5"
-                class="form-control upload__inputfile"
-                id="subImages"
-                name="subImages"
-              />
-              <div class="valid-feedback">Looks Good!</div>
-              <div id="subImagesFeedback" class="invalid-feedback">
-                Please provide a valid Picture.
-              </div>
-            </div>
-            <div class="upload__img--wrap"></div>
-          </div>
-        </form>
-
-        <!-- 假的表單dataForm，實際上是動態生成表單再送出去 -->
-        <form id="dataForm" method="POST">
           <div class="col-md-12">
-            <label for="productName" class="form-label">商品名稱</label>
+            <label for="userName" class="form-label">用戶名稱</label>
             <input
               type="text"
               class="form-control"
-              id="productName"
-              name="productName"
+              id="userName"
+              name="userName"
             />
-            <div id="productNameFeedback" class="invalid-feedback">
-              Please provide a valid city.
-            </div>
-            <div class="valid-feedback">Looks Good!</div>
           </div>
 
           <div class="col-md-12">
-            <label for="productSort" class="form-label">商品分類</label>
-            <select class="form-select" id="productSort" name="productSort">
-              <option value="-1" disabled selected>請選擇商品</option>
-              <option value="0">食品</option>
-              <option value="1">玩具</option>
-              <option value="2">寢具</option>
-              <option value="3">美容清潔</option>
-              <option value="4">攜帶袋</option>
-              <option value="5">服飾</option>
-              <option value="6">健康保健</option>
-              <option value="7">配件</option>
-            </select>
-            <div id="productSortFeedback" class="invalid-feedback">
-              Please provide a valid city.
-            </div>
-            <div class="valid-feedback">Looks Good!</div>
+            <label for="userEmail" class="form-label">用戶信箱</label>
+            <input
+              type="email"
+              class="form-control"
+              id="userEmail"
+              name="userEmail"
+            />
           </div>
 
           <div class="col-md-12">
-            <label for="productPrice" class="form-label">商品價格</label>
+            <label for="feedbackType" class="form-label">反饋類別</label>
             <input
               type="text"
               class="form-control"
-              id="productPrice"
-              name="productPrice"
+              id="feedbackType"
+              name="feedbackType"
             />
-            <div id="productPriceFeedback" class="invalid-feedback">
-              Please provide a valid inputProductPrice.
-            </div>
-            <div class="valid-feedback">Looks Good!</div>
           </div>
 
           <div class="col-md-12">
-            <label for="productStockQuantity" class="form-label"
-              >商品庫存</label
-            >
+            <label for="feedbackContent" class="form-label">反饋內容</label>
             <input
               type="text"
               class="form-control"
-              id="productStockQuantity"
-              name="productStockQuantity"
+              id="feedbackContent"
+              name="feedbackContent"
             />
-            <div id="productStockQuantityFeedback" class="invalid-feedback">
-              Please provide a valid inputStockQuantity.
-            </div>
-            <div class="valid-feedback">Looks Good!</div>
-          </div>
-
-          <div class="col-md-12">
-            <label for="productDetails" class="form-label">商品描述</label>
-            <input
-              type="text"
-              class="form-control"
-              id="productDetails"
-              name="productDetails"
-            />
-            <div id="productDetailsFeedback" class="invalid-feedback">
-              Please provide a valid inputProductDetails.
-            </div>
-            <div class="valid-feedback">Looks Good!</div>
           </div>
 
           <div class="text-center d-flex flex-row gap-5 justify-content-center">
             <button type="reset" class="btn btn-secondary">重設</button>
-            <button type="submit" id="submitButton" class="btn btn-primary">
-              提交2張表
-            </button>
+            <button type="submit" class="btn btn-primary">傳送</button>
           </div>
         </form>
       </div>
     </main>
-
     <!-- End Main -->
 
     <!-- ======= Footer ======= -->
@@ -566,10 +476,10 @@
           var reader = new FileReader();
           reader.onload = function (e) {
             div.innerHTML = `
-                    <div style='background-image: url(${e.target.result})' data-filename='${fileName}'  data-section='${section}' class='img-bg'>
-                      <div class='upload__img--close'></div>
-                    </div>
-                  `;
+              <div style='background-image: url(${e.target.result})' data-filename='${fileName}'  data-section='${section}' class='img-bg'>
+                <div class='upload__img--close'></div>
+              </div>
+            `;
           };
           reader.readAsDataURL(file);
 
@@ -623,6 +533,7 @@
               )
             );
 
+            console.log("getActionPath" + getActionPath);
             form.setAttribute("action", getActionPath);
 
             // (1.1 針對第一個表單imageForm
@@ -707,47 +618,16 @@
 
         async function checkValidity(form) {
           const submitButton = document.getElementById("submitButton");
+          const needValidations = document.querySelectorAll(".form-control");
 
           submitButton.setAttribute("disabled", true);
 
           try {
-            const result = await validateForm(form);
+            const isValid = await validateForm(form);
             submitButton.removeAttribute("disabled");
-
-            let keyErrors = Object.keys(result.desp);
-
-            document
-              .querySelectorAll("input.form-control, select.form-select")
-              .forEach((element) => {
-                let id = element.id;
-                console.log("(element.name" + element.name);
-                if (keyErrors.includes(element.name)) {
-                  element.classList.add("is-invalid");
-                  element.classList.remove("is-valid");
-
-                  const feedbackElement = document.getElementById(
-                    `${id}Feedback`
-                  );
-                  feedbackElement.textContent = result.desp[element.name];
-
-                  // console.log("====feedbackElement=====");
-                  // console.log(`${id}Feedback`);
-                  // console.log(id);
-                  // console.log(element);
-                  // console.log(feedbackElement);
-                  // console.log("======feedbackElement===");
-                } else {
-                  element.classList.remove("is-invalid");
-                  element.classList.add("is-valid");
-
-                  // console.log("==is-valid==feedbackElement=====");
-                  // console.log(`${id}Feedback`);
-                  // console.log(element);
-                  // console.log("==is-valid====feedbackElement===");
-                }
-              });
-
-            return keyErrors.length > 0;
+            if (!isValid) {
+              throw new Error("Form is invalid");
+            }
           } catch (error) {
             submitButton.removeAttribute("disabled");
             throw error;
@@ -757,14 +637,9 @@
         async function validateForm(formElement) {
           const formData = new FormData(formElement);
 
-          // FormData 中添加的 "action" 參數是與 HTML 中的 <form> 標籤的 action 屬性不同
-          formData.append("action", "check");
-          for (const entry of formData.entries()) {
-            const [key, value] = entry;
-            console.log(`Key: ${key}, Value: ${value}`);
-          }
+          console.log(formElement.getAttribute("action"));
+          console.log(formElement);
 
-          console.log("action" + formElement.getAttribute("action"));
           const response = await fetch(formElement.getAttribute("action"), {
             method: "POST",
             body: formData,
@@ -775,11 +650,8 @@
           }
 
           const result = await response.json();
-          if (!result) {
-            throw new Error("Empty response");
-          }
 
-          return result;
+          return result.valid;
         }
       });
     </script>

@@ -7,33 +7,10 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <title>EDog</title>
-    <!-- Favicons -->
-    <link href="assets/image/Medium.png" rel="icon" />
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.gstatic.com" rel="preconnect" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-      rel="stylesheet"
-    />
-
-    <!-- ICONS -->
-
-    <link rel="stylesheet" href="assets/icons/remixicon/remixicon.css" />
-    <link
-      rel="stylesheet"
-      href="assets/icons/bootstrap-icons/bootstrap-icons.css"
-    />
-
-    <!-- Vendor CSS Files -->
-    <link rel="stylesheet" href="assets/vendors/bootstrap/bootstrap.min.css" />
-
-    <link rel="stylesheet" href="assets/vendors/quill/quill.bubble.css" />
-    <link rel="stylesheet" href="assets/vendors/quill/quill.snow.css" />
-    <link rel="stylesheet" href="assets/vendors/simple-datatables/style.css" />
-
-    <!-- Template Main CSS File -->
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="loadcss.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@^4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@^2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@^1"></script>
   </head>
   <body>
     <!-- ======= Header ======= -->
@@ -272,20 +249,92 @@
     <!-- ======= Main ======= -->
 
     <main class="main main-layout-seller">
-      <div class="special-text-container">
-        <img src="" alt="" srcset="" />
-        <h1>
-          歡迎回來<br />
-          讓我們一起
-          <mark class="green">
-            <span
-              id="typewrite-text"
-              class="d-inline-block changecontent"
-            ></span>
-          </mark>
-        </h1>
+      <div class="container-fluid seller-container">
+        <h1>銷售報表</h1>
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">銷售分析</h5>
+
+              <!-- Line Chart -->
+              <canvas id="lineChart" width="637" height="318"></canvas>
+              <script>
+                document.addEventListener(
+                  "DOMContentLoaded",
+                  async function () {
+                    const ctx = document
+                      .getElementById("lineChart")
+                      .getContext("2d");
+
+                    // 後端傳送的 ISO 時間（假設）
+                    let backendData;
+                    try {
+                      let datetimeResult = await fetch("fakedata.json");
+                      if (datetimeResult.ok) {
+                        backendData = await datetimeResult.json();
+                      } else {
+                        throw new Error("fail to fetch data");
+                      }
+                    } catch (error) {
+                      console.error(error);
+                    }
+
+                    // 將 ISO 時間轉換為適當的格式（使用 Moment.js）
+
+                    const formattedData = backendData.map((data) => {
+                      const date = new Date(data.timestamp);
+                      const formattedDate = `${date.getFullYear()}-${
+                        date.getMonth() + 1
+                      }-${date.getDate()}`;
+                      console.log(formattedDate);
+                      return { formattedDate, orderCount: data.orderCount };
+                    });
+
+                    // 設定日期範圍的折線圖
+                    let chart = new Chart(ctx, {
+                      type: "line",
+                      data: {
+                        datasets: [
+                          {
+                            data: [
+                              {
+                                x: "2021-11-06 23:39:30",
+                                y: 50,
+                              },
+                              {
+                                x: "2021-11-07 01:00:28",
+                                y: 60,
+                              },
+                              {
+                                x: "2021-11-07 09:00:28",
+                                y: 20,
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      options: {
+                        scales: {
+                          x: {
+                            type: "time",
+                            time: {
+                              unit: "day",
+                            },
+                          },
+                        },
+                      },
+                    });
+                  }
+                );
+              </script>
+
+              <!-- End Line Chart -->
+            </div>
+          </div>
+        </div>
       </div>
     </main>
+
     <!-- End #main -->
 
     <!-- End Main -->
@@ -342,14 +391,8 @@
     </footer>
     <!-- End Footer -->
 
-    <!-- Vendor JS Files -->
-    <script src="assets/vendors/bootstrap/bootstrap.min.js"></script>
-    <script src="assets/vendors/chart.js/chart.umd.js"></script>
-    <script src="assets/vendors/quill/quill.min.js"></script>
-    <script src="assets/vendors/simple-datatables/simple-datatables.js"></script>
-    <script src="assets/vendors/tinymce/tinymce.js"></script>
-    <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
+    <!-- Vendor & Main JS Files -->
+    <script src="loadjs.js"></script>
 
     <!-- Local JS File -->
     <script></script>

@@ -7,33 +7,7 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <title>EDog</title>
-    <!-- Favicons -->
-    <link href="assets/image/Medium.png" rel="icon" />
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.gstatic.com" rel="preconnect" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-      rel="stylesheet"
-    />
-
-    <!-- ICONS -->
-
-    <link rel="stylesheet" href="assets/icons/remixicon/remixicon.css" />
-    <link
-      rel="stylesheet"
-      href="assets/icons/bootstrap-icons/bootstrap-icons.css"
-    />
-
-    <!-- Vendor CSS Files -->
-    <link rel="stylesheet" href="assets/vendors/bootstrap/bootstrap.min.css" />
-
-    <link rel="stylesheet" href="assets/vendors/quill/quill.bubble.css" />
-    <link rel="stylesheet" href="assets/vendors/quill/quill.snow.css" />
-    <link rel="stylesheet" href="assets/vendors/simple-datatables/style.css" />
-
-    <!-- Template Main CSS File -->
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="loadcss.js"></script>
   </head>
   <body>
     <!-- ======= Header ======= -->
@@ -272,20 +246,177 @@
     <!-- ======= Main ======= -->
 
     <main class="main main-layout-seller">
-      <div class="special-text-container">
-        <img src="" alt="" srcset="" />
-        <h1>
-          歡迎回來<br />
-          讓我們一起
-          <mark class="green">
-            <span
-              id="typewrite-text"
-              class="d-inline-block changecontent"
-            ></span>
-          </mark>
-        </h1>
+      <div class="container-fluid seller-container">
+        <h1>訂單管理</h1>
+        <div class="card card-order-custom">
+          <div class="card-body">
+            <!-- Bordered Tabs -->
+            <ul
+              class="nav nav-tabs nav-tabs-bordered"
+              id="borderedTab"
+              role="tablist"
+            >
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link active"
+                  id="all-orders-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#bordered-all-orders"
+                  type="button"
+                  role="tab"
+                  aria-controls="all-orders"
+                  aria-selected="true"
+                >
+                  所有訂單
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="pending-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#bordered-pending"
+                  type="button"
+                  role="tab"
+                  aria-controls="pending"
+                  aria-selected="false"
+                >
+                  未處理訂單
+                </button>
+              </li>
+
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="cancel-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#bordered-cancel"
+                  type="button"
+                  role="tab"
+                  aria-controls="cancel"
+                  aria-selected="false"
+                >
+                  已取消訂單
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="shipped-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#bordered-shipped"
+                  type="button"
+                  role="tab"
+                  aria-controls="shipped"
+                  aria-selected="false"
+                >
+                  已出貨訂單
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="completed-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#bordered-completed"
+                  type="button"
+                  role="tab"
+                  aria-controls="completed"
+                  aria-selected="false"
+                >
+                  已完成訂單
+                </button>
+              </li>
+            </ul>
+            <div class="tab-content pt-2" id="borderedTabContent">
+              <div
+                class="tab-pane show active"
+                id="bordered-all-orders"
+                role="tabpanel"
+                aria-labelledby="all-orders-tab"
+              >
+                <div class="container mt-3 container-list-custom">
+                  <div class="row header-row-custom">
+                    <div class="col-2">訂單序號</div>
+                    <div class="col-3">訂單日期</div>
+                    <div class="col-2">買家實付金額</div>
+                    <div class="col-3">狀態</div>
+                    <div class="col-2">操作</div>
+                  </div>
+
+                  <!-- Item 1 -->
+                  <div class="row item-row-custom">
+                    <div class="col-2">123456</div>
+                    <div class="col-3">2024-02-18</div>
+                    <div class="col-2">50</div>
+                    <div class="col-3">等待中<br />待賣家確認</div>
+                    <div class="col-2 d-flex flex-column align-items-center">
+                      <button class="product align-self-start btn-func">
+                        接受訂單
+                      </button>
+                      <button class="product align-self-start btn-func">
+                        取消訂單
+                      </button>
+                      <button class="product align-self-start btn-func">
+                        查看詳情
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Item 2 -->
+                  <div class="row item-row-custom">
+                    <div class="col-2">123456</div>
+                    <div class="col-3">2024-02-18</div>
+                    <div class="col-2">50</div>
+                    <div class="col-3">不成立<br />買家不接受</div>
+                    <div class="col-2 d-flex flex-column align-items-center">
+                      <button class="product align-self-start btn-func">
+                        查看詳情
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Content for All Orders Tab -->
+              </div>
+              <div
+                class="tab-pane"
+                id="bordered-pending"
+                role="tabpanel"
+                aria-labelledby="pending-tab"
+              >
+                <!-- Content for Pending Orders Tab -->
+              </div>
+              <div
+                class="tab-pane"
+                id="bordered-shipped"
+                role="tabpanel"
+                aria-labelledby="shipped-tab"
+              >
+                <!-- Content for Cancelled Orders Tab -->
+              </div>
+              <div
+                class="tab-pane"
+                id="bordered-cancel"
+                role="tabpanel"
+                aria-labelledby="cancel-tab"
+              >
+                <!-- Content for Shipped Orders Tab -->
+              </div>
+              <div
+                class="tab-pane"
+                id="bordered-completed"
+                role="tabpanel"
+                aria-labelledby="completed-tab"
+              >
+                <!-- Content for Completed Orders Tab -->
+              </div>
+            </div>
+            <!-- End Bordered Tabs -->
+          </div>
+        </div>
       </div>
     </main>
+
     <!-- End #main -->
 
     <!-- End Main -->
@@ -342,14 +473,8 @@
     </footer>
     <!-- End Footer -->
 
-    <!-- Vendor JS Files -->
-    <script src="assets/vendors/bootstrap/bootstrap.min.js"></script>
-    <script src="assets/vendors/chart.js/chart.umd.js"></script>
-    <script src="assets/vendors/quill/quill.min.js"></script>
-    <script src="assets/vendors/simple-datatables/simple-datatables.js"></script>
-    <script src="assets/vendors/tinymce/tinymce.js"></script>
-    <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
+    <!-- Vendor & Main JS Files -->
+    <script src="loadjs.js"></script>
 
     <!-- Local JS File -->
     <script></script>
