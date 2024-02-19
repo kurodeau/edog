@@ -1,6 +1,7 @@
 package com.article.entity;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -45,18 +46,26 @@ public class ArticleVO {
 	
 //	@ManyToOne
 //	@JoinColumn(name = "articleSort", referencedColumnName = "articleTypeId")
+//	private ArticleTypeVO articleSort;
 	@Column(name = "articleSort")
-	private ArticleTypeVO articleSort;
-	
-	public ArticleTypeVO getArticleTypeId() {
-		return articleSort;
-	}
-	public void setArticleTypeId(ArticleTypeVO articleSort) {
-		this.articleSort = articleSort;
-	}
+	private Integer articleSort;
+//	public ArticleTypeVO getArticleTypeId() {
+//		return articleSort;
+//	}
+//	public void setArticleTypeId(ArticleTypeVO articleSort) {
+//		this.articleSort = articleSort;
+//	}
 	
 	@Column(name = "isEnabled")
 	private Boolean isEnabled;
+
+	public Integer getArticleSort() {
+		return articleSort;
+	}
+
+	public void setArticleSort(Integer articleSort) {
+		this.articleSort = articleSort;
+	}
 
 	public Integer getArticleId() {
 		return articleId;
