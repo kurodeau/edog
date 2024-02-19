@@ -4,7 +4,7 @@
 :root {
   --user-yellow_tint: #fff7d4;
   --user-yellow_normal: #ead28d;
-  --user-yellow_yellow_dark: #9f780b;
+  --user-yellow_dark: #9f780b;
 
   --seller-green_normal: #d3ddb7;
   --seller-green_dark: #476d0c;
@@ -316,15 +316,21 @@
 /*--------------------------------------------------------------
 # filter-sidebar
 --------------------------------------------------------------*/
+
+.container .filter-section:first-child {
+  margin-bottom: 0px;
+}
 .header-filter-custom {
   padding-left: 16px;
+  font-size: 24px;
 }
 
 .item-filter-custom {
   border: 0px;
 }
 
-.form-group-custom {
+.container-filter-custom {
+  padding-left: 16px;
 }
 
 /*--------------------------------------------------------------
@@ -446,13 +452,13 @@
 --------------------------------------------------------------*/
 .keyword-container-custom .keyword-item-custom {
   cursor: pointer;
-  border: var(--user-yellow_yellow_dark) 1px solid;
+  border: var(--user-yellow_dark) 1px solid;
   background-color: var(--user-yellow_tint);
   color: var(--text-main);
 }
 
 .keyword-container-custom .keyword-item-custom:hover {
-  background-color: var(--user-yellow_yellow_dark);
+  background-color: var(--user-yellow_dark);
   color: var(--text-light);
 }
 
@@ -510,7 +516,7 @@
 }
 
 .product-card:hover {
-  border-color: var(--user-yellow_yellow_dark);
+  border-color: var(--user-yellow_dark);
 }
 
 .product-card .card-body {
@@ -533,7 +539,7 @@
 }
 
 .product-card .price-tag {
-  color: var(--user-yellow_yellow_dark);
+  color: var(--user-yellow_dark);
 }
 
 /*--------------------------------------------------------------
