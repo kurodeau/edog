@@ -44,28 +44,18 @@ public class ArticleVO {
 	@Column(name = "articleShare")
 	private Integer articleShare;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "articleSort", referencedColumnName = "articleTypeId")
-//	private ArticleTypeVO articleSort;
-	@Column(name = "articleSort")
-	private Integer articleSort;
-//	public ArticleTypeVO getArticleTypeId() {
-//		return articleSort;
-//	}
-//	public void setArticleTypeId(ArticleTypeVO articleSort) {
-//		this.articleSort = articleSort;
-//	}
+	@ManyToOne
+	@JoinColumn(name = "articleSort", referencedColumnName = "articleTypeId")
+	private ArticleTypeVO articleType;
+	public ArticleTypeVO getArticleTypeId() {
+		return articleType;
+	}
+	public void setArticleTypeId(ArticleTypeVO articleSort) {
+		this.articleType = articleSort;
+	}
 	
 	@Column(name = "isEnabled")
 	private Boolean isEnabled;
-
-	public Integer getArticleSort() {
-		return articleSort;
-	}
-
-	public void setArticleSort(Integer articleSort) {
-		this.articleSort = articleSort;
-	}
 
 	public Integer getArticleId() {
 		return articleId;
@@ -144,7 +134,7 @@ public class ArticleVO {
 		return "Article [articleId=" + articleId + ", memberId=" + memberId + ", articleTitle=" + articleTitle
 				+ ", articleContent=" + articleContent + ", artUpdateTime=" + artUpdateTime + ", articleLike="
 				+ articleLike + ", articleComment=" + articleComment + ", articleShare=" + articleShare
-				+ ", articleSort=" + articleSort + ", isEnabled=" + isEnabled + "]";
+				+ ", articleSort=" + articleType + ", isEnabled=" + isEnabled + "]";
 	}
 	
 }

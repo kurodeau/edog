@@ -92,7 +92,7 @@ public class ArticleHBServlet extends HttpServlet {
 		ArticleVO articleVO= articleSvc.getOneArticle(articleId);
 		req.setAttribute("articleVO", articleVO);
 
-		return "/Article/listOneArticle.jsp";
+		return "/article/listOneArticle.jsp";
 		
 	}
 
@@ -143,171 +143,154 @@ public class ArticleHBServlet extends HttpServlet {
 	}
 
 	private String update(HttpServletRequest req, HttpServletResponse res) {
-		/*************************** 1.接收請求參數 ****************************************/
-		Integer articleId = Integer.valueOf(req.getParameter("articleId"));
-		Integer memberId = Integer.valueOf(req.getParameter("memberId").trim());
-		try {
-			String memberIdStr = req.getParameter("memberId");
-			if (memberIdStr != null && !memberIdStr.trim().isEmpty()) {
-				memberId = Integer.valueOf(memberIdStr);
-			}
-		} catch (NumberFormatException e) {
-			errorMsgs.add("會員編號請輸入數字");
-		}
-		
-		String articleTitle = req.getParameter("articleTitle").trim();
-		if (articleTitle == null || articleTitle.trim().length() == 0) {
-			errorMsgs.add("文章標題請勿空白");
-		}
-		String articleContent = req.getParameter("articleContent").trim();
-		if (articleContent == null || articleContent.trim().length() == 0) {
-			errorMsgs.add("文章內容請勿空白");
-		}
-		java.util.Date artUpdateTime = null;
-		try {
+	    /*************************** 1.接收請求參數 ****************************************/
+	    Integer articleId = Integer.valueOf(req.getParameter("articleId"));
+	    Integer memberId = Integer.valueOf(req.getParameter("memberId").trim());
+	    try {
+	        String memberIdStr = req.getParameter("memberId");
+	        if (memberIdStr != null && !memberIdStr.trim().isEmpty()) {
+	            memberId = Integer.valueOf(memberIdStr);
+	        }
+	    } catch (NumberFormatException e) {
+	        errorMsgs.add("會員編號請輸入數字");
+	    }
+	    
+	    String articleTitle = req.getParameter("articleTitle").trim();
+	    if (articleTitle == null || articleTitle.trim().length() == 0) {
+	        errorMsgs.add("文章標題請勿空白");
+	    }
+	    String articleContent = req.getParameter("articleContent").trim();
+	    if (articleContent == null || articleContent.trim().length() == 0) {
+	        errorMsgs.add("文章內容請勿空白");
+	    }
+	    java.util.Date artUpdateTime = null;
+	    try {
 
-			String dateformatStr = req.getParameter("artUpdateTime");
-			System.out.println("dateformatStr" + dateformatStr);
+	        String dateformatStr = req.getParameter("artUpdateTime");
+	        System.out.println("dateformatStr" + dateformatStr);
 
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-			artUpdateTime = dateFormat.parse(dateformatStr);
+	        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+	        artUpdateTime = dateFormat.parse(dateformatStr);
 
-		} catch (ParseException e) {
-			artUpdateTime = new java.util.Date(System.currentTimeMillis());
-			errorMsgs.add("請選擇日期");
-		}
-		Integer articleLike = Integer.valueOf(req.getParameter("articleLike").trim());
-		Integer articleComment = Integer.valueOf(req.getParameter("articleComment").trim());
-		Integer articleShare = Integer.valueOf(req.getParameter("articleShare").trim());
-		
-		ArticleTypeDAO ArticleTypeDAO1 = new ArticleTypeDAOImpl();
-		ArticleTypeVO articleType1 = new ArticleTypeVO();
-		
-		Integer articleSort = null;
-		try {
-			String articleSortstr = req.getParameter("articleSort");
-			if (articleSortstr == null || articleSortstr.trim().length() == 0) {
-				errorMsgs.add("選擇文章分類");
-			}else {
-				articleType1 = ArticleTypeDAO1.findByPrimaryKey(articleSort);
-			}
+	    } catch (ParseException e) {
+	        artUpdateTime = new java.util.Date(System.currentTimeMillis());
+	        errorMsgs.add("請選擇日期");
+	    }
+	    Integer articleLike = Integer.valueOf(req.getParameter("articleLike").trim());
+	    Integer articleComment = Integer.valueOf(req.getParameter("articleComment").trim());
+	    Integer articleShare = Integer.valueOf(req.getParameter("articleShare").trim());
+	    
+	    // 從service中獲取ArticleType
+	    ArticleService articleService = new ArticleService();
+	    Integer articleSort = Integer.valueOf(req.getParameter("articleSort"));
+	    ArticleTypeVO articleType = articleService.getArticleTypeById(articleSort);
+	    
+	    String isEnabledStr = req.getParameter("isEnabled").trim();
+	    Boolean isEnabled = "1".equals(isEnabledStr);
 
-		} catch (NumberFormatException e) {
-			errorMsgs.add("等級請填寫數字");
-		}
-		
-		String isEnabledStr = req.getParameter("isEnabled").trim();
-		Boolean isEnabled = "1".equals(isEnabledStr);
+	    ArticleVO articleVO = new ArticleVO();
+	    articleVO.setArticleId(articleId);
+	    // 因為屬性是 FK 所以這邊放對象
+	    articleVO.setArticleId(articleId);
+	    articleVO.setMemberId(memberId);
+	    articleVO.setArticleTitle(articleTitle);
+	    articleVO.setArticleContent(articleContent);
+	    articleVO.setArtUpdateTime(artUpdateTime);
+	    articleVO.setArticleLike(articleLike);
+	    articleVO.setArticleComment(articleComment);
+	    articleVO.setArticleShare(articleShare);
+	    articleVO.setArticleTypeId(articleType);
+	    articleVO.setIsEnabled(isEnabled);
 
-		ArticleVO articleVO = new ArticleVO();
-		articleVO.setArticleId(articleId);
-		// 因為屬性是 FK 所以這邊放對象
-		articleVO.setArticleId(articleId);
-		articleVO.setMemberId(memberId);
-		articleVO.setArticleTitle(articleTitle);
-		articleVO.setArticleContent(articleContent);
-		articleVO.setArtUpdateTime(artUpdateTime);
-		articleVO.setArticleLike(articleLike);
-		articleVO.setArticleComment(articleComment);
-		articleVO.setArticleShare(articleShare);
-		articleVO.setArticleTypeId(articleType1);
-		articleVO.setIsEnabled(isEnabled);
+	    req.setAttribute("articleVO", articleVO);
 
-		req.setAttribute("articleVO", articleVO);
+	    if (!errorMsgs.isEmpty()) {
+	        return ("/article/update_article_input.jsp");
+	    }
 
-		if (!errorMsgs.isEmpty()) {
-			return ("/article/update_article_input.jsp");
-		}
+	    // Update 使用值做更新(因為Service內部轉換)
+	    articleVO = articleSvc.updateArticle(articleId, memberId, articleTitle, articleContent, artUpdateTime,
+	            articleLike, articleComment, articleShare, articleSort, isEnabled);
 
-		// Update 使用值做更新(因為Service內部轉換)
-		articleVO = articleSvc.updateArticle(articleId, memberId, articleTitle, articleContent, artUpdateTime,
-				articleLike, articleComment, articleShare, articleSort, isEnabled);
-
-		return "/article/listOneArticle.jsp";
+	    return "/article/listOneArticle.jsp";
 	}
 
+
+	// 在 ArticleHBServlet 中的 insert 方法中修改部分
 	private String insert(HttpServletRequest req, HttpServletResponse res) {
-		Integer memberId = null;
-		try {
-			memberId = Integer.valueOf(req.getParameter("memberId").trim());
-		if(memberId == 0) {
-			errorMsgs.add("會員ID不得為0");
-		}
-		} catch (NumberFormatException e) {
-			memberId = 0;
-			errorMsgs.add("會員ID請輸入數字");
-		}
-		
-		String articleTitle = req.getParameter("articleTitle").trim();
-		if (articleTitle == null || articleTitle.trim().length() == 0) {
-			errorMsgs.add("文章標題請勿空白");
-		}
-		String articleContent = req.getParameter("articleContent").trim();
-		if (articleContent == null || articleContent.trim().length() == 0) {
-			errorMsgs.add("文章內容請勿空白");
-		}
-		java.util.Date artUpdateTime = null;
-		try {
+	    Integer memberId = null;
+	    try {
+	        memberId = Integer.valueOf(req.getParameter("memberId").trim());
+	        if(memberId == 0) {
+	            errorMsgs.add("會員ID不得為0");
+	        }
+	    } catch (NumberFormatException e) {
+	        memberId = 0;
+	        errorMsgs.add("會員ID請輸入數字");
+	    }
+	    
+	    String articleTitle = req.getParameter("articleTitle").trim();
+	    if (articleTitle == null || articleTitle.trim().length() == 0) {
+	        errorMsgs.add("文章標題請勿空白");
+	    }
+	    String articleContent = req.getParameter("articleContent").trim();
+	    if (articleContent == null || articleContent.trim().length() == 0) {
+	        errorMsgs.add("文章內容請勿空白");
+	    }
+	    java.util.Date artUpdateTime = null;
+	    try {
 
-			String dateformatStr = req.getParameter("artUpdateTime");
-			System.out.println("dateformatStr" + dateformatStr);
+	        String dateformatStr = req.getParameter("artUpdateTime");
+	        System.out.println("dateformatStr" + dateformatStr);
 
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-			artUpdateTime = dateFormat.parse(dateformatStr);
+	        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+	        artUpdateTime = dateFormat.parse(dateformatStr);
 
-		} catch (ParseException e) {
-			artUpdateTime = new java.util.Date(System.currentTimeMillis());
-			errorMsgs.add("請選擇日期");
-		}
-		Integer articleLike = 0;
-		Integer articleComment = 0;
-		Integer articleShare = 0;
-		ArticleTypeDAO ArticleTypeDAO1 = new ArticleTypeDAOImpl();
-		ArticleTypeVO articleType1 = new ArticleTypeVO();
-		
-		Integer articleSort = null;
-		try {
-			String articleSortstr = req.getParameter("articleSort");
-			if (articleSortstr == null || articleSortstr.trim().length() == 0) {
-				errorMsgs.add("選擇文章分類");
-			}else {
-				articleType1 = ArticleTypeDAO1.findByPrimaryKey(articleSort);
-			}
+	    } catch (ParseException e) {
+	        artUpdateTime = new java.util.Date(System.currentTimeMillis());
+	        errorMsgs.add("請選擇日期");
+	    }
+	    Integer articleLike = 0;
+	    Integer articleComment = 0;
+	    Integer articleShare = 0;
+	    
+	    // 從請求中獲取 articleSort
+	    Integer articleSort = Integer.valueOf(req.getParameter("articleSort"));
 
-		} catch (NumberFormatException e) {
-			errorMsgs.add("等級請填寫數字");
-		}
-		// 使用字符串比較而不是布林轉換
-		String isEnabledStr = req.getParameter("isEnabled").trim();
-		Boolean isEnabled = "1".equals(isEnabledStr);
+	    // 從 service 中獲取 ArticleTypeVO
+	    ArticleTypeVO articleType = articleSvc.getArticleTypeById(articleSort);
+	    
+	    // 使用字符串比較而不是布林轉換
+	    String isEnabledStr = req.getParameter("isEnabled").trim();
+	    Boolean isEnabled = "1".equals(isEnabledStr);
 
-		ArticleVO articleVO = new ArticleVO();
-		articleVO.setMemberId(memberId);
-		articleVO.setArticleTitle(articleTitle);
-		articleVO.setArticleContent(articleContent);
-		articleVO.setArtUpdateTime(artUpdateTime);
-		articleVO.setArticleLike(articleLike);
-		articleVO.setArticleComment(articleComment);
-		articleVO.setArticleShare(articleShare);
-		articleVO.setArticleTypeId(articleType1);
-		articleVO.setIsEnabled(isEnabled);
-		// sellerCreateTime is automatically set to the current date in the database,
-		// isConfirm is automatically set to the current date in the database
+	    ArticleVO articleVO = new ArticleVO();
+	    articleVO.setMemberId(memberId);
+	    articleVO.setArticleTitle(articleTitle);
+	    articleVO.setArticleContent(articleContent);
+	    articleVO.setArtUpdateTime(artUpdateTime);
+	    articleVO.setArticleLike(articleLike);
+	    articleVO.setArticleComment(articleComment);
+	    articleVO.setArticleShare(articleShare);
+	    articleVO.setArticleTypeId(articleType);
+	    articleVO.setIsEnabled(isEnabled);
+	    // sellerCreateTime is automatically set to the current date in the database,
+	    // isConfirm is automatically set to the current date in the database
 
-		// Send the use back to the form, if there were errors
-		if (!errorMsgs.isEmpty()) {
-			req.setAttribute("articleVO", articleVO); // 含有輸入格式錯誤的empVO物件,也存入req
-			return ("/article/addArticle.jsp");
-		}
+	    // Send the use back to the form, if there were errors
+	    if (!errorMsgs.isEmpty()) {
+	        req.setAttribute("articleVO", articleVO); // 含有輸入格式錯誤的empVO物件,也存入req
+	        return ("/article/addArticle.jsp");
+	    }
 
-		articleVO = articleSvc.addArticle(
-				memberId, articleTitle, articleContent, artUpdateTime, articleLike,
-				articleComment, articleShare, articleSort, isEnabled);
+	    articleVO = articleSvc.addArticle(
+	            memberId, articleTitle, articleContent, artUpdateTime, articleLike,
+	            articleComment, articleShare, articleSort, isEnabled);
 
-		
-		req.setAttribute("articleVO", articleVO);
+	    req.setAttribute("articleVO", articleVO);
 
-		return "/article/listOneArticle.jsp";
+	    return "/article/listOneArticle.jsp";
 	}
+
 
 }

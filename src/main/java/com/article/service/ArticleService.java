@@ -1,10 +1,13 @@
 package com.article.service;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import org.hibernate.Session;
 
 import com.article.dao.ArticleDAO;
 import com.article.dao.ArticleDAOImpl;
@@ -12,6 +15,8 @@ import com.article.entity.ArticleVO;
 import com.articleType.dao.ArticleTypeDAO;
 import com.articleType.dao.ArticleTypeDAOImpl;
 import com.articleType.entity.ArticleTypeVO;
+
+import util.HibernateUtil;
 
 public class ArticleService {
 	private ArticleDAO dao;
@@ -23,48 +28,81 @@ public class ArticleService {
 		articleTypedao = new ArticleTypeDAOImpl();
 	}
 
+	
 	public ArticleVO addArticle(Integer memberId, String articleTitle, String articleContent, Date artUpdateTime,
 			Integer articleLike, Integer articleComment, Integer articleShare, Integer articleSort, Boolean isEnabled) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
-		ArticleVO articleVO = new ArticleVO();
+		ArticleVO articleVO = null;
+		try {
+			session.beginTransaction();
 
-		articleVO.setMemberId(memberId);
-		articleVO.setArticleTitle(articleTitle);
-		articleVO.setArticleContent(articleContent);
-		articleVO.setArtUpdateTime(artUpdateTime);
-		articleVO.setArticleLike(articleLike);
-		articleVO.setArticleComment(articleComment);
-		articleVO.setArticleShare(articleShare);
-		articleVO.setIsEnabled(isEnabled);
-		
-		articleVO.setArticleTypeId(articleTypedao.findByPrimaryKey(1));
+			articleVO = new ArticleVO();
 
-		dao.insert(articleVO);
+			articleVO.setMemberId(memberId);
+			articleVO.setArticleTitle(articleTitle);
+			articleVO.setArticleContent(articleContent);
+			articleVO.setArtUpdateTime(artUpdateTime);
+			articleVO.setArticleLike(articleLike);
+			articleVO.setArticleComment(articleComment);
+			articleVO.setArticleShare(articleShare);
+			articleVO.setIsEnabled(isEnabled);
 
+			articleVO.setArticleTypeId(articleTypedao.findByPrimaryKey(1));
+
+			dao.insert(articleVO);
+			session.getTransaction().commit();
+
+		} catch (
+
+		Exception e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (session != null && session.isOpen()) {
+				session.close();
+			}
+		}
 		return articleVO;
 	}
 
-	public ArticleVO updateArticle(Integer articleId, Integer memberId, String articleTitle, String articleContent, Date artUpdateTime,
-			Integer articleLike, Integer articleComment, Integer articleShare, Integer articleSort, Boolean isEnabled) {
+	public ArticleVO updateArticle(Integer articleId, Integer memberId, String articleTitle, String articleContent,
+			Date artUpdateTime, Integer articleLike, Integer articleComment, Integer articleShare, Integer articleSort,
+			Boolean isEnabled) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		ArticleVO articleVO = null;
+		try {
+			session.beginTransaction();
+			articleVO = new ArticleVO();
 
-		ArticleVO articleVO = new ArticleVO();
+			articleVO.setArticleId(articleId);
 
-		articleVO.setArticleId(articleId);
+			ArticleTypeVO articleTypeVO = articleTypedao.findByPrimaryKey(articleSort);
+			articleVO.setArticleTypeId(articleTypeVO);
 
-		ArticleTypeVO articleTypeVO = articleTypedao.findByPrimaryKey(articleSort);
-		articleVO.setArticleTypeId(articleTypeVO);
+			articleVO.setMemberId(memberId);
+			articleVO.setArticleTitle(articleTitle);
+			articleVO.setArticleContent(articleContent);
+			articleVO.setArtUpdateTime(artUpdateTime);
+			articleVO.setArticleLike(articleLike);
+			articleVO.setArticleComment(articleComment);
+			articleVO.setArticleShare(articleShare);
+			articleVO.setIsEnabled(isEnabled);
 
-		articleVO.setMemberId(memberId);
-		articleVO.setArticleTitle(articleTitle);
-		articleVO.setArticleContent(articleContent);
-		articleVO.setArtUpdateTime(artUpdateTime);
-		articleVO.setArticleLike(articleLike);
-		articleVO.setArticleComment(articleComment);
-		articleVO.setArticleShare(articleShare);
-		articleVO.setIsEnabled(isEnabled);
+			dao.update(articleVO);
+			session.getTransaction().commit();
 
-		dao.update(articleVO);
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+			return null;
 
+		} finally {
+			if (session != null && session.isOpen()) {
+				session.close();
+			}
+		}
 		return articleVO;
 	}
 
@@ -73,15 +111,55 @@ public class ArticleService {
 	}
 
 	public ArticleVO getOneArticle(Integer articleId) {
-		return dao.findByPrimaryKey(articleId);
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		ArticleVO articleVO = null;
+
+		try {
+			session.beginTransaction();
+			articleVO = dao.findByPrimaryKey(articleId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null && session.isOpen()) {
+				session.close();
+			}
+		}
+
+		return articleVO;
 	}
 
 	public List<ArticleVO> getAll() {
-		return dao.getAll();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		List<ArticleVO> list = Collections.emptyList();
+
+		try {
+			session.beginTransaction();
+			list = dao.getAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Collections.emptyList();
+		} finally {
+			if (session != null && session.isOpen()) {
+				session.close();
+			}
+		}
+		return list;
 	}
 
 	public int getTotal() {
-		return dao.getTotal();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+
+		try {
+			return dao.getTotal();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0; // or handle as needed
+		} finally {
+			if (session != null && session.isOpen()) {
+				session.close();
+			}
+		}
 	}
 
 	public List<ArticleVO> getArticlesByCompositeQuery(Map<String, String[]> map) {
@@ -104,7 +182,42 @@ public class ArticleService {
 			query.put(key, value);
 		}
 
-		return dao.getByCompositeQuery(query);
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		List<ArticleVO> result = Collections.emptyList();
+		try {
+			session.beginTransaction();
+			result = dao.getByCompositeQuery(query);
+			session.getTransaction().commit();
+			return (result);
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		} finally {
+			if (session != null && session.isOpen()) {
+				session.close();
+			}
+		}
+		return result;
 	}
+	// 在 ArticleService 中添加的方法
+	public ArticleTypeVO getArticleTypeById(Integer articleTypeId) {
+	    Session session = null;
+	    try {
+	        session = HibernateUtil.getSessionFactory().getCurrentSession();
+	        session.beginTransaction();
+	        
+	        ArticleTypeDAO articleTypeDAO = new ArticleTypeDAOImpl();
+	        return articleTypeDAO.findByPrimaryKey(articleTypeId);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return null;
+	    } finally {
+	        if (session != null && session.isOpen()) {
+	            session.close();
+	        }
+	    }
+	}
+
+
 
 }

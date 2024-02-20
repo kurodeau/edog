@@ -1,6 +1,5 @@
 package com.article.dao;
 
-
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -63,13 +62,13 @@ public class ArticleDAOImpl implements ArticleDAO {
 	}
 
 	@Override
-	public ArticleVO findByPrimaryKey(Integer id) {
-		return getSession().get(ArticleVO.class, id);
+	public ArticleVO findByPrimaryKey(Integer articleId) {
+		return getSession().get(ArticleVO.class, articleId);
 	}
 
 	@Override
 	public List<ArticleVO> getAll() {
-		return getSession().createQuery("from Article", ArticleVO.class).list();
+		return getSession().createQuery("from ArticleVO", ArticleVO.class).list();
 	}
 
 	@Override
@@ -86,18 +85,17 @@ public class ArticleDAOImpl implements ArticleDAO {
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
 
-		java.util.Date startdate =null;
+		java.util.Date startdate = null;
 		java.util.Date enddate = null;
 		try {
 			startdate = map.containsKey("startdate") ? dateFormat.parse(map.get("startdate")) : null;
-			enddate= map.containsKey("enddate") ? dateFormat.parse(map.get("enddate")) : null;
+			enddate = map.containsKey("enddate") ? dateFormat.parse(map.get("enddate")) : null;
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 
 		// 注意以下
 		if (map.containsKey("startdate") && map.containsKey("enddate")) {
-
 
 			predicates.add(builder.between(root.get("artUpdateTime"), startdate, enddate));
 		}
@@ -113,14 +111,13 @@ public class ArticleDAOImpl implements ArticleDAO {
 
 			if ("startdate".equals(row.getKey())) {
 				if (!map.containsKey("enddate")) {
-					predicates.add(builder.greaterThanOrEqualTo(root.get("artUpdateTime"),startdate));
+					predicates.add(builder.greaterThanOrEqualTo(root.get("artUpdateTime"), startdate));
 				}
 			}
 
 			if ("enddate".equals(row.getKey())) {
 				if (!map.containsKey("startdate")) {
-					predicates.add(
-							builder.lessThanOrEqualTo(root.get("artUpdateTime"), enddate));
+					predicates.add(builder.lessThanOrEqualTo(root.get("artUpdateTime"), enddate));
 				}
 			}
 
@@ -138,6 +135,8 @@ public class ArticleDAOImpl implements ArticleDAO {
 	@Override
 	public Integer getTotal() {
 		Long total = getSession().createQuery("select count(*) from ArticleVO", Long.class).uniqueResult();
-		return total.intValue();	}
+		return total.intValue();
+	}
+
 
 }

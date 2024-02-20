@@ -50,8 +50,8 @@ public class ArticleTypeDAOImpl implements ArticleTypeDAO {
 	}
 
 	@Override
-	public ArticleTypeVO findByPrimaryKey(Integer id) {
-		return getSession().get(ArticleTypeVO.class, id);
+	public ArticleTypeVO findByPrimaryKey(Integer articleTypeId) {
+		return getSession().get(ArticleTypeVO.class, articleTypeId);
 	}
 
 	@Override

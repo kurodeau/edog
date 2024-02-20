@@ -14,5 +14,5 @@ public interface ArticleDAO {
     public List<ArticleVO> getAll();
     public Integer getTotal();
     public List<ArticleVO> getByCompositeQuery(Map<String,String> map);
-
+    
 }

@@ -1,10 +1,13 @@
 package com.articleType.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -20,8 +23,8 @@ public class ArticleTypeVO {
     @Column(name = "articleTypeName")
     private String articleTypeName;
     
-//  @OneToMany(mappedBy = "articleType", cascade = CascadeType.ALL)
-//  @OrderBy("article asc")
+  @OneToMany(mappedBy = "articleType", cascade = CascadeType.ALL)
+  @OrderBy("articleTypeId asc")
 //  @Column(name = "articles")
 //  private Set<ArticleVO> articles;
     
