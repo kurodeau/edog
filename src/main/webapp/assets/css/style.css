@@ -100,6 +100,63 @@
   flex: 0 0 18%;
   max-width: 18%;
 }
+
+/*--------------------------------------------------------------
+# buyer commidity  
+--------------------------------------------------------------*/
+.btn-shopcart-custom {
+  color: var(--user-yellow_dark);
+  border-color: var(--user-yellow_dark);
+  background-color: var(--user-yellow_tint);
+}
+
+.btn-shopcart-custom:hover {
+  color: var(--user-yellow_dark);
+  background-color: #ffffff;
+}
+
+.btn-like-custom {
+  color: var(--user-yellow_dark);
+  border-color: var(--user-yellow_dark);
+  background-color: var(--user-yellow_tint);
+}
+
+.btn-like-custom {
+  color: var(--user-yellow_dark);
+  background-color: #ffffff;
+}
+
+.commidity-rate-custom {
+  border-bottom: 1px solid var(--sec-section-outline); /* Change the color and style as needed */
+}
+
+.commidity-details-custom {
+  margin-top: 20px;
+}
+
+.container-commidity-custom {
+  background-color: #ffffff;
+}
+
+.commidity-card-custom {
+  border: none;
+}
+
+.commidity-desp-custom {
+  min-height: 400px;
+  height: auto;
+}
+.user-icon {
+  width: 70px;
+  height: 70px;
+}
+.user-icon i {
+  font-size: 36px;
+}
+
+.user-comment {
+  width: 120px;
+}
 /*--------------------------------------------------------------
 # Vertical Layout 
 --------------------------------------------------------------*/
@@ -332,6 +389,10 @@
 .container-filter-custom {
   padding-left: 16px;
 }
+
+/*--------------------------------------------------------------
+# commidity-sidebar
+--------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
 # nav-tabs-bordered
