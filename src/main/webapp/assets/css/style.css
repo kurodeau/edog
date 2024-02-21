@@ -4,7 +4,7 @@
 :root {
   --user-yellow_tint: #fff7d4;
   --user-yellow_normal: #ead28d;
-  --user-yellow_yellow_dark: #9f780b;
+  --user-yellow_dark: #9f780b;
 
   --seller-green_normal: #d3ddb7;
   --seller-green_dark: #476d0c;
@@ -99,6 +99,68 @@
 .col-2-2 {
   flex: 0 0 18%;
   max-width: 18%;
+}
+
+.col-f110 {
+  max-width: 110px;
+}
+
+/*--------------------------------------------------------------
+# buyer commidity  
+--------------------------------------------------------------*/
+
+.btn-shopcart-custom {
+  color: var(--user-yellow_dark);
+  border-color: var(--user-yellow_dark);
+  background-color: var(--user-yellow_tint);
+}
+
+.btn-shopcart-custom:hover {
+  color: var(--user-yellow_dark);
+  background-color: #ffffff;
+}
+
+.btn-like-custom {
+  color: var(--user-yellow_dark);
+  border-color: var(--user-yellow_dark);
+  background-color: var(--user-yellow_tint);
+}
+
+.btn-like-custom {
+  color: var(--user-yellow_dark);
+  background-color: #ffffff;
+}
+
+.commidity-rate-custom {
+  border-bottom: 1px solid var(--sec-section-outline); /* Change the color and style as needed */
+}
+
+.commidity-details-custom {
+  margin-top: 20px;
+}
+
+.container-commidity-custom {
+  background-color: #ffffff;
+}
+
+.commidity-card-custom {
+  border: none !important;
+}
+
+.commidity-desp-custom {
+  min-height: 400px;
+  height: auto;
+}
+.user-icon {
+  width: 70px;
+  height: 70px;
+}
+.user-icon i {
+  font-size: 36px;
+}
+
+.user-comment {
+  width: 120px;
 }
 /*--------------------------------------------------------------
 # Vertical Layout 
@@ -314,6 +376,47 @@
 }
 
 /*--------------------------------------------------------------
+# filter-sidebar
+--------------------------------------------------------------*/
+
+.container .filter-section:first-child {
+  margin-bottom: 0px;
+}
+.header-filter-custom {
+  padding-left: 16px;
+  font-size: 24px;
+}
+
+.item-filter-custom {
+  border: 0px !important;
+}
+
+.container-filter-custom {
+  padding-left: 16px;
+}
+
+/*--------------------------------------------------------------
+# order-overall
+--------------------------------------------------------------*/
+.container-buyerorder-custom {
+  margin-left: 0;
+  padding: 0px 0px;
+  box-sizing: border-box; /* 確保邊框不會增加容器的寬度和高度 */
+  border: 1px solid var(--seller-green_dark);
+  overflow-x: auto;
+}
+
+.orderheader-row-custom {
+  margin: 0px;
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  align-items: center;
+  background-color: var(--seller-green_dark);
+  color: #ffffff;
+}
+
+/*--------------------------------------------------------------
 # nav-tabs-bordered
 --------------------------------------------------------------*/
 
@@ -341,6 +444,7 @@
 /*--------------------------------------------------------------
 # Common 
 --------------------------------------------------------------*/
+
 .header-row-custom {
   margin: 0px;
   display: flex;
@@ -432,13 +536,13 @@
 --------------------------------------------------------------*/
 .keyword-container-custom .keyword-item-custom {
   cursor: pointer;
-  border: var(--user-yellow_yellow_dark) 1px solid;
+  border: var(--user-yellow_dark) 1px solid;
   background-color: var(--user-yellow_tint);
   color: var(--text-main);
 }
 
 .keyword-container-custom .keyword-item-custom:hover {
-  background-color: var(--user-yellow_yellow_dark);
+  background-color: var(--user-yellow_dark);
   color: var(--text-light);
 }
 
@@ -460,6 +564,8 @@
 .container-list-custom {
   padding: 0;
   margin: 0 0;
+  border-color: var(--seller-green_dark);
+  border-radius: 3px;
 }
 
 .product-card {
@@ -496,7 +602,7 @@
 }
 
 .product-card:hover {
-  border-color: var(--user-yellow_yellow_dark);
+  border-color: var(--user-yellow_dark);
 }
 
 .product-card .card-body {
@@ -519,7 +625,7 @@
 }
 
 .product-card .price-tag {
-  color: var(--user-yellow_yellow_dark);
+  color: var(--user-yellow_dark);
 }
 
 /*--------------------------------------------------------------
@@ -641,11 +747,6 @@
 /*--------------------------------------------------------------
 # Special Text or Button
 --------------------------------------------------------------*/
-
-.orderdetail-head-custom {
-  background-color: var(--sec-section-light);
-  border: 1px solid var(--sec-section-outline);
-}
 
 /*--------------------------------------------------------------
 # Special Text or Button
