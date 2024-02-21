@@ -101,9 +101,14 @@
   max-width: 18%;
 }
 
+.col-f110 {
+  max-width: 110px;
+}
+
 /*--------------------------------------------------------------
 # buyer commidity  
 --------------------------------------------------------------*/
+
 .btn-shopcart-custom {
   color: var(--user-yellow_dark);
   border-color: var(--user-yellow_dark);
@@ -139,7 +144,7 @@
 }
 
 .commidity-card-custom {
-  border: none;
+  border: none !important;
 }
 
 .commidity-desp-custom {
@@ -383,7 +388,7 @@
 }
 
 .item-filter-custom {
-  border: 0px;
+  border: 0px !important;
 }
 
 .container-filter-custom {
@@ -391,8 +396,25 @@
 }
 
 /*--------------------------------------------------------------
-# commidity-sidebar
+# order-overall
 --------------------------------------------------------------*/
+.container-buyerorder-custom {
+  margin-left: 0;
+  padding: 0px 0px;
+  box-sizing: border-box; /* 確保邊框不會增加容器的寬度和高度 */
+  border: 1px solid var(--seller-green_dark);
+  overflow-x: auto;
+}
+
+.orderheader-row-custom {
+  margin: 0px;
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  align-items: center;
+  background-color: var(--seller-green_dark);
+  color: #ffffff;
+}
 
 /*--------------------------------------------------------------
 # nav-tabs-bordered
@@ -422,6 +444,7 @@
 /*--------------------------------------------------------------
 # Common 
 --------------------------------------------------------------*/
+
 .header-row-custom {
   margin: 0px;
   display: flex;
@@ -541,6 +564,8 @@
 .container-list-custom {
   padding: 0;
   margin: 0 0;
+  border-color: var(--seller-green_dark);
+  border-radius: 3px;
 }
 
 .product-card {
@@ -722,11 +747,6 @@
 /*--------------------------------------------------------------
 # Special Text or Button
 --------------------------------------------------------------*/
-
-.orderdetail-head-custom {
-  background-color: var(--sec-section-light);
-  border: 1px solid var(--sec-section-outline);
-}
 
 /*--------------------------------------------------------------
 # Special Text or Button
