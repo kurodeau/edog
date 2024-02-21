@@ -9,7 +9,7 @@ import javax.servlet.http.*;
 
 import com.article.model.*;
 
-public class ArticleServletTest extends HttpServlet {
+public class ArticleServlet2 extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		doPost(req, res);
 	}
