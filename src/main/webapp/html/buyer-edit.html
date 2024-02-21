@@ -12,7 +12,7 @@
   <body>
     <!-- ======= Header ======= -->
     <header class="fixed-top">
-      <nav class="navbar navbar-expand navbar-expand-sm navbar-light bg-seller">
+      <nav class="navbar navbar-expand navbar-expand-sm navbar-light bg-user">
         <div class="container-fluid">
           <div
             class="collapse navbar-collapse d-flex justify-content-between"
@@ -36,7 +36,7 @@
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="seller-login.html">賣家中心</a>
+                <a class="nav-link" href="seller-login.html">買家中心</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">論壇</a>
@@ -61,9 +61,9 @@
     <aside class="sidebar sidebar-layout-seller">
       <ul class="sidebar-nav" id="sidebar-nav">
         <li class="nav-item">
-          <a class="nav-link nav-seller-entry" href="sellerMain.html">
+          <a class="nav-link nav-seller-entry" href="buyer-main.html">
             <i class="bi bi-grid"></i>
-            <span>賣家中心</span>
+            <span>買家中心</span>
           </a>
         </li>
         <!-- End Dashboard Nav -->
@@ -71,31 +71,21 @@
         <li class="nav-item">
           <a
             class="nav-link collapsed"
-            data-bs-target="#seller-nav"
+            data-bs-target="#buyer-nav"
             data-bs-toggle="collapse"
             href="#"
           >
             <i class="bi bi-person"></i>
-            <span>賣家帳戶</span><i class="bi bi-chevron-down ms-auto"></i>
+            <span>買家帳戶</span><i class="bi bi-chevron-down ms-auto"></i>
           </a>
           <ul
-            id="seller-nav"
+            id="buyer-nav"
             class="nav-content collapse"
             data-bs-parent="#sidebar-nav"
           >
             <li>
-              <a href="seller-level.html">
-                <i class="bi bi-circle"></i><span>賣家等級</span>
-              </a>
-            </li>
-            <li>
-              <a href="seller-edit.html">
-                <i class="bi bi-circle"></i><span>修改賣家資料</span>
-              </a>
-            </li>
-            <li>
-              <a href="seller-check-payment.html">
-                <i class="bi bi-circle"></i><span>查看金流</span>
+              <a href="buyer-edit.html">
+                <i class="bi bi-circle"></i><span>修改買家資料</span>
               </a>
             </li>
           </ul>
@@ -103,33 +93,48 @@
         <!-- End Seller Nav -->
 
         <li class="nav-item">
+          <a class="nav-link nav-seller-entry" href="buyer-cart.html">
+            <i class="bi bi-cart"></i>
+            <span>我的購物車</span>
+          </a>
+        </li>
+        <!-- End product Nav -->
+        <li class="nav-item">
+          <a class="nav-link nav-seller-entry" href="buyer-cart.html">
+            <i class="bi bi-heart"></i>
+            <span>我的收藏</span>
+          </a>
+        </li>
+
+        <!-- End Charts Nav -->
+
+        <li class="nav-item">
           <a
             class="nav-link collapsed"
-            data-bs-target="#product-nav"
+            data-bs-target="#order-nav"
             data-bs-toggle="collapse"
             href="#"
           >
-            <i class="bi bi-bag"></i>
-            <span>商品管理</span><i class="bi bi-chevron-down ms-auto"></i>
+            <i class="bi bi-stickies"></i><span>訂單管理</span
+            ><i class="bi bi-chevron-down ms-auto"></i>
           </a>
           <ul
-            id="product-nav"
+            id="order-nav"
             class="nav-content collapse"
             data-bs-parent="#sidebar-nav"
           >
             <li>
-              <a href="product-add.html">
-                <i class="bi bi-circle"></i><span>新增商品</span>
+              <a href="buyer-order-overall.html">
+                <i class="bi bi-circle"></i><span>全部訂單</span>
               </a>
             </li>
             <li>
-              <a href="product-all.html">
-                <i class="bi bi-circle"></i><span>商品列表</span>
+              <a href="buyer-order-search.html">
+                <i class="bi bi-circle"></i><span>訂單查詢</span>
               </a>
             </li>
           </ul>
         </li>
-        <!-- End product Nav -->
 
         <li class="nav-item">
           <a
@@ -158,93 +163,9 @@
             </li>
           </ul>
         </li>
-        <!-- End Tables Nav -->
-
-        <li class="nav-item">
-          <a
-            class="nav-link collapsed"
-            data-bs-target="#charts-nav"
-            data-bs-toggle="collapse"
-            href="#"
-          >
-            <i class="bi bi-bar-chart"></i><span>銷售報表</span
-            ><i class="bi bi-chevron-down ms-auto"></i>
-          </a>
-          <ul
-            id="charts-nav"
-            class="nav-content collapse"
-            data-bs-parent="#sidebar-nav"
-          >
-            <li>
-              <a href="charts-chartjs.html">
-                <i class="bi bi-circle"></i><span>銷售數據</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <!-- End Charts Nav -->
-
-        <li class="nav-item">
-          <a
-            class="nav-link collapsed"
-            data-bs-target="#order-nav"
-            data-bs-toggle="collapse"
-            href="#"
-          >
-            <i class="bi bi-stickies"></i><span>訂單管理</span
-            ><i class="bi bi-chevron-down ms-auto"></i>
-          </a>
-          <ul
-            id="order-nav"
-            class="nav-content collapse"
-            data-bs-parent="#sidebar-nav"
-          >
-            <li>
-              <a href="order-overall.html">
-                <i class="bi bi-circle"></i><span>全部訂單</span>
-              </a>
-            </li>
-            <li>
-              <a href="order-search.html">
-                <i class="bi bi-circle"></i><span>訂單查詢</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <li class="nav-item">
-          <a
-            class="nav-link collapsed"
-            data-bs-target="#ads-nav"
-            data-bs-toggle="collapse"
-            href="#"
-          >
-            <i class="bi bi-badge-ad"></i><span>廣告管理</span
-            ><i class="bi bi-chevron-down ms-auto"></i>
-          </a>
-          <ul
-            id="ads-nav"
-            class="nav-content collapse"
-            data-bs-parent="#sidebar-nav"
-          >
-            <li>
-              <a href="ads-add.html">
-                <i class="bi bi-circle"></i><span>新增廣告</span>
-              </a>
-            </li>
-            <li>
-              <a href="ads-all.html">
-                <i class="bi bi-circle"></i><span>查看廣告</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <!-- End Icons Nav -->
       </ul>
     </aside>
     <!-- ======= Main ======= -->
-
     <main class="main main-layout-seller">
       <div class="container-fluid seller-container">
         <h1>編輯個人資料</h1>
@@ -447,12 +368,10 @@
         </form>
       </div>
     </main>
-    <!-- End #main -->
-
     <!-- End Main -->
 
     <!-- ======= Footer ======= -->
-    <footer class="footer footer-layout on">
+    <footer class="footer footer-layout">
       <div
         class="row row-cols-1 row-cols-sm-2 row-cols-md-4 pt-5 border-top footer-container-custom text-white"
       >
@@ -490,9 +409,6 @@
             href="/"
             class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none"
           >
-            <svg class="bi" width="32" height="32" fill="currentColor">
-              <use xlink:href="bootstrap-icons.svg#heart-fill" />
-            </svg>
           </a>
           <p class="text-body-secondary">
             新加坡商CatTom有限公司台灣分公司 統一編號：00000000 © 2023
@@ -502,10 +418,7 @@
       </div>
     </footer>
     <!-- End Footer -->
-
-    <!-- Vendor & Main JS Files -->
     <script src="loadjs.js"></script>
-    <!-- <script src="../assets/vendors/common/tw-city-selector.js"></script> -->
 
     <!-- Local JS File -->
     <script>

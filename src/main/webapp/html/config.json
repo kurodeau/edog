@@ -17,8 +17,7 @@
       "quillBubble": "vendors/quill/quill.bubble.css",
       "quillSnow": "vendors/quill/quill.snow.css",
       "simpleDatatables": "vendors/simple-datatables/style.css",
-      "hamburger": "vendors/hamburger/hamburgers.css",
-      "JJK": "vendors/JJK/SSSS.css"
+      "hamburger": "vendors/hamburger/hamburgers.css"
     },
     "mainStyle": "css/style.css",
     "js": [

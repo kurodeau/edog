@@ -27,6 +27,7 @@
 		<mapping class="com.seller.entity.SellerVO" />
 		<mapping class="com.sellerLv.entity.SellerLvVO" />
 		<mapping class="com.coupon.entity.CouponVO" />
+		<!-- <mapping class="com.petdraw.entity.PetDrawVO" /> -->
 		<mapping class="com.buyer.entity.BuyerVO"/>
 
 
