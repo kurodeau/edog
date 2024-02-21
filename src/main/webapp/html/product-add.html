@@ -622,7 +622,7 @@
                 window.location.pathname.indexOf("/", 1)
               )
             );
-
+            console.log("送出路徑 : " + getActionPath);
             form.setAttribute("action", getActionPath);
 
             // (1.1 針對第一個表單imageForm
@@ -677,20 +677,20 @@
             document.body.appendChild(form);
 
             // (3. 測試
-            // console.log(form);
-            // var dataFormSubmitted = new FormData(form);
-            // for (let pair of dataFormSubmitted.entries()) {
-            //   console.log("name>>" + pair[0]);
-            //   if (pair[1] instanceof File) {
-            //     // 如果是文件上传字段，pair[1] 是一个 FileList 对象
-            //     console.log("file name>>" + pair[1].name);
-            //     console.log("file type>>" + pair[1].type);
-            //     console.log("file size>>" + pair[1].size);
-            //   } else {
-            //     // 如果不是文件上传字段，直接输出值
-            //     console.log("value>>" + pair[1]);
-            //   }
-            // }
+            console.log(form);
+            var dataFormSubmitted = new FormData(form);
+            for (let pair of dataFormSubmitted.entries()) {
+              console.log("name>>" + pair[0]);
+              if (pair[1] instanceof File) {
+                // 如果是文件上传字段，pair[1] 是一个 FileList 对象
+                console.log("file name>>" + pair[1].name);
+                console.log("file type>>" + pair[1].type);
+                console.log("file size>>" + pair[1].size);
+              } else {
+                // 如果不是文件上传字段，直接输出值
+                console.log("value>>" + pair[1]);
+              }
+            }
 
             try {
               // (4) 後端驗證
@@ -707,7 +707,7 @@
 
         async function checkValidity(form) {
           const submitButton = document.getElementById("submitButton");
-
+          // 防手賤
           submitButton.setAttribute("disabled", true);
 
           try {
@@ -759,12 +759,12 @@
 
           // FormData 中添加的 "action" 參數是與 HTML 中的 <form> 標籤的 action 屬性不同
           formData.append("action", "check");
-          for (const entry of formData.entries()) {
-            const [key, value] = entry;
-            console.log(`Key: ${key}, Value: ${value}`);
-          }
+          // for (const entry of formData.entries()) {
+          //   const [key, value] = entry;
+          //   console.log(`Key: ${key}, Value: ${value}`);
+          // }
 
-          console.log("action" + formElement.getAttribute("action"));
+          // console.log("action" + formElement.getAttribute("action"));
           const response = await fetch(formElement.getAttribute("action"), {
             method: "POST",
             body: formData,
