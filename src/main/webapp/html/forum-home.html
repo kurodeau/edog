@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>EDog</title>
+    <script src="loadcss.js"></script>
+  </head>
+  <body>
+    <!-- ======= Header ======= -->
+    <header class="fixed-top">
+      <nav class="navbar navbar-expand navbar-expand-sm navbar-light bg-user">
+        <div class="container-fluid">
+          <div
+            class="collapse navbar-collapse d-flex justify-content-between"
+            id="navbarSupportedContent"
+          >
+            <!-- Start NavBar  -->
+            <!-- NavBar--LeftSide  -->
+            <ul class="navbar-nav me-auto mb-2">
+              <li class="nav-item d-flex align-items-center toggle-sidebar-btn">
+                <i class="bi bi-list"></i>
+                <a
+                  class="nav-link cancel-default-behavior"
+                  aria-current="page"
+                  href="#"
+                  >選單</a
+                >
+              </li>
+              <li class="nav-item d-flex align-items-center">
+                <a class="nav-link active" aria-current="page" href="#"
+                  >電子商城</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="seller-login.html">賣家中心</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="forum-home.html">論壇</a>
+              </li>
+            </ul>
+
+            <!-- NavBar--RightSide  -->
+            <ul class="navbar-nav ms-auto mb-2">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">註冊</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">登入</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End NavBar  -->
+
+      <!-- Start SearchBar  -->
+      <div class="container-fluid bg-user search-container-custom">
+        <div class="row">
+          <!-- Start SearchBar-Logo  -->
+          <div
+            class="col-auto d-none d-lg-block logo-container-height d-flex align-items-end"
+          >
+            <img
+              src="../assets/image/Medium.png"
+              class="img-logo-custom"
+              alt=""
+              srcset=""
+            />
+          </div>
+          <!-- End SearchBar-Logo  -->
+
+          <!-- Start SearchBar-Input  -->
+          <div
+            class="col d-flex searchItem flex-column search-item-container-custom"
+          >
+            <form class="form-inline w-100">
+              <div class="row py-2 search-row-custom w-100 pe-2">
+                <div class="col">
+                  <input
+                    class="form-control mr-sm-2 w-100 search-input-custom"
+                    type="search"
+                    placeholder="請在此進行商品檢索"
+                    aria-label="Search"
+                  />
+                </div>
+                <div class="col-auto">
+                  <button
+                    class="btn btn-user search-button-custom d-flex"
+                    type="submit"
+                  >
+                    <i class="me-2 ri-search-line"></i>
+                    <div class="col-auto d-none d-md-block">Search</div>
+                  </button>
+                </div>
+              </div>
+            </form>
+            <div class="my-2 keyword-container-custom">
+              <span class="badge rounded-pill keyword-item-custom">寵物床</span>
+              <span class="badge rounded-pill keyword-item-custom">玩具</span>
+            </div>
+          </div>
+          <!-- End SearchBar-Input  -->
+
+          <!-- Start SearchBar-Function  -->
+          <div
+            class="col-2 d-block col-sm-2 d-flex align-items-start justify-content-start cart-container-custom"
+          >
+            <div
+              class="baritem d-flex align-items-center justify-content-start cart-item-custom"
+            >
+              <i class="ri-shopping-cart-2-line"></i>
+              <div class="cart d-none d-lg-block ml-1">購物車</div>
+            </div>
+          </div>
+          <!-- End SearchBar-Function  -->
+        </div>
+      </div>
+      <!-- Start Banner  -->
+      <div
+        class="container-fluid justify-content-between align-items-center banner-container-custom"
+      >
+        <div class="row">
+          <div class="col banner-content text-center banner-content-custom">
+            <p class="mb-1 mt-1 banner-para-custom">
+              This is a sample horizontal full-width banner.
+            </p>
+          </div>
+          <div
+            class="col-auto buttona mb-0 d-flex justify-content-end banner-close-custom"
+          >
+            <i class="mb-1 mt-1 ri-close-line banner-close"></i>
+          </div>
+        </div>
+      </div>
+      <!-- End Banner  -->
+    </header>
+    <!-- ======= Sidebar ======= -->
+    <aside class="sidebar sidebar-layout">
+      <ul class="sidebar-nav" id="sidebar-nav">
+        <!-- End Dashboard Nav -->
+        <li class="nav-item">
+          <a class="nav-link nav-seller-entry" href="index.html">
+            <i class="bi bi-grid"></i>
+            <span>賣家中心</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            data-bs-target="#components-nav"
+            data-bs-toggle="collapse"
+            href="#"
+          >
+            <i class="bi bi-grid"></i>
+            <span>文章分類</span><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul
+            id="components-nav"
+            class="nav-content collapse"
+            data-bs-parent="#sidebar-nav"
+          >
+          <li>
+            <a href="articleType1.html">
+              <i class="bi bi-circle"></i><span>文章分類一</span>
+            </a>
+          </li>
+          <li>
+            <a href="articleType2.html">
+              <i class="bi bi-circle"></i><span>文章分類二</span>
+            </a>
+          </li>
+          <li>
+            <a href="articleType3.html">
+              <i class="bi bi-circle"></i><span>文章分類三</span>
+            </a>
+          </li>
+          </ul>
+        </li>
+        <!-- End Components Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="forum-home.html">
+              <i class="bi bi-file-text"></i>
+              <span>所有文章</span>
+            </a>
+          </li>
+          <!-- End Profile Page Nav -->
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="post-article.html">
+              <i class="bi bi-pencil-square"></i>
+              <span>發表文章</span>
+            </a>
+          </li>
+          <!-- End Profile Page Nav -->
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="users-profile.html">
+              <i class="bi bi-person"></i>
+              <span>我的文章</span>
+            </a>
+          </li>
+          <!-- End Profile Page Nav -->
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="users-profile.html">
+              <i class="bi bi-suit-heart"></i>
+              <span>喜愛文章</span>
+            </a>
+          </li>
+          <!-- End Profile Page Nav -->
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="users-profile.html">
+              <i class="bi bi-bell"></i>
+              <span>消息通知</span>
+            </a>
+          </li>
+          <!-- End Profile Page Nav -->
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="users-profile.html">
+              <i class="bi bi-subtract"></i>
+              <span>寵物抽卡</span>
+            </a>
+          </li>
+          <!-- End Profile Page Nav -->
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="users-profile.html">
+              <i class="bi bi-fire"></i>
+              <span>熱門活動</span>
+            </a>
+          </li>
+          <!-- End Profile Page Nav --> 
+      </ul>
+    </aside>
+    <!-- ======= Main ======= -->
+    <main class="main main-layout">
+      <h1  style="margin-top: 30px;">全部</h1>
+      <div class="tab_list_block">
+        <ul class="tab_list">
+          <li><a href="#" data-target="tab1" class="tab -on">熱門</a></li>
+          <li><a href="#" data-target="tab2" class="tab">最新</a></li>
+        </ul>
+        <hr>  
+      </div>
+
+      <div class="forum-article-list">
+        <a href="article1.html" class="forum-article-link">
+          <div class="forum-article tab tab1 -on">
+            <div class="avatar-section">
+              <img src="https://fakeimg.pl/260x260" alt="作者頭像" class="avatar">
+              <p class="avatar-name">作者名稱</p>
+              <div class="category">
+                <div class="category-options">
+                  <!-- 三個垂直點點點開會有舉報等內容顯示在右邊 -->
+                </div>
+                <p class="category-name">文章分類一</p>
+              </div>
+            </div>
+            <h2 class="article-title">文章標題</h2>
+            <p class="article-content">文章內容...</p>
+            <div class="interaction-section">
+              <div class="interaction-item">
+                <span class="like-count">喜歡數</span>
+              </div>
+              <div class="interaction-item">
+                <span class="comment-count">留言數</span>
+              </div>
+              <div class="interaction-item">
+                <span class="share-count">分享數</span>
+              </div>
+              <div class="post-time">
+                <span class="time">發文時間</span>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="article2.html" class="forum-article-link">
+          <div class="forum-article tab tab2">
+            <div class="avatar-section">
+              <img src="https://fakeimg.pl/260x260" alt="作者頭像" class="avatar">
+              <p class="avatar-name">作者名稱</p>
+              <div class="category">
+                <div class="category-options">
+                  <!-- 這裡放上你的三個垂直點點 -->
+                </div>
+                <p class="category-name">文章分類一</p>
+              </div>
+            </div>
+            <h2 class="article-title">文章標題</h2>
+            <p class="article-content">文章內容...</p>
+            <div class="interaction-section">
+              <div class="interaction-item">
+                <span class="like-count">喜歡數</span>
+              </div>
+              <div class="interaction-item">
+                <span class="comment-count">留言數</span>
+              </div>
+              <div class="interaction-item">
+                <span class="share-count">分享數</span>
+              </div>
+              <div class="post-time">
+                <span class="time">發文時間</span>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="article3.html" class="forum-article-link">
+          <div class="forum-article tab tab2">
+            <div class="avatar-section">
+              <img src="https://fakeimg.pl/260x260" alt="作者頭像" class="avatar">
+              <p class="avatar-name">作者名稱</p>
+              <div class="category">
+                <div class="category-options">
+                  <!-- 這裡放上你的三個垂直點點 -->
+                </div>
+                <p class="category-name">文章分類一</p>
+              </div>
+            </div>
+            <h2 class="article-title">文章標題</h2>
+            <p class="article-content">文章內容...</p>
+            <div class="interaction-section">
+              <div class="interaction-item">
+                <span class="like-count">喜歡數</span>
+              </div>
+              <div class="interaction-item">
+                <span class="comment-count">留言數</span>
+              </div>
+              <div class="interaction-item">
+                <span class="share-count">分享數</span>
+              </div>
+              <div class="post-time">
+                <span class="time">發文時間</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </main>    
+    <!-- End Main -->
+
+    <!-- ======= Footer ======= -->
+    <footer class="footer footer-layout">
+      <div
+        class="row row-cols-1 row-cols-sm-2 row-cols-md-4 pt-5 border-top footer-container-custom text-white"
+      >
+        <div class="col d-none d-sm-block p-sm-2 px-5 px-sm-5 px-md-0"></div>
+
+        <div class="col p-sm-2 px-5 px-sm-5 px-md-0">
+          <h5 class="mb-3">關於我們</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2">
+              <a href="#" class="nav-link p-0 text-body-secondary">人才招募</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a href="#" class="nav-link p-0 text-body-secondary">E狗簡介</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col p-sm-2 px-5 px-sm-5 px-md-0">
+          <h5 class="mb-3">常見問題</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2">
+              <a href="#" class="nav-link p-0 text-body-secondary">聯絡E狗</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a href="#" class="nav-link p-0 text-body-secondary">Q&A</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row footer-container-custom">
+        <div class="col-3"></div>
+
+        <div class="col-auto">
+          <a
+            href="/"
+            class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none"
+          >
+            <svg class="bi" width="32" height="32" fill="currentColor">
+              <use xlink:href="bootstrap-icons.svg#heart-fill" />
+            </svg>
+          </a>
+          <p class="text-body-secondary">
+            新加坡商CatTom有限公司台灣分公司 統一編號：00000000 © 2023
+            CatTom.版權所有。
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- Vendor JS Files -->
+    <script src="loadjs.js"></script>
+  </body>
+</html>
