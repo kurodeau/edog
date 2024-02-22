@@ -12,7 +12,7 @@
   <body>
     <!-- ======= Header ======= -->
     <header class="fixed-top">
-      <nav class="navbar navbar-expand navbar-expand-sm navbar-light bg-user">
+      <nav class="navbar navbar-expand navbar-expand-sm navbar-light bg-seller">
         <div class="container-fluid">
           <div
             class="collapse navbar-collapse d-flex justify-content-between"
@@ -36,7 +36,7 @@
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="seller-login.html">買家中心</a>
+                <a class="nav-link" href="seller-login.html">賣家中心</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">論壇</a>
@@ -61,9 +61,9 @@
     <aside class="sidebar sidebar-layout-seller">
       <ul class="sidebar-nav" id="sidebar-nav">
         <li class="nav-item">
-          <a class="nav-link nav-seller-entry" href="buyer-main.html">
+          <a class="nav-link nav-seller-entry" href="seller-main.html">
             <i class="bi bi-grid"></i>
-            <span>買家中心</span>
+            <span>賣家中心</span>
           </a>
         </li>
         <!-- End Dashboard Nav -->
@@ -71,21 +71,31 @@
         <li class="nav-item">
           <a
             class="nav-link collapsed"
-            data-bs-target="#buyer-nav"
+            data-bs-target="#seller-nav"
             data-bs-toggle="collapse"
             href="#"
           >
             <i class="bi bi-person"></i>
-            <span>買家帳戶</span><i class="bi bi-chevron-down ms-auto"></i>
+            <span>賣家帳戶</span><i class="bi bi-chevron-down ms-auto"></i>
           </a>
           <ul
-            id="buyer-nav"
+            id="seller-nav"
             class="nav-content collapse"
             data-bs-parent="#sidebar-nav"
           >
             <li>
-              <a href="buyer-edit.html">
-                <i class="bi bi-circle"></i><span>修改買家資料</span>
+              <a href="seller-level.html">
+                <i class="bi bi-circle"></i><span>賣家等級</span>
+              </a>
+            </li>
+            <li>
+              <a href="seller-edit.html">
+                <i class="bi bi-circle"></i><span>修改賣家資料</span>
+              </a>
+            </li>
+            <li>
+              <a href="seller-check-payment.html">
+                <i class="bi bi-circle"></i><span>查看金流</span>
               </a>
             </li>
           </ul>
@@ -93,19 +103,85 @@
         <!-- End Seller Nav -->
 
         <li class="nav-item">
-          <a class="nav-link nav-seller-entry" href="buyer-cart.html">
-            <i class="bi bi-cart"></i>
-            <span>我的購物車</span>
+          <a
+            class="nav-link collapsed"
+            data-bs-target="#product-nav"
+            data-bs-toggle="collapse"
+            href="#"
+          >
+            <i class="bi bi-bag"></i>
+            <span>商品管理</span><i class="bi bi-chevron-down ms-auto"></i>
           </a>
+          <ul
+            id="product-nav"
+            class="nav-content collapse"
+            data-bs-parent="#sidebar-nav"
+          >
+            <li>
+              <a href="seller-product-add.html">
+                <i class="bi bi-circle"></i><span>新增商品</span>
+              </a>
+            </li>
+            <li>
+              <a href="seller-product-all.html">
+                <i class="bi bi-circle"></i><span>商品列表</span>
+              </a>
+            </li>
+          </ul>
         </li>
         <!-- End product Nav -->
-        <li class="nav-item">
-          <a class="nav-link nav-seller-entry" href="buyer-like.html">
-            <i class="bi bi-heart"></i>
-            <span>我的收藏</span>
-          </a>
-        </li>
 
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            data-bs-target="#service-nav"
+            data-bs-toggle="collapse"
+            href="#"
+          >
+            <i class="bi bi-headset"></i><span>客戶服務</span
+            ><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul
+            id="service-nav"
+            class="nav-content collapse"
+            data-bs-parent="#sidebar-nav"
+          >
+            <li>
+              <a href="seller-service-form.html">
+                <i class="bi bi-circle"></i><span>意見表單</span>
+              </a>
+            </li>
+            <li>
+              <a href="seller-service-reply.html">
+                <i class="bi bi-circle"></i><span>查詢回覆</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- End Tables Nav -->
+
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            data-bs-target="#charts-nav"
+            data-bs-toggle="collapse"
+            href="#"
+          >
+            <i class="bi bi-bar-chart"></i><span>銷售報表</span
+            ><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul
+            id="charts-nav"
+            class="nav-content collapse"
+            data-bs-parent="#sidebar-nav"
+          >
+            <li>
+              <a href="seller-report.html">
+                <i class="bi bi-circle"></i><span>銷售數據</span>
+              </a>
+            </li>
+          </ul>
+        </li>
         <!-- End Charts Nav -->
 
         <li class="nav-item">
@@ -124,12 +200,12 @@
             data-bs-parent="#sidebar-nav"
           >
             <li>
-              <a href="buyer-order-overall.html">
+              <a href="seller-order-overall.html">
                 <i class="bi bi-circle"></i><span>全部訂單</span>
               </a>
             </li>
             <li>
-              <a href="buyer-order-search.html">
+              <a href="seller-order-search.html">
                 <i class="bi bi-circle"></i><span>訂單查詢</span>
               </a>
             </li>
@@ -139,33 +215,36 @@
         <li class="nav-item">
           <a
             class="nav-link collapsed"
-            data-bs-target="#service-nav"
+            data-bs-target="#ads-nav"
             data-bs-toggle="collapse"
             href="#"
           >
-            <i class="bi bi-headset"></i><span>客戶服務</span
+            <i class="bi bi-badge-ad"></i><span>廣告管理</span
             ><i class="bi bi-chevron-down ms-auto"></i>
           </a>
           <ul
-            id="service-nav"
+            id="ads-nav"
             class="nav-content collapse"
             data-bs-parent="#sidebar-nav"
           >
             <li>
-              <a href="buyer-service-form.html">
-                <i class="bi bi-circle"></i><span>意見表單</span>
+              <a href="seller-ads-add.html">
+                <i class="bi bi-circle"></i><span>新增廣告</span>
               </a>
             </li>
             <li>
-              <a href="buyer-service-reply.html">
-                <i class="bi bi-circle"></i><span>查詢回覆</span>
+              <a href="seller-ads-all.html">
+                <i class="bi bi-circle"></i><span>查看廣告</span>
               </a>
             </li>
           </ul>
         </li>
+
+        <!-- End Icons Nav -->
       </ul>
     </aside>
     <!-- ======= Main ======= -->
+
     <main class="main main-layout-seller">
       <div class="container-fluid seller-container">
         <h1>訂單管理</h1>
@@ -179,7 +258,7 @@
             >
               <li class="nav-item" role="presentation">
                 <button
-                  class="nav-link buyer-nav-link active"
+                  class="nav-link seller-nav-link active"
                   id="all-orders-tab"
                   data-bs-toggle="tab"
                   data-bs-target="#bordered-all-orders"
@@ -193,7 +272,7 @@
               </li>
               <li class="nav-item" role="presentation">
                 <button
-                  class="nav-link buyer-nav-link"
+                  class="nav-link seller-nav-link"
                   id="pending-tab"
                   data-bs-toggle="tab"
                   data-bs-target="#bordered-pending"
@@ -208,7 +287,7 @@
 
               <li class="nav-item" role="presentation">
                 <button
-                  class="nav-link buyer-nav-link"
+                  class="nav-link seller-nav-link"
                   id="cancel-tab"
                   data-bs-toggle="tab"
                   data-bs-target="#bordered-cancel"
@@ -222,7 +301,7 @@
               </li>
               <li class="nav-item" role="presentation">
                 <button
-                  class="nav-link buyer-nav-link"
+                  class="nav-link seller-nav-link"
                   id="shipped-tab"
                   data-bs-toggle="tab"
                   data-bs-target="#bordered-shipped"
@@ -236,7 +315,7 @@
               </li>
               <li class="nav-item" role="presentation">
                 <button
-                  class="nav-link buyer-nav-link"
+                  class="nav-link seller-nav-link"
                   id="completed-tab"
                   data-bs-toggle="tab"
                   data-bs-target="#bordered-completed"
@@ -256,60 +335,29 @@
                 role="tabpanel"
                 aria-labelledby="all-orders-tab"
               >
-                <div
-                  class="container mt-3 container-buyerorder-custom border-userdark"
-                >
-                  <div class="row orderheader-row-custom bg-userdark">
-                    <div class="col-2 px-0">賣家名稱</div>
-                    <div class="col-2 px-0">訂單日期</div>
-                    <div class="col-2 px-0">訂單序號</div>
-                    <div class="col-2 px-0">訂單金額</div>
-                    <div class="col-2 px-0">狀態</div>
-                  </div>
-
-                  <!-- Item 1 -->
-                  <div class="row item-row-custom">
-                    <div class="col-2 px-0">123123</div>
-                    <div class="col-2 px-0">2023-01-01</div>
-                    <div class="col-2 px-0">6</div>
-                    <div class="col-2 px-0">2400</div>
-                    <div class="col-2 px-0">等待中<br />待賣家確認</div>
-                  </div>
-
+                <div class="container mt-3 container-list-custom">
                   <div class="row header-row-custom">
-                    <div class="col-f110 px-0">商品圖片</div>
-                    <div class="col-2 px-0">商品種類</div>
-                    <div class="col-3 px-0">商品名稱</div>
-                    <div class="col-1 px-2 d-flex justify-content-end">
-                      購買數量
-                    </div>
-                    <div class="col-1-5 px-2 d-flex justify-content-end">
-                      買家實付金額
-                    </div>
-                    <div class="col px-0 d-flex justify-content-center">
-                      操作
-                    </div>
+                    <div class="col-2">訂單序號</div>
+                    <div class="col-3">訂單日期</div>
+                    <div class="col-2">買家實付金額</div>
+                    <div class="col-3">狀態</div>
+                    <div class="col-2">操作</div>
                   </div>
 
                   <!-- Item 1 -->
                   <div class="row item-row-custom">
-                    <div class="col-f110 px-0">
-                      <img src="https://fakeimg.pl/100x100/" alt="" srcset="" />
-                    </div>
-                    <div class="col-2 px-0">沐浴用品</div>
-                    <div class="col-3 px-0">洗澡用</div>
-                    <div class="col-1 px-2 d-flex justify-content-end">2</div>
-                    <div class="col-1-5 px-2 d-flex justify-content-end">
-                      2400
-                    </div>
-                    <div class="col d-flex flex-column align-items-center">
-                      <button class="product align-self-center btn-func">
+                    <div class="col-2">123456</div>
+                    <div class="col-3">2024-02-18</div>
+                    <div class="col-2">50</div>
+                    <div class="col-3">等待中<br />待賣家確認</div>
+                    <div class="col-2 d-flex flex-column align-items-center">
+                      <button class="product align-self-start btn-func">
                         接受訂單
                       </button>
-                      <button class="product align-self-center btn-func">
+                      <button class="product align-self-start btn-func">
                         取消訂單
                       </button>
-                      <button class="product align-self-center btn-func">
+                      <button class="product align-self-start btn-func">
                         查看詳情
                       </button>
                     </div>
@@ -317,107 +365,12 @@
 
                   <!-- Item 2 -->
                   <div class="row item-row-custom">
-                    <div class="col-f110 px-0">
-                      <img src="https://fakeimg.pl/100x100/" alt="" srcset="" />
-                    </div>
-                    <div class="col-2 px-0">沐浴用品</div>
-                    <div class="col-3 px-0">洗澡用</div>
-                    <div class="col-1 px-2 d-flex justify-content-end">2</div>
-                    <div class="col-1-5 px-2 d-flex justify-content-end">
-                      2400
-                    </div>
-                    <div class="col d-flex flex-column align-items-center">
-                      <button class="product align-self-center btn-func">
-                        接受訂單
-                      </button>
-                      <button class="product align-self-center btn-func">
-                        取消訂單
-                      </button>
-                      <button class="product align-self-center btn-func">
-                        查看詳情
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  class="container mt-3 container-buyerorder-custom border-userdark"
-                >
-                  <div class="row orderheader-row-custom bg-userdark">
-                    <div class="col-2 px-0">賣家名稱</div>
-                    <div class="col-2 px-0">訂單日期</div>
-                    <div class="col-2 px-0">訂單序號</div>
-                    <div class="col-2 px-0">訂單金額</div>
-                    <div class="col-2 px-0">狀態</div>
-                  </div>
-
-                  <!-- Item 1 -->
-                  <div class="row item-row-custom">
-                    <div class="col-2 px-0">123123</div>
-                    <div class="col-2 px-0">2023-01-01</div>
-                    <div class="col-2 px-0">6</div>
-                    <div class="col-2 px-0">2400</div>
-                    <div class="col-2 px-0">等待中<br />待賣家確認</div>
-                  </div>
-
-                  <div class="row header-row-custom">
-                    <div class="col-f110 px-0">商品圖片</div>
-                    <div class="col-2 px-0">商品種類</div>
-                    <div class="col-3 px-0">商品名稱</div>
-                    <div class="col-1 px-2 d-flex justify-content-end">
-                      購買數量
-                    </div>
-                    <div class="col-1-5 px-2 d-flex justify-content-end">
-                      買家實付金額
-                    </div>
-                    <div class="col px-0 d-flex justify-content-center">
-                      操作
-                    </div>
-                  </div>
-
-                  <!-- Item 1 -->
-                  <div class="row item-row-custom">
-                    <div class="col-f110 px-0">
-                      <img src="https://fakeimg.pl/100x100/" alt="" srcset="" />
-                    </div>
-                    <div class="col-2 px-0">沐浴用品</div>
-                    <div class="col-3 px-0">洗澡用</div>
-                    <div class="col-1 px-2 d-flex justify-content-end">2</div>
-                    <div class="col-1-5 px-2 d-flex justify-content-end">
-                      2400
-                    </div>
-                    <div class="col d-flex flex-column align-items-center">
-                      <button class="product align-self-center btn-func">
-                        接受訂單
-                      </button>
-                      <button class="product align-self-center btn-func">
-                        取消訂單
-                      </button>
-                      <button class="product align-self-center btn-func">
-                        查看詳情
-                      </button>
-                    </div>
-                  </div>
-
-                  <!-- Item 2 -->
-                  <div class="row item-row-custom">
-                    <div class="col-f110 px-0">
-                      <img src="https://fakeimg.pl/100x100/" alt="" srcset="" />
-                    </div>
-                    <div class="col-2 px-0">沐浴用品</div>
-                    <div class="col-3 px-0">洗澡用</div>
-                    <div class="col-1 px-2 d-flex justify-content-end">2</div>
-                    <div class="col-1-5 px-2 d-flex justify-content-end">
-                      2400
-                    </div>
-                    <div class="col d-flex flex-column align-items-center">
-                      <button class="product align-self-center btn-func">
-                        接受訂單
-                      </button>
-                      <button class="product align-self-center btn-func">
-                        取消訂單
-                      </button>
-                      <button class="product align-self-center btn-func">
+                    <div class="col-2">123456</div>
+                    <div class="col-3">2024-02-18</div>
+                    <div class="col-2">50</div>
+                    <div class="col-3">不成立<br />買家不接受</div>
+                    <div class="col-2 d-flex flex-column align-items-center">
+                      <button class="product align-self-start btn-func">
                         查看詳情
                       </button>
                     </div>
@@ -463,10 +416,13 @@
         </div>
       </div>
     </main>
+
+    <!-- End #main -->
+
     <!-- End Main -->
 
     <!-- ======= Footer ======= -->
-    <footer class="footer footer-layout">
+    <footer class="footer footer-layout on">
       <div
         class="row row-cols-1 row-cols-sm-2 row-cols-md-4 pt-5 border-top footer-container-custom text-white"
       >
@@ -504,6 +460,9 @@
             href="/"
             class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none"
           >
+            <svg class="bi" width="32" height="32" fill="currentColor">
+              <use xlink:href="bootstrap-icons.svg#heart-fill" />
+            </svg>
           </a>
           <p class="text-body-secondary">
             新加坡商CatTom有限公司台灣分公司 統一編號：00000000 © 2023
@@ -513,8 +472,11 @@
       </div>
     </footer>
     <!-- End Footer -->
+
+    <!-- Vendor & Main JS Files -->
     <script src="loadjs.js"></script>
 
     <!-- Local JS File -->
+    <script></script>
   </body>
 </html>

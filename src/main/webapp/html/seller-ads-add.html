@@ -61,7 +61,7 @@
     <aside class="sidebar sidebar-layout-seller">
       <ul class="sidebar-nav" id="sidebar-nav">
         <li class="nav-item">
-          <a class="nav-link nav-seller-entry" href="sellerMain.html">
+          <a class="nav-link nav-seller-entry" href="seller-main.html">
             <i class="bi bi-grid"></i>
             <span>賣家中心</span>
           </a>
@@ -147,12 +147,12 @@
             data-bs-parent="#sidebar-nav"
           >
             <li>
-              <a href="service-form.html">
+              <a href="seller-service-form.html">
                 <i class="bi bi-circle"></i><span>意見表單</span>
               </a>
             </li>
             <li>
-              <a href="service-reply.html">
+              <a href="seller-service-reply.html">
                 <i class="bi bi-circle"></i><span>查詢回覆</span>
               </a>
             </li>
@@ -176,7 +176,7 @@
             data-bs-parent="#sidebar-nav"
           >
             <li>
-              <a href="charts-chartjs.html">
+              <a href="seller-report.html">
                 <i class="bi bi-circle"></i><span>銷售數據</span>
               </a>
             </li>
@@ -200,12 +200,12 @@
             data-bs-parent="#sidebar-nav"
           >
             <li>
-              <a href="order-overall.html">
+              <a href="seller-order-overall.html">
                 <i class="bi bi-circle"></i><span>全部訂單</span>
               </a>
             </li>
             <li>
-              <a href="order-search.html">
+              <a href="seller-order-search.html">
                 <i class="bi bi-circle"></i><span>訂單查詢</span>
               </a>
             </li>
@@ -244,235 +244,98 @@
       </ul>
     </aside>
     <!-- ======= Main ======= -->
-
     <main class="main main-layout-seller">
       <div class="container-fluid seller-container">
-        <h1>商品列表</h1>
-        <div class="card card-product-custom">
-          <div class="card-body">
-            <!-- Bordered Tabs -->
-            <ul
-              class="nav nav-tabs nav-tabs-bordered"
-              id="borderedTab"
-              role="tablist"
-            >
-              <li class="nav-item" role="presentation">
-                <button
-                  class="nav-link active"
-                  id="overall-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#bordered-overall"
-                  type="button"
-                  role="tab"
-                  aria-controls="overall"
-                  aria-selected="true"
-                >
-                  全部商品
-                </button>
-              </li>
-              <li class="nav-item" role="presentation">
-                <button
-                  class="nav-link"
-                  id="soldout-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#bordered-soldout"
-                  type="button"
-                  role="tab"
-                  aria-controls="soldout"
-                  aria-selected="false"
-                >
-                  已售完
-                </button>
-              </li>
-              <li class="nav-item" role="presentation">
-                <button
-                  class="nav-link"
-                  id="unlisted-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#bordered-unlisted"
-                  type="button"
-                  role="tab"
-                  aria-controls="unlisted"
-                  aria-selected="false"
-                >
-                  未上架
-                </button>
-              </li>
-              <li class="nav-item" role="presentation">
-                <button
-                  class="nav-link"
-                  id="listed-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#bordered-listed"
-                  type="button"
-                  role="tab"
-                  aria-controls="listed"
-                  aria-selected="false"
-                >
-                  已上架
-                </button>
-              </li>
-            </ul>
-            <div class="tab-content pt-2" id="borderedTabContent">
-              <div
-                class="tab-pane show active"
-                id="bordered-overall"
-                role="tabpanel"
-                aria-labelledby="overall-tab"
-              >
-                <div class="container mt-3 container-list-custom">
-                  <div class="row product-row-custom">
-                    <div class="col-2">商品圖片</div>
-                    <div class="col-3">商品名稱</div>
-                    <div class="col-2">價格</div>
-                    <div class="col-2">售出/商品數量</div>
-                    <div class="col-1">狀態</div>
-                    <div class="col-1">操作</div>
-                  </div>
+        <h1>意見回復</h1>
+        <div class="container mt-3 container-list-custom">
+          <div class="row header-row-custom">
+            <div class="col-2 px-0">意見編號</div>
+            <div class="col-2 px-1">意見類別</div>
+            <div class="col-3 px-0">意見內容</div>
 
-                  <!-- Item 1 -->
-                  <div class="row item-row-custom">
-                    <div class="col-2">
-                      <img src="https://fakeimg.pl/100x100/" alt="" srcset="" />
-                    </div>
-                    <div class="col-3">貓砂</div>
-                    <div class="col-2">價格</div>
-                    <div class="col-2">售出/商品數量</div>
-                    <div class="col-1">狀態</div>
-                    <div class="col-1 d-flex flex-column align-items-center">
-                      <button class="product align-self-start btn-func">
-                        編輯
-                      </button>
-                      <button class="product align-self-start btn-func">
-                        上架
-                      </button>
-                      <button class="product align-self-start btn-func">
-                        刪除
-                      </button>
-                    </div>
-                  </div>
+            <div class="col-1-8 px-3">意見時間 <br />客服回復時間</div>
 
-                  <!-- Item 2 -->
-                  <div class="row item-row-custom">
-                    <div class="col-2">
-                      <img src="https://fakeimg.pl/100x100/" alt="" srcset="" />
-                    </div>
-                    <div class="col-3">貓砂</div>
-                    <div class="col-2">價格</div>
-                    <div class="col-2">售出/商品數量</div>
-                    <div class="col-1">狀態</div>
-                    <div class="col-1 d-flex flex-column align-items-center">
-                      <button class="product align-self-start btn-func">
-                        編輯
-                      </button>
-                      <button class="product align-self-start btn-func">
-                        上架
-                      </button>
-                      <button class="product align-self-start btn-func">
-                        刪除
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="tab-pane"
-                id="bordered-soldout"
-                role="tabpanel"
-                aria-labelledby="soldout-tab"
-              >
-                <div class="container mt-3 container-list-custom">
-                  <div class="row product-row-custom">
-                    <div class="col-2">商品圖片</div>
-                    <div class="col-3">商品名稱</div>
-                    <div class="col-2">價格</div>
-                    <div class="col-2">售出/商品數量</div>
-                    <div class="col-1">狀態</div>
-                    <div class="col-1">操作</div>
-                  </div>
+            <div class="col-1-2 px-0">狀態</div>
+            <div class="col px-0">操作</div>
+          </div>
 
-                  <!-- Item 1 -->
-                  <div class="row item-row-custom">
-                    <div class="col-2">
-                      <img src="https://fakeimg.pl/100x100/" alt="" srcset="" />
-                    </div>
-                    <div class="col-3">貓砂XX</div>
-                    <div class="col-2">價格</div>
-                    <div class="col-2">售出/商品數量</div>
-                    <div class="col-1">狀態</div>
-                    <div class="col-1 d-flex flex-column align-items-center">
-                      <button class="product align-self-start btn-func">
-                        編輯
-                      </button>
-                      <button class="product align-self-start btn-func">
-                        上架
-                      </button>
-                      <button class="product align-self-start btn-func">
-                        刪除
-                      </button>
-                    </div>
-                  </div>
-
-                  <!-- Item 2 -->
-                  <div class="row item-row-custom">
-                    <div class="col-2">
-                      <img src="https://fakeimg.pl/100x100/" alt="" srcset="" />
-                    </div>
-                    <div class="col-3">貓砂YY</div>
-                    <div class="col-2">價格</div>
-                    <div class="col-2">售出/商品數量</div>
-                    <div class="col-1">狀態</div>
-                    <div class="col-1 d-flex flex-column align-items-center">
-                      <button class="product align-self-start btn-func">
-                        編輯
-                      </button>
-                      <button class="product align-self-start btn-func">
-                        上架
-                      </button>
-                      <button class="product align-self-start btn-func">
-                        刪除
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="tab-pane"
-                id="bordered-unlisted"
-                role="tabpanel"
-                aria-labelledby="unlisted-tab"
-              >
-                Saepe animi et soluta ad odit soluta sunt. Nihil quos omnis
-                animi debitis cumque. Accusantium quibusdam perspiciatis qui qui
-                omnis magnam. Officiis accusamus impedit molestias nostrum
-                veniam. Qui amet ipsum iure. Dignissimos fuga tempore dolor.
-              </div>
-              <div
-                class="tab-pane"
-                id="bordered-listed"
-                role="tabpanel"
-                aria-labelledby="listed-tab"
-              >
-                <div class="container">
-                  <div class="row">
-                    <div class="col-1">商品圖片</div>
-                    <div class="col-4">商品名稱</div>
-                    <div class="col-2">價格</div>
-                    <div class="col-1">商品數量</div>
-                    <div class="col-2">狀態</div>
-                    <div class="col-1">售出數量</div>
-                    <div class="col-1">操作</div>
-                  </div>
-                </div>
-              </div>
+          <!-- Item 1 -->
+          <div class="row replyitem-row-custom">
+            <div class="col-2 px-0">001</div>
+            <div class="col-2 px-1 text-wrap">買家未收到商品</div>
+            <div class="col-3 px-0 item-showdetail-custom">
+              確認損壞情況：
+              檢查商品損壞的具體情況，包括是否有破損、刮傷、或其他不符合描述的地方。
+              拍照取證：
+              拍攝清晰的照片，以便證明商品損壞的程度。這些照片將作為證據，有助於加速退換貨流程。
+              聯繫客服：
+              與賣家或平台的客服聯繫，向其提供損壞情況的詳細描述和相關照片。請說明您的要求，例如退款、換貨或維修。
+              保留商品及包裝：
+              在得到客服回應前，請保留商品及其原始包裝。某些平台可能需要您返回損壞的商品，或要求保留作為證據。
             </div>
-            <!-- End Bordered Tabs -->
+            <div class="col-1-8 px-3">
+              2024-02-16 10:30<br />
+              2024-02-17 09:45
+            </div>
+
+            <div class="col-1-2 px-0">待處理</div>
+            <div class="col px-0 d-flex flex-column align-items-center">
+              <!-- <button class="btn-func">查看查看詳情</button> -->
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="row replyitem-row-custom">
+            <div class="col-2 px-0">002</div>
+            <div class="col-2 px-1 text-wrap">買家未收到商品</div>
+            <div class="col-3 px-0 item-showdetail-custom">
+              確認損壞情況：
+              檢查商品損壞的具體情況，包括是否有破損、刮傷、或其他不符合描述的地方。
+              拍照取證：
+              拍攝清晰的照片，以便證明商品損壞的程度。這些照片將作為證據，有助於加速退換貨流程。
+              聯繫客服：
+              與賣家或平台的客服聯繫，向其提供損壞情況的詳細描述和相關照片。請說明您的要求，例如退款、換貨或維修。
+              保留商品及包裝：
+              在得到客服回應前，請保留商品及其原始包裝。某些平台可能需要您返回損壞的商品，或要求保留作為證據。
+            </div>
+            <div class="col-1-8 px-3">
+              2024-02-16 10:30<br />
+              2024-02-17 09:45
+            </div>
+
+            <div class="col-1-2 px-0 text-wrap">已回復</div>
+            <div class="col px-0 d-flex flex-column align-items-center">
+              <button class="btn-func">確認處理完畢</button>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="row replyitem-row-custom">
+            <div class="col-2 px-0">002</div>
+            <div class="col-2 px-1 text-wrap">買家未收到商品</div>
+            <div class="col-3 px-0 item-showdetail-custom">
+              確認損壞情況：
+              檢查商品損壞的具體情況，包括是否有破損、刮傷、或其他不符合描述的地方。
+              拍照取證：
+              拍攝清晰的照片，以便證明商品損壞的程度。這些照片將作為證據，有助於加速退換貨流程。
+              聯繫客服：
+              與賣家或平台的客服聯繫，向其提供損壞情況的詳細描述和相關照片。請說明您的要求，例如退款、換貨或維修。
+              保留商品及包裝：
+              在得到客服回應前，請保留商品及其原始包裝。某些平台可能需要您返回損壞的商品，或要求保留作為證據。
+            </div>
+            <div class="col-1-8 px-3">
+              2024-02-16 10:30<br />
+              2024-02-17 09:45
+            </div>
+
+            <div class="col-1-2 px-0 text-wrap">已關閉</div>
+            <div class="col px-0 d-flex flex-column align-items-center">
+              <!-- <button class="btn-func">確認處理完畢</button> -->
+            </div>
           </div>
         </div>
       </div>
     </main>
-    <!-- End #main -->
-
     <!-- End Main -->
 
     <!-- ======= Footer ======= -->
@@ -531,6 +394,5 @@
     <script src="loadjs.js"></script>
 
     <!-- Local JS File -->
-    <script></script>
   </body>
 </html>

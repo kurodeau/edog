@@ -7,38 +7,12 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <title>EDog</title>
-    <!-- Favicons -->
-    <link href="assets/image/Medium.png" rel="icon" />
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.gstatic.com" rel="preconnect" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-      rel="stylesheet"
-    />
-
-    <!-- ICONS -->
-
-    <link rel="stylesheet" href="assets/icons/remixicon/remixicon.css" />
-    <link
-      rel="stylesheet"
-      href="assets/icons/bootstrap-icons/bootstrap-icons.css"
-    />
-
-    <!-- Vendor CSS Files -->
-    <link rel="stylesheet" href="assets/vendors/bootstrap/bootstrap.min.css" />
-
-    <link rel="stylesheet" href="assets/vendors/quill/quill.bubble.css" />
-    <link rel="stylesheet" href="assets/vendors/quill/quill.snow.css" />
-    <link rel="stylesheet" href="assets/vendors/simple-datatables/style.css" />
-
-    <!-- Template Main CSS File -->
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="loadcss.js"></script>
   </head>
   <body>
     <!-- ======= Header ======= -->
     <header class="fixed-top">
-      <nav class="navbar navbar-expand navbar-expand-sm navbar-light bg-seller">
+      <nav class="navbar navbar-expand navbar-expand-sm navbar-light bg-user">
         <div class="container-fluid">
           <div
             class="collapse navbar-collapse d-flex justify-content-between"
@@ -87,9 +61,9 @@
     <aside class="sidebar sidebar-layout-seller">
       <ul class="sidebar-nav" id="sidebar-nav">
         <li class="nav-item">
-          <a class="nav-link nav-seller-entry" href="sellerMain.html">
+          <a class="nav-link nav-seller-entry" href="buyer-main.html">
             <i class="bi bi-grid"></i>
-            <span>賣家中心</span>
+            <span>買家中心</span>
           </a>
         </li>
         <!-- End Dashboard Nav -->
@@ -97,31 +71,21 @@
         <li class="nav-item">
           <a
             class="nav-link collapsed"
-            data-bs-target="#seller-nav"
+            data-bs-target="#buyer-nav"
             data-bs-toggle="collapse"
             href="#"
           >
             <i class="bi bi-person"></i>
-            <span>賣家帳戶</span><i class="bi bi-chevron-down ms-auto"></i>
+            <span>買家帳戶</span><i class="bi bi-chevron-down ms-auto"></i>
           </a>
           <ul
-            id="seller-nav"
+            id="buyer-nav"
             class="nav-content collapse"
             data-bs-parent="#sidebar-nav"
           >
             <li>
-              <a href="seller-level.html">
-                <i class="bi bi-circle"></i><span>賣家等級</span>
-              </a>
-            </li>
-            <li>
-              <a href="seller-edit.html">
-                <i class="bi bi-circle"></i><span>修改賣家資料</span>
-              </a>
-            </li>
-            <li>
-              <a href="seller-check-payment.html">
-                <i class="bi bi-circle"></i><span>查看金流</span>
+              <a href="buyer-edit.html">
+                <i class="bi bi-circle"></i><span>修改買家資料</span>
               </a>
             </li>
           </ul>
@@ -129,85 +93,19 @@
         <!-- End Seller Nav -->
 
         <li class="nav-item">
-          <a
-            class="nav-link collapsed"
-            data-bs-target="#product-nav"
-            data-bs-toggle="collapse"
-            href="#"
-          >
-            <i class="bi bi-bag"></i>
-            <span>商品管理</span><i class="bi bi-chevron-down ms-auto"></i>
+          <a class="nav-link nav-seller-entry" href="buyer-cart.html">
+            <i class="bi bi-cart"></i>
+            <span>我的購物車</span>
           </a>
-          <ul
-            id="product-nav"
-            class="nav-content collapse"
-            data-bs-parent="#sidebar-nav"
-          >
-            <li>
-              <a href="product-add.html">
-                <i class="bi bi-circle"></i><span>新增商品</span>
-              </a>
-            </li>
-            <li>
-              <a href="product-all.html">
-                <i class="bi bi-circle"></i><span>商品列表</span>
-              </a>
-            </li>
-          </ul>
         </li>
         <!-- End product Nav -->
-
         <li class="nav-item">
-          <a
-            class="nav-link collapsed"
-            data-bs-target="#service-nav"
-            data-bs-toggle="collapse"
-            href="#"
-          >
-            <i class="bi bi-headset"></i><span>客戶服務</span
-            ><i class="bi bi-chevron-down ms-auto"></i>
+          <a class="nav-link nav-seller-entry" href="buyer-like.html">
+            <i class="bi bi-heart"></i>
+            <span>我的收藏</span>
           </a>
-          <ul
-            id="service-nav"
-            class="nav-content collapse"
-            data-bs-parent="#sidebar-nav"
-          >
-            <li>
-              <a href="service-form.html">
-                <i class="bi bi-circle"></i><span>意見表單</span>
-              </a>
-            </li>
-            <li>
-              <a href="service-reply.html">
-                <i class="bi bi-circle"></i><span>查詢回覆</span>
-              </a>
-            </li>
-          </ul>
         </li>
-        <!-- End Tables Nav -->
 
-        <li class="nav-item">
-          <a
-            class="nav-link collapsed"
-            data-bs-target="#charts-nav"
-            data-bs-toggle="collapse"
-            href="#"
-          >
-            <i class="bi bi-bar-chart"></i><span>銷售報表</span
-            ><i class="bi bi-chevron-down ms-auto"></i>
-          </a>
-          <ul
-            id="charts-nav"
-            class="nav-content collapse"
-            data-bs-parent="#sidebar-nav"
-          >
-            <li>
-              <a href="charts-chartjs.html">
-                <i class="bi bi-circle"></i><span>銷售數據</span>
-              </a>
-            </li>
-          </ul>
-        </li>
         <!-- End Charts Nav -->
 
         <li class="nav-item">
@@ -226,12 +124,12 @@
             data-bs-parent="#sidebar-nav"
           >
             <li>
-              <a href="order-overall.html">
+              <a href="buyer-order-overall.html">
                 <i class="bi bi-circle"></i><span>全部訂單</span>
               </a>
             </li>
             <li>
-              <a href="order-search.html">
+              <a href="buyer-order-search.html">
                 <i class="bi bi-circle"></i><span>訂單查詢</span>
               </a>
             </li>
@@ -241,53 +139,125 @@
         <li class="nav-item">
           <a
             class="nav-link collapsed"
-            data-bs-target="#ads-nav"
+            data-bs-target="#service-nav"
             data-bs-toggle="collapse"
             href="#"
           >
-            <i class="bi bi-badge-ad"></i><span>廣告管理</span
+            <i class="bi bi-headset"></i><span>客戶服務</span
             ><i class="bi bi-chevron-down ms-auto"></i>
           </a>
           <ul
-            id="ads-nav"
+            id="service-nav"
             class="nav-content collapse"
             data-bs-parent="#sidebar-nav"
           >
             <li>
-              <a href="ads-add.html">
-                <i class="bi bi-circle"></i><span>新增廣告</span>
+              <a href="buyer-service-form.html">
+                <i class="bi bi-circle"></i><span>意見表單</span>
               </a>
             </li>
             <li>
-              <a href="ads-all.html">
-                <i class="bi bi-circle"></i><span>查看廣告</span>
+              <a href="buyer-service-reply.html">
+                <i class="bi bi-circle"></i><span>查詢回覆</span>
               </a>
             </li>
           </ul>
         </li>
-
-        <!-- End Icons Nav -->
       </ul>
     </aside>
     <!-- ======= Main ======= -->
-
     <main class="main main-layout-seller">
-      <div class="special-text-container">
-        <img src="" alt="" srcset="" />
-        <h1>
-          歡迎回來<br />
-          讓我們一起
-          <mark class="green">
-            <span
-              id="typewrite-text"
-              class="d-inline-block changecontent"
-            ></span>
-          </mark>
-        </h1>
+      <div class="container-fluid seller-container">
+        <h1>意見回復</h1>
+        <div class="container mt-3 container-list-custom">
+          <div class="row header-row-custom">
+            <div class="col-2 px-0">意見編號</div>
+            <div class="col-2 px-1">意見類別</div>
+            <div class="col-3 px-0">意見內容</div>
+
+            <div class="col-1-8 px-3">意見時間 <br />客服回復時間</div>
+
+            <div class="col-1-2 px-0">狀態</div>
+            <div class="col px-0">操作</div>
+          </div>
+
+          <!-- Item 1 -->
+          <div class="row replyitem-row-custom">
+            <div class="col-2 px-0">001</div>
+            <div class="col-2 px-1 text-wrap">買家未收到商品</div>
+            <div class="col-3 px-0 item-showdetail-custom">
+              確認損壞情況：
+              檢查商品損壞的具體情況，包括是否有破損、刮傷、或其他不符合描述的地方。
+              拍照取證：
+              拍攝清晰的照片，以便證明商品損壞的程度。這些照片將作為證據，有助於加速退換貨流程。
+              聯繫客服：
+              與賣家或平台的客服聯繫，向其提供損壞情況的詳細描述和相關照片。請說明您的要求，例如退款、換貨或維修。
+              保留商品及包裝：
+              在得到客服回應前，請保留商品及其原始包裝。某些平台可能需要您返回損壞的商品，或要求保留作為證據。
+            </div>
+            <div class="col-1-8 px-3">
+              2024-02-16 10:30<br />
+              2024-02-17 09:45
+            </div>
+
+            <div class="col-1-2 px-0">待處理</div>
+            <div class="col px-0 d-flex flex-column align-items-center">
+              <!-- <button class="btn-func">查看查看詳情</button> -->
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="row replyitem-row-custom">
+            <div class="col-2 px-0">002</div>
+            <div class="col-2 px-1 text-wrap">買家未收到商品</div>
+            <div class="col-3 px-0 item-showdetail-custom">
+              確認損壞情況：
+              檢查商品損壞的具體情況，包括是否有破損、刮傷、或其他不符合描述的地方。
+              拍照取證：
+              拍攝清晰的照片，以便證明商品損壞的程度。這些照片將作為證據，有助於加速退換貨流程。
+              聯繫客服：
+              與賣家或平台的客服聯繫，向其提供損壞情況的詳細描述和相關照片。請說明您的要求，例如退款、換貨或維修。
+              保留商品及包裝：
+              在得到客服回應前，請保留商品及其原始包裝。某些平台可能需要您返回損壞的商品，或要求保留作為證據。
+            </div>
+            <div class="col-1-8 px-3">
+              2024-02-16 10:30<br />
+              2024-02-17 09:45
+            </div>
+
+            <div class="col-1-2 px-0 text-wrap">已回復</div>
+            <div class="col px-0 d-flex flex-column align-items-center">
+              <button class="btn-func">確認處理完畢</button>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="row replyitem-row-custom">
+            <div class="col-2 px-0">002</div>
+            <div class="col-2 px-1 text-wrap">買家未收到商品</div>
+            <div class="col-3 px-0 item-showdetail-custom">
+              確認損壞情況：
+              檢查商品損壞的具體情況，包括是否有破損、刮傷、或其他不符合描述的地方。
+              拍照取證：
+              拍攝清晰的照片，以便證明商品損壞的程度。這些照片將作為證據，有助於加速退換貨流程。
+              聯繫客服：
+              與賣家或平台的客服聯繫，向其提供損壞情況的詳細描述和相關照片。請說明您的要求，例如退款、換貨或維修。
+              保留商品及包裝：
+              在得到客服回應前，請保留商品及其原始包裝。某些平台可能需要您返回損壞的商品，或要求保留作為證據。
+            </div>
+            <div class="col-1-8 px-3">
+              2024-02-16 10:30<br />
+              2024-02-17 09:45
+            </div>
+
+            <div class="col-1-2 px-0 text-wrap">已關閉</div>
+            <div class="col px-0 d-flex flex-column align-items-center">
+              <!-- <button class="btn-func">確認處理完畢</button> -->
+            </div>
+          </div>
+        </div>
       </div>
     </main>
-    <!-- End #main -->
-
     <!-- End Main -->
 
     <!-- ======= Footer ======= -->
@@ -342,16 +312,9 @@
     </footer>
     <!-- End Footer -->
 
-    <!-- Vendor JS Files -->
-    <script src="assets/vendors/bootstrap/bootstrap.min.js"></script>
-    <script src="assets/vendors/chart.js/chart.umd.js"></script>
-    <script src="assets/vendors/quill/quill.min.js"></script>
-    <script src="assets/vendors/simple-datatables/simple-datatables.js"></script>
-    <script src="assets/vendors/tinymce/tinymce.js"></script>
-    <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
+    <!-- Vendor & Main JS Files -->
+    <script src="loadjs.js"></script>
 
     <!-- Local JS File -->
-    <script></script>
   </body>
 </html>

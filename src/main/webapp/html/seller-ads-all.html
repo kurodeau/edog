@@ -8,9 +8,6 @@
     />
     <title>EDog</title>
     <script src="loadcss.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@^4"></script>
-    <script src="https://cdn.jsdelivr.net/npm/moment@^2"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@^1"></script>
   </head>
   <body>
     <!-- ======= Header ======= -->
@@ -64,7 +61,7 @@
     <aside class="sidebar sidebar-layout-seller">
       <ul class="sidebar-nav" id="sidebar-nav">
         <li class="nav-item">
-          <a class="nav-link nav-seller-entry" href="sellerMain.html">
+          <a class="nav-link nav-seller-entry" href="seller-main.html">
             <i class="bi bi-grid"></i>
             <span>賣家中心</span>
           </a>
@@ -150,12 +147,12 @@
             data-bs-parent="#sidebar-nav"
           >
             <li>
-              <a href="service-form.html">
+              <a href="seller-service-form.html">
                 <i class="bi bi-circle"></i><span>意見表單</span>
               </a>
             </li>
             <li>
-              <a href="service-reply.html">
+              <a href="seller-service-reply.html">
                 <i class="bi bi-circle"></i><span>查詢回覆</span>
               </a>
             </li>
@@ -179,7 +176,7 @@
             data-bs-parent="#sidebar-nav"
           >
             <li>
-              <a href="charts-chartjs.html">
+              <a href="seller-report.html">
                 <i class="bi bi-circle"></i><span>銷售數據</span>
               </a>
             </li>
@@ -203,12 +200,12 @@
             data-bs-parent="#sidebar-nav"
           >
             <li>
-              <a href="order-overall.html">
+              <a href="seller-order-overall.html">
                 <i class="bi bi-circle"></i><span>全部訂單</span>
               </a>
             </li>
             <li>
-              <a href="order-search.html">
+              <a href="seller-order-search.html">
                 <i class="bi bi-circle"></i><span>訂單查詢</span>
               </a>
             </li>
@@ -247,96 +244,98 @@
       </ul>
     </aside>
     <!-- ======= Main ======= -->
-
     <main class="main main-layout-seller">
       <div class="container-fluid seller-container">
-        <h1>銷售報表</h1>
-        <div class="col-lg-12">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">銷售分析</h5>
+        <h1>意見回復</h1>
+        <div class="container mt-3 container-list-custom">
+          <div class="row header-row-custom">
+            <div class="col-2 px-0">意見編號</div>
+            <div class="col-2 px-1">意見類別</div>
+            <div class="col-3 px-0">意見內容</div>
 
-              <!-- Line Chart -->
-              <canvas id="lineChart" width="637" height="318"></canvas>
-              <script>
-                document.addEventListener(
-                  "DOMContentLoaded",
-                  async function () {
-                    const ctx = document
-                      .getElementById("lineChart")
-                      .getContext("2d");
+            <div class="col-1-8 px-3">意見時間 <br />客服回復時間</div>
 
-                    // 後端傳送的 ISO 時間（假設）
-                    let backendData;
-                    try {
-                      let datetimeResult = await fetch("fakedata.json");
-                      if (datetimeResult.ok) {
-                        backendData = await datetimeResult.json();
-                      } else {
-                        throw new Error("fail to fetch data");
-                      }
-                    } catch (error) {
-                      console.error(error);
-                    }
+            <div class="col-1-2 px-0">狀態</div>
+            <div class="col px-0">操作</div>
+          </div>
 
-                    // 將 ISO 時間轉換為適當的格式（使用 Moment.js）
+          <!-- Item 1 -->
+          <div class="row replyitem-row-custom">
+            <div class="col-2 px-0">001</div>
+            <div class="col-2 px-1 text-wrap">買家未收到商品</div>
+            <div class="col-3 px-0 item-showdetail-custom">
+              確認損壞情況：
+              檢查商品損壞的具體情況，包括是否有破損、刮傷、或其他不符合描述的地方。
+              拍照取證：
+              拍攝清晰的照片，以便證明商品損壞的程度。這些照片將作為證據，有助於加速退換貨流程。
+              聯繫客服：
+              與賣家或平台的客服聯繫，向其提供損壞情況的詳細描述和相關照片。請說明您的要求，例如退款、換貨或維修。
+              保留商品及包裝：
+              在得到客服回應前，請保留商品及其原始包裝。某些平台可能需要您返回損壞的商品，或要求保留作為證據。
+            </div>
+            <div class="col-1-8 px-3">
+              2024-02-16 10:30<br />
+              2024-02-17 09:45
+            </div>
 
-                    const formattedData = backendData.map((data) => {
-                      const date = new Date(data.timestamp);
-                      const formattedDate = `${date.getFullYear()}-${
-                        date.getMonth() + 1
-                      }-${date.getDate()}`;
-                      console.log(formattedDate);
-                      return { formattedDate, orderCount: data.orderCount };
-                    });
+            <div class="col-1-2 px-0">待處理</div>
+            <div class="col px-0 d-flex flex-column align-items-center">
+              <!-- <button class="btn-func">查看查看詳情</button> -->
+            </div>
+          </div>
 
-                    // 設定日期範圍的折線圖
-                    let chart = new Chart(ctx, {
-                      type: "line",
-                      data: {
-                        datasets: [
-                          {
-                            data: [
-                              {
-                                x: "2021-11-06 23:39:30",
-                                y: 50,
-                              },
-                              {
-                                x: "2021-11-07 01:00:28",
-                                y: 60,
-                              },
-                              {
-                                x: "2021-11-07 09:00:28",
-                                y: 20,
-                              },
-                            ],
-                          },
-                        ],
-                      },
-                      options: {
-                        scales: {
-                          x: {
-                            type: "time",
-                            time: {
-                              unit: "day",
-                            },
-                          },
-                        },
-                      },
-                    });
-                  }
-                );
-              </script>
+          <!-- Item 2 -->
+          <div class="row replyitem-row-custom">
+            <div class="col-2 px-0">002</div>
+            <div class="col-2 px-1 text-wrap">買家未收到商品</div>
+            <div class="col-3 px-0 item-showdetail-custom">
+              確認損壞情況：
+              檢查商品損壞的具體情況，包括是否有破損、刮傷、或其他不符合描述的地方。
+              拍照取證：
+              拍攝清晰的照片，以便證明商品損壞的程度。這些照片將作為證據，有助於加速退換貨流程。
+              聯繫客服：
+              與賣家或平台的客服聯繫，向其提供損壞情況的詳細描述和相關照片。請說明您的要求，例如退款、換貨或維修。
+              保留商品及包裝：
+              在得到客服回應前，請保留商品及其原始包裝。某些平台可能需要您返回損壞的商品，或要求保留作為證據。
+            </div>
+            <div class="col-1-8 px-3">
+              2024-02-16 10:30<br />
+              2024-02-17 09:45
+            </div>
 
-              <!-- End Line Chart -->
+            <div class="col-1-2 px-0 text-wrap">已回復</div>
+            <div class="col px-0 d-flex flex-column align-items-center">
+              <button class="btn-func">確認處理完畢</button>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="row replyitem-row-custom">
+            <div class="col-2 px-0">002</div>
+            <div class="col-2 px-1 text-wrap">買家未收到商品</div>
+            <div class="col-3 px-0 item-showdetail-custom">
+              確認損壞情況：
+              檢查商品損壞的具體情況，包括是否有破損、刮傷、或其他不符合描述的地方。
+              拍照取證：
+              拍攝清晰的照片，以便證明商品損壞的程度。這些照片將作為證據，有助於加速退換貨流程。
+              聯繫客服：
+              與賣家或平台的客服聯繫，向其提供損壞情況的詳細描述和相關照片。請說明您的要求，例如退款、換貨或維修。
+              保留商品及包裝：
+              在得到客服回應前，請保留商品及其原始包裝。某些平台可能需要您返回損壞的商品，或要求保留作為證據。
+            </div>
+            <div class="col-1-8 px-3">
+              2024-02-16 10:30<br />
+              2024-02-17 09:45
+            </div>
+
+            <div class="col-1-2 px-0 text-wrap">已關閉</div>
+            <div class="col px-0 d-flex flex-column align-items-center">
+              <!-- <button class="btn-func">確認處理完畢</button> -->
             </div>
           </div>
         </div>
       </div>
     </main>
-
-    <!-- End #main -->
-
     <!-- End Main -->
 
     <!-- ======= Footer ======= -->
@@ -395,6 +394,5 @@
     <script src="loadjs.js"></script>
 
     <!-- Local JS File -->
-    <script></script>
   </body>
 </html>

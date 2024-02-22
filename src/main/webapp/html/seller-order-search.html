@@ -61,7 +61,7 @@
     <aside class="sidebar sidebar-layout-seller">
       <ul class="sidebar-nav" id="sidebar-nav">
         <li class="nav-item">
-          <a class="nav-link nav-seller-entry" href="sellerMain.html">
+          <a class="nav-link nav-seller-entry" href="seller-main.html">
             <i class="bi bi-grid"></i>
             <span>賣家中心</span>
           </a>
@@ -118,12 +118,12 @@
             data-bs-parent="#sidebar-nav"
           >
             <li>
-              <a href="product-add.html">
+              <a href="seller-product-add.html">
                 <i class="bi bi-circle"></i><span>新增商品</span>
               </a>
             </li>
             <li>
-              <a href="product-all.html">
+              <a href="seller-product-all.html">
                 <i class="bi bi-circle"></i><span>商品列表</span>
               </a>
             </li>
@@ -147,12 +147,12 @@
             data-bs-parent="#sidebar-nav"
           >
             <li>
-              <a href="service-form.html">
+              <a href="seller-service-form.html">
                 <i class="bi bi-circle"></i><span>意見表單</span>
               </a>
             </li>
             <li>
-              <a href="service-reply.html">
+              <a href="seller-service-reply.html">
                 <i class="bi bi-circle"></i><span>查詢回覆</span>
               </a>
             </li>
@@ -176,7 +176,7 @@
             data-bs-parent="#sidebar-nav"
           >
             <li>
-              <a href="charts-chartjs.html">
+              <a href="seller-report.html">
                 <i class="bi bi-circle"></i><span>銷售數據</span>
               </a>
             </li>
@@ -200,12 +200,12 @@
             data-bs-parent="#sidebar-nav"
           >
             <li>
-              <a href="order-overall.html">
+              <a href="seller-order-overall.html">
                 <i class="bi bi-circle"></i><span>全部訂單</span>
               </a>
             </li>
             <li>
-              <a href="order-search.html">
+              <a href="seller-order-search.html">
                 <i class="bi bi-circle"></i><span>訂單查詢</span>
               </a>
             </li>
@@ -228,12 +228,12 @@
             data-bs-parent="#sidebar-nav"
           >
             <li>
-              <a href="ads-add.html">
+              <a href="seller-ads-add.html">
                 <i class="bi bi-circle"></i><span>新增廣告</span>
               </a>
             </li>
             <li>
-              <a href="ads-all.html">
+              <a href="seller-ads-all.html">
                 <i class="bi bi-circle"></i><span>查看廣告</span>
               </a>
             </li>
@@ -247,171 +247,157 @@
 
     <main class="main main-layout-seller">
       <div class="container-fluid seller-container">
-        <h1>訂單管理</h1>
-        <div class="card card-order-custom">
-          <div class="card-body">
-            <!-- Bordered Tabs -->
-            <ul
-              class="nav nav-tabs nav-tabs-bordered"
-              id="borderedTab"
-              role="tablist"
+        <h1>訂單查詢</h1>
+        <form id="orderQuery" method="POST">
+          <div class="row">
+            <div class="col-md-4">
+              <label for="orderId" class="form-label">訂單序號</label>
+              <input
+                type="text"
+                class="form-control"
+                id="orderId"
+                name="orderId"
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <label for="startDate" class="form-label">起始日期</label>
+              <input
+                type="date"
+                class="form-control"
+                id="startDate"
+                name="startDate"
+              />
+            </div>
+
+            <div class="col-md-4">
+              <label for="endDate" class="form-label">結束日期</label>
+              <input
+                type="date"
+                class="form-control"
+                id="endDate"
+                name="endDate"
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <label for="minPaidAmount" class="form-label">最小實付金額</label>
+              <input
+                type="text"
+                class="form-control"
+                id="minPaidAmount"
+                name="minPaidAmount"
+              />
+            </div>
+
+            <div class="col-md-4">
+              <label for="maxPaidAmount" class="form-label">最大實付金額</label>
+              <input
+                type="text"
+                class="form-control"
+                id="maxPaidAmount"
+                name="maxPaidAmount"
+              />
+            </div>
+          </div>
+
+          <div class="text-center mt-3">
+            <button type="reset" class="btn btn-secondary">重設</button>
+            <button
+              type="submit"
+              id="submitCompositeQuery"
+              class="btn btn-primary"
             >
-              <li class="nav-item" role="presentation">
-                <button
-                  class="nav-link active"
-                  id="all-orders-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#bordered-all-orders"
-                  type="button"
-                  role="tab"
-                  aria-controls="all-orders"
-                  aria-selected="true"
-                >
-                  所有訂單
-                </button>
-              </li>
-              <li class="nav-item" role="presentation">
-                <button
-                  class="nav-link"
-                  id="pending-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#bordered-pending"
-                  type="button"
-                  role="tab"
-                  aria-controls="pending"
-                  aria-selected="false"
-                >
-                  未處理訂單
-                </button>
-              </li>
+              提交複合查詢
+            </button>
+          </div>
+        </form>
 
-              <li class="nav-item" role="presentation">
-                <button
-                  class="nav-link"
-                  id="cancel-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#bordered-cancel"
-                  type="button"
-                  role="tab"
-                  aria-controls="cancel"
-                  aria-selected="false"
-                >
-                  已取消訂單
-                </button>
-              </li>
-              <li class="nav-item" role="presentation">
-                <button
-                  class="nav-link"
-                  id="shipped-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#bordered-shipped"
-                  type="button"
-                  role="tab"
-                  aria-controls="shipped"
-                  aria-selected="false"
-                >
-                  已出貨訂單
-                </button>
-              </li>
-              <li class="nav-item" role="presentation">
-                <button
-                  class="nav-link"
-                  id="completed-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#bordered-completed"
-                  type="button"
-                  role="tab"
-                  aria-controls="completed"
-                  aria-selected="false"
-                >
-                  已完成訂單
-                </button>
-              </li>
-            </ul>
-            <div class="tab-content pt-2" id="borderedTabContent">
-              <div
-                class="tab-pane show active"
-                id="bordered-all-orders"
-                role="tabpanel"
-                aria-labelledby="all-orders-tab"
-              >
-                <div class="container mt-3 container-list-custom">
-                  <div class="row header-row-custom">
-                    <div class="col-2">訂單序號</div>
-                    <div class="col-3">訂單日期</div>
-                    <div class="col-2">買家實付金額</div>
-                    <div class="col-3">狀態</div>
-                    <div class="col-2">操作</div>
-                  </div>
+        <div class="tab-content pt-2" id="borderedTabContent">
+          <div
+            class="tab-pane show active"
+            id="bordered-all-orders"
+            role="tabpanel"
+            aria-labelledby="all-orders-tab"
+          >
+            <div class="container mt-3 container-list-custom">
+              <div class="row header-row-custom">
+                <div class="col-2">訂單序號</div>
+                <div class="col-3">訂單日期</div>
+                <div class="col-2">買家實付金額</div>
+                <div class="col-3">狀態</div>
+                <div class="col-2">操作</div>
+              </div>
 
-                  <!-- Item 1 -->
-                  <div class="row item-row-custom">
-                    <div class="col-2">123456</div>
-                    <div class="col-3">2024-02-18</div>
-                    <div class="col-2">50</div>
-                    <div class="col-3">等待中<br />待賣家確認</div>
-                    <div class="col-2 d-flex flex-column align-items-center">
-                      <button class="product align-self-start btn-func">
-                        接受訂單
-                      </button>
-                      <button class="product align-self-start btn-func">
-                        取消訂單
-                      </button>
-                      <button class="product align-self-start btn-func">
-                        查看詳情
-                      </button>
-                    </div>
-                  </div>
-
-                  <!-- Item 2 -->
-                  <div class="row item-row-custom">
-                    <div class="col-2">123456</div>
-                    <div class="col-3">2024-02-18</div>
-                    <div class="col-2">50</div>
-                    <div class="col-3">不成立<br />買家不接受</div>
-                    <div class="col-2 d-flex flex-column align-items-center">
-                      <button class="product align-self-start btn-func">
-                        查看詳情
-                      </button>
-                    </div>
-                  </div>
+              <!-- Item 1 -->
+              <div class="row item-row-custom">
+                <div class="col-2">123456</div>
+                <div class="col-3">2024-02-18</div>
+                <div class="col-2">50</div>
+                <div class="col-3">等待中<br />待賣家確認</div>
+                <div class="col-2 d-flex flex-column align-items-center">
+                  <button class="product align-self-start btn-func">
+                    接受訂單
+                  </button>
+                  <button class="product align-self-start btn-func">
+                    取消訂單
+                  </button>
+                  <button class="product align-self-start btn-func">
+                    查看詳情
+                  </button>
                 </div>
-                <!-- Content for All Orders Tab -->
               </div>
-              <div
-                class="tab-pane"
-                id="bordered-pending"
-                role="tabpanel"
-                aria-labelledby="pending-tab"
-              >
-                <!-- Content for Pending Orders Tab -->
-              </div>
-              <div
-                class="tab-pane"
-                id="bordered-shipped"
-                role="tabpanel"
-                aria-labelledby="shipped-tab"
-              >
-                <!-- Content for Cancelled Orders Tab -->
-              </div>
-              <div
-                class="tab-pane"
-                id="bordered-cancel"
-                role="tabpanel"
-                aria-labelledby="cancel-tab"
-              >
-                <!-- Content for Shipped Orders Tab -->
-              </div>
-              <div
-                class="tab-pane"
-                id="bordered-completed"
-                role="tabpanel"
-                aria-labelledby="completed-tab"
-              >
-                <!-- Content for Completed Orders Tab -->
+
+              <!-- Item 2 -->
+              <div class="row item-row-custom">
+                <div class="col-2">123456</div>
+                <div class="col-3">2024-02-18</div>
+                <div class="col-2">50</div>
+                <div class="col-3">不成立<br />買家不接受</div>
+                <div class="col-2 d-flex flex-column align-items-center">
+                  <button class="product align-self-start btn-func">
+                    查看詳情
+                  </button>
+                </div>
               </div>
             </div>
-            <!-- End Bordered Tabs -->
+            <!-- Content for All Orders Tab -->
+          </div>
+          <div
+            class="tab-pane"
+            id="bordered-pending"
+            role="tabpanel"
+            aria-labelledby="pending-tab"
+          >
+            <!-- Content for Pending Orders Tab -->
+          </div>
+          <div
+            class="tab-pane"
+            id="bordered-shipped"
+            role="tabpanel"
+            aria-labelledby="shipped-tab"
+          >
+            <!-- Content for Cancelled Orders Tab -->
+          </div>
+          <div
+            class="tab-pane"
+            id="bordered-cancel"
+            role="tabpanel"
+            aria-labelledby="cancel-tab"
+          >
+            <!-- Content for Shipped Orders Tab -->
+          </div>
+          <div
+            class="tab-pane"
+            id="bordered-completed"
+            role="tabpanel"
+            aria-labelledby="completed-tab"
+          >
+            <!-- Content for Completed Orders Tab -->
           </div>
         </div>
       </div>
