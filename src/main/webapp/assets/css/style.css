@@ -199,6 +199,11 @@
   padding: 50px 20px;
 }
 
+.main-layout-buyer {
+  margin-top: 48px;
+  padding: 50px 20px;
+}
+
 .footer-layout {
 }
 
@@ -444,6 +449,14 @@
 /*--------------------------------------------------------------
 # Common 
 --------------------------------------------------------------*/
+.sec-row-custom {
+  margin: 0px;
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  background-color: var(--sec-section-light);
+  border: 1px solid var(--sec-section-outline);
+}
 
 .header-row-custom {
   margin: 0px;
