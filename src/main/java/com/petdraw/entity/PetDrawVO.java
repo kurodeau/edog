@@ -1,7 +1,5 @@
 package com.petdraw.entity;
 
-
-
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -29,8 +27,16 @@ public class PetDrawVO implements java.io.Serializable {
 	private BuyerVO memberMain;
 
 	@ManyToOne
-	@JoinColumn(name = "memberPairId", referencedColumnName = "memberId")
+	@JoinColumn(name = "memberpairId", referencedColumnName = "memberId")
 	private BuyerVO memberPair;
+
+	public BuyerVO getMemberMain() {
+		return memberMain;
+	}
+
+	public void setMemberMain(BuyerVO memberMain) {
+		this.memberMain = memberMain;
+	}
 
 	@Column(name = "isMemberLike")
 	private Boolean isMemberLike;
@@ -60,9 +66,6 @@ public class PetDrawVO implements java.io.Serializable {
 	public void setPetDrawId(Integer petDrawId) {
 		this.petDrawId = petDrawId;
 	}
-
-
-
 
 
 	public BuyerVO getMemberPair() {
@@ -123,14 +126,6 @@ public class PetDrawVO implements java.io.Serializable {
 
 	public Double getPetDrawLat() {
 		return petDrawLat;
-	}
-
-	public BuyerVO getMemberMain() {
-		return memberMain;
-	}
-
-	public void setMemberMain(BuyerVO memberMain) {
-		this.memberMain = memberMain;
 	}
 
 	public void setPetDrawLat(Double petDrawLat) {
