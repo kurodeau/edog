@@ -1,7 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
-<%@ page import="com.article.model.*"%>
+<%@ page import="java.util.*"%>
+<%@ page import="com.article.entity.*"%>
+<%@ page import="com.article.service.*"%>
 <%
-ArticleVO articleVO = (ArticleVO) request.getAttribute("articleVO"); //EmpServlet.java(Concroller), 存入req的empVO物件
+ArticleVO articleVO = (ArticleVO) request.getAttribute("articleVO"); //SellerServlet.java(Concroller), 存入req的sellerVO物件
 %>
 <!DOCTYPE html>
 <html>
@@ -54,7 +56,7 @@ th, td {
 			<td>
 				<h3>文章資料 - listOneArticle.jsp</h3>
 				<h4>
-					<a href="select_page.jsp"><img src="images/back1.gif"
+					<a href="index.jsp"><img src="images/back1.gif"
 						width="100" height="32" border="0">回首頁</a>
 				</h4>
 			</td>
@@ -84,7 +86,7 @@ th, td {
 				<td>${articleVO.articleLike}</td>
 				<td>${articleVO.articleComment}</td>
 				<td>${articleVO.articleShare}</td>
-				<td>${articleVO.articleSort}</td>
+				<td>${articleVO.articleTypeId.articleTypeName}</td>
 				<td>${articleVO.isEnabled ? '啟用' : '隱藏'}</td>
 				
 		</tr>
