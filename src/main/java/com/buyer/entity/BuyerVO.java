@@ -2,15 +2,21 @@ package com.buyer.entity;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.petdraw.entity.PetDrawVO;
 
 @Entity
 @Table(name = "buyer")
@@ -80,6 +86,38 @@ public class BuyerVO implements java.io.Serializable{
 	@Column(name = "isConfirm")
 	private Boolean isConfirm;
 	
+	
+
+	 @OneToMany(mappedBy = "memberMain", cascade = CascadeType.ALL)
+	 @OrderBy("memberId asc") 
+	 private Set<PetDrawVO> PetDrawVOMemnerIds;
+
+	@OneToMany (mappedBy = "memberPair" ,cascade = CascadeType.ALL)
+	@OrderBy("memberId asc")
+	private Set<PetDrawVO> PetDrawVOMemnerPairIds;;
+	
+	
+	
+
+
+	public Set<BuyerVO> getMembers() {
+		return members;
+	}
+
+
+
+	public void setMembers(Set<BuyerVO> members) {
+		this.members = members;
+	}
+
+
+
+	public void setIsConfirm(Boolean isConfirm) {
+		this.isConfirm = isConfirm;
+	}
+
+
+
 	public BuyerVO() {
 		super();
 	};
