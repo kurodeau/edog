@@ -30,7 +30,7 @@
 		<mapping class="com.article.entity.ArticleVO" /> 
 		<mapping class="com.articleType.entity.ArticleTypeVO" />
 		<mapping class="com.buyer.entity.BuyerVO"/>
-<!--		<mapping class="com.petdraw.entity.PetDrawVO" />  -->
+		<mapping class="com.petdraw.entity.PetDrawVO" />  
 
 
 

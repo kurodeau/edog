@@ -69,6 +69,7 @@
 </table>
 <table>
     <tr>
+    	<th>petDrawId</th>
         <th>memberId</th>
         <th>memberPairId</th>
         <th>isMemberLike</th>
@@ -78,7 +79,6 @@
         <th>petDrawTime</th>
         <th>petDrawLog</th>
         <th>petDrawLat</th>
-        <th>petDrawId</th>
         <th>修改</th>
         <th>刪除</th>
     </tr>
