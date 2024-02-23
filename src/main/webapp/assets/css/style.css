@@ -106,6 +106,15 @@
 }
 
 /*--------------------------------------------------------------
+# buyer-order-overall
+--------------------------------------------------------------*/
+
+.buyer-order-custom {
+  background-color: var(--user-yellow_dark);
+  color: #ffffff;
+}
+
+/*--------------------------------------------------------------
 # buyer commidity  
 --------------------------------------------------------------*/
 
@@ -162,6 +171,24 @@
 .user-comment {
   width: 120px;
 }
+
+/*--------------------------------------------------------------
+# Vertical Layout 
+--------------------------------------------------------------*/
+.cart-pay-sticky {
+  font-size: 20px;
+  padding: 10px;
+  position: sticky;
+  bottom: 0px;
+  z-index: 500; /* Adjust z-index if needed */
+  background-color: #ffffff;
+  border: 1px solid var(--user-yellow_dark);
+}
+
+.cart-payment {
+  color: var(--user-yellow_dark);
+}
+
 /*--------------------------------------------------------------
 # Vertical Layout 
 --------------------------------------------------------------*/
@@ -174,7 +201,7 @@
   top: 159px;
   bottom: 0px;
   width: 300px;
-  z-index: 996;
+  z-index: 600;
   padding-top: 32px;
   padding: 32px 20px;
 }
@@ -184,7 +211,7 @@
   top: 48px;
   bottom: 0px;
   width: 300px;
-  z-index: 996;
+  z-index: 600;
   padding-top: 32px;
   padding: 32px 20px;
 }
@@ -195,6 +222,11 @@
 }
 
 .main-layout-seller {
+  margin-top: 48px;
+  padding: 50px 20px;
+}
+
+.main-layout-buyer {
   margin-top: 48px;
   padding: 50px 20px;
 }
@@ -416,6 +448,16 @@
   color: #ffffff;
 }
 
+.nav-tabs-bordered .buyer-nav-link:hover,
+.nav-tabs-bordered .buyer-nav-link:focus {
+  color: var(--user-yellow_dark);
+}
+
+.nav-tabs-bordered .buyer-nav-link.active {
+  background-color: #fff;
+  color: var(--user-yellow_dark);
+  border-bottom: 2px solid var(--user-yellow_dark);
+}
 /*--------------------------------------------------------------
 # nav-tabs-bordered
 --------------------------------------------------------------*/
@@ -430,12 +472,12 @@
   color: #2c384e;
 }
 
-.nav-tabs-bordered .nav-link:hover,
-.nav-tabs-bordered .nav-link:focus {
+.nav-tabs-bordered .seller-nav-link:hover,
+.nav-tabs-bordered .seller-nav-link:focus {
   color: var(--seller-green_dark);
 }
 
-.nav-tabs-bordered .nav-link.active {
+.nav-tabs-bordered .seller-nav-link.active {
   background-color: #fff;
   color: var(--seller-green_dark);
   border-bottom: 2px solid var(--seller-green_dark);
@@ -444,6 +486,14 @@
 /*--------------------------------------------------------------
 # Common 
 --------------------------------------------------------------*/
+.sec-row-custom {
+  margin: 0px;
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  background-color: var(--sec-section-light);
+  border: 1px solid var(--sec-section-outline);
+}
 
 .header-row-custom {
   margin: 0px;

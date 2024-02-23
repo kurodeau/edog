@@ -23,18 +23,120 @@
               <a class="nav-link cancel-default-behavior" aria-current="page" href="#">選單</a>
             </li>
           </ul>
+        </li>
+        <!-- End帳戶管理 -->
 
-          <!-- NavBar--RightSide  -->
-          <ul class="navbar-nav ms-auto mb-2">
-            <li class="nav-item">
-              <a class="nav-link" href="#">[當前登入管理者名稱]</a>
+        <!-- Start訂單管理 -->
+        <li class="nav-item">
+          <a class="nav-link nav-seller-entry" href="#">
+            <i class="bi bi-grid"></i>
+            <span>訂單管理</span>
+          </a>
+        </li>
+        <!-- End訂單管理 -->
+
+        <!-- Start廣告管理 -->
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            data-bs-target="#product-nav"
+            data-bs-toggle="collapse"
+            href="#"
+          >
+            <i class="bi bi-bag"></i>
+            <span>廣告</span><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul
+            id="product-nav"
+            class="nav-content collapse"
+            data-bs-parent="#sidebar-nav"
+          >
+            <li>
+              <a href="#">
+                <i class="bi bi-circle"></i><span>廣告管理</span>
+              </a>
             </li>
-            <!-- 不可以登出後瀏覽, 登出後強制退回豋入頁(邏輯不是這裡處理) -->
-            <li class="nav-item">
-              <a class="nav-link" href="#">登出</a>
+            <li>
+              <a href="#">
+                <i class="bi bi-circle"></i><span>廣告審核</span>
+              </a>
             </li>
           </ul>
-        </div>
+        </li>
+        <!-- End廣告管理 -->
+
+        <!-- Strat優惠券管理 -->
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            data-bs-target="#service-nav"
+            data-bs-toggle="collapse"
+            href="#"
+          >
+            <i class="bi bi-ticket"></i><span>優惠券</span
+            ><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul
+            id="service-nav"
+            class="nav-content collapse"
+            data-bs-parent="#sidebar-nav"
+          >
+            <li>
+              <a href="#">
+                <i class="bi bi-circle"></i><span>優惠券管理</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="bi bi-circle"></i><span>優惠券新增</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- End優惠券管理 -->
+
+        <!-- Strat匯款資訊 -->
+        <li class="nav-item">
+          <a class="nav-link nav-seller-entry" href="#">
+            <i class="bi bi-credit-card"></i>
+            <span>匯款資訊</span>
+          </a>
+        </li>
+        <!-- End匯款資訊 -->
+
+        <!-- Start論壇管理 -->
+        <li class="nav-item">
+          <a class="nav-link nav-seller-entry" href="#">
+            <i class="bi bi-grid"></i>
+            <span>論壇管理</span>
+          </a>
+        </li>
+        <!-- End論壇管理 -->
+
+        <!-- Start搜尋關鍵字管理 -->
+        <li class="nav-item">
+          <a class="nav-link nav-seller-entry" href="#">
+            <i class="bi bi-pin"></i>
+            <span>搜尋關鍵字管理</span>
+          </a>
+        </li>
+        <!-- End搜尋關鍵字管理 -->
+
+        <!-- Start走馬燈管理 -->
+        <li class="nav-item">
+          <a class="nav-link nav-seller-entry" href="#">
+            <i class="bi bi-lightning"></i>
+            <span>走馬燈管理</span>
+          </a>
+        </li>
+        <!-- End走馬燈管理 -->
+      </ul>
+    </aside>
+
+    <!-- ======= Main ======= -->
+    <main class="main main-layout-seller">
+      <div class="pagetitle">
+        <h1>審核新賣家資料</h1>
       </div>
     </nav>
     <!-- End NavBar  -->

@@ -95,20 +95,12 @@
     </style>
   </head>
   <body>
-    <form id="imageForm" enctype="multipart/form-data">
-      <input type="file" name="image1" accept="image/*" />
-      <input type="file" name="image2" accept="image/*" />
-      <!-- 可以根据需要添加更多的文件输入字段 -->
-      <button type="button" onclick="uploadImages()">上传图片</button>
-    </form>
-
-    <form id="dataForm">
-      <div class="data__box">
-        <input type="text" name="datatext" />
-      </div>
-    </form>
-
-    <form id="imageForm" method="POST" enctype="multipart/form-data">
+    <form
+      id="imageForm"
+      action="TestPic"
+      method="POST"
+      enctype="multipart/form-data"
+    >
       <div class="upload__box">
         <div class="upload__btn-box">
           <label class="upload__btn">
@@ -125,7 +117,7 @@
         <div class="upload__img-wrap"></div>
       </div>
 
-      <button id="submitButton">Submit</button>
+      <button type="submit">Submit</button>
     </form>
   </body>
   <script>
@@ -191,19 +183,21 @@
         div.classList.add("upload__img-box");
 
         div.innerHTML = `
-    <div style='background-image: url(${src})' data-number='${
+        <div style='background-image: url(${src})' data-number='${
           document.querySelectorAll(".upload__img-close").length
         }' data-filename='${fileName}' class='img-bg'>
-      <div class='upload__img-close'></div>
-    </div>
-  `;
-
+          <div class='upload__img-close'></div>
+        </div>
+      `;
+      
         // 將 Base64 圖片數據作為隱藏的 input 添加到表單中
-        var input = document.createElement("input");
-        input.setAttribute("type", "hidden");
-        input.setAttribute("name", "subimages");
-        input.setAttribute("value", src);
-        div.appendChild(input);
+  var input = document.createElement("input");
+  input.setAttribute("type", "file");
+  input.setAttribute("name", "subimages");
+  input.setAttribute("style", "display:none");
+//   input.setAttribute("value", src);
+  div.appendChild(input);
+
 
         imgWrap.appendChild(div);
       }
@@ -223,43 +217,5 @@
         }
       });
     });
-
-    document
-      .getElementById("submitButton")
-      .addEventListener("click", function () {
-        // 收集上傳文字資料的表單的資料
-        var dataFormData = new FormData(document.getElementById("dataForm"));
-
-        // 收集上傳圖片的表單的資料
-        var imageFormData = new FormData(document.getElementById("imageForm"));
-
-        // 將兩個表單的資料整合到一個資料物件中
-        var combinedData = {};
-        for (var pair of dataFormData.entries()) {
-          combinedData[pair[0]] = pair[1];
-        }
-        for (var pair of imageFormData.entries()) {
-          combinedData[pair[0]] = pair[1];
-        }
-
-        // 使用 XMLHttpRequest 或 Fetch API 將整合的資料發送到後端
-        // 這裡可以根據你的需求選擇使用 XMLHttpRequest 或 Fetch API
-
-        // 示範使用 Fetch API
-        fetch("TestPic", {
-          method: "POST",
-          body: JSON.stringify(combinedData),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log(data);
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
-      });
   </script>
 </html>

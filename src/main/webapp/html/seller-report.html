@@ -11,12 +11,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@^4"></script>
     <script src="https://cdn.jsdelivr.net/npm/moment@^2"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@^1"></script>
-    <script src="https://cdn.jsdelivr.net/npm/daterangepicker@3.1.0/daterangepicker.js"></script>
-
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/daterangepicker@3.1.0/daterangepicker.css"
-    />
   </head>
   <body>
     <!-- ======= Header ======= -->
@@ -70,7 +64,7 @@
     <aside class="sidebar sidebar-layout-seller">
       <ul class="sidebar-nav" id="sidebar-nav">
         <li class="nav-item">
-          <a class="nav-link nav-seller-entry" href="sellerMain.html">
+          <a class="nav-link nav-seller-entry" href="seller-main.html">
             <i class="bi bi-grid"></i>
             <span>賣家中心</span>
           </a>
@@ -127,12 +121,12 @@
             data-bs-parent="#sidebar-nav"
           >
             <li>
-              <a href="product-add.html">
+              <a href="seller-product-add.html">
                 <i class="bi bi-circle"></i><span>新增商品</span>
               </a>
             </li>
             <li>
-              <a href="product-all.html">
+              <a href="seller-product-all.html">
                 <i class="bi bi-circle"></i><span>商品列表</span>
               </a>
             </li>
@@ -156,12 +150,12 @@
             data-bs-parent="#sidebar-nav"
           >
             <li>
-              <a href="service-form.html">
+              <a href="seller-service-form.html">
                 <i class="bi bi-circle"></i><span>意見表單</span>
               </a>
             </li>
             <li>
-              <a href="service-reply.html">
+              <a href="seller-service-reply.html">
                 <i class="bi bi-circle"></i><span>查詢回覆</span>
               </a>
             </li>
@@ -185,7 +179,7 @@
             data-bs-parent="#sidebar-nav"
           >
             <li>
-              <a href="charts-chartjs.html">
+              <a href="seller-report.html">
                 <i class="bi bi-circle"></i><span>銷售數據</span>
               </a>
             </li>
@@ -209,12 +203,12 @@
             data-bs-parent="#sidebar-nav"
           >
             <li>
-              <a href="order-overall.html">
+              <a href="seller-order-overall.html">
                 <i class="bi bi-circle"></i><span>全部訂單</span>
               </a>
             </li>
             <li>
-              <a href="order-search.html">
+              <a href="seller-order-search.html">
                 <i class="bi bi-circle"></i><span>訂單查詢</span>
               </a>
             </li>
@@ -237,12 +231,12 @@
             data-bs-parent="#sidebar-nav"
           >
             <li>
-              <a href="ads-add.html">
+              <a href="seller-ads-add.html">
                 <i class="bi bi-circle"></i><span>新增廣告</span>
               </a>
             </li>
             <li>
-              <a href="ads-all.html">
+              <a href="seller-ads-all.html">
                 <i class="bi bi-circle"></i><span>查看廣告</span>
               </a>
             </li>
@@ -258,35 +252,23 @@
       <div class="container-fluid seller-container">
         <h1>銷售報表</h1>
         <div class="col-lg-12">
-          <div class="container mt-5">
-            <h1>Date Range Picker Example</h1>
-          </div>
+          <div class="container mb-3">
+            <div class="row">
+              <div class="col-8 d-flex align-items-center gap-4">
+                起始時間<input
+                  type="date"
+                  class="startDate"
+                  value="2022-05-03"
+                />
+                結束時間<input type="date" class="endDate" value="2023-06-03" />
 
-          <div class="row">
-            <div class="col-8 d-flex align-items-center gap-4">
-              起始時間<input type="date" class="startDate" value="2022-05-03" />
-              結束時間<input type="date" class="endDate" value="2023-06-03" />
-
-              <button class="btn btn-seller" id="search">
-                <i class="bi bi-search"></i>搜尋
-              </button>
-            </div>
-
-            <div class="col-4 d-flex justify-content-end gap-3">
-              <div class="col-auto">
-                <select class="form-select" aria-label="Default select example">
-                  <option value="no" selected disabled>請選擇檔案格式</option>
-                  <option value="xlsx">Excel(.xlsx)</option>
-                  <option value="ods">OpenOffice(.ods)</option>
-                </select>
-              </div>
-              <div class="col-3">
-                <button class="btn btn-seller" id="exportData">匯出</button>
+                <button class="btn btn-seller" id="search">
+                  <i class="bi bi-search"></i>搜尋
+                </button>
               </div>
             </div>
           </div>
-
-          <div class="card mt-3">
+          <div class="card">
             <div class="card-body">
               <h5 class="card-title">銷售分析</h5>
 
@@ -301,6 +283,29 @@
               <button class="btn btn-seller" id="byYear">年區分</button>
               <button class="btn btn-seller" id="byMonth">月區分</button>
               <button class="btn btn-seller" id="byDay">日區分</button>
+            </div>
+          </div>
+
+          <div class="row mt-5">
+            <div class="col-12 d-flex gap-3">
+              <div class="col-3">
+                匯出起始時間&nbsp;&nbsp;
+                <input type="date" class="startExportDate" value="2022-05-03" />
+              </div>
+              <div class="col-3">
+                匯出結束時間&nbsp;&nbsp;
+                <input type="date" class="endExportDate" value="2023-06-03" />
+              </div>
+              <div class="col-3">
+                <select class="form-select" aria-label="Default select example">
+                  <option value="no" selected disabled>請選擇檔案格式</option>
+                  <option value="xlsx">Excel(.xlsx)</option>
+                  <option value="ods">OpenOffice(.ods)</option>
+                </select>
+              </div>
+              <div class="col-1">
+                <button class="btn btn-seller" id="exportData">匯出</button>
+              </div>
             </div>
           </div>
         </div>
@@ -384,7 +389,7 @@
             let aggregatedData;
             const storedData = localStorage.getItem("filteredData");
             if (storedData) {
-              console.log("storedData" + JSON.parse(storedData)[0].timestamp);
+              // console.log("storedData" + JSON.parse(storedData)[0].timestamp);
               aggregatedData = aggregateDataByYear(JSON.parse(storedData));
             } else {
               aggregatedData = aggregateDataByYear(rawISODateData);
@@ -452,6 +457,24 @@
       });
       function init() {
         localStorage.removeItem("filteredData");
+
+        let nowUTCTime = new Date();
+        const offset = nowUTCTime.getTimezoneOffset();
+        let offsetLocalTime = new Date(
+          nowUTCTime.getTime() - offset * 60 * 1000
+        );
+
+        let trueLocalTime = offsetLocalTime.toISOString();
+        let trueLocalDate = trueLocalTime.split("T")[0];
+
+        document.querySelector(".endExportDate").value = trueLocalDate;
+
+        let offsetStartLocalTime = new Date(offsetLocalTime);
+        offsetStartLocalTime.setDate(offsetLocalTime.getDate() - 30);
+        let trueStartLocalDate = offsetStartLocalTime
+          .toISOString()
+          .split("T")[0];
+        document.querySelector(".startExportDate").value = trueStartLocalDate;
       }
 
       function initializeChart(ctx, data, sortType) {
@@ -640,7 +663,6 @@
           date.setDate(date.getDate() + 1)
         ) {
           const dateKey = date.toISOString().substring(0, 10);
-          console.log(`${dateKey}T00:00:00.000Z`);
 
           dateMap.set(dateKey, {
             timestamp: new Date(`${dateKey}T00:00:00.000Z`).toISOString(),
@@ -651,13 +673,11 @@
         data.forEach((item) => {
           const itemDate = new Date(item.timestamp).toISOString();
           const dateKey = itemDate.substring(0, 10);
-          console.log("dateKey: " + dateKey);
           const monthData = dateMap.get(dateKey);
           monthData.orderCount += item.orderCount;
         });
 
         const aggregatedData = Array.from(dateMap.values());
-        console.log(aggregatedData);
         return aggregatedData;
       }
     </script>

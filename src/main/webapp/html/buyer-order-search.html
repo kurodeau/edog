@@ -168,206 +168,162 @@
     <!-- ======= Main ======= -->
     <main class="main main-layout-seller">
       <div class="container-fluid seller-container">
-        <h1>編輯個人資料</h1>
-        <nav class="mt-5 mb-4">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">帳號設定</li>
-          </ol>
-        </nav>
-        <form
-          class="row g-3"
-          id="myForm"
-          action="testrecap"
-          method="post"
-          enctype="multipart/form-data"
-        >
-          <div class="col-md-12">
-            <label for="inputCompanyName" class="form-label">公司名稱</label>
-            <input
-              type="text"
-              class="form-control"
-              id="inputCompanyName"
-              name="companyName"
-              placeholder="請輸入公司名稱"
-            />
-          </div>
-
-          <div class="col-md-12">
-            <label for="inputCompanyLeader" class="form-label"
-              >公司負責人</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              id="inputCompanyLeader"
-              name="companyLeader"
-              placeholder="請輸入公司負責人"
-            />
-          </div>
-
-          <div class="col-md-12">
-            <label for="inputEmail" class="form-label">電子郵件</label>
-            <input
-              type="email"
-              class="form-control"
-              id="inputEmail"
-              name="email"
-              placeholder="請輸入電子郵件"
-            />
-          </div>
-
-          <div class="col-md-12">
-            <label for="inputUnifiedNumber" class="form-label">統一編號</label>
-            <input
-              type="text"
-              class="form-control"
-              id="inputUnifiedNumber"
-              name="unifiedNumber"
-              placeholder="請輸入統一編號"
-            />
-          </div>
-
-          <div class="col-md-12">
-            <label for="inputCapital" class="form-label">資本額</label>
-            <input
-              type="text"
-              class="form-control"
-              id="inputCapital"
-              name="capital"
-              placeholder="請輸入資本額"
-            />
-          </div>
-
-          <div class="col-md-12">
-            <label for="inputCompanyPhone" class="form-label">公司電話</label>
-            <input
-              type="text"
-              class="form-control"
-              id="inputCompanyPhone"
-              name="companyPhone"
-              placeholder="請輸入公司電話"
-            />
-          </div>
-
-          <div class="col-md-12">
-            <label for="inputExtension" class="form-label">公司分機</label>
-            <input
-              type="text"
-              class="form-control"
-              id="inputExtension"
-              name="extension"
-              placeholder="請輸入公司分機( 02XXXXYYYY)"
-            />
-          </div>
-
-          <div class="col-md-12">
-            <label for="inputMobile" class="form-label">手機號碼</label>
-            <input
-              type="text"
-              class="form-control"
-              id="inputMobile"
-              name="mobile"
-              placeholder="請輸入手機號碼(09XXXYYYZZZ)"
-            />
-          </div>
-
-          <div class="col-md-12">
-            <label for="inputAddress" class="form-label">地址</label>
-            <div class="city-selector-set col-md-12 d-flex flex-row">
-              <div class="col-md-2">
-                <select class="county form-select" name="county"></select>
-              </div>
-              <div class="col-md-2">
-                <select class="district form-select" name="district"></select>
-              </div>
-              <div class="col-md-2">
-                <input
-                  class="zipcode form-control"
-                  type="text"
-                  size="3"
-                  readonly
-                  placeholder="郵遞區號"
-                  name="zipcode"
-                />
-              </div>
+        <h1>訂單查詢</h1>
+        <form id="orderQuery" method="POST">
+          <div class="row">
+            <div class="col-md-4">
+              <label for="orderId" class="form-label">訂單序號</label>
+              <input
+                type="text"
+                class="form-control"
+                id="orderId"
+                name="orderId"
+              />
             </div>
-            <input
-              type="text"
-              class="form-control mt-2"
-              id="inputAddress"
-              name="address"
-              placeholder="請輸入地址"
-            />
           </div>
 
-          <div class="col-md-3">
-            <label for="inputBankNumber" class="form-label">銀行帳號名稱</label>
-            <input
-              type="text"
-              class="form-control"
-              id="inputBankNumber"
-              name="bankNumber"
-              placeholder="我的XXX"
-            />
+          <div class="row">
+            <div class="col-md-4">
+              <label for="startDate" class="form-label">起始日期</label>
+              <input
+                type="date"
+                class="form-control"
+                id="startDate"
+                name="startDate"
+              />
+            </div>
+
+            <div class="col-md-4">
+              <label for="endDate" class="form-label">結束日期</label>
+              <input
+                type="date"
+                class="form-control"
+                id="endDate"
+                name="endDate"
+              />
+            </div>
           </div>
 
-          <div class="col-md-2">
-            <label for="inputBankAccount" class="form-label">銀行帳戶</label>
-            <input
-              type="text"
-              class="form-control"
-              id="inputBankAccount"
-              name="bankAccount"
-              placeholder="輸入三碼"
-            />
+          <div class="row">
+            <div class="col-md-4">
+              <label for="minPaidAmount" class="form-label">最小實付金額</label>
+              <input
+                type="text"
+                class="form-control"
+                id="minPaidAmount"
+                name="minPaidAmount"
+              />
+            </div>
+
+            <div class="col-md-4">
+              <label for="maxPaidAmount" class="form-label">最大實付金額</label>
+              <input
+                type="text"
+                class="form-control"
+                id="maxPaidAmount"
+                name="maxPaidAmount"
+              />
+            </div>
           </div>
 
-          <div class="col-md-7">
-            <label for="inputBankCode" class="form-label">銀行代碼</label>
-            <input
-              type="text"
-              class="form-control"
-              id="inputBankCode"
-              name="bankCode"
-              placeholder="請輸入銀行代碼"
-            />
-          </div>
-
-          <nav class="custom-mt-6 mb-2">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">密碼設定</li>
-            </ol>
-          </nav>
-
-          <div class="col-md-12">
-            <label for="inputPassword" class="form-label">密碼</label>
-            <input
-              type="password"
-              class="form-control"
-              id="inputPassword"
-              name="password"
-              placeholder="至少有一個大寫和小寫和數字組合"
-            />
-          </div>
-
-          <div class="col-md-12 mb-5">
-            <label for="inputPassword" class="form-label">再次輸入密碼</label>
-            <input
-              type="password"
-              class="form-control"
-              id="inputPassword"
-              name="confirmPassword"
-              placeholder=""
-            />
-          </div>
-
-          <div class="text-center d-flex flex-row gap-5 justify-content-center">
+          <div class="text-center mt-3">
             <button type="reset" class="btn btn-secondary">重設</button>
-            <button type="submit" class="btn btn-primary">提交</button>
+            <button
+              type="submit"
+              id="submitCompositeQuery"
+              class="btn btn-primary"
+            >
+              提交複合查詢
+            </button>
           </div>
         </form>
+
+        <div class="tab-content pt-2" id="borderedTabContent">
+          <div
+            class="tab-pane show active"
+            id="bordered-all-orders"
+            role="tabpanel"
+            aria-labelledby="all-orders-tab"
+          >
+            <div class="container mt-3 container-list-custom">
+              <div class="row header-row-custom">
+                <div class="col-2">訂單序號</div>
+                <div class="col-3">訂單日期</div>
+                <div class="col-2">買家實付金額</div>
+                <div class="col-3">狀態</div>
+                <div class="col-2">操作</div>
+              </div>
+
+              <!-- Item 1 -->
+              <div class="row item-row-custom">
+                <div class="col-2">123456</div>
+                <div class="col-3">2024-02-18</div>
+                <div class="col-2">50</div>
+                <div class="col-3">等待中<br />待賣家確認</div>
+                <div class="col-2 d-flex flex-column align-items-center">
+                  <button class="product align-self-start btn-func">
+                    接受訂單
+                  </button>
+                  <button class="product align-self-start btn-func">
+                    取消訂單
+                  </button>
+                  <button class="product align-self-start btn-func">
+                    查看詳情
+                  </button>
+                </div>
+              </div>
+
+              <!-- Item 2 -->
+              <div class="row item-row-custom">
+                <div class="col-2">123456</div>
+                <div class="col-3">2024-02-18</div>
+                <div class="col-2">50</div>
+                <div class="col-3">不成立<br />買家不接受</div>
+                <div class="col-2 d-flex flex-column align-items-center">
+                  <button class="product align-self-start btn-func">
+                    查看詳情
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Content for All Orders Tab -->
+          </div>
+          <div
+            class="tab-pane"
+            id="bordered-pending"
+            role="tabpanel"
+            aria-labelledby="pending-tab"
+          >
+            <!-- Content for Pending Orders Tab -->
+          </div>
+          <div
+            class="tab-pane"
+            id="bordered-shipped"
+            role="tabpanel"
+            aria-labelledby="shipped-tab"
+          >
+            <!-- Content for Cancelled Orders Tab -->
+          </div>
+          <div
+            class="tab-pane"
+            id="bordered-cancel"
+            role="tabpanel"
+            aria-labelledby="cancel-tab"
+          >
+            <!-- Content for Shipped Orders Tab -->
+          </div>
+          <div
+            class="tab-pane"
+            id="bordered-completed"
+            role="tabpanel"
+            aria-labelledby="completed-tab"
+          >
+            <!-- Content for Completed Orders Tab -->
+          </div>
+        </div>
       </div>
     </main>
+
     <!-- End Main -->
 
     <!-- ======= Footer ======= -->
@@ -421,24 +377,5 @@
     <script src="loadjs.js"></script>
 
     <!-- Local JS File -->
-    <script>
-      // 定義一個自定義事件，用於通知 TwCitySelector 腳本
-      var loadjsCompletedEvent = new Event("loadjsCompleted");
-
-      window.onload = function () {
-        // 監聽自定義事件，當 loadjs 完成時觸發
-        document.addEventListener("loadjsCompleted", function () {
-          new TwCitySelector({
-            el: ".city-selector-set",
-            elCounty: ".county",
-            elDistrict: ".district",
-            elZipcode: ".zipcode",
-          });
-        });
-
-        // 手動觸發事件，告知 TwCitySelector 可以初始化了
-        document.dispatchEvent(loadjsCompletedEvent);
-      };
-    </script>
   </body>
 </html>
