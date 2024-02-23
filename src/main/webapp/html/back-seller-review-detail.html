@@ -163,79 +163,152 @@
   </aside>
 
   <!-- ======= Main ======= -->
-  <main class="main main-layout-seller">
+  <main id="main" class="main">
+
+    <!-- for room -->
     <div class="pagetitle">
-      <h1>買家用戶清單</h1>
-    </div>
-    <!-- End Page Title -->
+      <div style="
+        /* border: solid 1px red; */
+        height: 70px;
+        "></div>
+    </div><!-- End Page Title -->
 
     <section class="section">
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-11" style="padding-left: 30px;">
           <div class="card">
             <div class="card-body">
-              <!-- Table with stripped rows -->
-              <table class="table datatable" style="
-              width: 2000px;
-              overflow-x: auto;
-              ">
-                <thead>
-                  <tr>
-                    <th>賣家編號</th>
-                    <th>公司名稱</th>
-                    <th>統一編號</th>
-                    <th data-type="date" data-format="YYYY/DD/MM" data-sortable="true">
-                      申請日期
-                    </th>
-                    <th>操作</th>
-                    <th>操作</th>
-                    <th>操作</th>
-                    <th>操作</th>
-                    <th>操作</th>
-                    <th>操作</th>
-                    <th>操作</th>
-                    <th>操作</th>
-                    <th>操作</th>
-                    <th>操作</th>
-                    <th>操作</th>
-                    <th>操作</th>
-                    <th>操作</th>
-                    <th>操作</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="sellerId">201</td>
-                    <td class="sellerCompany">台灣積體電路製造股份有限公司</td>
-                    <td class="sellerTaxId">22099131</td>
-                    <td class="sellerCreateTime" data-format="YYYY/DD/MM">2005/02/11</td>
-                    <td>
-                      <button class="product align-self-start btn-func">
-                        詳細資訊
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="sellerId">202</td>
-                    <td class="sellerCompany">聯發科技股份有限公司</td>
-                    <td class="sellerTaxId">87654321</td>
-                    <td class="sellerCreateTime" data-format="YYYY/DD/MM">2003/09/15</td>
-                    <td>
-                      <button class="product align-self-start btn-func">
-                        詳細資訊
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <!-- End Table with stripped rows -->
+              <h1 class="card-title">審核賣家資料</h1>
+
+              <!-- 審核賣家資料 -->
+              <form>
+
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">賣家編號</label>
+                  <div class="col-sm-2">
+                    <div style="
+                    ">1001</div>
+                    <!-- <input type="text" class="form-control" value="1001" readonly> -->
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="inputEmail" class="col-sm-2 col-form-label ">電子信箱</label>
+                  <div class="col-sm-4">
+                    <input type="email" class="form-control" value="adc123@gmail.com" readonly>
+                  </div>
+                </div>
+                
+                <div class="row mb-3">
+                  <label for="inputEmail" class="col-sm-2 col-form-label ">公司名稱</label>
+                  <div class="col-sm-4">
+                    <input type="email" class="form-control" value="台灣積體電路製造股份有限公司" readonly>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="inputEmail" class="col-sm-2 col-form-label ">統一編號</label>
+                  <div class="col-sm-2">
+                    <input type="email" class="form-control" value="22099131" readonly>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="inputEmail" class="col-sm-2 col-form-label ">公司資本額</label>
+                  <div class="col-sm-2">
+                    <input type="email" class="form-control" value="259,320,709,920" readonly>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="inputEmail" class="col-sm-2 col-form-label ">聯絡人</label>
+                  <div class="col-sm-2">
+                    <input type="email" class="form-control" value="劉德音" readonly>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="inputEmail" class="col-sm-2 col-form-label ">連絡電話</label>
+                  <div class="col-sm-3">
+                    <input type="email" class="form-control" value="02-2912-3456" readonly>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="inputEmail" class="col-sm-2 col-form-label ">分機號碼</label>
+                  <div class="col-sm-2">
+                    <input type="email" class="form-control" value="9" readonly>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="inputEmail" class="col-sm-2 col-form-label ">行動電話</label>
+                  <div class="col-sm-2">
+                    <input type="email" class="form-control" value="0966123456" readonly>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="inputEmail" class="col-sm-2 col-form-label ">營業登記地址</label>
+                  <div class="col-sm-5">
+                    <input type="email" class="form-control" value="新竹市東區科園里科學園區力行六路８號
+                    " readonly>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">密碼</label>
+                  <div class="col-sm-2">
+                    <input type="password" class="form-control" value="pass1234" readonly>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">銀行代碼</label>
+                  <div class="col-sm-2">
+                    <input type="text" class="form-control" value="812" readonly>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">帳戶名稱</label>
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control" value="000000000000" readonly>
+                  </div>
+                </div>
+                
+                <div class="row mb-3">
+                  <label for="inputDate" class="col-sm-2 col-form-label">帳號創立時間</label>
+                  <div class="col-sm-10">
+                    <input type="date" class="form-control" value= "1987-03-21" readonly>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">審核不通過原因</label>
+                  <div class="col-sm-10">
+                    <textarea class="form-control" placeholder="若審核未通過，請輸入原因..." style="height: 100px"></textarea>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label"></label>
+                  <div class="col-sm-10">
+                    <button type="button" class="btn btn-outline-danger btn-notpassed" style="
+                      margin-right: 20px;">不通過</button>
+                    <button type="button" class="btn btn-outline-success btn-passed">審核通過</button>
+                  </div>
+                </div>
+
+              </form>
+              <!-- End 審核賣家資料 -->
             </div>
           </div>
         </div>
-      </div>
+
     </section>
   </main>
-  <!-- End Main -->
+  <!-- End #main -->
 
   <!-- ======= Footer, 後臺應該不需要footer ======= -->
 
