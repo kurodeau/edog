@@ -1,5 +1,8 @@
 package com.buyer.dao;
-
+	
+import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -108,8 +111,8 @@ public class BuyerHBDAO implements BuyerDAO{
 		}
 
 		for (Map.Entry<String, String> row : map.entrySet()) {
-			if ("membername".equals(row.getKey())) {
-				predicates.add(builder.like(root.get("membername"), "%" + row.getValue() + "%"));
+			if ("memberName".equals(row.getKey())) {
+				predicates.add(builder.like(root.get("memberName"), "%" + row.getValue() + "%"));
 			}
 
 			if ("startdate".equals(row.getKey())) {
@@ -135,6 +138,98 @@ public class BuyerHBDAO implements BuyerDAO{
 		return query.getResultList();
 
 	}
+	
+	
+	//main方法測試
+//	public static void main(String[] args) {
+//	SessionFactory factory = HibernateUtil.getSessionFactory();
+//	Session session = factory.getCurrentSession();
+//	session.beginTransaction();
+
+	// ================Insert 測試OK==============
+
+//	Query query = session.createQuery("FROM SellerLvVO WHERE sellerLvId = :id");
+//	query.setParameter("id", 1);
+//	SellerLvVO sellerLv1 = (SellerLvVO) query.uniqueResult();
+	
+	//memberId int AI PK 
+	//memberEmail varchar(200) 
+	//thirdFrom varchar(100) 
+	//memberName varchar(100) 
+	//memberPhone varchar(10) 
+	//memberMobile varchar(20) 
+	//memberBirthday date 
+	//memberPassword varchar(100) 
+	//memberAddress varchar(100) 
+	//isMemberEmail tinyint(1) 
+	//memberRegistrationTime datetime 
+	//petName varchar(100) 
+	//petImg longblob 
+	//petImgUploadTime datetime 
+	//petVaccName1 varchar(100) 
+	//petVaccTime1 datetime 
+	//petVaccName2 varchar(100) 
+	//petVaccTime2 datetime 
+	//isConfirm
+	
+//	BuyerVO buyer1 = new BuyerVO();
+//	buyer1.setMemberEmail("buyerinsert@example.com");
+//	buyer1.setThirdFrom(null);
+//	buyer1.setMemberName("buyerinsert");
+//	buyer1.setMemberPhone("0212345678");
+//	buyer1.setMemberMobile("0999123456");
+//	
+//	SimpleDateFormat memberBirthday = new SimpleDateFormat("yyyyMMdd");
+//	try {
+//		buyer1.setMemberBirthday( memberBirthday.parse("20240225") );
+//	} catch (ParseException e) {
+//		e.printStackTrace();
+//	}
+//	
+//	buyer1.setMemberPassword("pass1234");
+//	buyer1.setMemberAddress("buyerinsert地址");
+//	buyer1.setIsMemberEmail(false);
+//	
+//	Timestamp memberRegistrationTime = new Timestamp(System.currentTimeMillis());
+//	buyer1.setMemberRegistrationTime( memberRegistrationTime );	
+//	buyer1.setPetName("buyerinsert的狗");
+//	buyer1.setPetImg(null);
+//	buyer1.setPetImgUploadTime(null);
+//	buyer1.setPetVaccName1("疫苗的啦");
+//	
+//	SimpleDateFormat petVaccTime1 = new SimpleDateFormat("yyyyMMdd");
+//	try {
+//		buyer1.setPetVaccTime1( petVaccTime1.parse("20240101") );
+//	} catch (ParseException e) {
+//		e.printStackTrace();
+//	}
+//	
+//	buyer1.setPetVaccName2(null);
+//	buyer1.setPetVaccTime2(null);
+//	// isConfirm 有預設
+//	buyer1.setIsConfirm(true);
+//
+//	Serializable buyerId = session.save(buyer1);
+
+	// ================Update==============
+
+//	BuyerVO buyerToUpdate = session.get(BuyerVO.class, (Integer) memberId);
+//	buyerToUpdate.setMemberName("New mamber Name");
+//	session.update(buyerToUpdate);
+//
+//	// ================Query==============
+//	String sellerLvName = seller1.getSellerLvId().getLvName();
+//	System.out.println("sellerLvName: " + sellerLvName);
+//
+//	// ================Delete==============
+//
+//	BuyerVO sellerToDelete = session.get(BuyerVO.class, (Integer) sellerId);
+//	session.delete(sellerToDelete);
+
+	
+	//任何HQL操作都要包在Transaction中
+//	session.getTransaction().commit();	
+//	}
 	
 
 }

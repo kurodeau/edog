@@ -130,6 +130,7 @@ public class BuyerServlet extends HttpServlet {
 
 	private String getOne_For_Update(HttpServletRequest req, HttpServletResponse res) {
 		Integer memberId = Integer.valueOf(req.getParameter("memberId"));
+//		System.out.println("測試到底傳回甚麼笅" + memberId); //確實有拿到memberId的值
 		BuyerVO buyerVO = buyerSvc.getOneBuyer(memberId);
 
 		req.setAttribute("buyerVO", buyerVO);
@@ -236,7 +237,7 @@ public class BuyerServlet extends HttpServlet {
 		buyerVO.setMemberAddress(memberAddress);
 		buyerVO.setIsMemberEmail(isMemberEmail);
 		buyerVO.setPetName(petName);
-		buyerVO.setPetImg(petImg); //不知道怎麼搞圖片, 先註解
+		buyerVO.setPetImg(null); //不知道怎麼搞圖片, 先註解
 		buyerVO.setPetImgUploadTime(petImgUploadTime);
 		buyerVO.setPetVaccName1(petVaccName1);
 		buyerVO.setPetVaccTime1(petVaccTime1);
@@ -375,7 +376,7 @@ public class BuyerServlet extends HttpServlet {
 		buyerVO.setIsMemberEmail(isMemberEmail);
 //		buyerVO.setMemberRegistrationTime(memberRegistrationTime);
 		buyerVO.setPetName(petName);
-		buyerVO.setPetImg(petImg); //不知道怎麼搞圖片, 先註解
+		buyerVO.setPetImg(null); //不知道怎麼搞圖片, 先註解
 		buyerVO.setPetImgUploadTime(petImgUploadTime);
 		buyerVO.setPetVaccName1(petVaccName1);
 		buyerVO.setPetVaccTime1(petVaccTime1);

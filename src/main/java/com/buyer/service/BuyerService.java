@@ -64,7 +64,7 @@ public class BuyerService {
 			buyerVO.setIsMemberEmail(isMemberEmail);
 //			buyerVO.setMemberRegistrationTime(memberRegistrationTime); //自動新增日期不用手動新增
 			buyerVO.setPetName(petName);
-			buyerVO.setPetImg(petImg); //有問題, 不知道怎麼處理
+			buyerVO.setPetImg(null); //圖片有問題, 不知道怎麼處理
 			buyerVO.setPetImgUploadTime(petImgUploadTime);
 			buyerVO.setPetVaccName1(petVaccName1);
 			buyerVO.setPetVaccTime1(petVaccTime1);
@@ -129,7 +129,7 @@ public class BuyerService {
 			buyerVO.setIsMemberEmail(isMemberEmail);
 //			buyerVO.setMemberRegistrationTime(memberRegistrationTime); //自動新增日期不用手動新增
 			buyerVO.setPetName(petName);
-			buyerVO.setPetImg(petImg); //有問題, 不知道怎麼處理
+			buyerVO.setPetImg(null); //有問題, 不知道怎麼處理
 			buyerVO.setPetImgUploadTime(petImgUploadTime);
 			buyerVO.setPetVaccName1(petVaccName1);
 			buyerVO.setPetVaccTime1(petVaccTime1);

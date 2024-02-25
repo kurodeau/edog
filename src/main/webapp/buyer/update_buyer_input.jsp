@@ -83,7 +83,7 @@ th, td {
 	<FORM METHOD="post" ACTION="buyer.do" name="form1">
 		<table>
 			<tr>
-				<td>會員ID<font color=red><b>*</b></font></td>
+				<td>會員Id<font color=red><b>*</b></font></td>
 				<td>${buyerVO.memberId}</td>
 			</tr>
 			<tr>
@@ -92,7 +92,7 @@ th, td {
 					value="${buyerVO.memberEmail}" size="45"></td>
 			</tr>
 			<tr>
-				<td>第三方資訊<font color="red"><b>*</b></font></td>
+				<td>第三方資訊</td>
 				<td><input type="text" name="thirdFrom"
 					value="${buyerVO.thirdFrom}" size="45"></td>
 			</tr>
@@ -178,12 +178,12 @@ th, td {
 			</tr>	
 
 		</table>
-		<br> <input type="hidden" name="action" value="update"> <input
-			type="hidden" name="memberId" value="<%=buyerVO.getMemberId()%>">
+		<br>
+		<input type="hidden" name="action" value="update"> 
+<!-- 	<input type="hidden" name="memberId" value="<%=buyerVO.getMemberId()%>">  -->
+		<input type="hidden" name="memberId" value="${buyerVO.memberId}">
 		<input type="submit" value="送出修改">
 	</FORM>
-	<button type="button" class="autofill">自動填值</button>
-
 </body>
 
 

@@ -22,9 +22,13 @@ import com.petdraw.entity.PetDrawVO;
 @Table(name = "buyer")
 public class BuyerVO implements java.io.Serializable{
 
+	public BuyerVO() {
+		super();
+	};
+	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "memberId")
+	@Column(name = "memberId", updatable = false)
 	private Integer memberId;
 	
 	@Column(name = "memberEmail")
@@ -57,13 +61,13 @@ public class BuyerVO implements java.io.Serializable{
 	
 	@Column(name = "memberRegistrationTime")
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date memberRegistrationTime; 
+	private Date memberRegistrationTime = new Date();; 
 	
 	@Column(name = "petName")
 	private String petName; 
 	
 	@Column(name = "petImg", columnDefinition = "LONGBLOB" )
-	private byte[] petImg; 
+	private Byte[] petImg; 
 	
 	@Column(name = "petImgUploadTime")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -88,40 +92,29 @@ public class BuyerVO implements java.io.Serializable{
 	
 	
 
-	 @OneToMany(mappedBy = "memberMain", cascade = CascadeType.ALL)
-	 @OrderBy("memberId asc") 
-	 private Set<PetDrawVO> PetDrawVOMemnerIds;
+	@OneToMany(mappedBy = "memberMain", cascade = CascadeType.ALL)
+	@OrderBy("memberId asc") 
+	private Set<PetDrawVO> PetDrawVOMemnerIds;
 
 	@OneToMany (mappedBy = "memberPair" ,cascade = CascadeType.ALL)
 	@OrderBy("memberId asc")
-	private Set<PetDrawVO> PetDrawVOMemnerPairIds;;
+	private Set<PetDrawVO> PetDrawVOMemnerPairIds;
 	
 	
-	
+	//這不知道幹嘛的
+//	public Set<BuyerVO> getMembers() {
+//		return members;
+//	}
 
-
-	public Set<BuyerVO> getMembers() {
-		return members;
-	}
-
-
-
-	public void setMembers(Set<BuyerVO> members) {
-		this.members = members;
-	}
+	//這不知道幹嘛的
+//	public void setMembers(Set<BuyerVO> members) {
+//		this.members = members;
+//	}
 
 
 
-	public void setIsConfirm(Boolean isConfirm) {
-		this.isConfirm = isConfirm;
-	}
 
 
-
-	public BuyerVO() {
-		super();
-	};
-	
 	public Integer getMemberId() {
 		return memberId;
 	}
@@ -218,11 +211,11 @@ public class BuyerVO implements java.io.Serializable{
 		this.petName = petName;
 	}
 
-	public byte[] getPetImg() {
+	public Byte[] getPetImg() {
 		return petImg;
 	}
 
-	public void setPetImg(byte[] petImg) {
+	public void setPetImg(Byte[] petImg) {
 		this.petImg = petImg;
 	}
 
@@ -266,11 +259,11 @@ public class BuyerVO implements java.io.Serializable{
 		this.petVaccTime2 = petVaccTime2;
 	}
 
-	public boolean getIsConfirm() {
+	public Boolean getIsConfirm() {
 		return isConfirm;
 	}
 
-	public void setIsConfirm(boolean isConfirm) {
+	public void setIsConfirm(Boolean isConfirm) {
 		this.isConfirm = isConfirm;
 	}
 		
