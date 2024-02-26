@@ -56,14 +56,14 @@ public class AdVO implements Serializable {
 	@Column(name="adMemo")
 	private String adMemo;
 	
-	@Column(name = "isAdConfirm")
-	private Boolean isAdConfirm;
+	@Column(name = "adStatus")
+	private String adStatus;
 	@Override
 	public String toString() {
 		return "AdVO [adId=" + adId +" adImg=" + Arrays.toString(adImg)
 				+ ", adImgUploadTime=" + adImgUploadTime + ", adName=" + adName + ", adUrl=" + adUrl + ", adStartTime="
-				+ adStartTime + ", adEndTime=" + adEndTime + ", adLv=" + adLv + ", adMemo=" + adMemo + ", isAdConfirm="
-				+ isAdConfirm + ", adCreateTime=" + adCreateTime + ", isEnabled=" + isEnabled + "]";
+				+ adStartTime + ", adEndTime=" + adEndTime + ", adLv=" + adLv + ", adMemo=" + adMemo + ", adStatus="
+				+ adStatus + ", adCreateTime=" + adCreateTime + ", isEnabled=" + isEnabled + "]";
 	}
 	
 	@Column(name = "adCreateTime")
@@ -76,21 +76,21 @@ public class AdVO implements Serializable {
 	
 	
 	
-	public AdVO(Integer adId, byte[] adImg, String adName, Date adStartTime, Date adEndTime, Boolean isEnabled) {
+	public AdVO(Integer adId, byte[] adImg, String adName, Date adStartTime, Date adEndTime, String adStatus) {
 		super();
 		this.adId = adId;
 		this.adImg = adImg;
 		this.adName = adName;
 		this.adStartTime = adStartTime;
 		this.adEndTime = adEndTime;
-		this.isEnabled = isEnabled;
+		this.adStatus = adStatus;
 	}
 
 
 
 
 	public AdVO( SellerVO sellerVO, byte[] adImg, Timestamp adImgUploadTime, String adName, String adUrl,
-			Date adStartTime, Date adEndTime, Integer adLv, String adMemo, Boolean isAdConfirm,
+			Date adStartTime, Date adEndTime, Integer adLv, String adMemo, String adStatusd,
 			Timestamp adCreateTime, Boolean isEnabled) {
 		super();
 	
@@ -103,7 +103,7 @@ public class AdVO implements Serializable {
 		this.adEndTime = adEndTime;
 		this.adLv = adLv;
 		this.adMemo = adMemo;
-		this.isAdConfirm = isAdConfirm;
+		this.adStatus = adStatus;
 		this.adCreateTime = adCreateTime;
 		this.isEnabled = isEnabled;
 	}
@@ -243,15 +243,19 @@ public class AdVO implements Serializable {
 
 
 
-	public Boolean getIsAdConfirm() {
-		return isAdConfirm;
+
+
+
+
+	public String getAdStatus() {
+		return adStatus;
 	}
 
 
 
 
-	public void setIsAdConfirm(Boolean isAdConfirm) {
-		this.isAdConfirm = isAdConfirm;
+	public void setAdStatus(String adStatus) {
+		this.adStatus = adStatus;
 	}
 
 
