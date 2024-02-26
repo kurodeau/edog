@@ -1,6 +1,8 @@
 package com.seller.entity;
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,10 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.ad.model.AdVO;
 import com.sellerLv.entity.SellerLvVO;
 
 
@@ -27,6 +31,11 @@ public class SellerVO implements java.io.Serializable{
 	@Column(name = "sellerId", updatable = false)
 	  private Integer sellerId;
 	
+	@OneToMany(mappedBy = "sellerVO", cascade = CascadeType.ALL) 
+	private Set<AdVO> adVO;
+	
+	
+	
 	@ManyToOne
 	@JoinColumn(name = "sellerLvId", referencedColumnName = "sellerLvId")
 	private SellerLvVO sellerLvId;
@@ -41,7 +50,14 @@ public class SellerVO implements java.io.Serializable{
 	@Column(name = "sellerEmail")
     private String sellerEmail;
 
-    @Column(name = "sellerCompany")
+    public Set<AdVO> getAdVO() {
+		return adVO;
+	}
+	public void setAdVO(Set<AdVO> adVO) {
+		this.adVO = adVO;
+	}
+
+	@Column(name = "sellerCompany")
     private String sellerCompany;
 
     @Column(name = "sellerTaxId",  columnDefinition = "char(8)")
