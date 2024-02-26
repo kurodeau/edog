@@ -88,7 +88,7 @@ public class BuyerService {
 	}
 
 	public BuyerVO updateBuyer(
-//			Integer memberId, //不允許更新Id
+			Integer memberId, //不允許更新Id
 			String memberEmail,
 			String thirdFrom,
 			String memberName,
@@ -110,14 +110,12 @@ public class BuyerService {
 			) {
 
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-
 		BuyerVO buyerVO = null;
-
 		try {
 			session.beginTransaction();
 			buyerVO = new BuyerVO();
 
-//			buyerVO.setMemberId(memberId); //自增建不允許手動新增
+			buyerVO.setMemberId(memberId); //自增建不允許手動新增
 			buyerVO.setMemberEmail(memberEmail);
 			buyerVO.setThirdFrom(thirdFrom);
 			buyerVO.setMemberName(memberName);
@@ -136,8 +134,10 @@ public class BuyerService {
 			buyerVO.setPetVaccName2(petVaccName2);
 			buyerVO.setPetVaccTime2(petVaccTime2);
 			buyerVO.setIsConfirm(isConfirm);
+			System.out.println(buyerVO.getMemberName());
 
 			dao.update(buyerVO);
+//			session.saveOrUpdate(buyerVO);
 			session.getTransaction().commit();
 
 		} catch (Exception e) {

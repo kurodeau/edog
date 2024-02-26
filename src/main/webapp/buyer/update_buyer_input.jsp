@@ -80,11 +80,11 @@ th, td {
 		</ul>
 	</c:if>
 
-	<FORM METHOD="post" ACTION="buyer.do" name="form1">
+	<FORM METHOD="post" ACTION="buyer.do" name="form1" enctype="multipart/form-data">
 		<table>
 			<tr>
-				<td>會員Id<font color=red><b>*</b></font></td>
-				<td>${buyerVO.memberId}</td>
+				<td>會員Id<font color=red ><b>*</b></font></td>
+				<td >${buyerVO.memberId}</td>
 			</tr>
 			<tr>
 				<td>會員信箱<font color="red"><b>*</b></font></td>

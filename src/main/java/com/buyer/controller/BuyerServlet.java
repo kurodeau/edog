@@ -10,6 +10,7 @@ import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,7 @@ import com.buyer.service.BuyerService;
 
 
 @WebServlet("/buyer/buyer.do")
+@MultipartConfig
 public class BuyerServlet extends HttpServlet {
 
 	private List<String> errorMsgs = null;
@@ -139,6 +141,7 @@ public class BuyerServlet extends HttpServlet {
 
 	private String update(HttpServletRequest req, HttpServletResponse res) {
 		/*************************** 1.接收請求參數 ****************************************/
+		
 		Integer memberId = Integer.valueOf(req.getParameter("memberId"));
 		
 		String memberEmail = String.valueOf(req.getParameter("memberEmail"));
@@ -250,10 +253,11 @@ public class BuyerServlet extends HttpServlet {
 		if (!errorMsgs.isEmpty()) {
 			return ("/buyer/update_buyer_input.jsp");
 		}
+		
 
 		// Update 使用值做更新(因為Service內部轉換)
 		buyerVO = buyerSvc.updateBuyer(
-//				memberId, //不允許更新Id
+				memberId, //不允許更新Id
 				memberEmail, 
 				thirdFrom, 
 				memberName, 
