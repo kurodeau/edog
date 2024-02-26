@@ -9,7 +9,7 @@ const createScript = (src) => {
   });
 };
 
-const fetchConfig = fetch("config.json")
+const fetchConfig = fetch("config.json")  
   .then((response) => response.json())
   .catch((error) => {
     console.error("Error fetching config:", error);
