@@ -27,6 +27,9 @@
 		<mapping class="com.seller.entity.SellerVO" />
 		<mapping class="com.sellerLv.entity.SellerLvVO" />
 		<mapping class="com.coupon.entity.CouponVO" />
+		<mapping class="com.coupon.entity.CouponVO" />
+		<mapping class="com.ad.model.AdVO" />
+		
 
 		<!-- <mapping class="com.buyer.entity.BuyerVO"/> -->
 

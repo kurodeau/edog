@@ -18,7 +18,7 @@
       "quillSnow": "vendors/quill/quill.snow.css",
       "simpleDatatables": "vendors/simple-datatables/style.css",
       "hamburger": "vendors/hamburger/hamburgers.css",
-      "JJK": "vendors/JJK/SSSS.css"
+      "datepicker": "vendors/datepicker/jquery.datetimepicker.css"
     },
     "mainStyle": "css/style.css",
     "js": [
@@ -27,9 +27,16 @@
       "vendors/quill/quill.min.js",
       "vendors/simple-datatables/simple-datatables.js",
       "vendors/tinymce/tinymce.js",
-      "vendors/common/tw-city-selector.js"
+      "vendors/common/tw-city-selector.js",
+      "jquery.datetimepicker.full.js",
+      "vendors/jquery/jquery.js"
+
     ],
     "mainjs": "mainjs/main.js"
   },
-  "actionPath": { "product-add": { "form": "/CTXPATH/product/product.do" } }
+  "actionPath": { 
+    "product-add": { "form": "/CTXPATH/product/product.do" },
+    "ads-add": { "form": "/CTXPATH/ad/ad.do" },
+    "ads-all": { "form": "/CTXPATH/ad/ad.do" }
+   }
 }
