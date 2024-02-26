@@ -1,15 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="com.article.model.*"%>
-<%@ page import="java.sql.Timestamp" %>
-<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="com.article.entity.*"%>
+<%@ page import="com.article.service.*"%>
 <%
 //見com.emp.controller.EmpServlet.java第163行存入req的empVO物件 (此為從資料庫取出的empVO, 也可以是輸入格式有錯誤時的empVO物件)
 ArticleVO articleVO = (ArticleVO) request.getAttribute("articleVO");
-Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
-
-SimpleDateFormat dateTimeFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-String formattedDateTime = dateTimeFormat.format(currentTimestamp);
 %>
 <!DOCTYPE html>
 <html>
@@ -110,8 +105,9 @@ th, td {
 		<td><input type="TEXT" name="articleContent"   value="<%=articleVO.getArticleContent()%>" size="45"/></td>
 	</tr>
 	<tr>
-		<td>文章更新時間:</td>
-		<td><input name="artUpdateTime" id="f_date1" type="datetime-local" value="<%= formattedDateTime %>"></td>
+	    <td>上傳時間:</td>
+	    <td><input type="datetime-local" name="artUpdateTime"
+					value="<%= java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")) %>" size="45"></td>
 	</tr>
 	<tr>
 	    <td>喜歡數:</td>
@@ -129,13 +125,11 @@ th, td {
 	<tr>
     <td>文章分類:</td>
     <td>
-        <select size="1" name=articleSort>
-            <c:forEach var="articleTypeVO" items="${articleTypeSvc.all}">
-                <option value="${articleTypeVO.articleTypeId}" ${articleTypeVO.articleTypeId eq articleVO.articleSort ? 'selected' : ''}>
-                    ${articleTypeVO.articleTypeName}
-                </option>
-            </c:forEach>
-        </select>
+        <select size="1" name="articleSort">
+        <c:forEach var="articleTypeVO" items="${articleTypeSvc.all}">
+            <option value="${articleTypeVO.articleTypeId}">${articleTypeVO.articleTypeName}</option>
+        </c:forEach>
+    </select>
     </td>
 	</tr>
 	<tr>

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>EDog</title>
+    <script src="loadcss.js"></script>
+  </head>
+  <body>
+    <!-- ======= Header ======= -->
+    <header class="fixed-top">
+      <nav class="navbar navbar-expand navbar-expand-sm navbar-light bg-user">
+        <div class="container-fluid">
+          <div
+            class="collapse navbar-collapse d-flex justify-content-between"
+            id="navbarSupportedContent"
+          >
+            <!-- Start NavBar  -->
+            <!-- NavBar--LeftSide  -->
+            <ul class="navbar-nav me-auto mb-2">
+              <li class="nav-item d-flex align-items-center toggle-sidebar-btn">
+                <i class="bi bi-list"></i>
+                <a
+                  class="nav-link cancel-default-behavior"
+                  aria-current="page"
+                  href="#"
+                  >選單</a
+                >
+              </li>
+              <li class="nav-item d-flex align-items-center">
+                <a class="nav-link active" aria-current="page" href="#"
+                  >電子商城</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="seller-login.html">買家中心</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">論壇</a>
+              </li>
+            </ul>
+
+            <!-- NavBar--RightSide  -->
+            <ul class="navbar-nav ms-auto mb-2">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">註冊</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">登入</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End NavBar  -->
+    </header>
+    <!-- ======= Sidebar ======= -->
+    <aside class="sidebar sidebar-layout-seller">
+      <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-item">
+          <a class="nav-link nav-seller-entry" href="buyer-main.html">
+            <i class="bi bi-grid"></i>
+            <span>買家中心</span>
+          </a>
+        </li>
+        <!-- End Dashboard Nav -->
+
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            data-bs-target="#buyer-nav"
+            data-bs-toggle="collapse"
+            href="#"
+          >
+            <i class="bi bi-person"></i>
+            <span>買家帳戶</span><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul
+            id="buyer-nav"
+            class="nav-content collapse"
+            data-bs-parent="#sidebar-nav"
+          >
+            <li>
+              <a href="buyer-edit.html">
+                <i class="bi bi-circle"></i><span>修改買家資料</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- End Seller Nav -->
+
+        <li class="nav-item">
+          <a class="nav-link nav-seller-entry" href="buyer-cart.html">
+            <i class="bi bi-cart"></i>
+            <span>我的購物車</span>
+          </a>
+        </li>
+        <!-- End product Nav -->
+        <li class="nav-item">
+          <a class="nav-link nav-seller-entry" href="buyer-like.html">
+            <i class="bi bi-heart"></i>
+            <span>我的收藏</span>
+          </a>
+        </li>
+
+        <!-- End Charts Nav -->
+
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            data-bs-target="#order-nav"
+            data-bs-toggle="collapse"
+            href="#"
+          >
+            <i class="bi bi-stickies"></i><span>訂單管理</span
+            ><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul
+            id="order-nav"
+            class="nav-content collapse"
+            data-bs-parent="#sidebar-nav"
+          >
+            <li>
+              <a href="buyer-order-overall.html">
+                <i class="bi bi-circle"></i><span>全部訂單</span>
+              </a>
+            </li>
+            <li>
+              <a href="buyer-order-search.html">
+                <i class="bi bi-circle"></i><span>訂單查詢</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            data-bs-target="#service-nav"
+            data-bs-toggle="collapse"
+            href="#"
+          >
+            <i class="bi bi-headset"></i><span>客戶服務</span
+            ><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul
+            id="service-nav"
+            class="nav-content collapse"
+            data-bs-parent="#sidebar-nav"
+          >
+            <li>
+              <a href="buyer-service-form.html">
+                <i class="bi bi-circle"></i><span>意見表單</span>
+              </a>
+            </li>
+            <li>
+              <a href="buyer-service-reply.html">
+                <i class="bi bi-circle"></i><span>查詢回覆</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </aside>
+    <!-- ======= Main ======= -->
+    <main class="main main-layout-seller">
+      <div class="container-fluid seller-container">
+        <h1>訂單管理</h1>
+        <div class="card card-order-custom">
+          <div class="card-body">
+            <!-- Bordered Tabs -->
+            <ul
+              class="nav nav-tabs nav-tabs-bordered"
+              id="borderedTab"
+              role="tablist"
+            >
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link buyer-nav-link active"
+                  id="all-orders-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#bordered-all-orders"
+                  type="button"
+                  role="tab"
+                  aria-controls="all-orders"
+                  aria-selected="true"
+                >
+                  所有訂單
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link buyer-nav-link"
+                  id="pending-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#bordered-pending"
+                  type="button"
+                  role="tab"
+                  aria-controls="pending"
+                  aria-selected="false"
+                >
+                  未處理訂單
+                </button>
+              </li>
+
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link buyer-nav-link"
+                  id="cancel-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#bordered-cancel"
+                  type="button"
+                  role="tab"
+                  aria-controls="cancel"
+                  aria-selected="false"
+                >
+                  已取消訂單
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link buyer-nav-link"
+                  id="shipped-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#bordered-shipped"
+                  type="button"
+                  role="tab"
+                  aria-controls="shipped"
+                  aria-selected="false"
+                >
+                  已出貨訂單
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link buyer-nav-link"
+                  id="completed-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#bordered-completed"
+                  type="button"
+                  role="tab"
+                  aria-controls="completed"
+                  aria-selected="false"
+                >
+                  已完成訂單
+                </button>
+              </li>
+            </ul>
+            <div class="tab-content pt-2" id="borderedTabContent">
+              <div
+                class="tab-pane show active"
+                id="bordered-all-orders"
+                role="tabpanel"
+                aria-labelledby="all-orders-tab"
+              >
+                <div
+                  class="container mt-3 container-buyerorder-custom border-userdark"
+                >
+                  <div class="row orderheader-row-custom bg-userdark">
+                    <div class="col-2 px-0">賣家名稱</div>
+                    <div class="col-2 px-0">訂單日期</div>
+                    <div class="col-2 px-0">訂單序號</div>
+                    <div class="col-2 px-0">訂單金額</div>
+                    <div class="col-2 px-0">狀態</div>
+                  </div>
+
+                  <!-- Item 1 -->
+                  <div class="row item-row-custom">
+                    <div class="col-2 px-0">123123</div>
+                    <div class="col-2 px-0">2023-01-01</div>
+                    <div class="col-2 px-0">6</div>
+                    <div class="col-2 px-0">2400</div>
+                    <div class="col-2 px-0">等待中<br />待賣家確認</div>
+                  </div>
+
+                  <div class="row header-row-custom">
+                    <div class="col-f110 px-0">商品圖片</div>
+                    <div class="col-2 px-0">商品種類</div>
+                    <div class="col-3 px-0">商品名稱</div>
+                    <div class="col-1 px-2 d-flex justify-content-end">
+                      購買數量
+                    </div>
+                    <div class="col-1-5 px-2 d-flex justify-content-end">
+                      買家實付金額
+                    </div>
+                    <div class="col px-0 d-flex justify-content-center">
+                      操作
+                    </div>
+                  </div>
+
+                  <!-- Item 1 -->
+                  <div class="row item-row-custom">
+                    <div class="col-f110 px-0">
+                      <img src="https://fakeimg.pl/100x100/" alt="" srcset="" />
+                    </div>
+                    <div class="col-2 px-0">沐浴用品</div>
+                    <div class="col-3 px-0">洗澡用</div>
+                    <div class="col-1 px-2 d-flex justify-content-end">2</div>
+                    <div class="col-1-5 px-2 d-flex justify-content-end">
+                      2400
+                    </div>
+                    <div class="col d-flex flex-column align-items-center">
+                      <button class="product align-self-center btn-func">
+                        接受訂單
+                      </button>
+                      <button class="product align-self-center btn-func">
+                        取消訂單
+                      </button>
+                      <button class="product align-self-center btn-func">
+                        查看詳情
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Item 2 -->
+                  <div class="row item-row-custom">
+                    <div class="col-f110 px-0">
+                      <img src="https://fakeimg.pl/100x100/" alt="" srcset="" />
+                    </div>
+                    <div class="col-2 px-0">沐浴用品</div>
+                    <div class="col-3 px-0">洗澡用</div>
+                    <div class="col-1 px-2 d-flex justify-content-end">2</div>
+                    <div class="col-1-5 px-2 d-flex justify-content-end">
+                      2400
+                    </div>
+                    <div class="col d-flex flex-column align-items-center">
+                      <button class="product align-self-center btn-func">
+                        接受訂單
+                      </button>
+                      <button class="product align-self-center btn-func">
+                        取消訂單
+                      </button>
+                      <button class="product align-self-center btn-func">
+                        查看詳情
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="container mt-3 container-buyerorder-custom border-userdark"
+                >
+                  <div class="row orderheader-row-custom bg-userdark">
+                    <div class="col-2 px-0">賣家名稱</div>
+                    <div class="col-2 px-0">訂單日期</div>
+                    <div class="col-2 px-0">訂單序號</div>
+                    <div class="col-2 px-0">訂單金額</div>
+                    <div class="col-2 px-0">狀態</div>
+                  </div>
+
+                  <!-- Item 1 -->
+                  <div class="row item-row-custom">
+                    <div class="col-2 px-0">123123</div>
+                    <div class="col-2 px-0">2023-01-01</div>
+                    <div class="col-2 px-0">6</div>
+                    <div class="col-2 px-0">2400</div>
+                    <div class="col-2 px-0">等待中<br />待賣家確認</div>
+                  </div>
+
+                  <div class="row header-row-custom">
+                    <div class="col-f110 px-0">商品圖片</div>
+                    <div class="col-2 px-0">商品種類</div>
+                    <div class="col-3 px-0">商品名稱</div>
+                    <div class="col-1 px-2 d-flex justify-content-end">
+                      購買數量
+                    </div>
+                    <div class="col-1-5 px-2 d-flex justify-content-end">
+                      買家實付金額
+                    </div>
+                    <div class="col px-0 d-flex justify-content-center">
+                      操作
+                    </div>
+                  </div>
+
+                  <!-- Item 1 -->
+                  <div class="row item-row-custom">
+                    <div class="col-f110 px-0">
+                      <img src="https://fakeimg.pl/100x100/" alt="" srcset="" />
+                    </div>
+                    <div class="col-2 px-0">沐浴用品</div>
+                    <div class="col-3 px-0">洗澡用</div>
+                    <div class="col-1 px-2 d-flex justify-content-end">2</div>
+                    <div class="col-1-5 px-2 d-flex justify-content-end">
+                      2400
+                    </div>
+                    <div class="col d-flex flex-column align-items-center">
+                      <button class="product align-self-center btn-func">
+                        接受訂單
+                      </button>
+                      <button class="product align-self-center btn-func">
+                        取消訂單
+                      </button>
+                      <button class="product align-self-center btn-func">
+                        查看詳情
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Item 2 -->
+                  <div class="row item-row-custom">
+                    <div class="col-f110 px-0">
+                      <img src="https://fakeimg.pl/100x100/" alt="" srcset="" />
+                    </div>
+                    <div class="col-2 px-0">沐浴用品</div>
+                    <div class="col-3 px-0">洗澡用</div>
+                    <div class="col-1 px-2 d-flex justify-content-end">2</div>
+                    <div class="col-1-5 px-2 d-flex justify-content-end">
+                      2400
+                    </div>
+                    <div class="col d-flex flex-column align-items-center">
+                      <button class="product align-self-center btn-func">
+                        接受訂單
+                      </button>
+                      <button class="product align-self-center btn-func">
+                        取消訂單
+                      </button>
+                      <button class="product align-self-center btn-func">
+                        查看詳情
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Content for All Orders Tab -->
+              </div>
+              <div
+                class="tab-pane"
+                id="bordered-pending"
+                role="tabpanel"
+                aria-labelledby="pending-tab"
+              >
+                <!-- Content for Pending Orders Tab -->
+              </div>
+              <div
+                class="tab-pane"
+                id="bordered-shipped"
+                role="tabpanel"
+                aria-labelledby="shipped-tab"
+              >
+                <!-- Content for Cancelled Orders Tab -->
+              </div>
+              <div
+                class="tab-pane"
+                id="bordered-cancel"
+                role="tabpanel"
+                aria-labelledby="cancel-tab"
+              >
+                <!-- Content for Shipped Orders Tab -->
+              </div>
+              <div
+                class="tab-pane"
+                id="bordered-completed"
+                role="tabpanel"
+                aria-labelledby="completed-tab"
+              >
+                <!-- Content for Completed Orders Tab -->
+              </div>
+            </div>
+            <!-- End Bordered Tabs -->
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- End Main -->
+
+    <!-- ======= Footer ======= -->
+    <footer class="footer footer-layout">
+      <div
+        class="row row-cols-1 row-cols-sm-2 row-cols-md-4 pt-5 border-top footer-container-custom text-white"
+      >
+        <div class="col d-none d-sm-block p-sm-2 px-5 px-sm-5 px-md-0"></div>
+
+        <div class="col p-sm-2 px-5 px-sm-5 px-md-0">
+          <h5 class="mb-3">關於我們</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2">
+              <a href="#" class="nav-link p-0 text-body-secondary">人才招募</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a href="#" class="nav-link p-0 text-body-secondary">E狗簡介</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col p-sm-2 px-5 px-sm-5 px-md-0">
+          <h5 class="mb-3">常見問題</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2">
+              <a href="#" class="nav-link p-0 text-body-secondary">聯絡E狗</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a href="#" class="nav-link p-0 text-body-secondary">Q&A</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row footer-container-custom">
+        <div class="col-3"></div>
+
+        <div class="col-auto">
+          <a
+            href="/"
+            class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none"
+          >
+          </a>
+          <p class="text-body-secondary">
+            新加坡商CatTom有限公司台灣分公司 統一編號：00000000 © 2023
+            CatTom.版權所有。
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
+    <script src="loadjs.js"></script>
+
+    <!-- Local JS File -->
+  </body>
+</html>

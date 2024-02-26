@@ -1,14 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="com.article.model.*"%>
-<%@ page import="java.sql.Timestamp" %>
-<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="com.article.entity.ArticleVO"%>
 <%
 //見com.emp.controller.EmpServlet.java第238行存入req的empVO物件 (此為輸入格式有錯誤時的empVO物件)
-    Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
-    SimpleDateFormat dateTimeFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-    String formattedDateTime = dateTimeFormat.format(currentTimestamp);
-
 	ArticleVO articleVO = (ArticleVO) request.getAttribute("articleVO");
 %>
 <!DOCTYPE html>
@@ -70,7 +64,7 @@ th, td {
 <table id="table-1">
 	<tr><td>
 		 <h3>文章新增 - addArticle.js</h3></td><td>
-		 <h4><a href="select_page.jsp"><img src="images/tomcat.png" width="100" height="100" border="0">回首頁</a></h4>
+		 <h4><a href="index.jsp"><img src="images/tomcat.png" width="100" height="100" border="0">回首頁</a></h4>
 	</td></tr>
 </table>
 
@@ -103,7 +97,8 @@ th, td {
 	<tr>
    <tr>
 	    <td>上傳時間:</td>
-	    <td><input name="artUpdateTime" id="f_date1" type="datetime-local" value="<%= formattedDateTime %>"></td>
+	    <td><input type="datetime-local" name="artUpdateTime"
+					value="<%= java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")) %>" size="45"></td>
 	</tr>
 	<tr>
     	<td>喜歡數:</td>
@@ -121,11 +116,14 @@ th, td {
 	<jsp:useBean id="articleTypeSvc" scope="page" class="com.articleType.model.ArticleTypeService" />
 	<tr>
 		<td>文章分類:</td>
-		<td><select size="1" name="articleSort">
-			<c:forEach var="articleTypeVO" items="${articleTypeSvc.all}">
-				<option value="${articleTypeVO.articleTypeId}" ${(articleVO.articleSort==articleTypeVO.articleTypeId)? 'selected':'' } >${articleTypeVO.articleTypeName}
-			</c:forEach>
-		</select></td>
+		<td>
+    <select size="1" name="articleSort">
+        <c:forEach var="articleTypeVO" items="${articleTypeSvc.all}">
+            <option value="${articleTypeVO.articleTypeId}">${articleTypeVO.articleTypeName}</option>
+        </c:forEach>
+    </select>
+</td>
+
 	</tr>
 	<tr>
     <td>文章狀態:</td>

@@ -18,7 +18,8 @@
       "quillSnow": "vendors/quill/quill.snow.css",
       "simpleDatatables": "vendors/simple-datatables/style.css",
       "hamburger": "vendors/hamburger/hamburgers.css",
-      "datepicker": "vendors/datepicker/jquery.datetimepicker.css"
+      "datepicker": "vendors/datepicker/jquery.datetimepicker.css",
+      "HSU": "vendors/HSU/HSU.css"
     },
     "mainStyle": "css/style.css",
     "js": [
@@ -28,9 +29,8 @@
       "vendors/simple-datatables/simple-datatables.js",
       "vendors/tinymce/tinymce.js",
       "vendors/common/tw-city-selector.js",
-      "jquery.datetimepicker.full.js",
-      "vendors/jquery/jquery.js"
-
+      "vendors/jquery/jquery-3.7.1.min.js",
+      "vendors/HSU/HSU.js"
     ],
     "mainjs": "mainjs/main.js"
   },
