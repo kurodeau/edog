@@ -78,7 +78,7 @@ public class AdDAO implements AdDAO_interface {
 	    try {
 	    		    	
 	        session.beginTransaction();
-	        String hql = "SELECT new AdVO(adId, adImg, adName, adStartTime, adEndTime, isEnabled) FROM AdVO";
+	        String hql = "SELECT new AdVO(adId, adImg, adName, adStartTime, adEndTime, adStatus) FROM AdVO";
 	        List<AdVO> advertisements = session.createQuery(hql ,AdVO.class).list();
 	        System.out.println("Retrieved advertisements: " + advertisements);
 	        

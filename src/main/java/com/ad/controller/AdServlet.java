@@ -16,6 +16,7 @@ import javax.servlet.http.Part;
 
 import com.ad.model.AdService;
 import com.ad.model.AdVO;
+import com.allenum.AdStatusEnum;
 import com.google.gson.Gson;
 import com.seller.entity.SellerVO;
 
@@ -113,162 +114,162 @@ public class AdServlet extends HttpServlet {
 //			successView.forward(req, res);
 //		}
 //		
-
-		if ("insert".equals(action)) {
-			System.out.println("INSERT");
-			List<String> errorMsgs = new LinkedList<String>();
-			req.setAttribute("errorMsgs", errorMsgs);
-
-			/*********************** 1.�����ШD�Ѽ� - ��J�榡�����~�B�z *************************/
-			
-			
-String adName = req.getParameter("adName");
-			String adNameReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{2,10}$";
-			if (adName == null || adName.trim().length() == 0) {
-				errorMsgs.add("�s�i�W��:�ФŪť�");
-			} else if (!adName.trim().matches(adNameReg)) { // �H�U�m�ߥ��h(�W)��ܦ�(regular-expression)
-				errorMsgs.add("�s�i�W��: �u��O���B�^��r���B�Ʀr�M_ , �B���ץ��ݦb2��10����");
-			}
-
-Integer sellerId = 1 ;
-			
-//            Integer sellerId = null;
-//			try {
-//sellerId = Integer.valueOf(req.getParameter("sellerId").trim());
-//			} catch(NumberFormatException e) {
-//				sellerId = 0;
-//				errorMsgs.add("��aID�ж�Ʀr");
+//
+//		if ("insert".equals(action)) {
+//			System.out.println("INSERT");
+//			List<String> errorMsgs = new LinkedList<String>();
+//			req.setAttribute("errorMsgs", errorMsgs);
+//
+//			/*********************** 1.�����ШD�Ѽ� - ��J�榡�����~�B�z *************************/
+//			
+//			
+//String adName = req.getParameter("adName");
+//			String adNameReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{2,10}$";
+//			if (adName == null || adName.trim().length() == 0) {
+//				errorMsgs.add("�s�i�W��:�ФŪť�");
+//			} else if (!adName.trim().matches(adNameReg)) { // �H�U�m�ߥ��h(�W)��ܦ�(regular-expression)
+//				errorMsgs.add("�s�i�W��: �u��O���B�^��r���B�Ʀr�M_ , �B���ץ��ݦb2��10����");
 //			}
-			
-String adUrl = req.getParameter("adUrl");
-			String adUrlReg = "^(https?|ftp):\\/\\/[a-zA-Z0-9-]+(\\.[a-zA-Z]{2,})+(\\/[^\\s]*)?$";			
-			if(adUrl == null || adUrl.trim().length() ==0 ) {
-				errorMsgs.add("�s�i���}:�ФŪť�");
-			}else if( !adUrl.trim().matches(adUrlReg)) {
-				errorMsgs.add("�s�i���}:�u��O���}�榡");
-			}
-			
-			
-			java.util.Date adStartTime = null;
-			try {
-			    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // 設定日期格式
-			    String adStartTimeString = req.getParameter("adStartTime").trim(); // 從請求中獲取參數
-			    adStartTime = dateFormat.parse(adStartTimeString); // 解析日期字串成 Date 物件
-			} catch (Exception e) {			   
-			    errorMsgs.add("日期格式錯誤");
-			}
-			
-//			java.sql.Timestamp adStartTime = null;
+//
+//Integer sellerId = 1 ;
+//			
+////            Integer sellerId = null;
+////			try {
+////sellerId = Integer.valueOf(req.getParameter("sellerId").trim());
+////			} catch(NumberFormatException e) {
+////				sellerId = 0;
+////				errorMsgs.add("��aID�ж�Ʀr");
+////			}
+//			
+//String adUrl = req.getParameter("adUrl");
+//			String adUrlReg = "^(https?|ftp):\\/\\/[a-zA-Z0-9-]+(\\.[a-zA-Z]{2,})+(\\/[^\\s]*)?$";			
+//			if(adUrl == null || adUrl.trim().length() ==0 ) {
+//				errorMsgs.add("�s�i���}:�ФŪť�");
+//			}else if( !adUrl.trim().matches(adUrlReg)) {
+//				errorMsgs.add("�s�i���}:�u��O���}�榡");
+//			}
+//			
+//			
+//			java.util.Date adStartTime = null;
 //			try {
-//adStartTime = java.sql.Timestamp.valueOf(req.getParameter("adStartTime").trim());
+//			    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // 設定日期格式
+//			    String adStartTimeString = req.getParameter("adStartTime").trim(); // 從請求中獲取參數
+//			    adStartTime = dateFormat.parse(adStartTimeString); // 解析日期字串成 Date 物件
+//			} catch (Exception e) {			   
+//			    errorMsgs.add("日期格式錯誤");
+//			}
+//			
+////			java.sql.Timestamp adStartTime = null;
+////			try {
+////adStartTime = java.sql.Timestamp.valueOf(req.getParameter("adStartTime").trim());
+////			} catch (IllegalArgumentException e) {
+////				adStartTime = new java.sql.Timestamp(System.currentTimeMillis());
+////				errorMsgs.add("�п�J�_�l���");
+////			}
+//			
+//			java.sql.Timestamp adEndTime = null;
+//			try {
+//adEndTime = java.sql.Timestamp.valueOf(req.getParameter("adEndTime").trim());
 //			} catch (IllegalArgumentException e) {
 //				adStartTime = new java.sql.Timestamp(System.currentTimeMillis());
-//				errorMsgs.add("�п�J�_�l���");
+//				errorMsgs.add("�п�J�������");
 //			}
-			
-			java.sql.Timestamp adEndTime = null;
-			try {
-adEndTime = java.sql.Timestamp.valueOf(req.getParameter("adEndTime").trim());
-			} catch (IllegalArgumentException e) {
-				adStartTime = new java.sql.Timestamp(System.currentTimeMillis());
-				errorMsgs.add("�п�J�������");
-			}
-
-            Integer adLv = null;
-            try {
-adLv = Integer.valueOf(req.getParameter("adLv").trim());
-            } catch(NumberFormatException e) {
-            	adLv = 0 ;
-            	errorMsgs.add("�s�i���Žж�Ʀr");
-            }
-	
-
-			byte[] adImg =null;
-Part filePart = req.getPart("adImg");
-				InputStream in = filePart.getInputStream();
-				if(in.available()==0) {
-					errorMsgs.add("�ФW�ǹϤ�");
-				}else {
-					adImg =in.readAllBytes();
-				}
-				in.close();
-				
-				java.sql.Timestamp adImgUploadTime = null;
-				try {
-adImgUploadTime = java.sql.Timestamp.valueOf(java.time.LocalDateTime.now());
-				} catch ( Exception e) {
-					errorMsgs.add("�п�ܮɶ�");
-				}
-
-String adMemo = req.getParameter("adMemo");
-				String adMemoReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{2,100}$";
-				if (adMemo == null || adName.trim().length() == 0) {
-					errorMsgs.add("�s�i���e:�ФŪť�");
-				} else if (!adMemo.trim().matches(adNameReg)) { // �H�U�m�ߥ��h(�W)��ܦ�(regular-expression)
-					errorMsgs.add("�s�i���e: �u��O���B�^��r���B�Ʀr�M_ , �B���ץ��ݦb2��100����");
-				}
-				
-				Boolean isAdConfirm = false ;
-				
-//				Boolean isAdConfirm = null ;
-//				try {
-//isAdConfirm = Boolean.valueOf(req.getParameter("isAdConfirm").trim());
-//				      }catch (Exception e) {
-//				    	  isAdConfirm = false ;
-//				    	  errorMsgs.add("�п�J�f�֪��A");
-//				      }
-				
-				
-				
-				java.sql.Timestamp adCreateTime = null ;
-				try {
-adCreateTime = java.sql.Timestamp.valueOf(java.time.LocalDateTime.now());
-				} catch(Exception e ) {
-					errorMsgs.add("�п�J�ɶ�");
-				}
-
-				Boolean isEnabled = false ;
-				
-//				Boolean isEnabled = null ;
-//				try {
-//isEnabled = Boolean.valueOf(req.getParameter("isEnabled").trim());
-//				} catch (Exception e) {
-//					isEnabled = false ;
-//					errorMsgs.add("�п�J���A");
+//
+//            Integer adLv = null;
+//            try {
+//adLv = Integer.valueOf(req.getParameter("adLv").trim());
+//            } catch(NumberFormatException e) {
+//            	adLv = 0 ;
+//            	errorMsgs.add("�s�i���Žж�Ʀr");
+//            }
+//	
+//
+//			byte[] adImg =null;
+//Part filePart = req.getPart("adImg");
+//				InputStream in = filePart.getInputStream();
+//				if(in.available()==0) {
+//					errorMsgs.add("�ФW�ǹϤ�");
+//				}else {
+//					adImg =in.readAllBytes();
 //				}
-
-
-
-//
-				AdVO adVO = new AdVO();
-				
-				adVO.setAdImg(adImg);
-				adVO.setAdImgUploadTime(adImgUploadTime);
-				adVO.setAdName(adName);
-				adVO.setAdUrl(adUrl);
-				adVO.setAdStartTime(adStartTime);
-				adVO.setAdEndTime(adEndTime);
-				adVO.setAdLv(adLv);
-				adVO.setAdMemo(adMemo);
-				adVO.setIsAdConfirm(isAdConfirm);
-				adVO.setAdCreateTime(adCreateTime);
-				adVO.setIsEnabled(isEnabled);	
-				
-				SellerVO sellerVO = new SellerVO();		
-				sellerVO.setSellerId(sellerId);
-				adVO.setSellerVO(sellerVO);
-			
+//				in.close();
 //				
+//				java.sql.Timestamp adImgUploadTime = null;
+//				try {
+//adImgUploadTime = java.sql.Timestamp.valueOf(java.time.LocalDateTime.now());
+//				} catch ( Exception e) {
+//					errorMsgs.add("�п�ܮɶ�");
+//				}
+//
+//String adMemo = req.getParameter("adMemo");
+//				String adMemoReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{2,100}$";
+//				if (adMemo == null || adName.trim().length() == 0) {
+//					errorMsgs.add("�s�i���e:�ФŪť�");
+//				} else if (!adMemo.trim().matches(adNameReg)) { // �H�U�m�ߥ��h(�W)��ܦ�(regular-expression)
+//					errorMsgs.add("�s�i���e: �u��O���B�^��r���B�Ʀr�M_ , �B���ץ��ݦb2��100����");
+//				}
+//				
+//				Boolean isAdConfirm = false ;
+//				
+////				Boolean isAdConfirm = null ;
+////				try {
+////isAdConfirm = Boolean.valueOf(req.getParameter("isAdConfirm").trim());
+////				      }catch (Exception e) {
+////				    	  isAdConfirm = false ;
+////				    	  errorMsgs.add("�п�J�f�֪��A");
+////				      }
+//				
+//				
+//				
+//				java.sql.Timestamp adCreateTime = null ;
+//				try {
+//adCreateTime = java.sql.Timestamp.valueOf(java.time.LocalDateTime.now());
+//				} catch(Exception e ) {
+//					errorMsgs.add("�п�J�ɶ�");
+//				}
+//
+//				AdStatusEnum isEnabled = AdStatusEnum.DISABLED ;
+//				
+////				Boolean isEnabled = null ;
+////				try {
+////isEnabled = Boolean.valueOf(req.getParameter("isEnabled").trim());
+////				} catch (Exception e) {
+////					isEnabled = false ;
+////					errorMsgs.add("�п�J���A");
+////				}
+//
+//
+//
+////
+//				AdVO adVO = new AdVO();
+//				
+//				adVO.setAdImg(adImg);
+//				adVO.setAdImgUploadTime(adImgUploadTime);
+//				adVO.setAdName(adName);
+//				adVO.setAdUrl(adUrl);
+//				adVO.setAdStartTime(adStartTime);
+//				adVO.setAdEndTime(adEndTime);
+//				adVO.setAdLv(adLv);
+//				adVO.setAdMemo(adMemo);
+//				adVO.setIsAdConfirm(isAdConfirm);
+//				adVO.setAdCreateTime(adCreateTime);
+//				adVO.setisStatus(isEnabled);	
+//				
+//				SellerVO sellerVO = new SellerVO();		
+//				sellerVO.setSellerId(sellerId);
+//				adVO.setSellerVO(sellerVO);
 //			
+////				
+////			
+////				
+////
+////
+//				/***************************2.�}�l�s�W���***************************************/
 //				
-//
-//
-				/***************************2.�}�l�s�W���***************************************/
-				
-				AdVO adVOHB = new AdVO(sellerVO,adImg,adImgUploadTime,adName,adUrl,adStartTime,adEndTime,adLv,adMemo,isAdConfirm,adCreateTime,isEnabled);
-				
-				AdService adSvc = new AdService();
-				adVO = adSvc.addAd(adVOHB);
+//				AdVO adVOHB = new AdVO(sellerVO,adImg,adImgUploadTime,adName,adUrl,adStartTime,adEndTime,adLv,adMemo,isAdConfirm,adCreateTime,isEnabled);
+//				
+//				AdService adSvc = new AdService();
+//				adVO = adSvc.addAd(adVOHB);
 				
 	//				/***************************3.�s�W����,�ǳ����(Send the Success view)***********/
 	//				String url = "/ad/listAllAd.jsp" ;
@@ -452,6 +453,6 @@ adCreateTime = java.sql.Timestamp.valueOf(java.time.LocalDateTime.now());
 //			successView.forward(req, res);			
 //		}
 
-	}
+//	}
 
 }
