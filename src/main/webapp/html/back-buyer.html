@@ -199,213 +199,92 @@
   <!-- ======= Main ======= -->
   <main class="main main-layout-seller">
     <div class="container-fluid seller-container">
-      <h1>管理買家資料</h1>
-      <div class="card card-user-custom" style="
-      ">
-        <div class="card-body" style="
-          overflow-x: auto;
-          ">
-          </ul>
-          <div class="tab-content pt-2" id="borderedTabContent">
-            <div class="tab-pane show active" id="bordered-overall" role="tabpanel" aria-labelledby="overall-tab">
-              <div class="container mt-3 container-list-custom">
-                <div class="row user-row-custom" style="
-                display:flex;
-                flex-wrap:nowrap">
-                  <div class="col-1">買家編號</div>
-                  <div class="col-2">Email</div>
-                  <div class="col-1">第三方狀態</div>
-                  <div class="col-2">用戶名稱</div>
-                  <div class="col-2">電話</div>
-                  <div class="col-2">手機</div>
-                  <div class="col-1">生日</div>
-                  <div class="col-2">密碼</div>
-                  <div class="col-3">地址</div>
-                  <div class="col-1">信箱驗證</div>
-                  <div class="col-1">註冊時間</div>
-                  <div class="col-2">寵物名稱</div>
-                  <div class="col-2">寵物圖片</div>
-                  <div class="col-1">註冊時間</div>
-                  <div class="col-2">疫苗接種一</div>
-                  <div class="col-2">接種時間一</div>
-                  <div class="col-2">疫苗接種二</div>
-                  <div class="col-2">註冊時間二</div>
-                  <div class="col-1">用戶狀態</div>
-                  <div class="col-1">操作</div>
-                </div>
+      <h1>買家資料管理</h1>
+      <div class="card card-order-custom">
+        <div class="card-body">
+          <!-- Bordered Tabs -->
+          <!-- <ul class="nav nav-tabs nav-tabs-bordered" id="borderedTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link seller-nav-link active" id="all-orders-tab" data-bs-toggle="tab"
+                data-bs-target="#bordered-all-orders" type="button" role="tab" aria-controls="all-orders"
+                aria-selected="true">
+                所有訂單
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link seller-nav-link" id="pending-tab" data-bs-toggle="tab"
+                data-bs-target="#bordered-pending" type="button" role="tab" aria-controls="pending"
+                aria-selected="false">
+                未處理訂單
+              </button>
+            </li>
 
-                <!-- Item 1 -->
-                <div class="row item-row-custom" style="
-                display:flex;
-                flex-wrap:nowrap;
-                border: 200%;">
-                  <div class="col-1">買家編號</div>
-                  <div class="col-2">Email</div>
-                  <div class="col-1">第三方狀態</div>
-                  <div class="col-2">用戶名稱</div>
-                  <div class="col-2">電話</div>
-                  <div class="col-2">手機</div>
-                  <div class="col-1">生日</div>
-                  <div class="col-2">密碼</div>
-                  <div class="col-3">地址</div>
-                  <div class="col-1">信箱驗證</div>
-                  <div class="col-1">註冊時間</div>
-                  <div class="col-2">寵物名稱</div>
-                  <!-- 寵物圖片 -->
-                  <div class="col-2">
-                    <img src="https://fakeimg.pl/100x100/" alt="" srcset="" />
-                  </div>
-                  <div class="col-1">註冊時間</div>
-                  <div class="col-2">疫苗接種一</div>
-                  <div class="col-2">接種時間一</div>
-                  <div class="col-2">疫苗接種二</div>
-                  <div class="col-2">註冊時間二</div>
-                  <div class="col-1">用戶狀態</div>
-                  <div class="col-1 d-flex flex-column align-items-center">
-                    <button class="product align-self-start btn-func">
-                      編輯
-                    </button>
-                    <button class="product align-self-start btn-func">
-                      上架
-                    </button>
-                    <button class="product align-self-start btn-func">
-                      刪除
-                    </button>
-                  </div>
-                </div>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link seller-nav-link" id="cancel-tab" data-bs-toggle="tab"
+                data-bs-target="#bordered-cancel" type="button" role="tab" aria-controls="cancel" aria-selected="false">
+                已取消訂單
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link seller-nav-link" id="shipped-tab" data-bs-toggle="tab"
+                data-bs-target="#bordered-shipped" type="button" role="tab" aria-controls="shipped"
+                aria-selected="false">
+                已出貨訂單
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link seller-nav-link" id="completed-tab" data-bs-toggle="tab"
+                data-bs-target="#bordered-completed" type="button" role="tab" aria-controls="completed"
+                aria-selected="false">
+                已完成訂單
+              </button>
+            </li>
+          </ul> -->
 
-                <!-- Item 2 -->
-                <div class="row item-row-custom" style="
-                display:flex;
-                flex-wrap:nowrap">
-                  <div class="col-1">買家編號</div>
-                  <div class="col-2">Email</div>
-                  <div class="col-1">第三方狀態</div>
-                  <div class="col-2">用戶名稱</div>
-                  <div class="col-2">電話</div>
-                  <div class="col-2">手機</div>
-                  <div class="col-1">生日</div>
-                  <div class="col-2">密碼</div>
-                  <div class="col-3">地址</div>
-                  <div class="col-1">信箱驗證</div>
-                  <div class="col-1">註冊時間</div>
-                  <div class="col-2">寵物名稱</div>
-                  <!-- 寵物圖片 -->
-                  <div class="col-2">
-                    <img src="https://fakeimg.pl/100x100/" alt="" srcset="" />
-                  </div>
-                  <div class="col-1">註冊時間</div>
-                  <div class="col-2">疫苗接種一</div>
-                  <div class="col-2">接種時間一</div>
-                  <div class="col-2">疫苗接種二</div>
-                  <div class="col-2">註冊時間二</div>
-                  <div class="col-1">用戶狀態</div>
-                  <div class="col-1 d-flex flex-column align-items-center">
-                    <button class="product align-self-start btn-func">
-                      編輯
-                    </button>
-                    <button class="product align-self-start btn-func">
-                      上架
-                    </button>
-                    <button class="product align-self-start btn-func">
-                      刪除
-                    </button>
-                  </div>
-                </div>
+          <div class="container mt-3 container-buyerorder-custom border-userdark">
+            <div class="row orderheader-row-custom bg-userdark" style="
+              width: 200%;">
+              <div class="" style="width: auto;">買家ID</div>
+              <div class="" style="width: auto;">買家信箱</div>
+              <div class="" style="width: auto;">第三方登入</div>
+              <div class="" style="width: auto;">姓名</div>
+              <div class="" style="width: auto;">電話</div>
+              <div class="" style="width: auto;">手機</div>
+              <div class="" style="width: auto;">生日</div>
+              <div class="" style="width: auto;">密碼</div>
+              <div class="" style="width: auto;">地址</div>
+              <div class="" style="width: auto;">信箱驗證</div>
+              <div class="" style="width: auto;">註冊時間</div>
+              <div class="" style="width: auto;">寵物名稱</div>
+              <div class="" style="width: auto;"></div>
+              <div class="" style="width: auto;"></div>
+              <div class="" style="width: auto;"></div>
+              <div class="" style="width: auto;"></div>
+              <div class="" style="width: auto;"></div>
 
-              </div>
             </div>
+
+            <!-- Item 1 -->
+            <div class="row item-row-custom">
+              <div class="col-2 px-0">123123</div>
+              <div class="col-2 px-0">2023-01-01</div>
+              <div class="col-2 px-0">6</div>
+              <div class="col-2 px-0">2400</div>
+              <div class="col-2 px-0">等待中<br />待賣家確認</div>
+            </div>
+
           </div>
         </div>
       </div>
+      <!-- End Main -->
 
-      <!--試用table改不動==-->
-      <table class="table table" style="
-      width: auto;
-      overflow-x: auto;
-      display: none;
-      ">
-        <thead>
-          <tr>
-            <!-- <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th> -->
+      <!-- ======= Footer, 後臺應該不需要footer ======= -->
 
-            <th class="th1">買家編號</th>
-            <th class="col-2">Email</th>
-            <th class="col-1">第三方狀態</th>
-            <th class="col-2">用戶名稱</th>
-            <th class="col-2">電話</th>
-            <th class="col-2">手機</th>
-            <th class="col-1">生日</th>
-            <th class="col-2">密碼</th>
-            <th class="col-3">地址</th>
-            <th class="col-1">信箱驗證</th>
-            <th class="col-1">註冊時間</th>
-            <th class="col-2">寵物名稱</th>
-            <th class="col-2">寵物圖片</th>
-            <th class="col-1">註冊時間</th>
-            <th class="col-2">疫苗接種一</th>
-            <th class="col-2">接種時間一</th>
-            <th class="col-2">疫苗接種二</th>
-            <th class="col-2">註冊時間二</th>
-            <th class="col-1">用戶狀態</th>
-            <th class="col-1">操作</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="a">
-            <td class="col-1">買家編號</td>
-            <td class="col-2">Email</td>
-            <td class="col-1">第三方狀態</td>
-            <td class="col-2">用戶名稱</td>
-            <td class="col-2">電話</td>
-            <td class="col-2">手機</td>
-            <td class="col-1">生日</td>
-            <td class="col-2">密碼</td>
-            <td class="col-3">地址</td>
-            <td class="col-1">信箱驗證</td>
-            <td class="col-1">註冊時間</td>
-            <td class="col-2">寵物名稱</td>
-            <!-- 寵物圖片 -->
-            <td class="col-2">
-              <img src="https://fakeimg.pl/100x100/" alt="" srcset="" />
-            </td>
-            <td class="col-1">註冊時間</td>
-            <td class="col-2">疫苗接種一</td>
-            <td class="col-2">接種時間一</td>
-            <td class="col-2">疫苗接種二</td>
-            <td class="col-2">註冊時間二</td>
-            <td class="col-1">用戶狀態</td>
-            <td class="col-1 d-flex flex-column align-items-center">
-              <button class="product align-self-start btn-func">
-                編輯
-              </button>
-              <button class="product align-self-start btn-func">
-                上架
-              </button>
-              <button class="product align-self-start btn-func">
-                刪除
-              </button>
-            </ditdv>
-          </tr>
+      <!-- Vendor & Main JS Files -->
+      <script src="loadjs.js"></script>
 
-
-
-
-        </tbody>
-      </table>
-  </main>
-  <!-- End Main -->
-
-  <!-- ======= Footer, 後臺應該不需要footer ======= -->
-
-  <!-- Vendor & Main JS Files -->
-  <script src="loadjs.js"></script>
-
-  <!-- Local JS File -->
-  <script></script>
+      <!-- Local JS File -->
+      <script></script>
 </body>
 
 </html>
